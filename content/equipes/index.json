@@ -1,15 +1,22 @@
 [
   {
-    "id": "senegal",
-    "name": "Sénégal",
-    "flag": "/flags/sn.svg",
+    "id": "algerie",
+    "name": "Algérie",
+    "flag": "/flags/dz.svg",
     "status": "coming_soon",
     "confirmed": true
   },
   {
-    "id": "cote-divoire",
-    "name": "Côte d'Ivoire",
-    "flag": "/flags/ci.svg",
+    "id": "belgique",
+    "name": "Belgique",
+    "flag": "/flags/be.svg",
+    "status": "coming_soon",
+    "confirmed": true
+  },
+  {
+    "id": "burkina-faso",
+    "name": "Burkina Faso",
+    "flag": "/flags/bf.svg",
     "status": "coming_soon",
     "confirmed": true
   },
@@ -21,9 +28,58 @@
     "confirmed": true
   },
   {
+    "id": "comores",
+    "name": "Comores",
+    "flag": "/flags/km.svg",
+    "status": "coming_soon",
+    "confirmed": true
+  },
+  {
+    "id": "congo",
+    "name": "Congo",
+    "flag": "/flags/cg.svg",
+    "status": "coming_soon",
+    "confirmed": true
+  },
+  {
+    "id": "djibouti",
+    "name": "Djibouti",
+    "flag": "/flags/dj.svg",
+    "status": "coming_soon",
+    "confirmed": true
+  },
+  {
+    "id": "france",
+    "name": "France",
+    "flag": "/flags/fr.svg",
+    "status": "coming_soon",
+    "confirmed": true
+  },
+  {
     "id": "maroc",
     "name": "Maroc",
     "flag": "/flags/ma.svg",
+    "status": "coming_soon",
+    "confirmed": true
+  },
+  {
+    "id": "mauritanie",
+    "name": "Mauritanie",
+    "flag": "/flags/mr.svg",
+    "status": "coming_soon",
+    "confirmed": true
+  },
+  {
+    "id": "senegal",
+    "name": "Sénégal",
+    "flag": "/flags/sn.svg",
+    "status": "coming_soon",
+    "confirmed": true
+  },
+  {
+    "id": "suisse",
+    "name": "Suisse",
+    "flag": "/flags/ch.svg",
     "status": "coming_soon",
     "confirmed": true
   },
@@ -35,16 +91,16 @@
     "confirmed": true
   },
   {
-    "id": "mali",
-    "name": "Mali",
-    "flag": "/flags/ml.svg",
+    "id": "cote-divoire",
+    "name": "Côte d'Ivoire",
+    "flag": "/flags/ci.svg",
     "status": "coming_soon",
     "confirmed": false
   },
   {
-    "id": "burkina-faso",
-    "name": "Burkina Faso",
-    "flag": "/flags/bf.svg",
+    "id": "mali",
+    "name": "Mali",
+    "flag": "/flags/ml.svg",
     "status": "coming_soon",
     "confirmed": false
   },
@@ -73,27 +129,6 @@
     "id": "madagascar",
     "name": "Madagascar",
     "flag": "/flags/mg.svg",
-    "status": "coming_soon",
-    "confirmed": false
-  },
-  {
-    "id": "france",
-    "name": "France",
-    "flag": "/flags/fr.svg",
-    "status": "coming_soon",
-    "confirmed": false
-  },
-  {
-    "id": "belgique",
-    "name": "Belgique",
-    "flag": "/flags/be.svg",
-    "status": "coming_soon",
-    "confirmed": false
-  },
-  {
-    "id": "suisse",
-    "name": "Suisse",
-    "flag": "/flags/ch.svg",
     "status": "coming_soon",
     "confirmed": false
   },
