@@ -21,17 +21,29 @@ export function HeroSection() {
     >
       {/* Fond : grille de points */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.05]"
+        className="absolute inset-0 pointer-events-none opacity-[0.045]"
         style={{
           backgroundImage: "radial-gradient(circle, #c9a84c 1px, transparent 1px)",
           backgroundSize: "28px 28px",
         }}
         aria-hidden="true"
       />
+      {/* Halo vert-clair haut-gauche */}
+      <div
+        className="absolute -top-32 -left-32 w-[600px] h-[600px] pointer-events-none"
+        style={{ background: "radial-gradient(ellipse at 30% 30%, rgba(45,106,79,0.55), transparent 65%)" }}
+        aria-hidden="true"
+      />
       {/* Halo or bas-droite */}
       <div
-        className="absolute bottom-0 right-0 w-1/2 h-1/2 pointer-events-none opacity-10"
-        style={{ background: "radial-gradient(ellipse at 100% 100%, #c9a84c, transparent 65%)" }}
+        className="absolute bottom-0 right-0 w-[55%] h-[60%] pointer-events-none"
+        style={{ background: "radial-gradient(ellipse at 100% 100%, rgba(201,168,76,0.18), transparent 60%)" }}
+        aria-hidden="true"
+      />
+      {/* Ligne lumineuse horizontale subtile */}
+      <div
+        className="absolute top-0 inset-x-0 h-px pointer-events-none"
+        style={{ background: "linear-gradient(90deg, transparent, rgba(201,168,76,0.4) 50%, transparent)" }}
         aria-hidden="true"
       />
 
@@ -94,42 +106,52 @@ export function HeroSection() {
           {/* Droite — Event Card */}
           <div className="hidden lg:block">
             <div
-              className="rounded-2xl overflow-hidden border border-white/10"
-              style={{ background: "rgba(255,255,255,0.055)", backdropFilter: "blur(16px)" }}
+              className="rounded-2xl overflow-hidden border border-white/[0.13]"
+              style={{
+                background: "linear-gradient(145deg, rgba(255,255,255,0.075) 0%, rgba(255,255,255,0.04) 100%)",
+                backdropFilter: "blur(20px)",
+                boxShadow: "0 8px 48px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.1)",
+              }}
             >
               {/* Card header */}
-              <div className="px-5 py-3.5 border-b border-white/10 flex items-center justify-between">
-                <span className="type-label text-white/40">Événement officiel</span>
-                <span className="inline-flex items-center gap-1.5 type-label bg-or/15 text-or border border-or/25 rounded-full px-3 py-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-or" aria-hidden="true" />
+              <div
+                className="px-5 py-4 border-b border-white/10 flex items-center justify-between"
+                style={{ background: "rgba(201,168,76,0.07)" }}
+              >
+                <span className="type-label text-white/50">Événement officiel · OFM 2027</span>
+                <span className="inline-flex items-center gap-1.5 type-label bg-or/20 text-or border border-or/30 rounded-full px-3 py-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-or animate-pulse" aria-hidden="true" />
                   En préparation
                 </span>
               </div>
 
               {/* Card body */}
-              <div className="divide-y divide-white/[0.07]">
+              <div className="divide-y divide-white/[0.06]">
                 {EVENT_INFOS.map(({ icon: Icon, label, value, sub }) => (
-                  <div key={label} className="flex items-center gap-3.5 px-5 py-3.5">
-                    <div className="w-8 h-8 rounded-lg bg-white/[0.07] flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-3.5 h-3.5 text-or" aria-hidden="true" />
+                  <div key={label} className="flex items-center gap-4 px-5 py-4">
+                    <div
+                      className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{ background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.2)" }}
+                    >
+                      <Icon className="w-4 h-4 text-or" aria-hidden="true" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="type-label text-white/35 mb-0.5">{label}</p>
+                      <p className="type-label text-white/35 mb-1">{label}</p>
                       <p className="text-blanc text-sm font-semibold leading-tight">{value}</p>
                     </div>
-                    <span className="text-white/25 text-xs hidden xl:block flex-shrink-0">{sub}</span>
+                    <span className="text-white/20 text-xs hidden xl:block flex-shrink-0 text-right leading-tight">{sub}</span>
                   </div>
                 ))}
               </div>
 
               {/* Card footer */}
-              <div className="px-5 py-3.5 border-t border-white/10">
+              <div className="px-5 py-4 border-t border-white/[0.08]">
                 <Link
                   href="/equipes"
-                  className="flex items-center justify-between text-sm text-white/40 hover:text-blanc transition-colors group"
+                  className="flex items-center justify-between text-sm text-white/45 hover:text-blanc transition-colors duration-200 group"
                 >
                   <span>Voir les équipes participantes</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
                 </Link>
               </div>
             </div>

@@ -35,8 +35,8 @@ export function SectionHeading({
     <div className={cn(isCenter && "text-center", className)}>
       {label && (
         <p className={cn(
-          "type-label mb-3",
-          light ? "text-or-clair" : "text-or"
+          "type-label mb-3.5",
+          light ? "text-or-clair/80" : "text-or"
         )}>
           {label}
         </p>

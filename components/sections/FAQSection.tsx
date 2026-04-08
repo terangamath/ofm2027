@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ChevronDown, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Section } from "@/components/ui/Section";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { FAQItem } from "@/types/content";
 
 interface FAQSectionProps {
@@ -24,18 +23,21 @@ export function FAQSection({ items, limit = 4, showLink = true }: FAQSectionProp
 
         {/* Gauche — ancre visuelle forte */}
         <div className="lg:sticky lg:top-24">
-          <SectionHeading
-            label="FAQ"
-            title="Questions fréquentes"
-            className="mb-4"
-          />
-          <p className="type-body-sm text-gris mb-6 max-w-[40ch]">
-            Tout ce qu'il faut savoir sur l'OFM 2027 avant de participer.
+          {/* Bloc décoratif */}
+          <div className="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-full bg-vert/8 border border-vert/15">
+            <span className="w-1.5 h-1.5 rounded-full bg-vert" aria-hidden="true" />
+            <span className="type-label text-vert">FAQ</span>
+          </div>
+          <h2 className="type-h2 text-anthracite mb-4 leading-[1.05]">
+            Questions<br />fréquentes
+          </h2>
+          <p className="type-body-sm text-gris mb-7 max-w-[34ch] leading-relaxed">
+            Tout ce qu&apos;il faut savoir sur l&apos;OFM 2027 avant de participer.
           </p>
           {showLink && (
             <Link
               href="/olympiade#faq"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-vert hover:text-vert-clair transition-colors"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-vert hover:text-vert-clair hover:gap-2.5 transition-all duration-200"
             >
               Toutes les questions
               <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
