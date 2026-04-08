@@ -1,5 +1,4 @@
-import { useTranslations } from "next-intl";
-import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Section } from "@/components/ui/Section";
 import type { Partner } from "@/types/content";
 
 interface PartenairesSectionProps {
@@ -8,76 +7,79 @@ interface PartenairesSectionProps {
 
 const TYPE_LABELS: Record<string, string> = {
   institutionnel: "Partenaires institutionnels",
-  financier: "Partenaires financiers",
-  technique: "Partenaires techniques",
-  media: "Partenaires médias",
+  financier:      "Partenaires financiers",
+  technique:      "Partenaires techniques",
+  media:          "Partenaires médias",
 };
 
 export function PartenairesSection({ partenaires }: PartenairesSectionProps) {
-  const t = useTranslations("sections");
-
   const grouped = partenaires.reduce<Record<string, Partner[]>>((acc, p) => {
     const key = p.type;
     if (!acc[key]) acc[key] = [];
-    acc[key].push(p);
+    (acc[key] as Partner[]).push(p);
     return acc;
   }, {});
 
   return (
-    <section className="section-padding bg-sable">
-      <div className="container-main">
-        <SectionHeader
-          surtitre={t("partenaires")}
-          titre="Nos soutiens"
-          sousTitre="L'OFM 2027 est rendu possible grâce au soutien de nos partenaires institutionnels, financiers et techniques."
-          center
-          className="mb-12"
-        />
-
-        {Object.entries(grouped).map(([type, partners]) => (
-          <div key={type} className="mb-10">
-            <p className="text-xs font-semibold text-gris uppercase tracking-widest text-center mb-6">
-              {TYPE_LABELS[type] ?? type}
-            </p>
-            <div className="flex flex-wrap justify-center gap-6">
-              {partners.map((partner) => (
-                <PartnerCard key={partner.id} partner={partner} />
-              ))}
-            </div>
-          </div>
-        ))}
+    <Section bg="sable" size="sm" className="border-t border-gray-100">
+      {/* En-tête sobre */}
+      <div className="flex items-center gap-4 mb-6">
+        <span className="type-label text-gris">Partenaires & soutiens</span>
+        <div className="flex-1 h-px bg-gray-200" aria-hidden="true" />
       </div>
-    </section>
+
+      <div className="space-y-5">
+        {(["institutionnel", "financier", "technique"] as const).map((type) => {
+          const partners = grouped[type];
+          if (!partners || partners.length === 0) return null;
+          return (
+            <div key={type}>
+              <p className="type-label text-gris/50 mb-3">{TYPE_LABELS[type]}</p>
+              <div className="flex flex-wrap gap-2">
+                {partners.map((p) => (
+                  <PartnerTag key={p.id} partner={p} />
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <p className="mt-5 type-label text-gris/40 text-center">
+        Liste complète des partenaires à paraître prochainement
+      </p>
+    </Section>
   );
 }
 
-function PartnerCard({ partner }: { partner: Partner }) {
+function PartnerTag({ partner }: { partner: Partner }) {
+  const isPlaceholder = partner.name.startsWith("[");
+
   const inner = (
-    <div className="bg-blanc rounded-xl border border-gray-100 shadow-sm px-8 py-5 flex flex-col items-center gap-2 min-w-[140px] hover:shadow-md transition-shadow">
-      <div className="h-10 flex items-center justify-center">
-        {/* Placeholder logo */}
-        <div className="w-20 h-8 bg-gray-100 rounded flex items-center justify-center">
-          <span className="text-xs text-gris font-medium truncate px-1">{partner.name.slice(0, 10)}</span>
-        </div>
+    <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg border bg-blanc transition-shadow ${
+      isPlaceholder
+        ? "border-dashed border-gray-200 opacity-50"
+        : "border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200"
+    }`}>
+      <div className="w-6 h-6 rounded bg-sable flex items-center justify-center flex-shrink-0">
+        <span className="text-[10px] font-bold text-gris uppercase leading-none">
+          {isPlaceholder ? "?" : partner.name.slice(0, 2)}
+        </span>
       </div>
-      <p className="text-xs text-gris text-center leading-tight max-w-[120px]">
+      <span className={`text-sm font-medium leading-tight max-w-[180px] truncate ${
+        isPlaceholder ? "text-gris/50 italic" : "text-anthracite"
+      }`}>
         {partner.name}
-      </p>
+      </span>
     </div>
   );
 
-  if (partner.url) {
+  if (partner.url && !isPlaceholder) {
     return (
-      <a
-        href={partner.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Visiter le site de ${partner.name}`}
-      >
+      <a href={partner.url} target="_blank" rel="noopener noreferrer" aria-label={`Visiter ${partner.name}`}>
         {inner}
       </a>
     );
   }
-
   return inner;
 }

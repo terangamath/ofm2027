@@ -1,51 +1,41 @@
 @import "tailwindcss";
 
-/* ─── Tailwind v4 Theme Configuration ───────────────────────────────────── */
+/* ─── Design Tokens OFM 2027 ─────────────────────────────────────────────── */
 @theme {
-  /* Couleurs OFM 2027 */
-  --color-vert: #1b4332;
+  /* Couleurs */
+  --color-vert:       #1b4332;
   --color-vert-clair: #2d6a4f;
-  --color-vert-pale: #d8f3dc;
-  --color-or: #c9a84c;
-  --color-or-clair: #e8c97a;
-  --color-or-pale: #fdf5e0;
-  --color-sable: #f5f0e8;
-  --color-sable-fonce: #ede8df;
+  --color-vert-pale:  #d8f3dc;
+  --color-or:         #c9a84c;
+  --color-or-clair:   #e8c97a;
+  --color-or-pale:    #fdf5e0;
+  --color-sable:      #f5f0e8;
+  --color-sable-fonce:#ede8df;
   --color-anthracite: #1c1c1e;
-  --color-gris: #6b7280;
+  --color-gris:       #6b7280;
   --color-gris-clair: #e5e7eb;
-  --color-rouge: #c0392b;
-  --color-blanc: #ffffff;
+  --color-rouge:      #c0392b;
+  --color-blanc:      #ffffff;
 
   /* Polices */
   --font-serif: "Playfair Display", Georgia, serif;
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", "Courier New", monospace;
+  --font-sans:  "Inter", system-ui, sans-serif;
+  --font-mono:  "JetBrains Mono", "Courier New", monospace;
 }
 
-/* ─── Variables CSS globales ─────────────────────────────────────────────── */
+/* ─── Système de layout ──────────────────────────────────────────────────── */
 :root {
-  --section-padding: clamp(3rem, 8vw, 6rem);
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.06);
-  --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.06);
-  --shadow-lg: 0 10px 25px -5px rgb(0 0 0 / 0.1), 0 4px 10px -5px rgb(0 0 0 / 0.06);
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --transition-fast: 150ms ease;
-  --transition-base: 250ms ease;
+  /* Container : max 1280px, padding horizontal cohérent */
+  --container-max:  1280px;
+  --container-px:   1rem;        /* mobile  */
 }
+@media (min-width: 640px)  { :root { --container-px: 1.5rem; } }  /* sm */
+@media (min-width: 1024px) { :root { --container-px: 2rem;   } }  /* lg */
 
-/* ─── Reset & Base ───────────────────────────────────────────────────────── */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+/* ─── Reset minimal ──────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background-color: #f5f0e8;
@@ -58,45 +48,115 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Playfair Display", Georgia, serif;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.15;
   letter-spacing: -0.02em;
 }
 
-/* ─── Focus accessible ───────────────────────────────────────────────────── */
 :focus-visible {
   outline: 2px solid #c9a84c;
   outline-offset: 3px;
   border-radius: 6px;
 }
 
-/* ─── Scrollbar discrète ─────────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #f5f0e8; }
-::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 99px; }
-::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+/* ─── Container principal ────────────────────────────────────────────────── */
+.container-main {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-px);
+  padding-right: var(--container-px);
+}
 
-/* ─── Prose (contenu MDX) ────────────────────────────────────────────────── */
+/* ─── Espacement des sections ────────────────────────────────────────────── */
+/* Standard : py-16 (4rem) */
+.section-py     { padding-top: 4rem;  padding-bottom: 4rem;  }
+/* Réduit : utilisé pour les bandes compactes */
+.section-py-sm  { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+/* Large : sections principales */
+.section-py-lg  { padding-top: 5rem;  padding-bottom: 5rem;  }
+
+/* ─── Échelle typographique ──────────────────────────────────────────────── */
+
+/* H1 — Hero uniquement */
+.type-h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(2.75rem, 5.5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+/* H2 — Titre de section */
+.type-h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(1.875rem, 3.5vw, 2.5rem); /* 30px → 40px */
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* H3 — Titre de carte / sous-section */
+.type-h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-size: 1.25rem; /* 20px fixe */
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+/* H4 — Petits titres */
+.type-h4 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Body principal */
+.type-body {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Body secondaire */
+.type-body-sm {
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
+/* Label de section (surtitre) */
+.type-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* ─── Composant : prose MDX ──────────────────────────────────────────────── */
 .prose-ofm {
-  max-width: 72ch;
+  max-width: 68ch;
   line-height: 1.8;
 }
 .prose-ofm h2 {
   margin-top: 2rem;
   margin-bottom: 0.75rem;
-  font-size: 1.5rem;
   font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.5rem;
   color: #1b4332;
 }
 .prose-ofm h3 {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
-  font-size: 1.2rem;
   font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.125rem;
 }
-.prose-ofm p { margin-bottom: 1.25rem; }
-.prose-ofm ul, .prose-ofm ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
-.prose-ofm li { margin-bottom: 0.35rem; }
-.prose-ofm strong { font-weight: 700; color: #1c1c1e; }
+.prose-ofm p          { margin-bottom: 1.25rem; }
+.prose-ofm ul,
+.prose-ofm ol         { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+.prose-ofm li         { margin-bottom: 0.35rem; }
+.prose-ofm strong     { font-weight: 700; color: #1c1c1e; }
 .prose-ofm a {
   color: #2d6a4f;
   text-decoration: underline;
@@ -104,17 +164,21 @@ h1, h2, h3, h4, h5, h6 {
   text-underline-offset: 3px;
 }
 
-/* ─── Animations discrètes ───────────────────────────────────────────────── */
+/* ─── Scrollbar discrète ─────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: #f5f0e8; }
+::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+
+/* ─── Animations ─────────────────────────────────────────────────────────── */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-.animate-fade-in-up {
-  animation: fadeInUp 0.5s ease forwards;
-}
+.animate-fade-in-up { animation: fadeInUp 0.45s ease forwards; }
 
 @keyframes shimmer {
-  0% { background-position: -200px 0; }
+  0%   { background-position: -200px 0; }
   100% { background-position: calc(200px + 100%) 0; }
 }
 .skeleton {

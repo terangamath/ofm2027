@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
-import { ChevronDown } from "lucide-react";
-import { SectionHeader } from "@/components/ui/SectionHeader";
+import { ChevronDown, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Section } from "@/components/ui/Section";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { FAQItem } from "@/types/content";
 
 interface FAQSectionProps {
@@ -14,96 +14,75 @@ interface FAQSectionProps {
   showLink?: boolean;
 }
 
-export function FAQSection({ items, limit = 5, showLink = true }: FAQSectionProps) {
-  const t = useTranslations("sections");
+export function FAQSection({ items, limit = 4, showLink = true }: FAQSectionProps) {
   const [openId, setOpenId] = useState<string | null>(null);
-
   const displayed = items.slice(0, limit);
 
-  const toggle = (id: string) => {
-    setOpenId((prev) => (prev === id ? null : id));
-  };
-
   return (
-    <section className="section-padding bg-blanc">
-      <div className="container-main">
-        <SectionHeader
-          surtitre={t("faq")}
-          titre="Questions fréquentes"
-          center
-          className="mb-10"
-        />
+    <Section bg="white">
+      <div className="grid lg:grid-cols-[260px_1fr] gap-10 xl:gap-16 items-start">
 
-        <div className="max-w-2xl mx-auto space-y-3">
-          {displayed.map((item) => (
-            <FAQAccordion
-              key={item.id}
-              item={item}
-              isOpen={openId === item.id}
-              onToggle={() => toggle(item.id)}
-            />
-          ))}
-        </div>
-
-        {showLink && (
-          <div className="mt-8 text-center">
+        {/* Gauche — ancre visuelle forte */}
+        <div className="lg:sticky lg:top-24">
+          <SectionHeading
+            label="FAQ"
+            title="Questions fréquentes"
+            className="mb-4"
+          />
+          <p className="type-body-sm text-gris mb-6 max-w-[40ch]">
+            Tout ce qu'il faut savoir sur l'OFM 2027 avant de participer.
+          </p>
+          {showLink && (
             <Link
               href="/olympiade#faq"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-vert hover:text-vert-clair transition-colors"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-vert hover:text-vert-clair transition-colors"
             >
-              Voir toutes les questions →
+              Toutes les questions
+              <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
             </Link>
-          </div>
-        )}
-      </div>
-    </section>
-  );
-}
-
-function FAQAccordion({
-  item,
-  isOpen,
-  onToggle,
-}: {
-  item: FAQItem;
-  isOpen: boolean;
-  onToggle: () => void;
-}) {
-  return (
-    <div
-      className={cn(
-        "rounded-xl border transition-all duration-200",
-        isOpen
-          ? "border-vert/30 bg-vert-pale/30 shadow-sm"
-          : "border-gray-100 bg-blanc hover:border-gray-200"
-      )}
-    >
-      <button
-        className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
-        onClick={onToggle}
-        aria-expanded={isOpen}
-        aria-controls={`faq-answer-${item.id}`}
-      >
-        <span className={cn("font-semibold text-sm leading-snug transition-colors", isOpen ? "text-vert" : "text-anthracite")}>
-          {item.question}
-        </span>
-        <ChevronDown
-          className={cn(
-            "w-4 h-4 flex-shrink-0 transition-transform duration-200",
-            isOpen ? "rotate-180 text-vert" : "text-gris"
           )}
-          aria-hidden="true"
-        />
-      </button>
-
-      {isOpen && (
-        <div
-          id={`faq-answer-${item.id}`}
-          className="px-5 pb-5 text-sm text-gris leading-relaxed"
-        >
-          {item.answer}
         </div>
-      )}
-    </div>
+
+        {/* Droite — accordéon */}
+        <div className="space-y-2">
+          {displayed.map((item) => (
+            <div
+              key={item.id}
+              className={cn(
+                "rounded-xl border transition-all duration-200",
+                openId === item.id
+                  ? "border-vert/20 bg-vert-pale/25 shadow-sm"
+                  : "border-gray-100 bg-sable hover:border-gray-200"
+              )}
+            >
+              <button
+                className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
+                onClick={() => setOpenId(openId === item.id ? null : item.id)}
+                aria-expanded={openId === item.id}
+              >
+                <span className={cn(
+                  "text-sm font-semibold leading-snug transition-colors",
+                  openId === item.id ? "text-vert" : "text-anthracite"
+                )}>
+                  {item.question}
+                </span>
+                <ChevronDown
+                  className={cn(
+                    "w-4 h-4 flex-shrink-0 transition-transform duration-200",
+                    openId === item.id ? "rotate-180 text-vert" : "text-gris/40"
+                  )}
+                  aria-hidden="true"
+                />
+              </button>
+              {openId === item.id && (
+                <div className="px-5 pb-4 type-body-sm text-gris">
+                  {item.answer}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </Section>
   );
 }
