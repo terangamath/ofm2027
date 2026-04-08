@@ -1,0 +1,107 @@
+[
+  {
+    "id": "senegal",
+    "name": "Sénégal",
+    "flag": "/flags/sn.svg",
+    "status": "coming_soon",
+    "confirmed": true
+  },
+  {
+    "id": "cote-divoire",
+    "name": "Côte d'Ivoire",
+    "flag": "/flags/ci.svg",
+    "status": "coming_soon",
+    "confirmed": true
+  },
+  {
+    "id": "cameroun",
+    "name": "Cameroun",
+    "flag": "/flags/cm.svg",
+    "status": "coming_soon",
+    "confirmed": true
+  },
+  {
+    "id": "maroc",
+    "name": "Maroc",
+    "flag": "/flags/ma.svg",
+    "status": "coming_soon",
+    "confirmed": true
+  },
+  {
+    "id": "tunisie",
+    "name": "Tunisie",
+    "flag": "/flags/tn.svg",
+    "status": "coming_soon",
+    "confirmed": true
+  },
+  {
+    "id": "mali",
+    "name": "Mali",
+    "flag": "/flags/ml.svg",
+    "status": "coming_soon",
+    "confirmed": false
+  },
+  {
+    "id": "burkina-faso",
+    "name": "Burkina Faso",
+    "flag": "/flags/bf.svg",
+    "status": "coming_soon",
+    "confirmed": false
+  },
+  {
+    "id": "benin",
+    "name": "Bénin",
+    "flag": "/flags/bj.svg",
+    "status": "coming_soon",
+    "confirmed": false
+  },
+  {
+    "id": "togo",
+    "name": "Togo",
+    "flag": "/flags/tg.svg",
+    "status": "coming_soon",
+    "confirmed": false
+  },
+  {
+    "id": "guinea",
+    "name": "Guinée",
+    "flag": "/flags/gn.svg",
+    "status": "coming_soon",
+    "confirmed": false
+  },
+  {
+    "id": "madagascar",
+    "name": "Madagascar",
+    "flag": "/flags/mg.svg",
+    "status": "coming_soon",
+    "confirmed": false
+  },
+  {
+    "id": "france",
+    "name": "France",
+    "flag": "/flags/fr.svg",
+    "status": "coming_soon",
+    "confirmed": false
+  },
+  {
+    "id": "belgique",
+    "name": "Belgique",
+    "flag": "/flags/be.svg",
+    "status": "coming_soon",
+    "confirmed": false
+  },
+  {
+    "id": "suisse",
+    "name": "Suisse",
+    "flag": "/flags/ch.svg",
+    "status": "coming_soon",
+    "confirmed": false
+  },
+  {
+    "id": "liban",
+    "name": "Liban",
+    "flag": "/flags/lb.svg",
+    "status": "coming_soon",
+    "confirmed": false
+  }
+]

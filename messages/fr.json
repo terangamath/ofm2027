@@ -1,0 +1,194 @@
+{
+  "site": {
+    "name": "OFM 2027",
+    "fullName": "Olympiade Francophone de Mathématiques 2027",
+    "tagline": "L'excellence mathématique francophone — Sénégal 2027",
+    "description": "Site officiel de l'Olympiade Francophone de Mathématiques 2027, organisée au Sénégal par l'association Terangamath."
+  },
+  "nav": {
+    "accueil": "Accueil",
+    "olympiade": "L'Olympiade",
+    "organisation": "Organisation",
+    "equipes": "Équipes",
+    "programme": "Programme",
+    "informations": "Informations pratiques",
+    "problemes": "Problèmes & Solutions",
+    "resultats": "Résultats",
+    "actualites": "Actualités",
+    "galerie": "Galerie",
+    "historique": "Historique",
+    "contact": "Contact",
+    "menu": "Menu",
+    "fermer": "Fermer"
+  },
+  "hero": {
+    "surtitre": "Sénégal • 2027",
+    "titre": "Olympiade Francophone\nde Mathématiques",
+    "sousTitre": "L'excellence mathématique du monde francophone, réunie au cœur de l'Afrique de l'Ouest",
+    "cta_primaire": "Découvrir l'OFM",
+    "cta_secondaire": "Informations pratiques",
+    "dates": "[Dates à confirmer — 2027]",
+    "organisateur": "Organisé par Terangamath"
+  },
+  "status": {
+    "published": "Publié",
+    "coming_soon": "Bientôt disponible",
+    "draft": "À venir"
+  },
+  "sections": {
+    "ofm_en_bref": "L'OFM en bref",
+    "pays_participants": "Pays participants",
+    "actualites": "Actualités",
+    "infos_cles": "Informations clés",
+    "partenaires": "Partenaires",
+    "faq": "Questions fréquentes",
+    "programme": "Programme",
+    "historique": "Historique des éditions"
+  },
+  "ofm_bref": {
+    "titre": "Qu'est-ce que l'OFM ?",
+    "description": "L'Olympiade Francophone de Mathématiques est la grande compétition internationale de mathématiques du monde francophone. Elle rassemble chaque année les meilleurs jeunes mathématiciens et mathématiciennes de nombreux pays, répartis en deux catégories : Junior et Senior.",
+    "stat_pays": "pays participants",
+    "stat_eleves": "élèves compétiteurs",
+    "stat_categories": "catégories",
+    "stat_editions": "éditions au compteur",
+    "categories_titre": "Deux catégories de compétition",
+    "junior_titre": "Junior",
+    "junior_desc": "Destinée aux élèves de collège, la catégorie Junior met à l'épreuve la créativité mathématique et la rigueur des jeunes talents.",
+    "senior_titre": "Senior",
+    "senior_desc": "La catégorie Senior réunit les lycéens les plus brillants du monde francophone autour de problèmes exigeants et stimulants."
+  },
+  "infos_cles": {
+    "lieu_titre": "Lieu",
+    "lieu_valeur": "Sénégal, Afrique de l'Ouest",
+    "date_titre": "Dates",
+    "date_valeur": "[Dates à confirmer]",
+    "organisateur_titre": "Organisateur",
+    "organisateur_valeur": "Terangamath",
+    "langue_titre": "Langue officielle",
+    "langue_valeur": "Français"
+  },
+  "coming_soon": {
+    "titre": "Bientôt disponible",
+    "description": "Ce contenu sera publié prochainement. Revenez bientôt ou suivez-nous sur les réseaux sociaux pour être informé en premier.",
+    "retour": "Retour à l'accueil"
+  },
+  "contact": {
+    "titre": "Contact",
+    "sousTitre": "Une question ? Contactez l'équipe organisatrice.",
+    "nom": "Nom complet",
+    "email": "Adresse e-mail",
+    "sujet": "Sujet",
+    "message": "Votre message",
+    "envoyer": "Envoyer le message",
+    "succes": "Votre message a bien été envoyé. Nous vous répondrons dans les meilleurs délais.",
+    "erreur": "Une erreur est survenue. Veuillez réessayer ou nous écrire directement.",
+    "email_direct": "Email direct",
+    "reseaux": "Réseaux sociaux"
+  },
+  "footer": {
+    "droits": "© 2027 OFM 2027 — Terangamath. Tous droits réservés.",
+    "mentions": "Mentions légales",
+    "contact": "Contact",
+    "site_officiel": "Site officiel"
+  },
+  "problemes": {
+    "titre": "Problèmes & Solutions",
+    "intro": "Retrouvez ici les problèmes des épreuves Junior et Senior de l'OFM 2027, ainsi que leurs solutions officielles après publication.",
+    "junior": "Catégorie Junior",
+    "senior": "Catégorie Senior",
+    "probleme_n": "Problème n°",
+    "solution_n": "Solution n°",
+    "telecharger_pdf": "Télécharger le PDF",
+    "pas_disponible": "Problèmes non encore disponibles",
+    "solutions_titre": "Solutions officielles"
+  },
+  "equipes": {
+    "titre": "Équipes participantes",
+    "intro": "Découvrez les pays et délégations qui participent à l'OFM 2027.",
+    "confirme": "Confirmé",
+    "en_attente": "En attente de confirmation",
+    "chef_delegation": "Chef de délégation",
+    "encadrants": "Encadrant(s)",
+    "eleves_junior": "Élèves Junior",
+    "eleves_senior": "Élèves Senior",
+    "delegation_a_venir": "Composition de la délégation à venir",
+    "pays_participants": "pays participants",
+    "rechercher": "Rechercher un pays..."
+  },
+  "resultats": {
+    "titre": "Résultats officiels",
+    "intro": "Les résultats de l'OFM 2027 seront publiés ici à l'issue de la compétition.",
+    "classement": "Classement général",
+    "medaille_or": "Médaille d'or",
+    "medaille_argent": "Médaille d'argent",
+    "medaille_bronze": "Médaille de bronze",
+    "mention": "Mention honorable",
+    "score": "Score",
+    "rang": "Rang",
+    "pays": "Pays",
+    "eleve": "Élève",
+    "telecharger": "Télécharger les résultats (PDF)"
+  },
+  "programme": {
+    "titre": "Programme",
+    "intro": "Retrouvez ici le calendrier des grandes étapes et le programme détaillé de l'OFM 2027.",
+    "jalons": "Jalons importants",
+    "programme_detail": "Programme détaillé",
+    "type": {
+      "competition": "Compétition",
+      "ceremonie": "Cérémonie",
+      "culturel": "Programme culturel",
+      "logistique": "Logistique"
+    }
+  },
+  "historique": {
+    "titre": "Historique des éditions",
+    "intro": "L'Olympiade Francophone de Mathématiques existe depuis plusieurs années. Retrouvez ici le palmarès et les archives des éditions précédentes.",
+    "edition": "Édition",
+    "pays_hote": "Pays hôte",
+    "voir_details": "Voir les détails",
+    "donnees_a_confirmer": "[Données à confirmer]"
+  },
+  "organisation": {
+    "titre": "Organisation",
+    "terangamath_titre": "Terangamath",
+    "comite_orga": "Comité d'organisation",
+    "comite_scientifique": "Comité scientifique",
+    "jury": "Jury",
+    "benevoles": "Équipe bénévole",
+    "partenaires": "Partenaires & soutiens",
+    "remerciements": "Remerciements"
+  },
+  "informations": {
+    "titre": "Informations pratiques",
+    "intro": "Toutes les informations utiles pour les délégations, encadrants et visiteurs.",
+    "lieu": "Lieu de la compétition",
+    "hebergement": "Hébergement",
+    "transports": "Transports",
+    "visas": "Visas & formalités",
+    "restauration": "Restauration",
+    "contacts_utiles": "Contacts utiles",
+    "documents": "Documents à télécharger",
+    "a_confirmer": "[À confirmer]"
+  },
+  "galerie": {
+    "titre": "Galerie",
+    "intro": "Revivez les moments forts de l'OFM 2027 en images.",
+    "album": "Album",
+    "photos": "photos",
+    "pas_de_photos": "Les photos seront disponibles après l'événement."
+  },
+  "actualites": {
+    "titre": "Actualités",
+    "intro": "Suivez toutes les annonces et informations concernant l'OFM 2027.",
+    "lire_suite": "Lire la suite",
+    "categories": {
+      "annonce": "Annonce",
+      "resultat": "Résultat",
+      "document": "Document",
+      "information": "Information"
+    },
+    "pas_actualites": "Aucune actualité pour le moment."
+  }
+}

@@ -1,0 +1,16 @@
+eventName: "OFM 2027"
+edition: 2027
+host: "Sénégal"
+organizer: "Terangamath"
+eventDates: "[Dates à confirmer — 2027]"
+registrationOpen: false
+resultsPublished: false
+contactEmail: "contact@ofm2027.org"
+countdownTarget: "2027-07-15T08:00:00Z"
+socialLinks:
+  - platform: "facebook"
+    url: "https://facebook.com/terangamath"
+  - platform: "twitter"
+    url: "https://twitter.com/terangamath"
+  - platform: "instagram"
+    url: "https://instagram.com/terangamath"

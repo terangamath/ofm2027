@@ -1,0 +1,50 @@
+[
+  {
+    "id": "qu-est-ce-que-ofm",
+    "question": "Qu'est-ce que l'Olympiade Francophone de Mathématiques ?",
+    "answer": "L'OFM est une compétition internationale de mathématiques regroupant des élèves francophones du monde entier. Elle se déroule chaque année dans un pays hôte différent et comprend deux catégories : Junior (collège) et Senior (lycée).",
+    "category": "general"
+  },
+  {
+    "id": "qui-peut-participer",
+    "question": "Qui peut participer à l'OFM 2027 ?",
+    "answer": "L'OFM est ouverte aux élèves francophones des niveaux collège (catégorie Junior) et lycée (catégorie Senior), représentant leur pays via une sélection nationale. Chaque pays membre envoie une délégation officielle.",
+    "category": "participation"
+  },
+  {
+    "id": "format-competition",
+    "question": "Quel est le format de la compétition ?",
+    "answer": "La compétition se déroule en deux épreuves écrites individuelles sur plusieurs jours. Les problèmes sont élaborés par un comité scientifique international. Les résultats sont publiés à l'issue du jury officiel.",
+    "category": "competition"
+  },
+  {
+    "id": "comment-inscrire",
+    "question": "Comment inscrire sa délégation ?",
+    "answer": "Les inscriptions se font via le coordinateur national de votre pays. [La procédure d'inscription sera détaillée prochainement.] Contactez-nous à contact@ofm2027.org pour toute question.",
+    "category": "participation"
+  },
+  {
+    "id": "ou-se-deroule",
+    "question": "Où se déroule l'OFM 2027 ?",
+    "answer": "L'OFM 2027 se déroule au Sénégal, organisée par l'association Terangamath. Le lieu précis sera communiqué prochainement. [Lieu à confirmer]",
+    "category": "logistique"
+  },
+  {
+    "id": "categories-age",
+    "question": "Quelles sont les tranches d'âge des catégories ?",
+    "answer": "La catégorie Junior s'adresse aux élèves de collège (jusqu'à la 3ème incluse). La catégorie Senior s'adresse aux élèves de lycée (de la Seconde à la Terminale incluse). Les critères exacts sont définis dans le règlement officiel.",
+    "category": "competition"
+  },
+  {
+    "id": "langue-epreuves",
+    "question": "Dans quelle langue se déroulent les épreuves ?",
+    "answer": "Les épreuves se déroulent en français. C'est la langue officielle de l'Olympiade Francophone de Mathématiques.",
+    "category": "competition"
+  },
+  {
+    "id": "medailles",
+    "question": "Comment sont attribuées les médailles ?",
+    "answer": "Des médailles d'or, d'argent et de bronze ainsi que des mentions sont attribuées selon les résultats individuels. Le jury détermine les seuils lors de la délibération officielle.",
+    "category": "competition"
+  }
+]

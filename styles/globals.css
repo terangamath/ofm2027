@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+/* ─── Tailwind v4 Theme Configuration ───────────────────────────────────── */
+@theme {
+  /* Couleurs OFM 2027 */
+  --color-vert: #1b4332;
+  --color-vert-clair: #2d6a4f;
+  --color-vert-pale: #d8f3dc;
+  --color-or: #c9a84c;
+  --color-or-clair: #e8c97a;
+  --color-or-pale: #fdf5e0;
+  --color-sable: #f5f0e8;
+  --color-sable-fonce: #ede8df;
+  --color-anthracite: #1c1c1e;
+  --color-gris: #6b7280;
+  --color-gris-clair: #e5e7eb;
+  --color-rouge: #c0392b;
+  --color-blanc: #ffffff;
+
+  /* Polices */
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+}
+
+/* ─── Variables CSS globales ─────────────────────────────────────────────── */
+:root {
+  --section-padding: clamp(3rem, 8vw, 6rem);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  --shadow-lg: 0 10px 25px -5px rgb(0 0 0 / 0.1), 0 4px 10px -5px rgb(0 0 0 / 0.06);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}
+
+/* ─── Reset & Base ───────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f5f0e8;
+  color: #1c1c1e;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* ─── Focus accessible ───────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #c9a84c;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ─── Scrollbar discrète ─────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f5f0e8; }
+::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+
+/* ─── Prose (contenu MDX) ────────────────────────────────────────────────── */
+.prose-ofm {
+  max-width: 72ch;
+  line-height: 1.8;
+}
+.prose-ofm h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  font-family: "Playfair Display", Georgia, serif;
+  color: #1b4332;
+}
+.prose-ofm h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-family: "Playfair Display", Georgia, serif;
+}
+.prose-ofm p { margin-bottom: 1.25rem; }
+.prose-ofm ul, .prose-ofm ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+.prose-ofm li { margin-bottom: 0.35rem; }
+.prose-ofm strong { font-weight: 700; color: #1c1c1e; }
+.prose-ofm a {
+  color: #2d6a4f;
+  text-decoration: underline;
+  text-decoration-color: #e8c97a;
+  text-underline-offset: 3px;
+}
+
+/* ─── Animations discrètes ───────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #e5e7eb 25%, #ede8df 50%, #e5e7eb 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 6px;
+}

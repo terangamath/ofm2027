@@ -1,0 +1,56 @@
+[
+  {
+    "year": 2026,
+    "host": "[Pays hôte à confirmer]",
+    "hostCountry": "XX",
+    "dates": "[Dates à confirmer]",
+    "participatingCountries": 15,
+    "notes": "Édition 2026 — données en cours de publication"
+  },
+  {
+    "year": 2025,
+    "host": "[Pays hôte à confirmer]",
+    "hostCountry": "XX",
+    "dates": "[Dates à confirmer]",
+    "participatingCountries": 14,
+    "notes": "Édition 2025"
+  },
+  {
+    "year": 2024,
+    "host": "[Pays hôte à confirmer]",
+    "hostCountry": "XX",
+    "dates": "[Dates à confirmer]",
+    "participatingCountries": 13,
+    "notes": "Édition 2024"
+  },
+  {
+    "year": 2023,
+    "host": "[Pays hôte à confirmer]",
+    "hostCountry": "XX",
+    "dates": "[Dates à confirmer]",
+    "participatingCountries": 12,
+    "notes": "Édition 2023"
+  },
+  {
+    "year": 2022,
+    "host": "[Pays hôte à confirmer]",
+    "hostCountry": "XX",
+    "dates": "[Dates à confirmer]",
+    "participatingCountries": 11,
+    "notes": "Édition 2022"
+  },
+  {
+    "year": 2021,
+    "host": "[Pays hôte à confirmer]",
+    "hostCountry": "XX",
+    "dates": "[Dates à confirmer]",
+    "notes": "Édition 2021 — format adapté suite aux contraintes sanitaires"
+  },
+  {
+    "year": 2020,
+    "host": "[Pays hôte à confirmer]",
+    "hostCountry": "XX",
+    "dates": "[Dates à confirmer]",
+    "notes": "Première édition de l'OFM — [Informations à compléter]"
+  }
+]

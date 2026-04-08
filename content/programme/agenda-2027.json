@@ -1,0 +1,104 @@
+[
+  {
+    "id": "ouverture-inscriptions",
+    "date": "2027-01-15",
+    "title": "Ouverture des inscriptions",
+    "description": "Les délégations nationales peuvent soumettre leur dossier d'inscription.",
+    "type": "logistique"
+  },
+  {
+    "id": "cloture-inscriptions",
+    "date": "2027-04-30",
+    "title": "Clôture des inscriptions",
+    "description": "Date limite de dépôt des dossiers d'inscription complets.",
+    "type": "logistique"
+  },
+  {
+    "id": "arrivee-delegations",
+    "date": "2027-07-13",
+    "title": "Arrivée des délégations",
+    "description": "Accueil des équipes participantes à Dakar. [Lieu d'hébergement à confirmer]",
+    "type": "logistique",
+    "location": "Dakar, Sénégal"
+  },
+  {
+    "id": "ceremonie-ouverture",
+    "date": "2027-07-14",
+    "time": "10:00",
+    "title": "Cérémonie d'ouverture officielle",
+    "description": "Inauguration officielle de l'OFM 2027 en présence des délégations et autorités.",
+    "type": "ceremonie",
+    "location": "[Lieu à confirmer]"
+  },
+  {
+    "id": "epreuve-junior-1",
+    "date": "2027-07-15",
+    "time": "09:00",
+    "endTime": "12:30",
+    "title": "Épreuve Junior — Jour 1",
+    "description": "Première épreuve individuelle de la catégorie Junior.",
+    "type": "competition",
+    "location": "[Salle à confirmer]"
+  },
+  {
+    "id": "epreuve-senior-1",
+    "date": "2027-07-15",
+    "time": "09:00",
+    "endTime": "13:30",
+    "title": "Épreuve Senior — Jour 1",
+    "description": "Première épreuve individuelle de la catégorie Senior.",
+    "type": "competition",
+    "location": "[Salle à confirmer]"
+  },
+  {
+    "id": "epreuve-junior-2",
+    "date": "2027-07-16",
+    "time": "09:00",
+    "endTime": "12:30",
+    "title": "Épreuve Junior — Jour 2",
+    "description": "Deuxième épreuve individuelle de la catégorie Junior.",
+    "type": "competition",
+    "location": "[Salle à confirmer]"
+  },
+  {
+    "id": "epreuve-senior-2",
+    "date": "2027-07-16",
+    "time": "09:00",
+    "endTime": "13:30",
+    "title": "Épreuve Senior — Jour 2",
+    "description": "Deuxième épreuve individuelle de la catégorie Senior.",
+    "type": "competition",
+    "location": "[Salle à confirmer]"
+  },
+  {
+    "id": "visite-culturelle",
+    "date": "2027-07-17",
+    "title": "Programme culturel",
+    "description": "Découverte du Sénégal : visites culturelles et échanges entre délégations.",
+    "type": "culturel",
+    "location": "Dakar et environs"
+  },
+  {
+    "id": "jury",
+    "date": "2027-07-17",
+    "title": "Délibération du jury",
+    "description": "Le jury officiel délibère et arrête les résultats et les seuils de médailles.",
+    "type": "competition"
+  },
+  {
+    "id": "ceremonie-cloture",
+    "date": "2027-07-18",
+    "time": "15:00",
+    "title": "Cérémonie de clôture et remise des médailles",
+    "description": "Remise officielle des médailles, annonce des résultats et clôture de l'édition 2027.",
+    "type": "ceremonie",
+    "location": "[Lieu à confirmer]"
+  },
+  {
+    "id": "depart-delegations",
+    "date": "2027-07-19",
+    "title": "Départ des délégations",
+    "description": "Fin de l'OFM 2027.",
+    "type": "logistique"
+  }
+]

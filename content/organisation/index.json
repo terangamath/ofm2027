@@ -1,0 +1,46 @@
+{
+  "comites": [
+    {
+      "name": "[Président — Nom à compléter]",
+      "role": "Président du comité d'organisation",
+      "committee": "organisation",
+      "country": "Sénégal"
+    },
+    {
+      "name": "[Coordinateur général — Nom à compléter]",
+      "role": "Coordinateur général",
+      "committee": "organisation",
+      "country": "Sénégal"
+    },
+    {
+      "name": "[Responsable scientifique — Nom à compléter]",
+      "role": "Président du comité scientifique",
+      "committee": "scientifique",
+      "country": "Sénégal"
+    },
+    {
+      "name": "[Membre scientifique — Nom à compléter]",
+      "role": "Membre du comité scientifique",
+      "committee": "scientifique",
+      "country": "[Pays à confirmer]"
+    },
+    {
+      "name": "[Membre scientifique — Nom à compléter]",
+      "role": "Membre du comité scientifique",
+      "committee": "scientifique",
+      "country": "[Pays à confirmer]"
+    },
+    {
+      "name": "[Président du jury — Nom à compléter]",
+      "role": "Président du jury",
+      "committee": "jury",
+      "country": "[Pays à confirmer]"
+    }
+  ],
+  "terangamath": {
+    "description": "Terangamath est une association dédiée à la promotion des mathématiques et des sciences en Afrique francophone. Fondée au Sénégal, elle organise des olympiades, des stages de formation et des événements mathématiques à l'échelle régionale et internationale.",
+    "mission": "Promouvoir l'excellence mathématique, encourager la jeunesse africaine francophone et renforcer les liens entre les communautés mathématiques du monde francophone.",
+    "founded": "[Année de fondation à confirmer]",
+    "website": "https://terangamath.org"
+  }
+}

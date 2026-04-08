@@ -1,0 +1,39 @@
+[
+  {
+    "id": "terangamath",
+    "name": "Terangamath",
+    "logo": "/images/partners/terangamath.png",
+    "url": "https://terangamath.org",
+    "type": "institutionnel",
+    "description": "Association organisatrice principale de l'OFM 2027 au Sénégal"
+  },
+  {
+    "id": "ministere-education",
+    "name": "Ministère de l'Éducation nationale du Sénégal",
+    "logo": "/images/partners/men-senegal.png",
+    "type": "institutionnel",
+    "description": "Partenaire institutionnel officiel — [À confirmer]"
+  },
+  {
+    "id": "universite-dakar",
+    "name": "Université Cheikh Anta Diop de Dakar",
+    "logo": "/images/partners/ucad.png",
+    "url": "https://www.ucad.sn",
+    "type": "institutionnel",
+    "description": "Partenaire académique — [À confirmer]"
+  },
+  {
+    "id": "partenaire-financier-1",
+    "name": "[Partenaire financier à confirmer]",
+    "logo": "/images/partners/placeholder.png",
+    "type": "financier",
+    "description": "[Description à compléter]"
+  },
+  {
+    "id": "partenaire-technique-1",
+    "name": "[Partenaire technique à confirmer]",
+    "logo": "/images/partners/placeholder.png",
+    "type": "technique",
+    "description": "[Description à compléter]"
+  }
+]

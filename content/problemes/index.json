@@ -1,0 +1,66 @@
+[
+  {
+    "id": "junior-2027-1",
+    "category": "junior",
+    "year": 2027,
+    "number": 1,
+    "title": "Problème Junior n°1",
+    "status": "coming_soon"
+  },
+  {
+    "id": "junior-2027-2",
+    "category": "junior",
+    "year": 2027,
+    "number": 2,
+    "title": "Problème Junior n°2",
+    "status": "coming_soon"
+  },
+  {
+    "id": "junior-2027-3",
+    "category": "junior",
+    "year": 2027,
+    "number": 3,
+    "title": "Problème Junior n°3",
+    "status": "coming_soon"
+  },
+  {
+    "id": "junior-2027-4",
+    "category": "junior",
+    "year": 2027,
+    "number": 4,
+    "title": "Problème Junior n°4",
+    "status": "coming_soon"
+  },
+  {
+    "id": "senior-2027-1",
+    "category": "senior",
+    "year": 2027,
+    "number": 1,
+    "title": "Problème Senior n°1",
+    "status": "coming_soon"
+  },
+  {
+    "id": "senior-2027-2",
+    "category": "senior",
+    "year": 2027,
+    "number": 2,
+    "title": "Problème Senior n°2",
+    "status": "coming_soon"
+  },
+  {
+    "id": "senior-2027-3",
+    "category": "senior",
+    "year": 2027,
+    "number": 3,
+    "title": "Problème Senior n°3",
+    "status": "coming_soon"
+  },
+  {
+    "id": "senior-2027-4",
+    "category": "senior",
+    "year": 2027,
+    "number": 4,
+    "title": "Problème Senior n°4",
+    "status": "coming_soon"
+  }
+]
