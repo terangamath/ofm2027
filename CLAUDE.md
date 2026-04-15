@@ -28,3 +28,11 @@
 - Mobile first, accessible (WCAG AA)
 - Composants Server Components par défaut, "use client" si nécessaire
 - Texte UI uniquement via messages/fr.json, pas hardcodé
+
+## Règles strictes :
+- pas de hero vide
+- pas de section avec 2 énormes cartes quasi vides
+- pas de grille monotone répétée partout
+- pas de footer surdimensionné
+- pas de partenaires présentés comme de simples placeholders flottants
+- pas de scroll inutile pour voir peu d’information
