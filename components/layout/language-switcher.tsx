@@ -35,7 +35,7 @@ export function LanguageSwitcher() {
               aria-current={active ? "true" : undefined}
               className={
                 active
-                  ? "text-accent"
+                  ? "text-link"
                   : "text-muted-foreground transition-colors duration-150 hover:text-foreground"
               }
             >

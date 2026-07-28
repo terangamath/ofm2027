@@ -1,4 +1,16 @@
 import { setRequestLocale } from "next-intl/server";
+import { Hero } from "@/components/home/hero";
+import { EventInfoSection } from "@/components/home/event-info";
+import { StatsSection } from "@/components/home/stats";
+import { CategoriesSection } from "@/components/home/categories";
+import { DelegationsSection } from "@/components/home/delegations";
+import { ProgrammeTeaserSection } from "@/components/home/programme-teaser";
+import { ProblemsTeaserSection } from "@/components/home/problems-teaser";
+import { CountdownSection } from "@/components/home/countdown";
+import { NewsSection } from "@/components/home/news";
+import { PartnersSection } from "@/components/home/partners";
+import { FaqSection } from "@/components/home/faq";
+import type { Locale } from "@/content/types";
 
 export default async function HomePage({
   params,
@@ -7,11 +19,21 @@ export default async function HomePage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const typedLocale = locale as Locale;
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-24">
-      <p className="label-mono text-accent">01 — L&apos;Olympiade</p>
-      <h1 className="mt-4 font-display text-display-xl">OFM 2027</h1>
-    </div>
+    <>
+      <Hero locale={typedLocale} />
+      <EventInfoSection locale={typedLocale} />
+      <StatsSection locale={typedLocale} />
+      <CategoriesSection locale={typedLocale} />
+      <DelegationsSection locale={typedLocale} />
+      <ProgrammeTeaserSection locale={typedLocale} />
+      <ProblemsTeaserSection locale={typedLocale} />
+      <CountdownSection locale={typedLocale} />
+      <NewsSection locale={typedLocale} />
+      <PartnersSection locale={typedLocale} />
+      <FaqSection locale={typedLocale} />
+    </>
   );
 }

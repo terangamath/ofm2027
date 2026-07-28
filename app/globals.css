@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "katex/dist/katex.min.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -53,6 +54,11 @@
   /* Filet or — motif signature, à réserver aux séparateurs et accents. */
   --hairline: color-mix(in srgb, var(--or) 40%, transparent);
 
+  /* Or assombri pour le texte/liens sur fond clair — l'or brut ne passe pas
+     l'AA en petit texte (CLAUDE.md §4). En dark mode l'or clair reprend le
+     dessus, lisible sur les fonds sombres. */
+  --link: #8a6a1f;
+
   --radius: 0.5rem;
 
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.04);
@@ -88,6 +94,8 @@
   --ring: var(--or-clair);
 
   --hairline: color-mix(in srgb, var(--or) 55%, transparent);
+
+  --link: var(--or-clair);
 
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.16);
   --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.32);
@@ -131,6 +139,7 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-link: var(--link);
 
   --shadow-soft: var(--shadow-soft);
   --shadow-elevated: var(--shadow-elevated);
