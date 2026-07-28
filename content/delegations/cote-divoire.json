@@ -1,0 +1,10 @@
+{
+  "slug": "cote-divoire",
+  "countryCode": "CI",
+  "name": { "fr": "Côte d'Ivoire", "en": "Ivory Coast" },
+  "flagEmoji": "🇨🇮",
+  "status": "pending",
+  "isHost": false,
+  "description": null,
+  "members": null
+}

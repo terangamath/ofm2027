@@ -1,0 +1,34 @@
+[
+  {
+    "id": "comite-organisation",
+    "name": { "fr": "Comité d'organisation", "en": "Organising committee" },
+    "description": {
+      "fr": "Porté par l'association Terangamath, il coordonne la logistique, l'accueil des délégations et le déroulement de l'événement.",
+      "en": "Led by the Terangamath association, it coordinates logistics, the welcoming of delegations and the running of the event."
+    },
+    "members": [
+      {
+        "name": "[À confirmer]",
+        "role": { "fr": "Coordination générale", "en": "General coordination" },
+        "org": "Terangamath",
+        "country": "SN"
+      }
+    ]
+  },
+  {
+    "id": "comite-scientifique",
+    "name": { "fr": "Comité scientifique", "en": "Scientific committee" },
+    "description": {
+      "fr": "Responsable de l'élaboration et de la sélection des problèmes ainsi que de la correction des épreuves.",
+      "en": "Responsible for designing and selecting problems and for marking the exams."
+    },
+    "members": [
+      {
+        "name": "[À confirmer]",
+        "role": { "fr": "Président du comité scientifique", "en": "Chair of the scientific committee" },
+        "org": null,
+        "country": null
+      }
+    ]
+  }
+]

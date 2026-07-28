@@ -1,0 +1,48 @@
+[
+  {
+    "id": "terangamath",
+    "name": { "fr": "Terangamath", "en": "Terangamath" },
+    "category": "institutionnel",
+    "status": "confirmed",
+    "logo": null,
+    "url": "https://terangamath.org"
+  },
+  {
+    "id": "men-senegal",
+    "name": {
+      "fr": "Ministère de l'Éducation nationale du Sénégal",
+      "en": "Ministry of National Education of Senegal"
+    },
+    "category": "institutionnel",
+    "status": "pending",
+    "logo": null,
+    "url": null
+  },
+  {
+    "id": "ucad",
+    "name": {
+      "fr": "Université Cheikh Anta Diop de Dakar",
+      "en": "Cheikh Anta Diop University of Dakar"
+    },
+    "category": "institutionnel",
+    "status": "pending",
+    "logo": null,
+    "url": "https://www.ucad.sn"
+  },
+  {
+    "id": "partenaire-financier-1",
+    "name": { "fr": "[Partenaire financier à confirmer]", "en": "[Financial partner to be confirmed]" },
+    "category": "financier",
+    "status": "pending",
+    "logo": null,
+    "url": null
+  },
+  {
+    "id": "partenaire-technique-1",
+    "name": { "fr": "[Partenaire technique à confirmer]", "en": "[Technical partner to be confirmed]" },
+    "category": "technique",
+    "status": "pending",
+    "logo": null,
+    "url": null
+  }
+]

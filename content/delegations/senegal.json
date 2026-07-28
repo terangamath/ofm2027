@@ -1,0 +1,13 @@
+{
+  "slug": "senegal",
+  "countryCode": "SN",
+  "name": { "fr": "Sénégal", "en": "Senegal" },
+  "flagEmoji": "🇸🇳",
+  "status": "confirmed",
+  "isHost": true,
+  "description": {
+    "fr": "Pays hôte de l'OFM 2027, représenté par l'association Terangamath.",
+    "en": "Host country of OFM 2027, represented by the Terangamath association."
+  },
+  "members": null
+}

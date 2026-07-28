@@ -1,0 +1,22 @@
+[
+  {
+    "value": "15+",
+    "label": { "fr": "pays participants", "en": "participating countries" },
+    "provisional": true
+  },
+  {
+    "value": "200+",
+    "label": { "fr": "élèves compétiteurs", "en": "competing students" },
+    "provisional": true
+  },
+  {
+    "value": "2",
+    "label": { "fr": "catégories", "en": "categories" },
+    "provisional": false
+  },
+  {
+    "value": "7+",
+    "label": { "fr": "éditions", "en": "editions" },
+    "provisional": true
+  }
+]

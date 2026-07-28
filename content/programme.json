@@ -1,0 +1,35 @@
+{
+  "status": "coming_soon",
+  "days": [
+    {
+      "date": null,
+      "label": { "fr": "Jour 1 — Arrivées & ouverture", "en": "Day 1 — Arrivals & opening" },
+      "events": [
+        {
+          "time": null,
+          "title": { "fr": "Accueil des délégations", "en": "Welcome of delegations" },
+          "location": { "fr": "[À confirmer]", "en": "[To be confirmed]" },
+          "kind": "logistique"
+        },
+        {
+          "time": null,
+          "title": { "fr": "Cérémonie d'ouverture", "en": "Opening ceremony" },
+          "location": { "fr": "[À confirmer]", "en": "[To be confirmed]" },
+          "kind": "ceremonie"
+        }
+      ]
+    },
+    {
+      "date": null,
+      "label": { "fr": "Jour 2 — Épreuves", "en": "Day 2 — Exams" },
+      "events": [
+        {
+          "time": null,
+          "title": { "fr": "Épreuve — 1re partie", "en": "Exam — Part 1" },
+          "location": null,
+          "kind": "epreuve"
+        }
+      ]
+    }
+  ]
+}

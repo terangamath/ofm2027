@@ -1,0 +1,42 @@
+[
+  {
+    "question": {
+      "fr": "Qu'est-ce que l'Olympiade Francophone de Mathématiques ?",
+      "en": "What is the Francophone Mathematical Olympiad?"
+    },
+    "answer": {
+      "fr": "L'OFM rassemble chaque année les meilleurs jeunes mathématiciens du monde francophone, autour de problèmes originaux conçus par un comité scientifique international.",
+      "en": "OFM brings together each year the best young mathematicians of the French-speaking world, around original problems designed by an international scientific committee."
+    }
+  },
+  {
+    "question": {
+      "fr": "Qui peut participer à l'OFM 2027 ?",
+      "en": "Who can take part in OFM 2027?"
+    },
+    "answer": {
+      "fr": "Les élèves de collège (catégorie Junior) et de lycée (catégorie Senior) sélectionnés par la délégation nationale de leur pays.",
+      "en": "Middle school students (Junior category) and high school students (Senior category) selected by their country's national delegation."
+    }
+  },
+  {
+    "question": {
+      "fr": "Quel est le format de la compétition ?",
+      "en": "What is the competition format?"
+    },
+    "answer": {
+      "fr": "Deux jours d'épreuves, plusieurs problèmes par catégorie, corrigés par un jury international. [Détails à confirmer]",
+      "en": "Two days of exams, several problems per category, marked by an international jury. [Details to be confirmed]"
+    }
+  },
+  {
+    "question": {
+      "fr": "Comment inscrire sa délégation ?",
+      "en": "How do I register a delegation?"
+    },
+    "answer": {
+      "fr": "Les modalités d'inscription des délégations nationales seront publiées prochainement. Voir la page Actualités.",
+      "en": "Registration terms for national delegations will be published soon. See the News page."
+    }
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "year": 2027,
+    "host": { "fr": "Sénégal", "en": "Senegal" },
+    "city": { "fr": "Dakar", "en": "Dakar" },
+    "countriesCount": null,
+    "note": { "fr": "Édition à venir, organisée par Terangamath.", "en": "Upcoming edition, organised by Terangamath." },
+    "status": "coming_soon"
+  },
+  {
+    "year": 2026,
+    "host": { "fr": "[À confirmer]", "en": "[To be confirmed]" },
+    "city": null,
+    "countriesCount": null,
+    "note": null,
+    "status": "coming_soon"
+  }
+]

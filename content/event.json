@@ -1,0 +1,21 @@
+{
+  "edition": 2027,
+  "city": { "fr": "Dakar", "en": "Dakar" },
+  "country": { "fr": "Sénégal", "en": "Senegal" },
+  "organizer": "Terangamath",
+  "officialLanguage": { "fr": "Français", "en": "French" },
+  "datesConfirmed": false,
+  "dates": { "fr": "[À confirmer — 2027]", "en": "[To be confirmed — 2027]" },
+  "categories": [
+    {
+      "id": "junior",
+      "name": { "fr": "Junior", "en": "Junior" },
+      "scope": { "fr": "Jusqu'en 3ème incluse", "en": "Up to Year 9 (collège)" }
+    },
+    {
+      "id": "senior",
+      "name": { "fr": "Senior", "en": "Senior" },
+      "scope": { "fr": "Seconde à Terminale incluse", "en": "Years 10–12 (lycée)" }
+    }
+  ]
+}

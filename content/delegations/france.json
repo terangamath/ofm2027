@@ -1,0 +1,10 @@
+{
+  "slug": "france",
+  "countryCode": "FR",
+  "name": { "fr": "France", "en": "France" },
+  "flagEmoji": "🇫🇷",
+  "status": "confirmed",
+  "isHost": false,
+  "description": null,
+  "members": null
+}
