@@ -1,0 +1,130 @@
+{
+  "Metadata": {
+    "title": "OFM 2027 — Francophone Mathematical Olympiad · Dakar",
+    "description": "The 2027 Francophone Mathematical Olympiad brings together in Dakar the best young mathematicians of the French-speaking world, around exams designed by an international scientific committee. Organised by Terangamath."
+  },
+  "Nav": {
+    "home": "Home",
+    "olympiad": "The Olympiad",
+    "organisation": "Organisation",
+    "teams": "Teams",
+    "programme": "Programme",
+    "practicalInfo": "Practical information",
+    "problems": "Problems & Solutions",
+    "news": "News",
+    "history": "History",
+    "gallery": "Gallery",
+    "results": "Results",
+    "contact": "Contact"
+  },
+  "Header": {
+    "languageSwitcherLabel": "Change language",
+    "skipToContent": "Skip to main content",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu"
+  },
+  "Footer": {
+    "tagline": "The geometry of hospitality — Dakar, 2027.",
+    "sections": "Sections",
+    "resources": "Resources",
+    "contact": "Contact",
+    "legalMentions": "Legal notice",
+    "organizedBy": "Organised by",
+    "rights": "© {year} Terangamath. All rights reserved."
+  },
+  "Home": {
+    "Hero": {
+      "eyebrow": "01 — The Olympiad",
+      "title": "The Francophone Mathematical Olympiad",
+      "lead": "In 2027, Dakar welcomes the best young mathematicians of the French-speaking world, gathered around exams designed by an international scientific committee.",
+      "ctaPrimary": "Discover the Olympiad",
+      "ctaSecondary": "See the teams",
+      "metaLanguage": "Official language",
+      "metaFormat": "Categories"
+    },
+    "Event": {
+      "eyebrow": "02 — At a glance",
+      "title": "The event, at a glance",
+      "lead": "An edition organised by Terangamath, in the heart of Dakar.",
+      "location": "Location",
+      "dates": "Dates",
+      "organizer": "Organiser",
+      "language": "Official language",
+      "format": "Categories"
+    },
+    "Stats": {
+      "eyebrow": "03 — By the numbers",
+      "title": "An Olympiad taking shape",
+      "provisionalNote": "Provisional figures, subject to confirmation."
+    },
+    "Categories": {
+      "eyebrow": "04 — Categories",
+      "title": "Two categories, one standard",
+      "lead": "The Olympiad brings together middle and high school students around exams suited to their level, with the same scientific rigour.",
+      "juniorNote": "Geometry, combinatorics, number theory and algebra problems suited to middle school.",
+      "seniorNote": "Demanding problems, in the tradition of the international mathematical olympiads.",
+      "cta": "See the programme"
+    },
+    "Delegations": {
+      "eyebrow": "05 — Nations",
+      "title": "The constellation of delegations",
+      "lead": "French-speaking countries are progressively confirming their participation in the 2027 edition.",
+      "statusConfirmed": "Confirmed",
+      "statusPending": "Pending",
+      "hostBadge": "Host country",
+      "cta": "See all teams"
+    },
+    "Programme": {
+      "eyebrow": "06 — Schedule",
+      "title": "The Olympiad programme",
+      "lead": "From arrivals to the closing ceremony, the highlights of the 2027 edition.",
+      "comingSoon": "The detailed programme will be published closer to the event.",
+      "cta": "See the full programme"
+    },
+    "Problems": {
+      "eyebrow": "07 — Exams",
+      "title": "Problems & solutions",
+      "lead": "A preview of the problems designed by the international scientific committee.",
+      "comingSoon": "The 2027 edition's problems will be published after the exams.",
+      "cta": "Explore the problems"
+    },
+    "Countdown": {
+      "eyebrow": "08 — Countdown",
+      "title": "See you in Dakar",
+      "lead": "The precise dates of the 2027 edition will be announced soon.",
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "seconds": "Seconds",
+      "datesPending": "Dates being confirmed."
+    },
+    "News": {
+      "eyebrow": "09 — News",
+      "title": "Latest news",
+      "lead": "Announcements, practical information and Olympiad news.",
+      "readMore": "Read more",
+      "cta": "All news"
+    },
+    "Partners": {
+      "eyebrow": "10 — Partners",
+      "title": "Making the Olympiad possible",
+      "lead": "Institutions, financial and technical partners, alongside Terangamath.",
+      "categoryInstitutional": "Institutional partners",
+      "categoryFinancial": "Financial partners",
+      "categoryTechnical": "Technical partners",
+      "statusPending": "Being confirmed"
+    },
+    "Faq": {
+      "eyebrow": "11 — Questions",
+      "title": "Frequently asked questions",
+      "lead": "Answers to the most common questions about the Olympiad."
+    }
+  },
+  "Common": {
+    "comingSoon": "Coming soon",
+    "toBeConfirmed": "To be confirmed",
+    "learnMore": "Learn more",
+    "confirmed": "Confirmed",
+    "pending": "Pending"
+  }
+}

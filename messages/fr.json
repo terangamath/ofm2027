@@ -1,0 +1,130 @@
+{
+  "Metadata": {
+    "title": "OFM 2027 — Olympiade Francophone de Mathématiques · Dakar",
+    "description": "L'Olympiade Francophone de Mathématiques 2027 réunit à Dakar les meilleurs jeunes mathématiciens du monde francophone, autour d'épreuves conçues par un comité scientifique international. Organisée par Terangamath."
+  },
+  "Nav": {
+    "home": "Accueil",
+    "olympiad": "L'Olympiade",
+    "organisation": "Organisation",
+    "teams": "Équipes",
+    "programme": "Programme",
+    "practicalInfo": "Infos pratiques",
+    "problems": "Problèmes & Solutions",
+    "news": "Actualités",
+    "history": "Historique",
+    "gallery": "Galerie",
+    "results": "Résultats",
+    "contact": "Contact"
+  },
+  "Header": {
+    "languageSwitcherLabel": "Changer de langue",
+    "skipToContent": "Aller au contenu principal",
+    "menuOpen": "Ouvrir le menu",
+    "menuClose": "Fermer le menu"
+  },
+  "Footer": {
+    "tagline": "La géométrie de l'hospitalité — Dakar, 2027.",
+    "sections": "Sections",
+    "resources": "Ressources",
+    "contact": "Contact",
+    "legalMentions": "Mentions légales",
+    "organizedBy": "Organisée par",
+    "rights": "© {year} Terangamath. Tous droits réservés."
+  },
+  "Home": {
+    "Hero": {
+      "eyebrow": "01 — L'Olympiade",
+      "title": "L'Olympiade Francophone de Mathématiques",
+      "lead": "Dakar accueille en 2027 les meilleurs jeunes mathématiciens du monde francophone, réunis autour d'épreuves conçues par un comité scientifique international.",
+      "ctaPrimary": "Découvrir l'Olympiade",
+      "ctaSecondary": "Voir les équipes",
+      "metaLanguage": "Langue officielle",
+      "metaFormat": "Catégories"
+    },
+    "Event": {
+      "eyebrow": "02 — Rendez-vous",
+      "title": "La fiche de l'événement",
+      "lead": "Une édition organisée par Terangamath, au cœur de Dakar.",
+      "location": "Lieu",
+      "dates": "Dates",
+      "organizer": "Organisateur",
+      "language": "Langue officielle",
+      "format": "Catégories"
+    },
+    "Stats": {
+      "eyebrow": "03 — En chiffres",
+      "title": "Une olympiade en construction",
+      "provisionalNote": "Chiffres provisoires, en cours de confirmation."
+    },
+    "Categories": {
+      "eyebrow": "04 — Catégories",
+      "title": "Deux catégories, une même exigence",
+      "lead": "L'Olympiade rassemble collégiens et lycéens autour d'épreuves pensées pour leur niveau, avec la même rigueur scientifique.",
+      "juniorNote": "Épreuves de géométrie, combinatoire, arithmétique et algèbre adaptées au collège.",
+      "seniorNote": "Épreuves exigeantes, dans la tradition des olympiades internationales de mathématiques.",
+      "cta": "Voir le programme"
+    },
+    "Delegations": {
+      "eyebrow": "05 — Nations",
+      "title": "La constellation des délégations",
+      "lead": "Les pays francophones confirment progressivement leur participation à l'édition 2027.",
+      "statusConfirmed": "Confirmée",
+      "statusPending": "En attente",
+      "hostBadge": "Pays hôte",
+      "cta": "Voir toutes les équipes"
+    },
+    "Programme": {
+      "eyebrow": "06 — Déroulé",
+      "title": "Le programme de l'Olympiade",
+      "lead": "Des arrivées à la cérémonie de clôture, les temps forts de l'édition 2027.",
+      "comingSoon": "Le programme détaillé sera publié à l'approche de l'événement.",
+      "cta": "Voir le programme complet"
+    },
+    "Problems": {
+      "eyebrow": "07 — Épreuves",
+      "title": "Problèmes & solutions",
+      "lead": "Un aperçu des problèmes conçus par le comité scientifique international.",
+      "comingSoon": "Les problèmes de l'édition 2027 seront publiés après les épreuves.",
+      "cta": "Explorer les problèmes"
+    },
+    "Countdown": {
+      "eyebrow": "08 — Compte à rebours",
+      "title": "Rendez-vous à Dakar",
+      "lead": "Les dates précises de l'édition 2027 seront annoncées prochainement.",
+      "days": "Jours",
+      "hours": "Heures",
+      "minutes": "Minutes",
+      "seconds": "Secondes",
+      "datesPending": "Dates en cours de confirmation."
+    },
+    "News": {
+      "eyebrow": "09 — Actualités",
+      "title": "Les dernières nouvelles",
+      "lead": "Annonces, informations pratiques et actualités de l'Olympiade.",
+      "readMore": "Lire la suite",
+      "cta": "Toutes les actualités"
+    },
+    "Partners": {
+      "eyebrow": "10 — Partenaires",
+      "title": "Ils rendent l'Olympiade possible",
+      "lead": "Institutions, partenaires financiers et techniques, aux côtés de Terangamath.",
+      "categoryInstitutional": "Partenaires institutionnels",
+      "categoryFinancial": "Partenaires financiers",
+      "categoryTechnical": "Partenaires techniques",
+      "statusPending": "En cours de confirmation"
+    },
+    "Faq": {
+      "eyebrow": "11 — Questions",
+      "title": "Foire aux questions",
+      "lead": "Les réponses aux questions les plus fréquentes sur l'Olympiade."
+    }
+  },
+  "Common": {
+    "comingSoon": "Bientôt disponible",
+    "toBeConfirmed": "À confirmer",
+    "learnMore": "En savoir plus",
+    "confirmed": "Confirmé",
+    "pending": "En attente"
+  }
+}
