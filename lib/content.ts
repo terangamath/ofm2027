@@ -51,3 +51,39 @@ export function getProblems(locale: Locale): ProblemFrontmatter[] {
   );
   return items.sort((a, b) => a.number - b.number);
 }
+
+interface MdxDocument<T> {
+  frontmatter: T;
+  content: string;
+}
+
+function findMdxBySlug<T extends { slug: string }>(
+  dir: string,
+  slug: string
+): MdxDocument<T> | null {
+  if (!fs.existsSync(dir)) return null;
+  for (const file of fs.readdirSync(dir).filter((f) => f.endsWith(".mdx"))) {
+    const parsed = matter(fs.readFileSync(path.join(dir, file), "utf-8"));
+    const frontmatter = parsed.data as T;
+    if (frontmatter.slug === slug) {
+      return { frontmatter, content: parsed.content };
+    }
+  }
+  return null;
+}
+
+export function getNewsBySlug(
+  locale: Locale,
+  slug: string
+): MdxDocument<NewsFrontmatter> | null {
+  return findMdxBySlug<NewsFrontmatter>(path.join(CONTENT_DIR, "actualites", locale), slug);
+}
+
+export function getProblemBySlug(
+  locale: Locale,
+  slug: string
+): MdxDocument<ProblemFrontmatter> | null {
+  const dir = path.join(CONTENT_DIR, "problemes", locale);
+  const fallbackDir = path.join(CONTENT_DIR, "problemes", "fr");
+  return findMdxBySlug<ProblemFrontmatter>(fs.existsSync(dir) ? dir : fallbackDir, slug);
+}
