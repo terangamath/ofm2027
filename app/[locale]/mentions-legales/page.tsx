@@ -1,0 +1,42 @@
+import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { PageHero } from "@/components/layout/page-hero";
+
+const SECTIONS = ["Publisher", "Host", "Director", "Ip", "Privacy", "ContactRef"] as const;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Pages.Legal" });
+  return { title: t("title") };
+}
+
+export default async function LegalPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "Pages.Legal" });
+
+  return (
+    <>
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} />
+
+      <section className="bg-background py-24 lg:py-32">
+        <div className="mx-auto flex max-w-3xl flex-col gap-10 px-6">
+          {SECTIONS.map((section) => (
+            <div key={section} className="flex flex-col gap-2 border-b border-hairline pb-8 last:border-b-0">
+              <h2 className="font-display text-h4 text-foreground">{t(`${section}.title`)}</h2>
+              <p className="text-body text-muted-foreground">{t(`${section}.body`)}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
