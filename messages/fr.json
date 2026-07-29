@@ -127,5 +127,188 @@
     "learnMore": "En savoir plus",
     "confirmed": "Confirmé",
     "pending": "En attente"
+  },
+  "Pages": {
+    "Olympiad": {
+      "eyebrow": "L'Olympiade",
+      "title": "L'Olympiade Francophone de Mathématiques",
+      "lead": "Une compétition d'excellence pour les jeunes mathématiciens du monde francophone, portée par l'association Terangamath et un comité scientifique international.",
+      "Presentation": {
+        "eyebrow": "01 — Présentation",
+        "title": "Une compétition d'excellence, un esprit d'hospitalité",
+        "body1": "L'OFM réunit chaque année les meilleurs élèves de collège et de lycée des pays francophones autour d'épreuves de mathématiques originales, conçues pour révéler le raisonnement autant que la technique.",
+        "body2": "L'édition 2027 est organisée à Dakar par Terangamath, association sénégalaise dédiée à la promotion des mathématiques, avec l'ambition de conjuguer rigueur scientifique et hospitalité sénégalaise — la Teranga."
+      },
+      "Format": {
+        "eyebrow": "02 — Format",
+        "title": "Le format des épreuves",
+        "lead": "Deux catégories, une organisation en plusieurs journées d'épreuves, corrigées par un jury international. Le détail précis du format sera publié avec le programme définitif."
+      },
+      "Faq": {
+        "eyebrow": "03 — Questions",
+        "title": "Foire aux questions",
+        "lead": "Les réponses aux questions les plus fréquentes sur l'Olympiade."
+      }
+    },
+    "Organisation": {
+      "eyebrow": "Organisation",
+      "title": "Terangamath & l'organisation de l'OFM 2027",
+      "lead": "L'Olympiade est portée par l'association Terangamath, épaulée par des comités dédiés à la logistique et à la conception scientifique des épreuves.",
+      "About": {
+        "eyebrow": "01 — Terangamath",
+        "title": "L'association organisatrice",
+        "body": "Terangamath est l'association sénégalaise à l'origine de l'OFM 2027. Son nom s'inspire de la Teranga, l'hospitalité sénégalaise, qu'elle met au service de la promotion des mathématiques auprès des jeunes du monde francophone."
+      },
+      "Committees": {
+        "eyebrow": "02 — Comités",
+        "title": "Comités",
+        "lead": "Les comités qui préparent l'édition 2027.",
+        "membersPending": "Membres à confirmer."
+      }
+    },
+    "Teams": {
+      "eyebrow": "Équipes",
+      "title": "Les délégations de l'OFM 2027",
+      "lead": "Les pays francophones confirment progressivement leur participation. Chaque délégation réunit des compétiteurs des catégories Junior et Senior.",
+      "statusConfirmed": "Confirmée",
+      "statusPending": "En attente",
+      "hostBadge": "Pays hôte",
+      "viewTeam": "Voir la fiche"
+    },
+    "TeamDetail": {
+      "back": "Toutes les équipes",
+      "hostBadge": "Pays hôte",
+      "statusConfirmed": "Délégation confirmée",
+      "statusPending": "Participation en attente de confirmation",
+      "membersTitle": "Délégation",
+      "membersPending": "La liste des membres sera publiée prochainement.",
+      "descriptionPending": "Présentation à venir.",
+      "notFoundTitle": "Délégation introuvable",
+      "notFoundBody": "Cette délégation n'existe pas ou n'a pas encore été confirmée."
+    },
+    "Programme": {
+      "eyebrow": "Programme",
+      "title": "Le programme de l'Olympiade",
+      "lead": "Des arrivées à la cérémonie de clôture, le déroulé prévisionnel de l'édition 2027.",
+      "statusComingSoon": "Le programme détaillé de l'édition 2027 sera publié à l'approche de l'événement. Le déroulé ci-dessous est indicatif.",
+      "dateTBC": "Date à confirmer",
+      "timeTBC": "Horaire à confirmer",
+      "kinds": {
+        "epreuve": "Épreuve",
+        "ceremonie": "Cérémonie",
+        "excursion": "Excursion",
+        "logistique": "Logistique",
+        "social": "Moment convivial"
+      }
+    },
+    "PracticalInfo": {
+      "eyebrow": "Infos pratiques",
+      "title": "Informations pratiques",
+      "lead": "Tout ce qu'il faut savoir pour se rendre à Dakar et participer à l'OFM 2027. Les informations ci-dessous seront précisées à l'approche de l'événement.",
+      "Venue": {
+        "eyebrow": "01 — Lieu",
+        "title": "Le lieu de l'Olympiade",
+        "body": "L'OFM 2027 se déroule à Dakar, Sénégal. Le lieu précis des épreuves et de l'hébergement sera communiqué ultérieurement."
+      },
+      "Travel": {
+        "eyebrow": "02 — Se rendre à Dakar",
+        "title": "Voyager jusqu'à Dakar",
+        "body": "Dakar est desservie par l'aéroport international Blaise-Diagne (DSS). Les modalités de transport et d'accueil des délégations à l'arrivée seront précisées ultérieurement."
+      },
+      "Visa": {
+        "eyebrow": "03 — Visa & santé",
+        "title": "Formalités et santé",
+        "body": "Les formalités de visa dépendent de la nationalité de chaque participant. Les recommandations sanitaires et vaccinales seront communiquées ultérieurement."
+      },
+      "Accommodation": {
+        "eyebrow": "04 — Hébergement",
+        "title": "Hébergement des délégations",
+        "body": "Les modalités d'hébergement des délégations seront précisées avec le programme définitif."
+      }
+    },
+    "Problems": {
+      "eyebrow": "Problèmes & solutions",
+      "title": "Les problèmes de l'Olympiade",
+      "lead": "Un aperçu des problèmes conçus par le comité scientifique international, avec leurs solutions lorsqu'elles sont disponibles.",
+      "comingSoonNote": "Les problèmes officiels de l'édition 2027 seront publiés après les épreuves. Le contenu ci-dessous est un modèle de démonstration du rendu mathématique.",
+      "hasSolution": "Solution disponible",
+      "noSolutionYet": "Solution à venir",
+      "readProblem": "Consulter"
+    },
+    "ProblemDetail": {
+      "back": "Tous les problèmes",
+      "solutionAvailable": "Solution disponible",
+      "solutionPending": "Solution à venir",
+      "demoNotice": "Modèle de démonstration — ne reflète pas un énoncé officiel de l'OFM 2027."
+    },
+    "News": {
+      "eyebrow": "Actualités",
+      "title": "Toutes les actualités",
+      "lead": "Annonces, informations pratiques et actualités de l'Olympiade.",
+      "readMore": "Lire la suite",
+      "empty": "Aucune actualité publiée pour le moment."
+    },
+    "NewsDetail": {
+      "back": "Toutes les actualités"
+    },
+    "History": {
+      "eyebrow": "Historique",
+      "title": "L'histoire de l'Olympiade",
+      "lead": "Les éditions passées et à venir de l'Olympiade Francophone de Mathématiques.",
+      "hostLabel": "Pays hôte",
+      "countriesLabel": "pays participants"
+    },
+    "Gallery": {
+      "eyebrow": "Galerie",
+      "title": "Galerie",
+      "lead": "Photos et vidéos de l'Olympiade.",
+      "comingSoonTitle": "La galerie ouvrira après l'édition 2027",
+      "comingSoonBody": "Les photos et vidéos de l'Olympiade seront publiées ici à l'issue de l'événement."
+    },
+    "Results": {
+      "eyebrow": "Résultats",
+      "title": "Résultats",
+      "lead": "Les résultats de l'Olympiade.",
+      "comingSoonTitle": "Résultats à venir",
+      "comingSoonBody": "Les résultats de l'édition 2027 seront publiés à l'issue des épreuves et de la correction par le jury international."
+    },
+    "Contact": {
+      "eyebrow": "Contact",
+      "title": "Contact",
+      "lead": "Une question sur l'Olympiade, votre délégation ou l'organisation ? Contactez Terangamath.",
+      "organizerLabel": "Organisateur",
+      "emailLabel": "Email",
+      "emailValue": "Adresse à confirmer",
+      "locationLabel": "Lieu",
+      "websiteLabel": "Site de l'association"
+    },
+    "Legal": {
+      "eyebrow": "Mentions légales",
+      "title": "Mentions légales",
+      "Publisher": {
+        "title": "Éditeur du site",
+        "body": "Site édité par Terangamath. Raison sociale et adresse complètes à confirmer."
+      },
+      "Host": {
+        "title": "Hébergement",
+        "body": "Hébergeur à confirmer."
+      },
+      "Director": {
+        "title": "Directeur de la publication",
+        "body": "Nom à confirmer."
+      },
+      "Ip": {
+        "title": "Propriété intellectuelle",
+        "body": "L'ensemble des contenus de ce site (textes, visuels, motif graphique) est la propriété de Terangamath, sauf mention contraire, et ne peut être reproduit sans autorisation préalable."
+      },
+      "Privacy": {
+        "title": "Données personnelles",
+        "body": "Politique de confidentialité à publier, conformément à la réglementation applicable."
+      },
+      "ContactRef": {
+        "title": "Contact",
+        "body": "Pour toute question relative aux présentes mentions légales, voir la page Contact."
+      }
+    }
   }
 }

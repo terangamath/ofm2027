@@ -127,5 +127,188 @@
     "learnMore": "Learn more",
     "confirmed": "Confirmed",
     "pending": "Pending"
+  },
+  "Pages": {
+    "Olympiad": {
+      "eyebrow": "The Olympiad",
+      "title": "The Francophone Mathematical Olympiad",
+      "lead": "A competition of excellence for young mathematicians of the French-speaking world, led by the Terangamath association and an international scientific committee.",
+      "Presentation": {
+        "eyebrow": "01 — About",
+        "title": "A competition of excellence, a spirit of hospitality",
+        "body1": "Each year, OFM brings together the best middle and high school students from French-speaking countries around original mathematics exams, designed to reveal reasoning as much as technique.",
+        "body2": "The 2027 edition is organised in Dakar by Terangamath, a Senegalese association dedicated to promoting mathematics, with the ambition of combining scientific rigour with Senegalese hospitality — the Teranga."
+      },
+      "Format": {
+        "eyebrow": "02 — Format",
+        "title": "The exam format",
+        "lead": "Two categories, several days of exams, marked by an international jury. The precise format will be published with the final programme."
+      },
+      "Faq": {
+        "eyebrow": "03 — Questions",
+        "title": "Frequently asked questions",
+        "lead": "Answers to the most common questions about the Olympiad."
+      }
+    },
+    "Organisation": {
+      "eyebrow": "Organisation",
+      "title": "Terangamath & the organisation of OFM 2027",
+      "lead": "The Olympiad is led by the Terangamath association, supported by committees dedicated to logistics and to the scientific design of the exams.",
+      "About": {
+        "eyebrow": "01 — Terangamath",
+        "title": "The organising association",
+        "body": "Terangamath is the Senegalese association behind OFM 2027. Its name draws on the Teranga, Senegalese hospitality, which it puts to work promoting mathematics among young people across the French-speaking world."
+      },
+      "Committees": {
+        "eyebrow": "02 — Committees",
+        "title": "Committees",
+        "lead": "The committees preparing the 2027 edition.",
+        "membersPending": "Members to be confirmed."
+      }
+    },
+    "Teams": {
+      "eyebrow": "Teams",
+      "title": "The OFM 2027 delegations",
+      "lead": "French-speaking countries are progressively confirming their participation. Each delegation brings together competitors in the Junior and Senior categories.",
+      "statusConfirmed": "Confirmed",
+      "statusPending": "Pending",
+      "hostBadge": "Host country",
+      "viewTeam": "View team"
+    },
+    "TeamDetail": {
+      "back": "All teams",
+      "hostBadge": "Host country",
+      "statusConfirmed": "Delegation confirmed",
+      "statusPending": "Participation pending confirmation",
+      "membersTitle": "Delegation",
+      "membersPending": "The roster will be published soon.",
+      "descriptionPending": "Description coming soon.",
+      "notFoundTitle": "Delegation not found",
+      "notFoundBody": "This delegation does not exist or has not been confirmed yet."
+    },
+    "Programme": {
+      "eyebrow": "Programme",
+      "title": "The Olympiad programme",
+      "lead": "From arrivals to the closing ceremony, the provisional schedule of the 2027 edition.",
+      "statusComingSoon": "The detailed 2027 programme will be published closer to the event. The schedule below is indicative.",
+      "dateTBC": "Date to be confirmed",
+      "timeTBC": "Time to be confirmed",
+      "kinds": {
+        "epreuve": "Exam",
+        "ceremonie": "Ceremony",
+        "excursion": "Excursion",
+        "logistique": "Logistics",
+        "social": "Social event"
+      }
+    },
+    "PracticalInfo": {
+      "eyebrow": "Practical information",
+      "title": "Practical information",
+      "lead": "Everything you need to know to travel to Dakar and take part in OFM 2027. Details below will be refined closer to the event.",
+      "Venue": {
+        "eyebrow": "01 — Venue",
+        "title": "The Olympiad venue",
+        "body": "OFM 2027 takes place in Dakar, Senegal. The exact venue for exams and accommodation will be announced later."
+      },
+      "Travel": {
+        "eyebrow": "02 — Getting to Dakar",
+        "title": "Travelling to Dakar",
+        "body": "Dakar is served by Blaise Diagne International Airport (DSS). Transport and welcome arrangements for delegations on arrival will be detailed later."
+      },
+      "Visa": {
+        "eyebrow": "03 — Visa & health",
+        "title": "Formalities and health",
+        "body": "Visa requirements depend on each participant's nationality. Health and vaccination recommendations will be communicated later."
+      },
+      "Accommodation": {
+        "eyebrow": "04 — Accommodation",
+        "title": "Delegation accommodation",
+        "body": "Accommodation arrangements for delegations will be detailed with the final programme."
+      }
+    },
+    "Problems": {
+      "eyebrow": "Problems & solutions",
+      "title": "The Olympiad problems",
+      "lead": "A preview of the problems designed by the international scientific committee, with solutions where available.",
+      "comingSoonNote": "The official problems for the 2027 edition will be published after the exams. The content below is a demonstration model of the mathematical rendering.",
+      "hasSolution": "Solution available",
+      "noSolutionYet": "Solution coming soon",
+      "readProblem": "View"
+    },
+    "ProblemDetail": {
+      "back": "All problems",
+      "solutionAvailable": "Solution available",
+      "solutionPending": "Solution coming soon",
+      "demoNotice": "Demonstration model — does not reflect an official OFM 2027 problem."
+    },
+    "News": {
+      "eyebrow": "News",
+      "title": "All news",
+      "lead": "Announcements, practical information and Olympiad news.",
+      "readMore": "Read more",
+      "empty": "No news published yet."
+    },
+    "NewsDetail": {
+      "back": "All news"
+    },
+    "History": {
+      "eyebrow": "History",
+      "title": "The Olympiad's history",
+      "lead": "Past and upcoming editions of the Francophone Mathematical Olympiad.",
+      "hostLabel": "Host country",
+      "countriesLabel": "participating countries"
+    },
+    "Gallery": {
+      "eyebrow": "Gallery",
+      "title": "Gallery",
+      "lead": "Photos and videos of the Olympiad.",
+      "comingSoonTitle": "The gallery will open after the 2027 edition",
+      "comingSoonBody": "Photos and videos of the Olympiad will be published here once the event has taken place."
+    },
+    "Results": {
+      "eyebrow": "Results",
+      "title": "Results",
+      "lead": "The Olympiad's results.",
+      "comingSoonTitle": "Results coming soon",
+      "comingSoonBody": "The 2027 edition's results will be published once the exams have been marked by the international jury."
+    },
+    "Contact": {
+      "eyebrow": "Contact",
+      "title": "Contact",
+      "lead": "A question about the Olympiad, your delegation, or the organisation? Get in touch with Terangamath.",
+      "organizerLabel": "Organiser",
+      "emailLabel": "Email",
+      "emailValue": "Address to be confirmed",
+      "locationLabel": "Location",
+      "websiteLabel": "Association website"
+    },
+    "Legal": {
+      "eyebrow": "Legal notice",
+      "title": "Legal notice",
+      "Publisher": {
+        "title": "Site publisher",
+        "body": "This site is published by Terangamath. Full legal name and address to be confirmed."
+      },
+      "Host": {
+        "title": "Hosting",
+        "body": "Host to be confirmed."
+      },
+      "Director": {
+        "title": "Publication director",
+        "body": "Name to be confirmed."
+      },
+      "Ip": {
+        "title": "Intellectual property",
+        "body": "All content on this site (text, visuals, graphic motif) is the property of Terangamath, unless otherwise stated, and may not be reproduced without prior authorisation."
+      },
+      "Privacy": {
+        "title": "Personal data",
+        "body": "Privacy policy to be published, in accordance with applicable regulations."
+      },
+      "ContactRef": {
+        "title": "Contact",
+        "body": "For any question regarding this legal notice, see the Contact page."
+      }
+    }
   }
 }
