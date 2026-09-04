@@ -5,6 +5,7 @@ import { getTranslations } from "next-intl/server";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { SITE_URL } from "@/lib/site";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -39,11 +40,29 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
   return {
+    metadataBase: new URL(SITE_URL),
     title: {
       default: t("title"),
       template: "%s — OFM 2027",
     },
     description: t("description"),
+    // Alternates au niveau racine : couverture générale fr/en + x-default → fr.
+    // Le détail par route (hreflang exact de chaque page) est porté par app/sitemap.ts.
+    alternates: {
+      languages: {
+        fr: "/",
+        en: "/en",
+        "x-default": "/",
+      },
+    },
+    openGraph: {
+      type: "website",
+      siteName: "OFM 2027",
+      locale: locale === "en" ? "en_US" : "fr_FR",
+      alternateLocale: locale === "en" ? "fr_FR" : "en_US",
+      title: t("title"),
+      description: t("description"),
+    },
   };
 }
 

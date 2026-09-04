@@ -31,6 +31,9 @@ export interface EventInfo {
   datesConfirmed: boolean;
   /** null si non confirmées ; sinon libellé affichable. */
   dates: LocalizedText | null;
+  /** Dates ISO ("YYYY-MM-DD") pour les métadonnées structurées (JSON-LD) ; null si non confirmées. */
+  startDate: string | null;
+  endDate: string | null;
   categories: EventCategory[];
 }
 

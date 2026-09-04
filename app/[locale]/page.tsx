@@ -8,7 +8,11 @@ import { ProblemsTeaserSection } from "@/components/home/problems-teaser";
 import { CountdownSection } from "@/components/home/countdown";
 import { PartnersSection } from "@/components/home/partners";
 import { FaqSection } from "@/components/home/faq";
-import type { Locale } from "@/content/types";
+import { EventJsonLd } from "@/components/shared/event-jsonld";
+import eventData from "@/content/event.json";
+import type { EventInfo, Locale } from "@/content/types";
+
+const eventInfo = eventData as EventInfo;
 
 export default async function HomePage({
   params,
@@ -21,6 +25,7 @@ export default async function HomePage({
 
   return (
     <>
+      <EventJsonLd event={eventInfo} locale={typedLocale} />
       <Hero locale={typedLocale} />
       <EventInfoSection locale={typedLocale} />
       <StatsSection locale={typedLocale} />

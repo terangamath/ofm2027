@@ -6,6 +6,8 @@
   "officialLanguage": { "fr": "Français", "en": "French" },
   "datesConfirmed": false,
   "dates": { "fr": "[À confirmer — 2027]", "en": "[To be confirmed — 2027]" },
+  "startDate": null,
+  "endDate": null,
   "categories": [
     {
       "id": "junior",
