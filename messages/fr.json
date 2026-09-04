@@ -9,9 +9,7 @@
     "organisation": "Organisation",
     "teams": "Équipes",
     "programme": "Programme",
-    "practicalInfo": "Infos pratiques",
     "problems": "Problèmes & Solutions",
-    "news": "Actualités",
     "history": "Historique",
     "gallery": "Galerie",
     "results": "Résultats",
@@ -75,23 +73,16 @@
       "hostBadge": "Pays hôte",
       "cta": "Voir toutes les équipes"
     },
-    "Programme": {
-      "eyebrow": "06 — Déroulé",
-      "title": "Le programme de l'Olympiade",
-      "lead": "Des arrivées à la cérémonie de clôture, les temps forts de l'édition 2027.",
-      "comingSoon": "Le programme détaillé sera publié à l'approche de l'événement.",
-      "cta": "Voir le programme complet"
-    },
     "Problems": {
-      "eyebrow": "07 — Épreuves",
+      "eyebrow": "06 — Épreuves",
       "title": "Problèmes & solutions",
       "lead": "Un aperçu des problèmes conçus par le comité scientifique international.",
       "comingSoon": "Les problèmes de l'édition 2027 seront publiés après les épreuves.",
       "cta": "Explorer les problèmes"
     },
     "Countdown": {
-      "eyebrow": "08 — Compte à rebours",
-      "title": "Rendez-vous à Dakar",
+      "eyebrow": "07 — Compte à rebours",
+      "title": "Compte à rebours — édition 2027",
       "lead": "Les dates précises de l'édition 2027 seront annoncées prochainement.",
       "days": "Jours",
       "hours": "Heures",
@@ -99,15 +90,8 @@
       "seconds": "Secondes",
       "datesPending": "Dates en cours de confirmation."
     },
-    "News": {
-      "eyebrow": "09 — Actualités",
-      "title": "Les dernières nouvelles",
-      "lead": "Annonces, informations pratiques et actualités de l'Olympiade.",
-      "readMore": "Lire la suite",
-      "cta": "Toutes les actualités"
-    },
     "Partners": {
-      "eyebrow": "10 — Partenaires",
+      "eyebrow": "08 — Partenaires",
       "title": "Ils rendent l'Olympiade possible",
       "lead": "Institutions, partenaires financiers et techniques, aux côtés de Terangamath.",
       "categoryInstitutional": "Partenaires institutionnels",
@@ -116,7 +100,7 @@
       "statusPending": "En cours de confirmation"
     },
     "Faq": {
-      "eyebrow": "11 — Questions",
+      "eyebrow": "09 — Questions",
       "title": "Foire aux questions",
       "lead": "Les réponses aux questions les plus fréquentes sur l'Olympiade."
     }
@@ -201,31 +185,6 @@
         "social": "Moment convivial"
       }
     },
-    "PracticalInfo": {
-      "eyebrow": "Infos pratiques",
-      "title": "Informations pratiques",
-      "lead": "Tout ce qu'il faut savoir pour se rendre à Dakar et participer à l'OFM 2027. Les informations ci-dessous seront précisées à l'approche de l'événement.",
-      "Venue": {
-        "eyebrow": "01 — Lieu",
-        "title": "Le lieu de l'Olympiade",
-        "body": "L'OFM 2027 se déroule à Dakar, Sénégal. Le lieu précis des épreuves et de l'hébergement sera communiqué ultérieurement."
-      },
-      "Travel": {
-        "eyebrow": "02 — Se rendre à Dakar",
-        "title": "Voyager jusqu'à Dakar",
-        "body": "Dakar est desservie par l'aéroport international Blaise-Diagne (DSS). Les modalités de transport et d'accueil des délégations à l'arrivée seront précisées ultérieurement."
-      },
-      "Visa": {
-        "eyebrow": "03 — Visa & santé",
-        "title": "Formalités et santé",
-        "body": "Les formalités de visa dépendent de la nationalité de chaque participant. Les recommandations sanitaires et vaccinales seront communiquées ultérieurement."
-      },
-      "Accommodation": {
-        "eyebrow": "04 — Hébergement",
-        "title": "Hébergement des délégations",
-        "body": "Les modalités d'hébergement des délégations seront précisées avec le programme définitif."
-      }
-    },
     "Problems": {
       "eyebrow": "Problèmes & solutions",
       "title": "Les problèmes de l'Olympiade",
@@ -240,16 +199,6 @@
       "solutionAvailable": "Solution disponible",
       "solutionPending": "Solution à venir",
       "demoNotice": "Modèle de démonstration — ne reflète pas un énoncé officiel de l'OFM 2027."
-    },
-    "News": {
-      "eyebrow": "Actualités",
-      "title": "Toutes les actualités",
-      "lead": "Annonces, informations pratiques et actualités de l'Olympiade.",
-      "readMore": "Lire la suite",
-      "empty": "Aucune actualité publiée pour le moment."
-    },
-    "NewsDetail": {
-      "back": "Toutes les actualités"
     },
     "History": {
       "eyebrow": "Historique",

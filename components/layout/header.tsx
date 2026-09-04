@@ -11,8 +11,6 @@ const PRIMARY_NAV = [
   { key: "teams", href: "/equipes" },
   { key: "programme", href: "/programme" },
   { key: "problems", href: "/problemes" },
-  { key: "news", href: "/actualites" },
-  { key: "practicalInfo", href: "/informations" },
 ] as const;
 
 export function Header() {

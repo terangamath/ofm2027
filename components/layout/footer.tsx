@@ -10,12 +10,10 @@ const SECTIONS_A = [
   { key: "organisation", href: "/organisation" },
   { key: "teams", href: "/equipes" },
   { key: "programme", href: "/programme" },
-  { key: "practicalInfo", href: "/informations" },
 ] as const;
 
 const SECTIONS_B = [
   { key: "problems", href: "/problemes" },
-  { key: "news", href: "/actualites" },
   { key: "history", href: "/historique" },
   { key: "gallery", href: "/galerie" },
   { key: "results", href: "/resultats" },

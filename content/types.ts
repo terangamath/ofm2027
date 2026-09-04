@@ -74,24 +74,6 @@ export interface Delegation {
 }
 
 // ─────────────────────────────────────────────────────────────
-// Actualités (/actualites, /actualites/[slug])
-// Corps = fichier MDX par langue : content/actualites/{locale}/{slug}.mdx
-// Cette interface décrit le frontmatter.
-// ─────────────────────────────────────────────────────────────
-
-export type NewsType = "annonce" | "pratique" | "resultats" | "presse";
-
-export interface NewsFrontmatter {
-  slug: string;
-  date: string;               // ISO "2026-06-01"
-  type: NewsType;
-  title: string;              // localisé via le fichier de langue
-  excerpt: string;
-  coverImage: string | null;
-  published: boolean;
-}
-
-// ─────────────────────────────────────────────────────────────
 // Problèmes & Solutions (/problemes)
 // Corps = MDX avec KaTeX : content/problemes/{locale}/{slug}.mdx
 // ─────────────────────────────────────────────────────────────
@@ -113,12 +95,8 @@ export interface ProblemFrontmatter {
 // Programme (/programme)
 // ─────────────────────────────────────────────────────────────
 
-export type ScheduleEventKind =
-  | "epreuve"
-  | "ceremonie"
-  | "excursion"
-  | "logistique"
-  | "social";
+/** Compétition 100 % à distance : pas de kind logistique/cérémonie/excursion physique. */
+export type ScheduleEventKind = "epreuve" | "correction";
 
 export interface ScheduleEvent {
   time: string | null;        // "09:00" ou null si non fixé
@@ -130,12 +108,14 @@ export interface ScheduleEvent {
 export interface ScheduleDay {
   /** null tant que les dates ne sont pas arrêtées. */
   date: string | null;
-  label: LocalizedText;       // "Jour 1", "Cérémonie d'ouverture"
+  label: LocalizedText;       // "Jour 1", "Jour 2"
   events: ScheduleEvent[];
 }
 
 export interface Schedule {
   status: ContentStatus;
+  /** true : la structure du déroulé suit la règle générale de l'OFM, non confirmée telle quelle pour 2027. */
+  provisional: boolean;
   days: ScheduleDay[];
 }
 

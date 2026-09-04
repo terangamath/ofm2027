@@ -9,9 +9,7 @@
     "organisation": "Organisation",
     "teams": "Teams",
     "programme": "Programme",
-    "practicalInfo": "Practical information",
     "problems": "Problems & Solutions",
-    "news": "News",
     "history": "History",
     "gallery": "Gallery",
     "results": "Results",
@@ -75,23 +73,16 @@
       "hostBadge": "Host country",
       "cta": "See all teams"
     },
-    "Programme": {
-      "eyebrow": "06 — Schedule",
-      "title": "The Olympiad programme",
-      "lead": "From arrivals to the closing ceremony, the highlights of the 2027 edition.",
-      "comingSoon": "The detailed programme will be published closer to the event.",
-      "cta": "See the full programme"
-    },
     "Problems": {
-      "eyebrow": "07 — Exams",
+      "eyebrow": "06 — Exams",
       "title": "Problems & solutions",
       "lead": "A preview of the problems designed by the international scientific committee.",
       "comingSoon": "The 2027 edition's problems will be published after the exams.",
       "cta": "Explore the problems"
     },
     "Countdown": {
-      "eyebrow": "08 — Countdown",
-      "title": "See you in Dakar",
+      "eyebrow": "07 — Countdown",
+      "title": "Countdown — 2027 edition",
       "lead": "The precise dates of the 2027 edition will be announced soon.",
       "days": "Days",
       "hours": "Hours",
@@ -99,15 +90,8 @@
       "seconds": "Seconds",
       "datesPending": "Dates being confirmed."
     },
-    "News": {
-      "eyebrow": "09 — News",
-      "title": "Latest news",
-      "lead": "Announcements, practical information and Olympiad news.",
-      "readMore": "Read more",
-      "cta": "All news"
-    },
     "Partners": {
-      "eyebrow": "10 — Partners",
+      "eyebrow": "08 — Partners",
       "title": "Making the Olympiad possible",
       "lead": "Institutions, financial and technical partners, alongside Terangamath.",
       "categoryInstitutional": "Institutional partners",
@@ -116,7 +100,7 @@
       "statusPending": "Being confirmed"
     },
     "Faq": {
-      "eyebrow": "11 — Questions",
+      "eyebrow": "09 — Questions",
       "title": "Frequently asked questions",
       "lead": "Answers to the most common questions about the Olympiad."
     }
@@ -201,31 +185,6 @@
         "social": "Social event"
       }
     },
-    "PracticalInfo": {
-      "eyebrow": "Practical information",
-      "title": "Practical information",
-      "lead": "Everything you need to know to travel to Dakar and take part in OFM 2027. Details below will be refined closer to the event.",
-      "Venue": {
-        "eyebrow": "01 — Venue",
-        "title": "The Olympiad venue",
-        "body": "OFM 2027 takes place in Dakar, Senegal. The exact venue for exams and accommodation will be announced later."
-      },
-      "Travel": {
-        "eyebrow": "02 — Getting to Dakar",
-        "title": "Travelling to Dakar",
-        "body": "Dakar is served by Blaise Diagne International Airport (DSS). Transport and welcome arrangements for delegations on arrival will be detailed later."
-      },
-      "Visa": {
-        "eyebrow": "03 — Visa & health",
-        "title": "Formalities and health",
-        "body": "Visa requirements depend on each participant's nationality. Health and vaccination recommendations will be communicated later."
-      },
-      "Accommodation": {
-        "eyebrow": "04 — Accommodation",
-        "title": "Delegation accommodation",
-        "body": "Accommodation arrangements for delegations will be detailed with the final programme."
-      }
-    },
     "Problems": {
       "eyebrow": "Problems & solutions",
       "title": "The Olympiad problems",
@@ -240,16 +199,6 @@
       "solutionAvailable": "Solution available",
       "solutionPending": "Solution coming soon",
       "demoNotice": "Demonstration model — does not reflect an official OFM 2027 problem."
-    },
-    "News": {
-      "eyebrow": "News",
-      "title": "All news",
-      "lead": "Announcements, practical information and Olympiad news.",
-      "readMore": "Read more",
-      "empty": "No news published yet."
-    },
-    "NewsDetail": {
-      "back": "All news"
     },
     "History": {
       "eyebrow": "History",

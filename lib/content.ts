@@ -1,12 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import type {
-  Delegation,
-  Locale,
-  NewsFrontmatter,
-  ProblemFrontmatter,
-} from "@/content/types";
+import type { Delegation, Locale, ProblemFrontmatter } from "@/content/types";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
@@ -29,14 +24,6 @@ function readFrontmatter<T>(dir: string): T[] {
     .readdirSync(dir)
     .filter((file) => file.endsWith(".mdx"))
     .map((file) => matter(fs.readFileSync(path.join(dir, file), "utf-8")).data as T);
-}
-
-/** Actualités publiées, triées de la plus récente à la plus ancienne. */
-export function getNews(locale: Locale): NewsFrontmatter[] {
-  const dir = path.join(CONTENT_DIR, "actualites", locale);
-  return readFrontmatter<NewsFrontmatter>(dir)
-    .filter((item) => item.published)
-    .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
 /**
@@ -70,13 +57,6 @@ function findMdxBySlug<T extends { slug: string }>(
     }
   }
   return null;
-}
-
-export function getNewsBySlug(
-  locale: Locale,
-  slug: string
-): MdxDocument<NewsFrontmatter> | null {
-  return findMdxBySlug<NewsFrontmatter>(path.join(CONTENT_DIR, "actualites", locale), slug);
 }
 
 export function getProblemBySlug(
