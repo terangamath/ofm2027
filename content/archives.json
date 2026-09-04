@@ -1,0 +1,206 @@
+[
+  {
+    "year": 2020,
+    "category": "junior",
+    "type": "resultats",
+    "path": "/archives/2020/ofm-2020-junior-resultats.pdf"
+  },
+  {
+    "year": 2020,
+    "category": "junior",
+    "type": "solutions",
+    "path": "/archives/2020/ofm-2020-junior-solutions.pdf"
+  },
+  {
+    "year": 2020,
+    "category": "junior",
+    "type": "sujet",
+    "path": "/archives/2020/ofm-2020-junior-sujet.pdf"
+  },
+  {
+    "year": 2020,
+    "category": "senior",
+    "type": "resultats",
+    "path": "/archives/2020/ofm-2020-senior-resultats.pdf"
+  },
+  {
+    "year": 2020,
+    "category": "senior",
+    "type": "solutions",
+    "path": "/archives/2020/ofm-2020-senior-solutions.pdf"
+  },
+  {
+    "year": 2020,
+    "category": "senior",
+    "type": "sujet",
+    "path": "/archives/2020/ofm-2020-senior-sujet.pdf"
+  },
+  {
+    "year": 2021,
+    "category": "junior",
+    "type": "resultats",
+    "path": "/archives/2021/ofm-2021-junior-resultats.pdf"
+  },
+  {
+    "year": 2021,
+    "category": "junior",
+    "type": "solutions",
+    "path": "/archives/2021/ofm-2021-junior-solutions.pdf"
+  },
+  {
+    "year": 2021,
+    "category": "junior",
+    "type": "sujet",
+    "path": "/archives/2021/ofm-2021-junior-sujet.pdf"
+  },
+  {
+    "year": 2021,
+    "category": "senior",
+    "type": "resultats",
+    "path": "/archives/2021/ofm-2021-senior-resultats.pdf"
+  },
+  {
+    "year": 2021,
+    "category": "senior",
+    "type": "solutions",
+    "path": "/archives/2021/ofm-2021-senior-solutions.pdf"
+  },
+  {
+    "year": 2021,
+    "category": "senior",
+    "type": "sujet",
+    "path": "/archives/2021/ofm-2021-senior-sujet.pdf"
+  },
+  {
+    "year": 2022,
+    "category": "junior",
+    "type": "resultats",
+    "path": "/archives/2022/ofm-2022-junior-resultats.pdf"
+  },
+  {
+    "year": 2022,
+    "category": "junior",
+    "type": "solutions",
+    "path": "/archives/2022/ofm-2022-junior-solutions.pdf"
+  },
+  {
+    "year": 2022,
+    "category": "junior",
+    "type": "sujet",
+    "path": "/archives/2022/ofm-2022-junior-sujet.pdf"
+  },
+  {
+    "year": 2022,
+    "category": "senior",
+    "type": "resultats",
+    "path": "/archives/2022/ofm-2022-senior-resultats.pdf"
+  },
+  {
+    "year": 2022,
+    "category": "senior",
+    "type": "solutions",
+    "path": "/archives/2022/ofm-2022-senior-solutions.pdf"
+  },
+  {
+    "year": 2022,
+    "category": "senior",
+    "type": "sujet",
+    "path": "/archives/2022/ofm-2022-senior-sujet.pdf"
+  },
+  {
+    "year": 2023,
+    "category": "junior",
+    "type": "resultats",
+    "path": "/archives/2023/ofm-2023-junior-resultats.pdf"
+  },
+  {
+    "year": 2023,
+    "category": "junior",
+    "type": "solutions",
+    "path": "/archives/2023/ofm-2023-junior-solutions.pdf"
+  },
+  {
+    "year": 2023,
+    "category": "junior",
+    "type": "sujet",
+    "path": "/archives/2023/ofm-2023-junior-sujet.pdf"
+  },
+  {
+    "year": 2023,
+    "category": "senior",
+    "type": "resultats",
+    "path": "/archives/2023/ofm-2023-senior-resultats.pdf"
+  },
+  {
+    "year": 2023,
+    "category": "senior",
+    "type": "solutions",
+    "path": "/archives/2023/ofm-2023-senior-solutions.pdf"
+  },
+  {
+    "year": 2023,
+    "category": "senior",
+    "type": "sujet",
+    "path": "/archives/2023/ofm-2023-senior-sujet.pdf"
+  },
+  {
+    "year": 2024,
+    "category": "junior",
+    "type": "resultats",
+    "path": "/archives/2024/ofm-2024-junior-resultats.pdf"
+  },
+  {
+    "year": 2024,
+    "category": "junior",
+    "type": "solutions",
+    "path": "/archives/2024/ofm-2024-junior-solutions.pdf"
+  },
+  {
+    "year": 2024,
+    "category": "junior",
+    "type": "sujet",
+    "path": "/archives/2024/ofm-2024-junior-sujet.pdf"
+  },
+  {
+    "year": 2024,
+    "category": "senior",
+    "type": "resultats",
+    "path": "/archives/2024/ofm-2024-senior-resultats.pdf"
+  },
+  {
+    "year": 2024,
+    "category": "senior",
+    "type": "solutions",
+    "path": "/archives/2024/ofm-2024-senior-solutions.pdf"
+  },
+  {
+    "year": 2024,
+    "category": "senior",
+    "type": "sujet",
+    "path": "/archives/2024/ofm-2024-senior-sujet.pdf"
+  },
+  {
+    "year": 2025,
+    "category": "junior",
+    "type": "solutions",
+    "path": "/archives/2025/ofm-2025-junior-solutions.pdf"
+  },
+  {
+    "year": 2025,
+    "category": "junior",
+    "type": "sujet",
+    "path": "/archives/2025/ofm-2025-junior-sujet.pdf"
+  },
+  {
+    "year": 2025,
+    "category": "senior",
+    "type": "solutions",
+    "path": "/archives/2025/ofm-2025-senior-solutions.pdf"
+  },
+  {
+    "year": 2025,
+    "category": "senior",
+    "type": "sujet",
+    "path": "/archives/2025/ofm-2025-senior-sujet.pdf"
+  }
+]

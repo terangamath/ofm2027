@@ -4,9 +4,14 @@ import { PageHero } from "@/components/layout/page-hero";
 import { SectionHeading } from "@/components/home/section-heading";
 import { FaqAccordion } from "@/components/shared/faq-accordion";
 import event from "@/content/event.json";
-import type { EventInfo, Locale } from "@/content/types";
+import formatData from "@/content/format.json";
+import documentsData from "@/content/documents.json";
+import type { CompetitionFormat, EventInfo, Locale, ReferenceDocument } from "@/content/types";
 
 const eventInfo = event as EventInfo;
+const format = formatData as CompetitionFormat;
+const documents = documentsData as ReferenceDocument[];
+const reglement = documents.find((doc) => doc.id === "reglement-2025");
 
 export async function generateMetadata({
   params,
@@ -62,6 +67,46 @@ export default async function OlympiadPage({
               </div>
             ))}
           </div>
+
+          <dl className="grid grid-cols-1 gap-x-8 gap-y-6 rounded-xl border border-hairline bg-card p-8 sm:grid-cols-2">
+            <div className="flex flex-col gap-1">
+              <dt className="label-mono text-gris">{t("Format.facts.durationLabel")}</dt>
+              <dd className="text-body-l font-medium text-foreground">{format.duration[typedLocale]}</dd>
+            </div>
+            <div className="flex flex-col gap-1">
+              <dt className="label-mono text-gris">{t("Format.facts.domainsLabel")}</dt>
+              <dd className="text-body-l font-medium text-foreground">
+                {format.domains.map((domain) => domain[typedLocale]).join(" · ")}
+              </dd>
+            </div>
+            <div className="flex flex-col gap-1">
+              <dt className="label-mono text-gris">
+                {t("Format.facts.teamSize", { count: format.teamSize })}
+              </dt>
+              <dd className="text-body text-muted-foreground">
+                {t("Format.facts.problems", { count: format.problemsCount })}
+              </dd>
+            </div>
+            <div className="flex flex-col gap-1">
+              <dt className="label-mono text-gris">{t("Format.facts.correctionLabel")}</dt>
+              <dd className="text-body text-muted-foreground">{format.correction[typedLocale]}</dd>
+            </div>
+            <div className="flex flex-col gap-1 sm:col-span-2">
+              <dt className="label-mono text-gris">{t("Format.facts.distinctionsLabel")}</dt>
+              <dd className="text-body text-muted-foreground">{format.distinctions[typedLocale]}</dd>
+            </div>
+          </dl>
+
+          {reglement && (
+            <a
+              href={reglement.path}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="label-mono self-start text-vert underline decoration-hairline underline-offset-4 transition-colors hover:text-anthracite"
+            >
+              {t("Format.facts.reglementLink")} →
+            </a>
+          )}
         </div>
       </section>
 

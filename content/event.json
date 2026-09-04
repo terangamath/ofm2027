@@ -4,10 +4,10 @@
   "country": { "fr": "Sénégal", "en": "Senegal" },
   "organizer": "Terangamath",
   "officialLanguage": { "fr": "Français", "en": "French" },
-  "datesConfirmed": false,
-  "dates": { "fr": "[À confirmer — 2027]", "en": "[To be confirmed — 2027]" },
-  "startDate": null,
-  "endDate": null,
+  "datesConfirmed": true,
+  "dates": { "fr": "27-28 mars 2027", "en": "27-28 March 2027" },
+  "startDate": "2027-03-27",
+  "endDate": "2027-03-28",
   "categories": [
     {
       "id": "junior",

@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "OFM 2027 — Olympiade Francophone de Mathématiques · Dakar",
-    "description": "L'Olympiade Francophone de Mathématiques 2027 réunit à Dakar les meilleurs jeunes mathématiciens du monde francophone, autour d'épreuves conçues par un comité scientifique international. Organisée par Terangamath."
+    "description": "L'Olympiade Francophone de Mathématiques 2027 rassemble, à distance, les meilleurs jeunes mathématiciens du monde francophone, autour d'épreuves conçues par un comité scientifique international. Organisée par Terangamath (Dakar, Sénégal)."
   },
   "Nav": {
     "home": "Accueil",
@@ -27,6 +27,7 @@
     "resources": "Ressources",
     "contact": "Contact",
     "legalMentions": "Mentions légales",
+    "officialSite": "Site officiel de l'OFM",
     "organizedBy": "Organisée par",
     "rights": "© {year} Terangamath. Tous droits réservés."
   },
@@ -34,18 +35,17 @@
     "Hero": {
       "eyebrow": "01 — L'Olympiade",
       "title": "L'Olympiade Francophone de Mathématiques",
-      "lead": "Dakar accueille en 2027 les meilleurs jeunes mathématiciens du monde francophone, réunis autour d'épreuves conçues par un comité scientifique international.",
+      "lead": "Le Sénégal accueille l'organisation de l'édition 2027 de l'Olympiade Francophone de Mathématiques, disputée à distance par les meilleurs jeunes mathématiciens du monde francophone.",
       "ctaPrimary": "Découvrir l'Olympiade",
       "ctaSecondary": "Voir les équipes",
-      "metaLocation": "Lieu",
+      "metaLocation": "Pays organisateur",
       "metaLanguage": "Langue officielle",
       "metaFormat": "Catégories"
     },
     "Event": {
       "eyebrow": "02 — Rendez-vous",
       "title": "La fiche de l'événement",
-      "lead": "Une édition organisée par Terangamath, au cœur de Dakar.",
-      "location": "Lieu",
+      "lead": "Une édition organisée par Terangamath, disputée entièrement à distance.",
       "dates": "Dates",
       "organizer": "Organisateur",
       "language": "Langue officielle",
@@ -121,12 +121,21 @@
         "eyebrow": "01 — Présentation",
         "title": "Une compétition d'excellence, un esprit d'hospitalité",
         "body1": "L'OFM réunit chaque année les meilleurs élèves de collège et de lycée des pays francophones autour d'épreuves de mathématiques originales, conçues pour révéler le raisonnement autant que la technique.",
-        "body2": "L'édition 2027 est organisée à Dakar par Terangamath, association sénégalaise dédiée à la promotion des mathématiques, avec l'ambition de conjuguer rigueur scientifique et hospitalité sénégalaise — la Teranga."
+        "body2": "L'édition 2027 est portée depuis Dakar par Terangamath, association sénégalaise dédiée à la promotion des mathématiques, avec l'ambition de conjuguer rigueur scientifique et hospitalité sénégalaise — la Teranga."
       },
       "Format": {
         "eyebrow": "02 — Format",
         "title": "Le format des épreuves",
-        "lead": "Deux catégories, une organisation en plusieurs journées d'épreuves, corrigées par un jury international. Le détail précis du format sera publié avec le programme définitif."
+        "lead": "Une compétition entièrement à distance, dans la tradition de l'OFM. Les éléments ci-dessous suivent la règle générale de l'Olympiade ; Terangamath les confirmera pour l'édition 2027.",
+        "facts": {
+          "teamSize": "Jusqu'à {count} élèves par délégation, par catégorie",
+          "problems": "{count} problèmes par épreuve",
+          "domainsLabel": "Domaines couverts",
+          "durationLabel": "Durée",
+          "correctionLabel": "Correction",
+          "distinctionsLabel": "Distinctions",
+          "reglementLink": "Consulter le règlement de référence"
+        }
       },
       "Faq": {
         "eyebrow": "03 — Questions",
@@ -137,7 +146,7 @@
     "Organisation": {
       "eyebrow": "Organisation",
       "title": "Terangamath & l'organisation de l'OFM 2027",
-      "lead": "L'Olympiade est portée par l'association Terangamath, épaulée par des comités dédiés à la logistique et à la conception scientifique des épreuves.",
+      "lead": "L'Olympiade est portée par l'association Terangamath, épaulée par des comités dédiés à la conception scientifique et à la correction des épreuves.",
       "About": {
         "eyebrow": "01 — Terangamath",
         "title": "L'association organisatrice",
@@ -173,16 +182,13 @@
     "Programme": {
       "eyebrow": "Programme",
       "title": "Le programme de l'Olympiade",
-      "lead": "Des arrivées à la cérémonie de clôture, le déroulé prévisionnel de l'édition 2027.",
-      "statusComingSoon": "Le programme détaillé de l'édition 2027 sera publié à l'approche de l'événement. Le déroulé ci-dessous est indicatif.",
+      "lead": "Le déroulé des deux journées de l'édition 2027 : épreuves à distance, puis correction coordonnée.",
+      "provisionalNote": "Le déroulé suit la règle générale de l'OFM ; Terangamath le confirmera pour 2027.",
       "dateTBC": "Date à confirmer",
       "timeTBC": "Horaire à confirmer",
       "kinds": {
         "epreuve": "Épreuve",
-        "ceremonie": "Cérémonie",
-        "excursion": "Excursion",
-        "logistique": "Logistique",
-        "social": "Moment convivial"
+        "correction": "Correction"
       }
     },
     "Problems": {
@@ -205,7 +211,18 @@
       "title": "L'histoire de l'Olympiade",
       "lead": "Les éditions passées et à venir de l'Olympiade Francophone de Mathématiques.",
       "hostLabel": "Pays hôte",
-      "countriesLabel": "pays participants"
+      "countriesLabel": "pays participants",
+      "archivesCategory": {
+        "junior": "Junior",
+        "senior": "Senior"
+      },
+      "archivesType": {
+        "sujet": "Sujet",
+        "solutions": "Solutions",
+        "resultats": "Résultats"
+      },
+      "nationsTitle": "Nations ayant déjà pris part à l'OFM",
+      "nationsLead": "Toutes les nations ayant engagé une délégation depuis la création de l'Olympiade, en 2020."
     },
     "Gallery": {
       "eyebrow": "Galerie",

@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
-import { Callout } from "@/components/mdx/callout";
 import programmeData from "@/content/programme.json";
 import type { Locale, Schedule, ScheduleEventKind } from "@/content/types";
 
 const programme = programmeData as Schedule;
+
+const DATE_FORMAT: Record<Locale, string> = {
+  fr: "fr-FR",
+  en: "en-GB",
+};
 
 export async function generateMetadata({
   params,
@@ -26,8 +30,15 @@ export default async function ProgrammePage({
   setRequestLocale(locale);
   const typedLocale = locale as Locale;
   const t = await getTranslations({ locale, namespace: "Pages.Programme" });
+  const formatter = new Intl.DateTimeFormat(DATE_FORMAT[typedLocale], {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 
   const kindLabel = (kind: ScheduleEventKind) => t(`kinds.${kind}`);
+  const formatDate = (date: string | null) => (date ? formatter.format(new Date(date)) : t("dateTBC"));
 
   return (
     <>
@@ -35,8 +46,10 @@ export default async function ProgrammePage({
 
       <section className="bg-background py-24 lg:py-32">
         <div className="mx-auto flex max-w-3xl flex-col gap-14 px-6">
-          {programme.status === "coming_soon" && (
-            <Callout status="coming_soon">{t("statusComingSoon")}</Callout>
+          {programme.provisional && (
+            <p className="rounded-lg border border-hairline bg-sable px-5 py-4 text-body text-anthracite">
+              {t("provisionalNote")}
+            </p>
           )}
 
           <div className="flex flex-col gap-14">
@@ -44,7 +57,7 @@ export default async function ProgrammePage({
               <div key={day.label.fr} className="flex flex-col gap-6">
                 <div className="flex flex-col gap-1 border-b border-hairline pb-4">
                   <span className="label-mono text-link">
-                    {String(dayIndex + 1).padStart(2, "0")} — {day.date ?? t("dateTBC")}
+                    {String(dayIndex + 1).padStart(2, "0")} — {formatDate(day.date)}
                   </span>
                   <h2 className="font-display text-h3 text-foreground">{day.label[typedLocale]}</h2>
                 </div>

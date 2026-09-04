@@ -11,8 +11,8 @@ export async function EventInfoSection({ locale }: { locale: Locale }) {
 
   const rows = [
     {
-      label: t("location"),
-      value: `${eventInfo.city[locale]}, ${eventInfo.country[locale]}`,
+      label: t("organizer"),
+      value: `${eventInfo.organizer} — ${eventInfo.city[locale]}, ${eventInfo.country[locale]}`,
     },
     {
       label: t("dates"),
@@ -21,7 +21,6 @@ export async function EventInfoSection({ locale }: { locale: Locale }) {
         : (eventInfo.dates?.[locale] ?? tCommon("toBeConfirmed")),
       pending: !eventInfo.datesConfirmed,
     },
-    { label: t("organizer"), value: eventInfo.organizer },
     { label: t("language"), value: eventInfo.officialLanguage[locale] },
     {
       label: t("format"),

@@ -1,0 +1,20 @@
+{
+  "provisional": true,
+  "teamSize": 6,
+  "problemsCount": 4,
+  "domains": [
+    { "fr": "Algèbre", "en": "Algebra" },
+    { "fr": "Géométrie", "en": "Geometry" },
+    { "fr": "Combinatoire", "en": "Combinatorics" },
+    { "fr": "Théorie des nombres", "en": "Number theory" }
+  ],
+  "duration": { "fr": "4h30, en une seule session", "en": "4.5 hours, in a single session" },
+  "correction": {
+    "fr": "Les chefs de délégation harmonisent les notes avec les coordinateurs internationaux, le lendemain de l'épreuve.",
+    "en": "Delegation leaders harmonise marks with the international coordinators, the day after the exam."
+  },
+  "distinctions": {
+    "fr": "Médailles or, argent et bronze pour environ la moitié des participants, mentions honorables, et certificat de participation pour tous.",
+    "en": "Gold, silver and bronze medals for about half of participants, honourable mentions, and a certificate of participation for everyone."
+  }
+}

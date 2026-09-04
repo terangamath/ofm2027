@@ -3,16 +3,72 @@
     "year": 2027,
     "host": { "fr": "Sénégal", "en": "Senegal" },
     "city": { "fr": "Dakar", "en": "Dakar" },
+    "dates": { "fr": "27-28 mars 2027", "en": "27-28 March 2027" },
     "countriesCount": null,
     "note": { "fr": "Édition à venir, organisée par Terangamath.", "en": "Upcoming edition, organised by Terangamath." },
     "status": "coming_soon"
   },
   {
     "year": 2026,
-    "host": { "fr": "[À confirmer]", "en": "[To be confirmed]" },
+    "host": { "fr": "Djibouti", "en": "Djibouti" },
     "city": null,
+    "dates": { "fr": "28-29 mars 2026", "en": "28-29 March 2026" },
+    "countriesCount": 14,
+    "note": { "fr": "Effectifs non publiés à ce jour.", "en": "Figures not published to date." },
+    "status": "published"
+  },
+  {
+    "year": 2025,
+    "host": { "fr": "France", "en": "France" },
+    "city": null,
+    "dates": { "fr": "22-23 mars 2025", "en": "22-23 March 2025" },
     "countriesCount": null,
-    "note": null,
-    "status": "coming_soon"
+    "note": { "fr": "60 Junior · 72 Senior participants.", "en": "60 Junior · 72 Senior competitors." },
+    "status": "published"
+  },
+  {
+    "year": 2024,
+    "host": { "fr": "Belgique", "en": "Belgium" },
+    "city": null,
+    "dates": { "fr": "23-24 mars 2024", "en": "23-24 March 2024" },
+    "countriesCount": null,
+    "note": { "fr": "68 Junior · 77 Senior participants.", "en": "68 Junior · 77 Senior competitors." },
+    "status": "published"
+  },
+  {
+    "year": 2023,
+    "host": { "fr": "Tunisie", "en": "Tunisia" },
+    "city": null,
+    "dates": { "fr": "29-30 avril 2023", "en": "29-30 April 2023" },
+    "countriesCount": null,
+    "note": { "fr": "53 Junior · 67 Senior participants.", "en": "53 Junior · 67 Senior competitors." },
+    "status": "published"
+  },
+  {
+    "year": 2022,
+    "host": { "fr": "Maroc", "en": "Morocco" },
+    "city": null,
+    "dates": { "fr": "21-22 mai 2022", "en": "21-22 May 2022" },
+    "countriesCount": null,
+    "note": { "fr": "27 Junior · 40 Senior participants.", "en": "27 Junior · 40 Senior competitors." },
+    "status": "published"
+  },
+  {
+    "year": 2021,
+    "host": { "fr": "Suisse", "en": "Switzerland" },
+    "city": null,
+    "dates": { "fr": "27-28 mars 2021", "en": "27-28 March 2021" },
+    "countriesCount": null,
+    "note": { "fr": "38 Junior · 50 Senior participants.", "en": "38 Junior · 50 Senior competitors." },
+    "status": "published"
+  },
+  {
+    "year": 2020,
+    "host": { "fr": "France", "en": "France" },
+    "city": null,
+    "dates": { "fr": "27-28 juin 2020", "en": "27-28 June 2020" },
+    "countriesCount": null,
+    "note": { "fr": "12 Junior · 36 Senior participants.", "en": "12 Junior · 36 Senior competitors." },
+    "status": "published"
   }
 ]

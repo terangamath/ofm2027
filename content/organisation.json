@@ -1,34 +1,46 @@
 [
   {
-    "id": "comite-organisation",
-    "name": { "fr": "Comité d'organisation", "en": "Organising committee" },
+    "id": "comite-selection",
+    "name": { "fr": "Comité de sélection des problèmes", "en": "Problem selection committee" },
     "description": {
-      "fr": "Porté par l'association Terangamath, il coordonne la logistique, l'accueil des délégations et le déroulement de l'événement.",
-      "en": "Led by the Terangamath association, it coordinates logistics, the welcoming of delegations and the running of the event."
+      "fr": "Sélectionne les problèmes parmi les propositions reçues, affine les énoncés, rédige les solutions officielles et conçoit les barèmes.",
+      "en": "Selects problems among the proposals received, refines the statements, writes the official solutions and designs the marking schemes."
     },
+    "provisional": true,
     "members": [
       {
-        "name": "[À confirmer]",
-        "role": { "fr": "Coordination générale", "en": "General coordination" },
-        "org": "Terangamath",
-        "country": "SN"
-      }
-    ]
-  },
-  {
-    "id": "comite-scientifique",
-    "name": { "fr": "Comité scientifique", "en": "Scientific committee" },
-    "description": {
-      "fr": "Responsable de l'élaboration et de la sélection des problèmes ainsi que de la correction des épreuves.",
-      "en": "Responsible for designing and selecting problems and for marking the exams."
-    },
-    "members": [
-      {
-        "name": "[À confirmer]",
-        "role": { "fr": "Président du comité scientifique", "en": "Chair of the scientific committee" },
+        "name": "[À confirmer — Terangamath]",
+        "role": { "fr": "Membre", "en": "Member" },
         "org": null,
         "country": null
       }
     ]
+  },
+  {
+    "id": "equipe-coordination",
+    "name": { "fr": "Équipe de coordination", "en": "Coordination team" },
+    "description": {
+      "fr": "Chaque problème est corrigé par un binôme de coordinateurs, qui rencontre les chefs de délégation pour arrêter les notes.",
+      "en": "Each problem is marked by a pair of coordinators, who meet delegation leaders to finalise the scores."
+    },
+    "provisional": true,
+    "members": [
+      {
+        "name": "[À confirmer — Terangamath]",
+        "role": { "fr": "Membre", "en": "Member" },
+        "org": null,
+        "country": null
+      }
+    ]
+  },
+  {
+    "id": "remerciements",
+    "name": { "fr": "Remerciements", "en": "Acknowledgements" },
+    "description": {
+      "fr": "Terangamath remercie chaleureusement les personnes et institutions qui contribuent à la préparation de l'édition 2027.",
+      "en": "Terangamath warmly thanks the people and institutions contributing to the preparation of the 2027 edition."
+    },
+    "provisional": true,
+    "members": []
   }
 ]

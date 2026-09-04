@@ -63,6 +63,14 @@ export async function Footer() {
                 {tNav(item.key)}
               </Link>
             ))}
+            <a
+              href="https://ofm-officiel.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-foreground/80 transition-colors hover:text-foreground"
+            >
+              {t("officialSite")}
+            </a>
           </nav>
 
           <div className="flex flex-col gap-3">

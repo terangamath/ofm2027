@@ -154,9 +154,57 @@ export interface Edition {
   year: number;
   host: LocalizedText;        // "[À confirmer]" si donnée manquante
   city: LocalizedText | null;
+  dates: LocalizedText | null;
   countriesCount: number | null;
   note: LocalizedText | null;
   status: ContentStatus;
+}
+
+/** Nation ayant déjà pris part à au moins une édition de l'OFM. */
+export interface HistoricalNation {
+  countryCode: string;        // ISO 3166-1 alpha-2
+  name: LocalizedText;
+}
+
+// ─────────────────────────────────────────────────────────────
+// Archives PDF (sujets, solutions, résultats des éditions passées)
+// Hébergées dans public/archives/{year}/, référencées depuis /historique.
+// ─────────────────────────────────────────────────────────────
+
+export type ArchiveDocumentType = "sujet" | "solutions" | "resultats";
+
+export interface ArchiveEntry {
+  year: number;
+  category: "junior" | "senior";
+  type: ArchiveDocumentType;
+  path: string;                // chemin public, ex. "/archives/2024/ofm-2024-junior-sujet.pdf"
+}
+
+// ─────────────────────────────────────────────────────────────
+// Format de la compétition (/olympiade) — règle générale de l'OFM,
+// non confirmée telle quelle pour 2027 (catégorie B, cf. CLAUDE.md provenance).
+// ─────────────────────────────────────────────────────────────
+
+export interface CompetitionFormat {
+  provisional: boolean;
+  teamSize: number;
+  problemsCount: number;
+  domains: LocalizedText[];
+  duration: LocalizedText;
+  correction: LocalizedText;
+  distinctions: LocalizedText;
+}
+
+// ─────────────────────────────────────────────────────────────
+// Documents de référence (règlement, etc.)
+// ─────────────────────────────────────────────────────────────
+
+export interface ReferenceDocument {
+  id: string;
+  title: LocalizedText;
+  note: LocalizedText;
+  path: string;
+  provisional: boolean;
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -164,7 +212,7 @@ export interface Edition {
 // ─────────────────────────────────────────────────────────────
 
 export interface Person {
-  name: string;               // "[À confirmer]" si non nommé
+  name: string;               // "[À confirmer — Terangamath]" si non nommé
   role: LocalizedText;
   org: string | null;
   country: string | null;     // code ISO
@@ -172,7 +220,9 @@ export interface Person {
 
 export interface Committee {
   id: string;
-  name: LocalizedText;        // "Comité d'organisation", "Comité scientifique"
+  name: LocalizedText;        // "Comité de sélection des problèmes", "Équipe de coordination"...
   description: LocalizedText | null;
+  /** true : structure reprise de la règle générale de l'OFM, non confirmée telle quelle pour 2027. */
+  provisional: boolean;
   members: Person[];
 }

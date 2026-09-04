@@ -1,0 +1,20 @@
+[
+  { "countryCode": "DZ", "name": { "fr": "Algérie", "en": "Algeria" } },
+  { "countryCode": "BE", "name": { "fr": "Belgique", "en": "Belgium" } },
+  { "countryCode": "BF", "name": { "fr": "Burkina Faso", "en": "Burkina Faso" } },
+  { "countryCode": "CM", "name": { "fr": "Cameroun", "en": "Cameroon" } },
+  { "countryCode": "CA", "name": { "fr": "Canada", "en": "Canada" } },
+  { "countryCode": "KM", "name": { "fr": "Comores", "en": "Comoros" } },
+  { "countryCode": "CG", "name": { "fr": "Congo", "en": "Congo" } },
+  { "countryCode": "CI", "name": { "fr": "Côte d'Ivoire", "en": "Ivory Coast" } },
+  { "countryCode": "DJ", "name": { "fr": "Djibouti", "en": "Djibouti" } },
+  { "countryCode": "FR", "name": { "fr": "France", "en": "France" } },
+  { "countryCode": "LU", "name": { "fr": "Luxembourg", "en": "Luxembourg" } },
+  { "countryCode": "MG", "name": { "fr": "Madagascar", "en": "Madagascar" } },
+  { "countryCode": "MA", "name": { "fr": "Maroc", "en": "Morocco" } },
+  { "countryCode": "MR", "name": { "fr": "Mauritanie", "en": "Mauritania" } },
+  { "countryCode": "NE", "name": { "fr": "Niger", "en": "Niger" } },
+  { "countryCode": "SN", "name": { "fr": "Sénégal", "en": "Senegal" } },
+  { "countryCode": "CH", "name": { "fr": "Suisse", "en": "Switzerland" } },
+  { "countryCode": "TN", "name": { "fr": "Tunisie", "en": "Tunisia" } }
+]

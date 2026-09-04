@@ -1,33 +1,34 @@
 {
-  "status": "coming_soon",
+  "status": "published",
+  "provisional": true,
   "days": [
     {
-      "date": null,
-      "label": { "fr": "Jour 1 — Arrivées & ouverture", "en": "Day 1 — Arrivals & opening" },
+      "date": "2027-03-27",
+      "label": { "fr": "Jour 1 — Épreuves", "en": "Day 1 — Exams" },
       "events": [
         {
           "time": null,
-          "title": { "fr": "Accueil des délégations", "en": "Welcome of delegations" },
-          "location": { "fr": "[À confirmer]", "en": "[To be confirmed]" },
-          "kind": "logistique"
-        },
-        {
-          "time": null,
-          "title": { "fr": "Cérémonie d'ouverture", "en": "Opening ceremony" },
-          "location": { "fr": "[À confirmer]", "en": "[To be confirmed]" },
-          "kind": "ceremonie"
+          "title": {
+            "fr": "Épreuves Junior et Senior, simultanées — 4h30, à distance",
+            "en": "Junior and Senior exams, simultaneous — 4.5 hours, online"
+          },
+          "location": null,
+          "kind": "epreuve"
         }
       ]
     },
     {
-      "date": null,
-      "label": { "fr": "Jour 2 — Épreuves", "en": "Day 2 — Exams" },
+      "date": "2027-03-28",
+      "label": { "fr": "Jour 2 — Correction", "en": "Day 2 — Marking" },
       "events": [
         {
           "time": null,
-          "title": { "fr": "Épreuve — 1re partie", "en": "Exam — Part 1" },
+          "title": {
+            "fr": "Correction coordonnée entre chefs de délégation et coordinateurs internationaux",
+            "en": "Coordinated marking between delegation leaders and international coordinators"
+          },
           "location": null,
-          "kind": "epreuve"
+          "kind": "correction"
         }
       ]
     }

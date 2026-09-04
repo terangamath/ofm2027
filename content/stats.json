@@ -1,12 +1,12 @@
 [
   {
-    "value": "15+",
-    "label": { "fr": "pays participants", "en": "participating countries" },
+    "value": "14",
+    "label": { "fr": "pays participants (2026)", "en": "participating countries (2026)" },
     "provisional": true
   },
   {
-    "value": "200+",
-    "label": { "fr": "élèves compétiteurs", "en": "competing students" },
+    "value": "132",
+    "label": { "fr": "élèves compétiteurs (2025)", "en": "competing students (2025)" },
     "provisional": true
   },
   {
@@ -15,8 +15,8 @@
     "provisional": false
   },
   {
-    "value": "7+",
+    "value": "8",
     "label": { "fr": "éditions", "en": "editions" },
-    "provisional": true
+    "provisional": false
   }
 ]
