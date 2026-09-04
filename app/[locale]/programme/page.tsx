@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
+import { ProvisionalBadge } from "@/components/shared/provisional-badge";
 import programmeData from "@/content/programme.json";
 import type { Locale, Schedule, ScheduleEventKind } from "@/content/types";
 
@@ -30,6 +31,7 @@ export default async function ProgrammePage({
   setRequestLocale(locale);
   const typedLocale = locale as Locale;
   const t = await getTranslations({ locale, namespace: "Pages.Programme" });
+  const tCommon = await getTranslations({ locale, namespace: "Common" });
   const formatter = new Intl.DateTimeFormat(DATE_FORMAT[typedLocale], {
     weekday: "long",
     day: "numeric",
@@ -47,9 +49,10 @@ export default async function ProgrammePage({
       <section className="bg-background py-24 lg:py-32">
         <div className="mx-auto flex max-w-3xl flex-col gap-14 px-6">
           {programme.provisional && (
-            <p className="rounded-lg border border-hairline bg-sable px-5 py-4 text-body text-anthracite">
-              {t("provisionalNote")}
-            </p>
+            <div className="flex flex-col gap-3 rounded-lg border border-hairline bg-sable px-5 py-4">
+              <ProvisionalBadge label={tCommon("provisionalInfo")} />
+              <p className="text-body text-anthracite">{t("provisionalNote")}</p>
+            </div>
           )}
 
           <div className="flex flex-col gap-14">

@@ -110,7 +110,8 @@
     "toBeConfirmed": "To be confirmed",
     "learnMore": "Learn more",
     "confirmed": "Confirmed",
-    "pending": "Pending"
+    "pending": "Pending",
+    "provisionalInfo": "Provisional information"
   },
   "Pages": {
     "Olympiad": {
@@ -195,7 +196,8 @@
       "eyebrow": "Problems & solutions",
       "title": "The Olympiad problems",
       "lead": "A preview of the problems designed by the international scientific committee, with solutions where available.",
-      "comingSoonNote": "The official problems for the 2027 edition will be published after the exams. The content below is a demonstration model of the mathematical rendering.",
+      "comingSoonTitle": "Problems will be published after the exams",
+      "comingSoonBody": "The official 2027 problems and solutions will be published here once the competition has taken place. Past editions' papers remain available from the History page.",
       "hasSolution": "Solution available",
       "noSolutionYet": "Solution coming soon",
       "readProblem": "View"
@@ -203,8 +205,7 @@
     "ProblemDetail": {
       "back": "All problems",
       "solutionAvailable": "Solution available",
-      "solutionPending": "Solution coming soon",
-      "demoNotice": "Demonstration model — does not reflect an official OFM 2027 problem."
+      "solutionPending": "Solution coming soon"
     },
     "History": {
       "eyebrow": "History",

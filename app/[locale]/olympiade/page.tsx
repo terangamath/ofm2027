@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
 import { SectionHeading } from "@/components/home/section-heading";
 import { FaqAccordion } from "@/components/shared/faq-accordion";
+import { ProvisionalBadge } from "@/components/shared/provisional-badge";
 import event from "@/content/event.json";
 import formatData from "@/content/format.json";
 import documentsData from "@/content/documents.json";
@@ -32,6 +33,7 @@ export default async function OlympiadPage({
   setRequestLocale(locale);
   const typedLocale = locale as Locale;
   const t = await getTranslations({ locale, namespace: "Pages.Olympiad" });
+  const tCommon = await getTranslations({ locale, namespace: "Common" });
 
   return (
     <>
@@ -67,6 +69,8 @@ export default async function OlympiadPage({
               </div>
             ))}
           </div>
+
+          {format.provisional && <ProvisionalBadge label={tCommon("provisionalInfo")} />}
 
           <dl className="grid grid-cols-1 gap-x-8 gap-y-6 rounded-xl border border-hairline bg-card p-8 sm:grid-cols-2">
             <div className="flex flex-col gap-1">

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { Callout } from "@/components/mdx/callout";
 import { MdxContent } from "@/components/mdx/mdx-content";
 import { getProblemBySlug, getProblems } from "@/lib/content";
 
@@ -66,10 +65,6 @@ export default async function ProblemDetailPage({
             ))}
           </div>
         </div>
-
-        {frontmatter.status === "coming_soon" && (
-          <Callout status="coming_soon">{t("demoNotice")}</Callout>
-        )}
 
         <MdxContent source={content} />
       </div>
