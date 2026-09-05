@@ -98,6 +98,10 @@ export function sansVeuve(titre: string): string {
   const mots = titre.trim().split(/[  ]/);
   if (mots.length < 3) return titre;
   const dernier = mots.pop() as string;
+  // Un bloc final trop long (« de Mathématiques ») déborderait sur mobile :
+  // on laisse alors faire `text-wrap: balance`.
+  const avantDernier = mots[mots.length - 1];
+  if (avantDernier.length + dernier.length > 13) return titre;
   return `${mots.join(" ")}${INSECABLE}${dernier}`;
 }
 

@@ -90,6 +90,9 @@ describe("sansVeuve", () => {
     assert.equal(sansVeuve("Deux catégories, une même exigence"), `Deux catégories, une même${NBSP}exigence`);
     assert.equal(sansVeuve("Foire aux questions"), `Foire aux${NBSP}questions`);
   });
+  it("laisse un bloc final trop long, qui déborderait sur mobile", () => {
+    assert.equal(sansVeuve("L'Olympiade Francophone de Mathématiques"), "L'Olympiade Francophone de Mathématiques");
+  });
   it("laisse les titres courts", () => {
     assert.equal(sansVeuve("Galerie"), "Galerie");
     assert.equal(sansVeuve("Mentions légales"), "Mentions légales");

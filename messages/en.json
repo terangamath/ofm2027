@@ -40,7 +40,8 @@
       "metaDates": "Dates",
       "metaLocation": "Host country",
       "metaLanguage": "Official language",
-      "metaFormat": "Categories"
+      "metaFormat": "Categories",
+      "figureCaption": "Figure from Problem 3, OFM 2024 (Senior): (DE) is parallel to (OM)."
     },
     "Event": {
       "title": "The event, at a glance",

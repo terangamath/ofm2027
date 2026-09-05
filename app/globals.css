@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "katex/dist/katex.min.css";
 
@@ -290,5 +289,109 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+  }
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Séquence d'ouverture — la figure du problème 3 (OFM 2024) se construit
+   à la règle et au compas. 1,8 s, derrière le texte, une fois par session.
+   Chaque trait porte --delai et --duree ; fill-mode both retient l'état
+   initial pendant le délai. Sous prefers-reduced-motion : état final direct.
+   ──────────────────────────────────────────────────────────────── */
+@layer components {
+  .figure-construction {
+    --ease-trace: cubic-bezier(0.45, 0.05, 0.25, 1);
+  }
+  .figure-trait,
+  .figure-construction-trait,
+  .figure-conclusion {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+    animation: figure-tracer var(--duree, 400ms) var(--ease-trace) var(--delai, 0ms) both;
+  }
+  .figure-trait {
+    stroke: var(--or-clair);
+    stroke-width: 1.25;
+  }
+  .figure-construction-trait {
+    stroke: var(--or);
+    stroke-width: 1;
+    stroke-dasharray: 1;
+    opacity: 0.14;
+    /* trace, puis s'estompe : les traits de construction restent en filigrane */
+    animation:
+      figure-tracer var(--duree, 400ms) var(--ease-trace) var(--delai, 0ms) both,
+      figure-estomper 300ms ease-out 1600ms both;
+  }
+  .figure-conclusion {
+    stroke: var(--or-clair);
+    stroke-width: 2;
+  }
+  .figure-point {
+    fill: var(--or-clair);
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: figure-apparaitre 220ms var(--ease-signature) var(--delai, 0ms) both;
+  }
+  .figure-etiquette {
+    fill: var(--or-clair);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 17px;
+    opacity: 0.85;
+    animation: figure-apparaitre 220ms var(--ease-signature) var(--delai, 0ms) both;
+  }
+  /* Déjà jouée dans cette session, ou mouvement réduit : état final immédiat. */
+  .figure-construction.terminee *,
+  .figure-construction.terminee {
+    animation: none !important;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .figure-construction * {
+      animation: none !important;
+    }
+  }
+}
+
+@keyframes figure-tracer {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes figure-estomper {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 0.14;
+  }
+}
+@keyframes figure-apparaitre {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Apparition d'un élément qui répond à une action (menu mobile) : opacité
+   seule, sans translation — ce qui apparaît n'a pas d'inertie. */
+@keyframes apparition {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@layer utilities {
+  .animer-apparition {
+    animation: apparition 200ms var(--ease-signature) both;
   }
 }

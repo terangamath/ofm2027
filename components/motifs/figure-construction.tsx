@@ -1,0 +1,114 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
+/**
+ * La figure du problème 3 (Senior) de l'OFM 2024, construite à la règle et au
+ * compas dans l'ordre de l'énoncé :
+ *   ABC acutangle, ω son cercle circonscrit de centre O ; la hauteur issue de A
+ *   recoupe ω en D ; le cercle circonscrit à OCD recoupe [AC] en E ; M est le
+ *   milieu de [BE]. À démontrer : (DE) ∥ (OM).
+ *
+ * Coordonnées calculées une fois (O = (300, 300), R = 250, A à 108°, B à 203°,
+ * C à 332°) ; le parallélisme est vérifié numériquement (produit vectoriel nul).
+ * La chorégraphie est en CSS (globals.css, `.figure-construction`) : 1,8 s,
+ * une fois par session, état final direct sous prefers-reduced-motion.
+ */
+const P = {
+  A: { x: 222.7, y: 62.2 },
+  B: { x: 69.9, y: 397.7 },
+  C: { x: 520.7, y: 417.4 },
+  O: { x: 300, y: 300 },
+  D: { x: 202.3, y: 530.1 },
+  E: { x: 426.9, y: 305.5 },
+  M: { x: 248.4, y: 351.6 },
+} as const;
+const OMEGA_R = 250;
+const K = { x: 356.6, y: 459.8, r: 169.5 };
+
+const CLE_SESSION = "ofm2027:figure-jouee";
+
+type Point = { x: number; y: number };
+const seg = (a: Point, b: Point) => `M${a.x} ${a.y}L${b.x} ${b.y}`;
+
+/** Étiquette d'un point, décalée vers l'extérieur de la figure. */
+function Etiquette({ p, dx, dy, delai, children }: { p: Point; dx: number; dy: number; delai: number; children: string }) {
+  return (
+    <text
+      x={p.x + dx}
+      y={p.y + dy}
+      className="figure-etiquette"
+      style={{ ["--delai" as string]: `${delai}ms` }}
+    >
+      {children}
+    </text>
+  );
+}
+
+function Pt({ p, delai }: { p: Point; delai: number }) {
+  return <circle cx={p.x} cy={p.y} r={4} className="figure-point" style={{ ["--delai" as string]: `${delai}ms` }} />;
+}
+
+export function FigureConstruction({ className }: { className?: string }) {
+  const ref = useRef<SVGSVGElement>(null);
+
+  // Déjà jouée dans cette session : on passe directement à l'état final, par
+  // une classe posée sur le DOM (pas de nouvel état React, pas de re-rendu).
+  useEffect(() => {
+    try {
+      if (window.sessionStorage.getItem(CLE_SESSION)) {
+        ref.current?.classList.add("terminee");
+      } else {
+        window.sessionStorage.setItem(CLE_SESSION, "1");
+      }
+    } catch {
+      /* stockage indisponible : la séquence se joue simplement */
+    }
+  }, []);
+
+  return (
+    <svg
+      ref={ref}
+      viewBox="0 0 600 600"
+      aria-hidden="true"
+      className={`figure-construction ${className ?? ""}`}
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      {/* 1. ω et le triangle */}
+      <circle cx={P.O.x} cy={P.O.y} r={OMEGA_R} pathLength={1} className="figure-trait" style={{ ["--delai" as string]: "0ms", ["--duree" as string]: "500ms" }} />
+      <path d={seg(P.A, P.B)} pathLength={1} className="figure-trait" style={{ ["--delai" as string]: "250ms", ["--duree" as string]: "350ms" }} />
+      <path d={seg(P.B, P.C)} pathLength={1} className="figure-trait" style={{ ["--delai" as string]: "330ms", ["--duree" as string]: "350ms" }} />
+      <path d={seg(P.C, P.A)} pathLength={1} className="figure-trait" style={{ ["--delai" as string]: "410ms", ["--duree" as string]: "350ms" }} />
+
+      {/* 2. la hauteur issue de A, prolongée jusqu'à D (trait de construction) */}
+      <path d={seg(P.A, P.D)} pathLength={1} className="figure-construction-trait" style={{ ["--delai" as string]: "450ms", ["--duree" as string]: "400ms" }} />
+
+      {/* 3. le cercle circonscrit à OCD (trait de construction) */}
+      <circle cx={K.x} cy={K.y} r={K.r} pathLength={1} className="figure-construction-trait" style={{ ["--delai" as string]: "800ms", ["--duree" as string]: "450ms" }} />
+
+      {/* 4. [BE], puis la conclusion : (DE) et (OM) */}
+      <path d={seg(P.B, P.E)} pathLength={1} className="figure-trait" style={{ ["--delai" as string]: "1200ms", ["--duree" as string]: "250ms" }} />
+      <path d={seg(P.D, P.E)} pathLength={1} className="figure-conclusion" style={{ ["--delai" as string]: "1450ms", ["--duree" as string]: "300ms" }} />
+      <path d={seg(P.O, P.M)} pathLength={1} className="figure-conclusion" style={{ ["--delai" as string]: "1450ms", ["--duree" as string]: "300ms" }} />
+
+      {/* Points, dans l'ordre de leur construction */}
+      <Pt p={P.O} delai={100} />
+      <Pt p={P.A} delai={250} />
+      <Pt p={P.B} delai={330} />
+      <Pt p={P.C} delai={410} />
+      <Pt p={P.D} delai={850} />
+      <Pt p={P.E} delai={1250} />
+      <Pt p={P.M} delai={1450} />
+
+      <Etiquette p={P.A} dx={-4} dy={-14} delai={250}>A</Etiquette>
+      <Etiquette p={P.B} dx={-24} dy={8} delai={330}>B</Etiquette>
+      <Etiquette p={P.C} dx={14} dy={8} delai={410}>C</Etiquette>
+      <Etiquette p={P.O} dx={-22} dy={-8} delai={100}>O</Etiquette>
+      <Etiquette p={P.D} dx={-8} dy={26} delai={850}>D</Etiquette>
+      <Etiquette p={P.E} dx={12} dy={-10} delai={1250}>E</Etiquette>
+      <Etiquette p={P.M} dx={-26} dy={18} delai={1450}>M</Etiquette>
+    </svg>
+  );
+}

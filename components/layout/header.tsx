@@ -103,7 +103,7 @@ export function Header() {
       {menuOpen && (
         <div
           id="menu-mobile"
-          className="border-t border-hairline bg-background md:hidden"
+          className="animer-apparition border-t border-hairline bg-background md:hidden"
         >
           <nav className="flex flex-col gap-1 px-6 py-4" aria-label={t("home")}>
             {PRIMARY_NAV.map((item) => (

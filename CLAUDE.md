@@ -24,8 +24,8 @@ Le site parle deux langues à la fois :
 
 **Registre visuel** : éditorial et prestigieux (pensé comme une revue scientifique de haut de gamme croisée avec l'affiche d'un grand événement), pas « site institutionnel générique ». Beaucoup d'air, une typographie forte, un motif signature vivant, une finition obsessionnelle.
 
-### Motif signature : la constellation des nations
-Un **réseau de points reliés** (graphe) qui évoque simultanément la théorie des graphes et la constellation des délégations francophones réunies à Dakar. Rendu en SVG/canvas léger, animation lente et discrète (dérive douce des nœuds, liens qui se dessinent), **toujours** conditionnée à `prefers-reduced-motion`. Palette or sur fond vert profond dans le hero.
+### Motif signature : la figure construite
+Le site n'a plus de réseau de points aléatoires. Sa seule géométrie est **la figure du problème 3 (Senior) de l'OFM 2024**, publié sur ce site, qui **se construit à la règle et au compas** à l'ouverture de l'accueil, dans l'ordre de l'énoncé (cercle circonscrit, triangle, hauteur, second cercle, conclusion). SVG inline, chorégraphie CSS de 1,8 s, texte lisible dès 0 ms, une fois par session, état final direct sous `prefers-reduced-motion`. Après la séquence, la figure est **immobile**. Ce langage de construction (arcs, traits pointillés) n'apparaît nulle part ailleurs. Composant : `components/motifs/figure-construction.tsx`.
 Aucune texture secondaire : la grille isométrique a été retirée (voir « Chrome interdit »).
 
 ### Signes récurrents (à réutiliser partout pour la cohérence)
@@ -111,14 +111,14 @@ Fallbacks système déclarés dans chaque `next/font`.
 - **Grille** : 12 colonnes éditoriales, marges larges, **compositions asymétriques bienvenues**. Alignements stricts (rigueur visible).
 - **Rayons** : `2px` (fin) · `8px` (cartes) · `16px` (grands blocs) · `full` (pastilles). Rester plutôt net.
 - **Ombres** : douces et basses. Ex. `0 1px 2px rgba(0,0,0,.04)`, `0 8px 24px rgba(14,32,24,.08)` (teinte verte discrète). Jamais d'ombre lourde.
-- **Motion** : durées 150 / 250 / 400 ms, easing `cubic-bezier(0.2, 0.8, 0.2, 1)`. Reveal au scroll = translation 12–16px + opacité. Micro-interactions sur cartes (élévation légère, filet or qui apparaît). **Tout** est désactivé/atténué sous `prefers-reduced-motion`. Aucun parallaxe gadget.
+- **Motion — doctrine : surtout, en retirer.** Aucune animation d'ambiance, aucune apparition au scroll, aucune transition de survol uniforme. Trois familles seulement : (1) **une** séquence orchestrée à l'ouverture de l'accueil (la figure construite) ; (2) le mouvement qui **répond à une action** — accordéon (ouverture 280 ms `cubic-bezier(0.2, 0.8, 0.2, 1)`, fermeture 180 ms `ease-in`), menu mobile (200 ms, opacité seule), lien texte (filet 1 → 2 px, 120 ms), bouton (fond 100 ms) ; (3) le geste signature (voir §7). Durées et courbes différenciées selon la fonction : ce qui se déplie a une inertie, ce qui apparaît n'en a pas. **Tout** est désactivé sous `prefers-reduced-motion`.
 
 ---
 
 ## 7. Composants signatures à créer
 
 - **Header** : navigation claire, sélecteur de langue fr/en, Σ à gauche, fin filet or au scroll.
-- **Hero** : motif constellation animé + titre `display-xl` en Fraunces + méta-infos en mono (lieu, dates provisoires, langue, catégories). Pas de hero vide (voir §13).
+- **Hero** : titre `display-xl` en Fraunces à gauche, figure construite à droite avec sa légende (lien vers le sujet PDF), méta-ligne (dates en mono, lieu, langue, catégories). Pas de hero vide (voir §13).
 - **Fiche événement** : bloc élégant récapitulant lieu / dates / organisateur / langue / format.
 - **Bloc statistiques** : grands chiffres tabulaires (pays, élèves, catégories, éditions) — placeholders si non confirmés.
 - **Deux catégories** : cartes Junior (collège) / Senior (lycée) différenciées, pas deux cartes vides jumelles.
