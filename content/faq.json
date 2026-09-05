@@ -25,18 +25,8 @@
       "en": "What is the competition format?"
     },
     "answer": {
-      "fr": "Une compétition à distance : une session unique de 4h30 le samedi, suivie d'une correction coordonnée entre chefs de délégation et coordinateurs internationaux le dimanche. [Détails à confirmer]",
-      "en": "A fully online competition: a single 4.5-hour session on Saturday, followed by coordinated marking between delegation leaders and international coordinators on Sunday. [Details to be confirmed]"
-    }
-  },
-  {
-    "question": {
-      "fr": "Comment inscrire sa délégation ?",
-      "en": "How do I register a delegation?"
-    },
-    "answer": {
-      "fr": "Les modalités d'inscription des délégations nationales seront communiquées par Terangamath. [À confirmer]",
-      "en": "Registration terms for national delegations will be communicated by Terangamath. [To be confirmed]"
+      "fr": "Une compétition à distance : une session unique de 4h30 le samedi, suivie d'une correction coordonnée entre chefs de délégation et coordinateurs internationaux le dimanche.",
+      "en": "A fully online competition: a single 4.5-hour session on Saturday, followed by coordinated marking between delegation leaders and international coordinators on Sunday."
     }
   }
 ]

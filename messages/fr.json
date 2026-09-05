@@ -54,7 +54,7 @@
     "Stats": {
       "eyebrow": "03 — En chiffres",
       "title": "Une olympiade en construction",
-      "provisionalNote": "Chiffres provisoires, en cours de confirmation."
+      "provisionalNote": "Chiffres de l'édition précédente, utilisés à titre de repère."
     },
     "Categories": {
       "eyebrow": "04 — Catégories",
@@ -110,8 +110,7 @@
     "toBeConfirmed": "À confirmer",
     "learnMore": "En savoir plus",
     "confirmed": "Confirmé",
-    "pending": "En attente",
-    "provisionalInfo": "Information provisoire"
+    "pending": "En attente"
   },
   "Pages": {
     "Olympiad": {
@@ -156,8 +155,7 @@
       "Committees": {
         "eyebrow": "02 — Comités",
         "title": "Comités",
-        "lead": "Les comités qui préparent l'édition 2027.",
-        "membersPending": "Membres à confirmer."
+        "lead": "Les comités qui préparent l'édition 2027."
       }
     },
     "Teams": {
@@ -184,9 +182,7 @@
       "eyebrow": "Programme",
       "title": "Le programme de l'Olympiade",
       "lead": "Le déroulé des deux journées de l'édition 2027 : épreuves à distance, puis correction coordonnée.",
-      "provisionalNote": "Le déroulé suit la règle générale de l'OFM ; Terangamath le confirmera pour 2027.",
       "dateTBC": "Date à confirmer",
-      "timeTBC": "Horaire à confirmer",
       "kinds": {
         "epreuve": "Épreuve",
         "correction": "Correction"
@@ -236,7 +232,7 @@
       "eyebrow": "Résultats",
       "title": "Résultats",
       "lead": "Les résultats de l'Olympiade.",
-      "comingSoonTitle": "Résultats à venir",
+      "comingSoonTitle": "Les résultats seront publiés après la correction",
       "comingSoonBody": "Les résultats de l'édition 2027 seront publiés à l'issue des épreuves et de la correction par le jury international."
     },
     "Contact": {
@@ -252,25 +248,9 @@
     "Legal": {
       "eyebrow": "Mentions légales",
       "title": "Mentions légales",
-      "Publisher": {
-        "title": "Éditeur du site",
-        "body": "Site édité par Terangamath. Raison sociale et adresse complètes à confirmer."
-      },
-      "Host": {
-        "title": "Hébergement",
-        "body": "Hébergeur à confirmer."
-      },
-      "Director": {
-        "title": "Directeur de la publication",
-        "body": "Nom à confirmer."
-      },
       "Ip": {
         "title": "Propriété intellectuelle",
         "body": "L'ensemble des contenus de ce site (textes, visuels, motif graphique) est la propriété de Terangamath, sauf mention contraire, et ne peut être reproduit sans autorisation préalable."
-      },
-      "Privacy": {
-        "title": "Données personnelles",
-        "body": "Politique de confidentialité à publier, conformément à la réglementation applicable."
       },
       "ContactRef": {
         "title": "Contact",

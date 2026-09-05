@@ -7,14 +7,7 @@
       "en": "Selects problems among the proposals received, refines the statements, writes the official solutions and designs the marking schemes."
     },
     "provisional": true,
-    "members": [
-      {
-        "name": "[À confirmer — Terangamath]",
-        "role": { "fr": "Membre", "en": "Member" },
-        "org": null,
-        "country": null
-      }
-    ]
+    "members": []
   },
   {
     "id": "equipe-coordination",
@@ -24,14 +17,7 @@
       "en": "Each problem is marked by a pair of coordinators, who meet delegation leaders to finalise the scores."
     },
     "provisional": true,
-    "members": [
-      {
-        "name": "[À confirmer — Terangamath]",
-        "role": { "fr": "Membre", "en": "Member" },
-        "org": null,
-        "country": null
-      }
-    ]
+    "members": []
   },
   {
     "id": "remerciements",

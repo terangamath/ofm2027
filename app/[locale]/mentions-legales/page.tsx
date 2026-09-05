@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
 
-const SECTIONS = ["Publisher", "Host", "Director", "Ip", "Privacy", "ContactRef"] as const;
+const SECTIONS = ["Ip", "ContactRef"] as const;
 
 export async function generateMetadata({
   params,

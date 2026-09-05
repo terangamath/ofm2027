@@ -54,7 +54,7 @@
     "Stats": {
       "eyebrow": "03 — By the numbers",
       "title": "An Olympiad taking shape",
-      "provisionalNote": "Provisional figures, subject to confirmation."
+      "provisionalNote": "Figures from the previous edition, shown for reference."
     },
     "Categories": {
       "eyebrow": "04 — Categories",
@@ -110,8 +110,7 @@
     "toBeConfirmed": "To be confirmed",
     "learnMore": "Learn more",
     "confirmed": "Confirmed",
-    "pending": "Pending",
-    "provisionalInfo": "Provisional information"
+    "pending": "Pending"
   },
   "Pages": {
     "Olympiad": {
@@ -156,8 +155,7 @@
       "Committees": {
         "eyebrow": "02 — Committees",
         "title": "Committees",
-        "lead": "The committees preparing the 2027 edition.",
-        "membersPending": "Members to be confirmed."
+        "lead": "The committees preparing the 2027 edition."
       }
     },
     "Teams": {
@@ -184,9 +182,7 @@
       "eyebrow": "Programme",
       "title": "The Olympiad programme",
       "lead": "The two days of the 2027 edition: exams online, then coordinated marking.",
-      "provisionalNote": "The schedule follows the Olympiad's general rule; Terangamath will confirm it for 2027.",
       "dateTBC": "Date to be confirmed",
-      "timeTBC": "Time to be confirmed",
       "kinds": {
         "epreuve": "Exam",
         "correction": "Marking"
@@ -236,7 +232,7 @@
       "eyebrow": "Results",
       "title": "Results",
       "lead": "The Olympiad's results.",
-      "comingSoonTitle": "Results coming soon",
+      "comingSoonTitle": "Results will be published after marking",
       "comingSoonBody": "The 2027 edition's results will be published once the exams have been marked by the international jury."
     },
     "Contact": {
@@ -252,25 +248,9 @@
     "Legal": {
       "eyebrow": "Legal notice",
       "title": "Legal notice",
-      "Publisher": {
-        "title": "Site publisher",
-        "body": "This site is published by Terangamath. Full legal name and address to be confirmed."
-      },
-      "Host": {
-        "title": "Hosting",
-        "body": "Host to be confirmed."
-      },
-      "Director": {
-        "title": "Publication director",
-        "body": "Name to be confirmed."
-      },
       "Ip": {
         "title": "Intellectual property",
         "body": "All content on this site (text, visuals, graphic motif) is the property of Terangamath, unless otherwise stated, and may not be reproduced without prior authorisation."
-      },
-      "Privacy": {
-        "title": "Personal data",
-        "body": "Privacy policy to be published, in accordance with applicable regulations."
       },
       "ContactRef": {
         "title": "Contact",

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
 import { SectionHeading } from "@/components/home/section-heading";
-import { ProvisionalBadge } from "@/components/shared/provisional-badge";
 import organisationData from "@/content/organisation.json";
 import partnersData from "@/content/partenaires.json";
 import type { Committee, Locale, Partner } from "@/content/types";
@@ -30,7 +29,6 @@ export default async function OrganisationPage({
   setRequestLocale(locale);
   const typedLocale = locale as Locale;
   const t = await getTranslations({ locale, namespace: "Pages.Organisation" });
-  const tCommon = await getTranslations({ locale, namespace: "Common" });
 
   return (
     <>
@@ -73,30 +71,23 @@ export default async function OrganisationPage({
                     <h3 className="font-display text-h3 text-foreground">
                       {committee.name[typedLocale]}
                     </h3>
-                    {committee.provisional && <ProvisionalBadge label={tCommon("provisionalInfo")} />}
                   </div>
                   {committee.description && (
                     <p className="text-muted-foreground">{committee.description[typedLocale]}</p>
                   )}
                 </div>
 
-                {committee.id !== "remerciements" && (
+                {committee.members.length > 0 && (
                   <ul className="flex flex-col gap-3 border-t border-hairline pt-5">
-                    {committee.members.length === 0 ? (
-                      <li className="text-small text-muted-foreground italic">
-                        {t("Committees.membersPending")}
+                    {committee.members.map((member, index) => (
+                      <li key={`${committee.id}-${index}`} className="flex flex-col">
+                        <span className="font-medium text-foreground">{member.name}</span>
+                        <span className="text-small text-muted-foreground">
+                          {member.role[typedLocale]}
+                          {member.org && ` — ${member.org}`}
+                        </span>
                       </li>
-                    ) : (
-                      committee.members.map((member, index) => (
-                        <li key={`${committee.id}-${index}`} className="flex flex-col">
-                          <span className="font-medium text-foreground">{member.name}</span>
-                          <span className="text-small text-muted-foreground">
-                            {member.role[typedLocale]}
-                            {member.org && ` — ${member.org}`}
-                          </span>
-                        </li>
-                      ))
-                    )}
+                    ))}
                   </ul>
                 )}
               </div>

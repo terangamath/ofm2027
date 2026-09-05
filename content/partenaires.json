@@ -28,21 +28,5 @@
     "status": "pending",
     "logo": null,
     "url": "https://www.ucad.sn"
-  },
-  {
-    "id": "partenaire-financier-1",
-    "name": { "fr": "[Partenaire financier à confirmer]", "en": "[Financial partner to be confirmed]" },
-    "category": "financier",
-    "status": "pending",
-    "logo": null,
-    "url": null
-  },
-  {
-    "id": "partenaire-technique-1",
-    "name": { "fr": "[Partenaire technique à confirmer]", "en": "[Technical partner to be confirmed]" },
-    "category": "technique",
-    "status": "pending",
-    "logo": null,
-    "url": null
   }
 ]
