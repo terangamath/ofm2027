@@ -76,14 +76,27 @@
       "comingSoon": "The 2027 edition's problems will be published after the exams.",
       "cta": "Explore the problems"
     },
-    "Countdown": {
-      "title": "Countdown — 2027 edition",
-      "lead": "The precise dates of the 2027 edition will be announced soon.",
-      "days": "Days",
-      "hours": "Hours",
-      "minutes": "Minutes",
-      "seconds": "Seconds",
-      "datesPending": "Dates being confirmed."
+    "Simultaneite": {
+      "title": "27 March 2027, at the same instant",
+      "lead": "Fourteen countries open the same paper at the same moment, on different clocks. The reference time is Dakar's, the host country.",
+      "note": "Time taken from the OFM rules (art. 5.8): papers traditionally start at 09:00 Paris time, that is 08:00 in Dakar. Terangamath will confirm the 2027 schedule.",
+      "listLabel": "Local start time of the paper, by delegation",
+      "localTime": "local time",
+      "exam": "paper · 4 h 30",
+      "now": "now",
+      "hostBadge": "Host country",
+      "you": "You",
+      "yourZone": "You · {zone}",
+      "sameAs": "You are on {country} time",
+      "before": "Before the paper starts",
+      "during": "Paper in progress",
+      "after": "Paper over",
+      "afterLine": "27 March 2027 · 08:00 in Dakar · 14 countries, one paper",
+      "days": "days",
+      "hours": "hours",
+      "minutes": "minutes",
+      "seconds": "seconds",
+      "referenceLine": "Reference: {time} in Dakar ({zone})"
     },
     "Partners": {
       "title": "Making the Olympiad possible",
@@ -167,7 +180,9 @@
       "kinds": {
         "epreuve": "Exam",
         "correction": "Marking"
-      }
+      },
+      "startAt": "Starts at {time}, Dakar time (provisional, OFM rules art. 5.8).",
+      "localTimes": "See the delegations' local times"
     },
     "Problems": {
       "title": "The Olympiad problems",

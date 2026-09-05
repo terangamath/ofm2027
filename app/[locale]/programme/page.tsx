@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
 import type { Locale, ScheduleEventKind } from "@/content/types";
-import { programme } from "@/lib/contenu";
+import { evenement, programme } from "@/lib/contenu";
+import { heureLocale } from "@/lib/fuseaux";
+import { Link } from "@/i18n/navigation";
 
 const DATE_FORMAT: Record<Locale, string> = {
   fr: "fr-FR",
@@ -36,6 +38,8 @@ export default async function ProgrammePage({
   });
 
   const kindLabel = (kind: ScheduleEventKind) => t(`kinds.${kind}`);
+  const exam = evenement.exam;
+  const heureDakar = exam ? heureLocale(exam.referenceZone, new Date(exam.startInstant)) : null;
   const formatDate = (date: string | null) => (date ? formatter.format(new Date(date)) : t("dateTBC"));
 
   return (
@@ -69,6 +73,14 @@ export default async function ProgrammePage({
                         </span>
                       </div>
                       <p className="font-medium text-foreground">{event.title[typedLocale]}</p>
+                      {event.kind === "epreuve" && heureDakar && (
+                        <p className="text-small text-muted-foreground">
+                          {t("startAt", { time: heureDakar })}{" "}
+                          <Link href="/#simultaneite" className="link-text text-link">
+                            {t("localTimes")}
+                          </Link>
+                        </p>
+                      )}
                       {event.location && (
                         <p className="text-small text-muted-foreground">
                           {event.location[typedLocale]}

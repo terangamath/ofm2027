@@ -126,7 +126,7 @@ Fallbacks système déclarés dans chaque `next/font`.
 - **Timeline / Programme** : déroulé des épreuves et temps forts.
 - **Cartes actualités** éditoriales (type, date, titre, extrait).
 - **Bloc Problèmes & Solutions** : rendu **KaTeX** soigné (aligné à la palette, délimiteurs discrets), état `coming_soon`.
-- **Compte à rebours vers 2027** : chiffres mono tabulaires, sobre, jamais kitsch.
+- **Geste signature — la partition de la simultanéité** (`components/home/simultaneite*.tsx`) : quatorze lignes, une par délégation, chacune avec sa règle horaire décalée de son offset IANA ; une seule bande verticale (l'épreuve, 4 h 30) traverse toutes les lignes ; le trait « maintenant » (terracotta, seul emploi de cette couleur) avance en temps réel ; le compte à rebours est la distance entre les deux traits ; trois états (avant, pendant, après) ; ligne du visiteur ajoutée après hydratation dans un espace réservé. Heure de référence : celle de Dakar (pays hôte), l'instant venant du règlement OFM art. 5.8 (`content/event.json`, `exam`, provisoire). Fuseaux via `lib/fuseaux.ts` (base IANA/ICU, jamais d'offset en dur, tests du changement d'heure du 28 mars 2027). Il remplace le compte à rebours.
 - **Partenaires** : institutionnels / financiers / techniques, traités dignement même en attente (pas de logos fantômes flottants — voir §13).
 - **FAQ** en accordéon.
 - **Footer** : structuré, mesuré (pas surdimensionné).

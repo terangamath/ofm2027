@@ -76,14 +76,27 @@
       "comingSoon": "Les problèmes de l'édition 2027 seront publiés après les épreuves.",
       "cta": "Explorer les problèmes"
     },
-    "Countdown": {
-      "title": "Compte à rebours — édition 2027",
-      "lead": "Les dates précises de l'édition 2027 seront annoncées prochainement.",
-      "days": "Jours",
-      "hours": "Heures",
-      "minutes": "Minutes",
-      "seconds": "Secondes",
-      "datesPending": "Dates en cours de confirmation."
+    "Simultaneite": {
+      "title": "Le 27 mars 2027, au même instant",
+      "lead": "Quatorze pays ouvrent la même épreuve au même moment, sur des horloges différentes. L'heure de référence est celle de Dakar, pays hôte.",
+      "note": "Horaire repris du règlement de l'OFM (art. 5.8) : les épreuves commencent traditionnellement à 09:00 heure de Paris, soit 08:00 à Dakar. Terangamath confirmera l'horaire de l'édition 2027.",
+      "listLabel": "Heure locale de début de l'épreuve, par délégation",
+      "localTime": "heure locale",
+      "exam": "épreuve · 4 h 30",
+      "now": "maintenant",
+      "hostBadge": "Pays hôte",
+      "you": "Vous",
+      "yourZone": "Vous · {zone}",
+      "sameAs": "Vous êtes à l'heure de {country}",
+      "before": "Avant le début de l'épreuve",
+      "during": "Épreuve en cours",
+      "after": "Épreuve terminée",
+      "afterLine": "27 mars 2027 · 08:00 à Dakar · 14 pays, une épreuve",
+      "days": "jours",
+      "hours": "heures",
+      "minutes": "minutes",
+      "seconds": "secondes",
+      "referenceLine": "Référence : {time} à Dakar ({zone})"
     },
     "Partners": {
       "title": "Ils rendent l'Olympiade possible",
@@ -167,7 +180,9 @@
       "kinds": {
         "epreuve": "Épreuve",
         "correction": "Correction"
-      }
+      },
+      "startAt": "Début à {time}, heure de Dakar (horaire provisoire, règlement OFM art. 5.8).",
+      "localTimes": "Voir les heures locales des délégations"
     },
     "Problems": {
       "title": "Les problèmes de l'Olympiade",

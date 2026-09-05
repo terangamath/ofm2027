@@ -5,7 +5,7 @@ import { StatsSection } from "@/components/home/stats";
 import { CategoriesSection } from "@/components/home/categories";
 import { DelegationsSection } from "@/components/home/delegations";
 import { ProblemsTeaserSection } from "@/components/home/problems-teaser";
-import { CountdownSection } from "@/components/home/countdown";
+import { SimultaneiteSection } from "@/components/home/simultaneite";
 import { PartnersSection } from "@/components/home/partners";
 import { FaqSection } from "@/components/home/faq";
 import { EventJsonLd } from "@/components/shared/event-jsonld";
@@ -25,12 +25,12 @@ export default async function HomePage({
     <>
       <EventJsonLd event={eventInfo} locale={typedLocale} />
       <Hero locale={typedLocale} />
+      <SimultaneiteSection locale={typedLocale} />
       <EventInfoSection locale={typedLocale} />
       <StatsSection locale={typedLocale} />
       <CategoriesSection locale={typedLocale} />
       <DelegationsSection locale={typedLocale} />
       <ProblemsTeaserSection locale={typedLocale} />
-      <CountdownSection locale={typedLocale} />
       <PartnersSection locale={typedLocale} />
       <FaqSection locale={typedLocale} />
     </>

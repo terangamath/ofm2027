@@ -8,6 +8,12 @@
   "dates": { "fr": "27-28 mars 2027", "en": "27-28 March 2027" },
   "startDate": "2027-03-27",
   "endDate": "2027-03-28",
+  "exam": {
+    "startInstant": "2027-03-27T08:00:00Z",
+    "referenceZone": "Africa/Dakar",
+    "durationMinutes": 270,
+    "provisional": true
+  },
   "categories": [
     {
       "id": "junior",

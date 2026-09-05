@@ -3,6 +3,7 @@
   "countryCode": "KM",
   "name": { "fr": "Comores", "en": "Comoros" },
   "flagEmoji": "🇰🇲",
+  "timeZone": "Indian/Comoro",
   "status": "confirmed",
   "isHost": false,
   "description": null,

@@ -3,6 +3,7 @@
   "countryCode": "CM",
   "name": { "fr": "Cameroun", "en": "Cameroon" },
   "flagEmoji": "🇨🇲",
+  "timeZone": "Africa/Douala",
   "status": "confirmed",
   "isHost": false,
   "description": null,

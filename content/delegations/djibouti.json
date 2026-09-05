@@ -3,6 +3,7 @@
   "countryCode": "DJ",
   "name": { "fr": "Djibouti", "en": "Djibouti" },
   "flagEmoji": "🇩🇯",
+  "timeZone": "Africa/Djibouti",
   "status": "confirmed",
   "isHost": false,
   "description": null,

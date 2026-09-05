@@ -3,6 +3,7 @@
   "countryCode": "CG",
   "name": { "fr": "Congo", "en": "Congo" },
   "flagEmoji": "🇨🇬",
+  "timeZone": "Africa/Brazzaville",
   "status": "confirmed",
   "isHost": false,
   "description": null,

@@ -90,7 +90,8 @@ export default async function LocaleLayout({
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <NextIntlClientProvider>
+          {/* Aucun composant client ne traduit : on n'envoie pas les messages au navigateur. */}
+          <NextIntlClientProvider messages={{}}>
             <Header />
             <main id="contenu" className="flex flex-1 flex-col">
               {children}

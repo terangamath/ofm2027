@@ -3,6 +3,7 @@
   "countryCode": "BF",
   "name": { "fr": "Burkina Faso", "en": "Burkina Faso" },
   "flagEmoji": "🇧🇫",
+  "timeZone": "Africa/Ouagadougou",
   "status": "confirmed",
   "isHost": false,
   "description": null,

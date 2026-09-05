@@ -3,6 +3,7 @@
   "countryCode": "NE",
   "name": { "fr": "Niger", "en": "Niger" },
   "flagEmoji": "🇳🇪",
+  "timeZone": "Africa/Niamey",
   "status": "confirmed",
   "isHost": false,
   "description": null,

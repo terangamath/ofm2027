@@ -3,6 +3,7 @@
   "countryCode": "SN",
   "name": { "fr": "Sénégal", "en": "Senegal" },
   "flagEmoji": "🇸🇳",
+  "timeZone": "Africa/Dakar",
   "status": "confirmed",
   "isHost": true,
   "description": {

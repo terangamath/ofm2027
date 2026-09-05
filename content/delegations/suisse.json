@@ -3,6 +3,7 @@
   "countryCode": "CH",
   "name": { "fr": "Suisse", "en": "Switzerland" },
   "flagEmoji": "🇨🇭",
+  "timeZone": "Europe/Zurich",
   "status": "confirmed",
   "isHost": false,
   "description": null,

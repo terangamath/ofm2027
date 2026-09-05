@@ -3,6 +3,7 @@
   "countryCode": "CI",
   "name": { "fr": "Côte d'Ivoire", "en": "Ivory Coast" },
   "flagEmoji": "🇨🇮",
+  "timeZone": "Africa/Abidjan",
   "status": "confirmed",
   "isHost": false,
   "description": null,

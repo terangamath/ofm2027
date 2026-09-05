@@ -3,6 +3,7 @@
   "countryCode": "DZ",
   "name": { "fr": "Algérie", "en": "Algeria" },
   "flagEmoji": "🇩🇿",
+  "timeZone": "Africa/Algiers",
   "status": "confirmed",
   "isHost": false,
   "description": null,

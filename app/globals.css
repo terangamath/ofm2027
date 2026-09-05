@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "shadcn/tailwind.css";
 @import "katex/dist/katex.min.css";
 
 @custom-variant dark (&:is(.dark *));
@@ -27,6 +26,8 @@
      Fixes dans les deux thèmes : à n'employer que sur les surfaces claires fixes. */
   --encre: #4b5563;
   --or-encre: #6f5314;
+  /* Terracotta éclaircie pour le texte sur fond nuit (le trait « maintenant »). */
+  --terracotta-clair: #e07a5a;
 }
 
 /* ────────────────────────────────────────────────────────────────
@@ -126,6 +127,7 @@
   --color-blanc: var(--blanc);
   --color-encre: var(--encre);
   --color-or-encre: var(--or-encre);
+  --color-terracotta-clair: var(--terracotta-clair);
   --color-hairline: var(--hairline);
 
   /* Rôles sémantiques shadcn/ui */
@@ -393,5 +395,73 @@
 @layer utilities {
   .animer-apparition {
     animation: apparition 200ms var(--ease-signature) both;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Partition de la simultanéité — la bande de l'épreuve et le trait
+   « maintenant » sont positionnés par des variables posées sur .partition,
+   identiques sur toutes les lignes : c'est cette continuité verticale qui
+   montre l'instant unique. Le trait avance à vitesse réelle, sans transition.
+   ──────────────────────────────────────────────────────────────── */
+@layer components {
+  .partition-bande {
+    left: var(--partition-debut);
+    width: var(--partition-largeur);
+    background: color-mix(in srgb, var(--or) 14%, transparent);
+    border-left: 1px solid color-mix(in srgb, var(--or) 70%, transparent);
+    border-right: 1px solid color-mix(in srgb, var(--or) 35%, transparent);
+    transition: background-color var(--duration-slow) var(--ease-signature);
+  }
+  .partition-pendant .partition-bande {
+    background: color-mix(in srgb, var(--or) 32%, transparent);
+    border-right-color: color-mix(in srgb, var(--or) 70%, transparent);
+  }
+  .partition-apres .partition-bande {
+    background: color-mix(in srgb, var(--or) 55%, transparent);
+    border-color: var(--or-clair);
+  }
+  .partition-maintenant,
+  .partition-maintenant-legende {
+    left: var(--partition-maintenant);
+    display: none;
+  }
+  .partition-maintenant {
+    background: var(--terracotta-clair);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--terracotta-clair) 25%, transparent);
+  }
+  .partition-maintenant-legende {
+    transform: translateX(-50%);
+    left: clamp(2.5rem, var(--partition-maintenant), calc(100% - 2.5rem));
+  }
+  .partition[data-maintenant="oui"]:not(.partition-apres) .partition-maintenant,
+  .partition[data-maintenant="oui"]:not(.partition-apres) .partition-maintenant-legende {
+    display: block;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Accordéon natif — dépliement 280 ms sur la courbe signature, repli 180 ms
+   en ease-in (ce qui se déplie a une inertie). Nécessite l'interpolation de
+   ::details-content ; sinon, ouverture instantanée.
+   ──────────────────────────────────────────────────────────────── */
+@layer components {
+  .accordeon::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition:
+      block-size 180ms ease-in,
+      content-visibility 180ms allow-discrete;
+  }
+  .accordeon[open]::details-content {
+    block-size: auto;
+    transition:
+      block-size 280ms var(--ease-signature),
+      content-visibility 280ms allow-discrete;
+  }
+  @supports (interpolate-size: allow-keywords) {
+    .accordeon {
+      interpolate-size: allow-keywords;
+    }
   }
 }

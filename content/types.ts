@@ -21,6 +21,21 @@ export type EngagementStatus = "confirmed" | "pending";
 // Événement (global)
 // ─────────────────────────────────────────────────────────────
 
+/**
+ * Session d'épreuve : l'instant unique auquel les quatorze délégations
+ * ouvrent le sujet. `startInstant` est en UTC ; `referenceZone` est le fuseau
+ * dans lequel l'heure de référence est affichée (celui du pays hôte).
+ * `provisional` : horaire repris de la règle générale du règlement OFM
+ * (art. 5.8, « traditionnellement à 09:00 heure de Paris »), non confirmé
+ * nommément pour 2027.
+ */
+export interface ExamSession {
+  startInstant: string;       // "2027-03-27T08:00:00Z"
+  referenceZone: string;      // "Africa/Dakar"
+  durationMinutes: number;    // 270
+  provisional: boolean;
+}
+
 export interface EventInfo {
   edition: number;            // 2027
   city: LocalizedText;
@@ -35,6 +50,8 @@ export interface EventInfo {
   startDate: string | null;
   endDate: string | null;
   categories: EventCategory[];
+  /** null tant qu'aucun horaire, même provisoire, n'est arrêté. */
+  exam: ExamSession | null;
 }
 
 export interface EventCategory {
@@ -68,7 +85,9 @@ export interface Delegation {
   slug: string;               // "senegal"
   countryCode: string;        // ISO 3166-1 alpha-2, ex. "SN"
   name: LocalizedText;        // "Sénégal" / "Senegal"
-  flagEmoji: string;          // "🇸🇳"
+  flagEmoji: string;          // "🇸🇳" (historique ; l'affichage utilise des SVG)
+  /** Fuseau IANA de la délégation, ex. "Africa/Dakar". Jamais de décalage en dur. */
+  timeZone: string;
   status: EngagementStatus;   // confirmed | pending
   isHost: boolean;
   description: LocalizedText | null;

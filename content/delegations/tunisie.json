@@ -3,6 +3,7 @@
   "countryCode": "TN",
   "name": { "fr": "Tunisie", "en": "Tunisia" },
   "flagEmoji": "🇹🇳",
+  "timeZone": "Africa/Tunis",
   "status": "confirmed",
   "isHost": false,
   "description": null,

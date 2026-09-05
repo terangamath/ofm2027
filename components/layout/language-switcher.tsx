@@ -1,26 +1,26 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
-import { usePathname } from "@/i18n/navigation";
-import { Link } from "@/i18n/navigation";
-import { routing } from "@/i18n/routing";
+import { Link, usePathname } from "@/i18n/navigation";
 
 const LOCALE_LABELS: Record<string, string> = {
   fr: "FR",
   en: "EN",
 };
 
-export function LanguageSwitcher() {
-  const locale = useLocale();
+export function LanguageSwitcher({
+  locale,
+  locales,
+  label,
+}: {
+  locale: string;
+  locales: string[];
+  label: string;
+}) {
   const pathname = usePathname();
-  const t = useTranslations("Header");
 
   return (
-    <nav
-      aria-label={t("languageSwitcherLabel")}
-      className="label flex items-center gap-1"
-    >
-      {routing.locales.map((loc, index) => {
+    <nav aria-label={label} className="label flex items-center gap-1">
+      {locales.map((loc, index) => {
         const active = loc === locale;
         return (
           <span key={loc} className="flex items-center gap-1">
@@ -33,13 +33,9 @@ export function LanguageSwitcher() {
               href={pathname}
               locale={loc}
               aria-current={active ? "true" : undefined}
-              className={
-                active
-                  ? "text-link"
-                  : "text-muted-foreground hover:text-foreground"
-              }
+              className={active ? "text-link" : "text-muted-foreground hover:text-foreground"}
             >
-              {LOCALE_LABELS[loc]}
+              {LOCALE_LABELS[loc] ?? loc.toUpperCase()}
             </Link>
           </span>
         );

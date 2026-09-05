@@ -3,6 +3,7 @@
   "countryCode": "BE",
   "name": { "fr": "Belgique", "en": "Belgium" },
   "flagEmoji": "🇧🇪",
+  "timeZone": "Europe/Brussels",
   "status": "confirmed",
   "isHost": false,
   "description": null,

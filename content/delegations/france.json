@@ -3,6 +3,7 @@
   "countryCode": "FR",
   "name": { "fr": "France", "en": "France" },
   "flagEmoji": "🇫🇷",
+  "timeZone": "Europe/Paris",
   "status": "confirmed",
   "isHost": false,
   "description": null,
