@@ -110,6 +110,66 @@
 }
 
 /* ────────────────────────────────────────────────────────────────
+   Surfaces fixes — cause racine du bug « texte clair sur sable » :
+   les rôles sémantiques (--foreground, --link, --ring, --border…) sont
+   définis par le thème sur <html>, alors que certaines sections ont un fond
+   fixe (sable, ivoire, nuit) quel que soit le thème. Une surface fixe doit
+   donc redéclarer les rôles pour son sous-arbre. Ainsi text-foreground,
+   text-link, l'anneau de focus, les bordures et les icônes (currentColor)
+   restent justes dans les deux thèmes, sans rien changer dans les composants.
+   ──────────────────────────────────────────────────────────────── */
+.bg-sable,
+.bg-ivoire,
+.bg-blanc,
+.contexte-clair {
+  --background: var(--ivoire);
+  --foreground: var(--anthracite);
+  --card: var(--blanc);
+  --card-foreground: var(--anthracite);
+  --popover: var(--blanc);
+  --popover-foreground: var(--anthracite);
+  --primary: var(--vert);
+  --primary-foreground: var(--ivoire);
+  --secondary: var(--sable);
+  --secondary-foreground: var(--vert-nuit);
+  --muted: var(--sable);
+  --muted-foreground: var(--encre);
+  --accent: var(--or);
+  --accent-foreground: var(--vert-nuit);
+  --border: color-mix(in srgb, var(--anthracite) 12%, transparent);
+  --input: color-mix(in srgb, var(--anthracite) 18%, transparent);
+  --ring: var(--or-encre);
+  --hairline: color-mix(in srgb, var(--or) 40%, transparent);
+  --link: var(--or-encre);
+  color-scheme: light;
+}
+
+.bg-vert-nuit,
+.bg-vert,
+.contexte-nuit {
+  --background: var(--vert-nuit);
+  --foreground: var(--ivoire);
+  --card: color-mix(in srgb, var(--vert) 55%, var(--vert-nuit));
+  --card-foreground: var(--ivoire);
+  --popover: color-mix(in srgb, var(--vert) 55%, var(--vert-nuit));
+  --popover-foreground: var(--ivoire);
+  --primary: var(--or);
+  --primary-foreground: var(--vert-nuit);
+  --secondary: color-mix(in srgb, var(--vert) 40%, var(--vert-nuit));
+  --secondary-foreground: var(--sable);
+  --muted: color-mix(in srgb, var(--vert) 30%, var(--vert-nuit));
+  --muted-foreground: color-mix(in srgb, var(--sable) 65%, var(--gris));
+  --accent: var(--or-clair);
+  --accent-foreground: var(--vert-nuit);
+  --border: color-mix(in srgb, var(--sable) 16%, transparent);
+  --input: color-mix(in srgb, var(--sable) 22%, transparent);
+  --ring: var(--or-clair);
+  --hairline: color-mix(in srgb, var(--or) 55%, transparent);
+  --link: var(--or-clair);
+  color-scheme: dark;
+}
+
+/* ────────────────────────────────────────────────────────────────
    Thème Tailwind — expose les tokens comme utilitaires
    ──────────────────────────────────────────────────────────────── */
 @theme inline {

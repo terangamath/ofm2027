@@ -25,7 +25,8 @@ export function LanguageSwitcher({
         return (
           <span key={loc} className="flex items-center gap-1">
             {index > 0 && (
-              <span aria-hidden className="text-border">
+              /* Séparateur : assez contrasté pour être vu, sans concurrencer les libellés. */
+              <span aria-hidden className="text-muted-foreground/70">
                 /
               </span>
             )}
