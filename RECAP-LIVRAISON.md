@@ -2,183 +2,156 @@
 
 > Document de travail pour Terangamath. Récapitule ce qui a été livré, ce qui reste
 > à confirmer, et où retrouver chaque information dans le dépôt.
+>
+> Mis à jour après le lot de corrections « aucun placeholder visible sur le site
+> public » (voir `PROMPT-CORRECTIONS-GLOBALES.md`). **Ce document est désormais le
+> seul endroit où l'incertitude sur le contenu 2027 reste visible** : le site public
+> n'affiche plus aucun `[À confirmer]`, badge « Information provisoire » ni mention
+> « à venir »/« bientôt disponible » pour du contenu manquant — soit l'information
+> réelle 2027 est affichée, soit une valeur 2026 documentée est reprise à sa place,
+> soit le bloc concerné est simplement masqué.
 
 ---
 
-## 1. État des livrables (§8)
+## 1. État des livrables
 
-- ✅ `npm run build` : OK, sans erreur.
+- ✅ `npm run build` : OK, sans erreur (55 pages générées, dont les 28 fiches
+  délégations fr/en).
 - ✅ `npx eslint .` : OK, sans avertissement.
-- ✅ Aucun lien mort **interne** (toutes les routes vivantes répondent 200, les 2 routes
-  supprimées répondent 404 proprement, aucune référence résiduelle dans le code).
-- ⚠️ Liens externes : voir §7 ci-dessous — un lien pose problème (`terangamath.org`).
-- ✅ Parité fr/en complète : 193 clés de traduction de chaque côté, aucun écart
-  (vérifié programmatiquement).
-- ✅ Français par défaut vérifié en conditions réelles : une requête avec
-  `Accept-Language: en-US,en;q=0.9` sur `/` renvoie bien `<html lang="fr">` ; `/en`
-  reste accessible explicitement.
-- ⚠️ **Non exécuté dans cette session** : audit Lighthouse (Perf/A11y/Best practices/SEO)
-  et vérification manuelle en navigateur. Le design system existant (contrastes,
-  focus visibles, `prefers-reduced-motion`, cibles tactiles) n'a pas été modifié dans
-  sa logique, seuls du contenu et des sections ont été ajoutés/retirés en réutilisant
-  les composants et tokens existants — mais un passage Lighthouse réel avant mise en
-  ligne reste recommandé.
+- ✅ Parité fr/en : 177 clés de traduction de chaque côté, aucun écart (vérifié
+  programmatiquement après suppression des clés devenues inutiles).
+- ✅ Liens vérifiés :
+  - `https://www.terangamath.org/` répond **HTTP 200** (le certificat/404 constatés
+    lors d'une livraison précédente ne sont plus d'actualité).
+  - `mailto:contact@terangamath.org` correctement formé sur la page Contact.
+  - Aucun lien interne mort : toutes les routes testées via `next start` répondent
+    200 (`/`, `/equipes`, les 28 fiches pays, `/historique`, `/programme`,
+    `/organisation`, `/contact`, `/mentions-legales`, `/olympiade`), et une fiche
+    pays inexistante répond bien 404.
+- ✅ Masquages vérifiés en HTML rendu (pas seulement au niveau du code) : aucune
+  occurrence visible de « à confirmer », « à venir », « en attente », « bientôt
+  disponible » ou de badge provisoire n'a survécu sur les pages modifiées — seules
+  des occurrences internes aux données de traduction non déclenchées (payload React
+  Server Components) ou à des états `coming_soon` légitimes (résultats, problèmes,
+  galerie, prévus par `CLAUDE.md`) subsistent.
+- ⚠️ **Non exécuté dans cette session** : audit Lighthouse et test manuel complet
+  sur tablette/mobile physique. Aucune classe Tailwind de largeur/alignement n'a été
+  retirée par ce lot (seuls des blocs de texte/label ont été masqués ou des cartes
+  simplifiées), le risque de rupture de grille est donc faible, mais un contrôle
+  visuel réel avant mise en ligne reste recommandé.
 
 ---
 
-## 2. Registre exhaustif des informations à confirmer
+## 2. Registre exhaustif — valeurs reprises de 2026 (règle générale, étape 2)
 
-Toutes les entrées ci-dessous sont soit marquées `"provisional": true` dans un fichier
-JSON, soit portent un placeholder `[À confirmer]` explicite. Aucune n'est présentée
-comme définitive dans l'interface (badge « Information provisoire » sur les blocs
-concernés, italique/pastille pour les statuts `pending`).
+| Donnée affichée | Fichier | Source | Note |
+|---|---|---|---|
+| « 14 pays participants (2026) » | `content/stats.json` | Chiffre réel OFM 2026 | Repère historique, jamais présenté comme un chiffre 2027 |
+| « 132 élèves compétiteurs (2025) » | `content/stats.json` | Chiffre réel OFM 2025 | Idem |
+| Format de la compétition (6 élèves/délégation/catégorie, 4 problèmes, 4 domaines, 4h30, correction le lendemain, distinctions) | `content/format.json` | Règle générale OFM | `provisional: true` en données ; non confirmé nommément pour 2027 |
+| Structure du déroulé (session unique jour 1, correction coordonnée jour 2) | `content/programme.json` | Règle générale OFM | Les **dates** (27-28 mars 2027) sont, elles, confirmées (`event.json`) |
+| Règlement OFM version 2025 | `content/documents.json` | Dernière version publiée | Reste affiché comme référence jusqu'à publication de la version 2027 |
+| Ligne « OFM 2026 » de l'historique (dates, Djibouti, 14 pays) | `content/editions.json` | Faits publiés par Djibouti | Effectifs/sujets/solutions/résultats non publiés → cellule vide, pas de ligne texte |
 
-### Catégorie C — noms et contacts (interdits de reprise, jamais renseignés)
+---
 
-| Fichier | Ligne | Nature |
+## 3. Registre exhaustif — blocs masqués faute de donnée (règle générale, étape 3)
+
+Aucun de ces blocs n'affiche de texte de substitution : ils sont simplement absents
+du rendu. Chaque ligne indique ce qu'il faudra fournir pour les faire réapparaître.
+
+| Emplacement | Ce qui est masqué | Ce qu'il faut fournir |
 |---|---|---|
-| `content/organisation.json` | 12 | Nom du/des membres du comité de sélection des problèmes |
-| `content/organisation.json` | 29 | Nom du/des membres de l'équipe de coordination |
-| `messages/fr.json` / `en.json` | `Pages.Legal.Publisher.body` | Raison sociale et adresse de Terangamath |
-| `messages/fr.json` / `en.json` | `Pages.Legal.Host.body` | Nom de l'hébergeur du site |
-| `messages/fr.json` / `en.json` | `Pages.Legal.Director.body` | Nom du directeur de publication |
-| `messages/fr.json` / `en.json` | `Pages.Contact.emailValue` | Adresse email de contact officielle |
+| `/organisation` — Comité de sélection des problèmes | Liste des membres (bloc entier, y compris le titre « Délégation »/« Membres ») | Composition nominative du comité |
+| `/organisation` — Équipe de coordination | Idem | Composition nominative de l'équipe |
+| `/organisation`, `/`, `/contact` — partenaires | Deux entrées « partenaire financier » et « partenaire technique » retirées de `content/partenaires.json` (aucun nom, pas de placeholder affichable) | Identité du/des partenaire(s) financier et technique une fois signés |
+| `/olympiade` — FAQ | Item « Comment inscrire sa délégation ? » retiré (aucune modalité publiée) | Modalités d'inscription des délégations 2027 |
+| `/historique` — ligne OFM 2026 | Cellule « note » vide (effectifs, sujets, solutions, résultats 2026 non publiés par Djibouti) | Publication officielle de ces données par Djibouti (hors contrôle de Terangamath) |
+| `/mentions-legales` | Sections « Éditeur du site », « Hébergement », « Directeur de la publication », « Données personnelles » retirées de l'affichage (seules « Propriété intellectuelle » et « Contact » restent) | Raison sociale et adresse de Terangamath, nom de l'hébergeur, nom du directeur de publication, politique de confidentialité rédigée |
+| `/equipes/{algerie, belgique, burkina-faso, cameroun, comores, congo, cote-divoire, djibouti, france, maroc, niger, suisse, tunisie}` | Description et liste des membres (blocs entiers) ; le lien « Voir la fiche » n'apparaît pas depuis la grille `/equipes` pour ces 13 délégations (la fiche existe et reste accessible par URL directe, mais n'est pas mise en avant tant qu'elle est vide) | Une présentation courte et/ou la liste des compétiteurs pour chaque délégation, au fur et à mesure de leur communication |
+| `/programme` | Horaire précis (heure de début) de chaque épreuve masqué ; seuls le jour et la durée (4h30) restent affichés — l'édition 2026 n'a jamais publié d'horaire à l'heure près | Horaire précis si Terangamath souhaite le publier pour 2027 |
 
-### Catégorie B — structure/format réutilisé de l'OFM, non confirmé pour 2027
+---
 
-| Fichier | Ligne | Nature |
+## 4. Corrections de coordonnées et de liens appliquées
+
+| Élément | Avant | Après |
 |---|---|---|
-| `content/format.json` | 1 (racine) | Composition des délégations, nb de problèmes, domaines, durée, correction, distinctions — repris de la règle générale OFM |
-| `content/programme.json` | 3 (racine) | Structure du déroulé (session unique + correction) — dates elles-mêmes confirmées (§3) |
-| `content/organisation.json` | 9, 26, 43 | Existence et rôle des 3 comités (sélection, coordination, remerciements) |
-| `content/documents.json` | 10 | Règlement OFM référencé = version 2025, en attente de la version 2027 |
-| `content/faq.json` | 22 (item « Quel est le format ? ») | Détails du format dans la réponse FAQ |
-
-### Autres informations en attente (non bloquantes, déjà traitées comme `pending`/`coming_soon`)
-
-| Fichier | Nature |
-|---|---|
-| `content/partenaires.json` (4 entrées `status: pending`) | Ministère de l'Éducation, UCAD, partenaire financier, partenaire technique — aucun logo, aucun engagement présenté comme acquis |
-| `content/delegations/cote-divoire.json` (`status: pending`) | Participation de la Côte d'Ivoire à confirmer |
-| `content/stats.json` (2 entrées `provisional: true`) | « 14 pays (2026) » et « 132 élèves (2025) » sont des chiffres **historiques réels**, utilisés comme repères en l'absence de chiffres 2027 — jamais présentés comme des chiffres 2027 |
-| `content/faq.json` (item « Comment inscrire sa délégation ? ») | Modalités d'inscription 2027 |
-| `messages/*.json` `Pages.Legal.Privacy.body` | Politique de confidentialité à rédiger et publier |
+| URL Terangamath (partout : footer→partenaires, `/contact`, `/organisation`, JSON-LD) | `https://terangamath.org` (répondait en erreur lors d'un contrôle précédent) | `https://www.terangamath.org/` — **vérifié HTTP 200** |
+| Email de contact | « Adresse à confirmer » | `contact@terangamath.org`, affiché en lien `mailto:` |
+| Contact téléphonique / contact djiboutien | Absent du code (rien à corriger) | Toujours absent — aucun numéro ni contact djiboutien n'a jamais été présent sur ce site |
+| Formulaire de contact | Absent du code (rien à corriger) | Toujours absent — l'email reste l'unique canal |
 
 ---
 
-## 3. À faire confirmer par écrit par Terangamath
+## 5. Section Équipes — traitement des statuts
 
-1. **Dates de l'édition 2027 : samedi 27 et dimanche 28 mars 2027.**
-   Déduites de la règle « dernier week-end de mars » (vérification calendaire : le
-   1er mars 2027 est un lundi, les samedis de mars 2027 sont les 6, 13, 20 et 27).
-   Déjà intégrées partout (hero, fiche événement, compte à rebours, JSON-LD,
-   sitemap) et marquées `datesConfirmed: true` dans `content/event.json` conformément
-   à la décision de l'association (§2.2 du prompt) — mais elles restent une
-   **déduction**, pas un communiqué officiel. Terangamath doit les valider par écrit.
-2. Le format détaillé de la compétition (§2 ci-dessus, catégorie B).
-3. La composition nominative des comités.
-4. Les coordonnées légales et de contact (§2 ci-dessus, catégorie C).
-5. Les partenaires et délégations encore `pending`.
-
----
-
-## 4. Pages et sections supprimées (§4)
-
-| Élément supprimé | Fichiers retirés | Comment réactiver |
-|---|---|---|
-| Section « 06 — Déroulé » (accueil) | `components/home/programme-teaser.tsx` | Recréer le composant (supprimé, récupérable via `git log` / commit `299dbb4^`) et le réimporter dans `app/[locale]/page.tsx` + restaurer les clés `Home.Programme` dans les messages |
-| Page + section « Actualités » | `app/[locale]/actualites/**`, `components/home/news.tsx`, `content/actualites/**`, `lib/content.ts` (`getNews*`), `content/types.ts` (`NewsFrontmatter`) | Tout est récupérable via `git log` (commit `299dbb4^`) ; réintégrer les routes, le composant, les fonctions et les clés `Nav.news`, `Home.News`, `Pages.News*` |
-| Page « Infos pratiques » | `app/[locale]/informations/page.tsx` | Récupérable via `git log` (commit `299dbb4^`) ; réintégrer la route, l'entrée de nav (`Nav.practicalInfo`) et les clés `Pages.PracticalInfo.*`. **Note** : son contenu (visa, hébergement, transport) est structurellement incompatible avec le format 100 % distanciel — à réévaluer entièrement plutôt qu'à restaurer telle quelle si le format venait à changer. |
-
-**Résultats, Problèmes & solutions, Galerie : conservées, pas supprimées.** Décision
-argumentée en Phase 1 (voir `git show 299dbb4` pour le contexte) : CLAUDE.md fixe ces
-trois routes dans l'arborescence du site et exige un état `coming_soon` soigné, déjà en
-place (`ComingSoonPanel`). Le problème de démonstration factice
-(`content/problemes/fr/2027-senior-01.mdx`, marqué « MODÈLE DE DÉMONSTRATION ») a été
-retiré ; la page `/problemes` bascule automatiquement sur l'état vide dès qu'aucun
-fichier MDX réel n'est présent, et listera les vrais problèmes dès qu'un éditeur en
-déposera un dans `content/problemes/{locale}/`.
+- Les **14 délégations** de l'édition 2026 sont désormais toutes présentes dans
+  `content/delegations/` (Sénégal, Algérie, Belgique, Burkina Faso, Cameroun,
+  Comores, Congo, Côte d'Ivoire, Djibouti, France, Maroc, Niger, Suisse, Tunisie),
+  toutes au statut `"confirmed"` (plus aucune ne porte `"pending"`).
+- Tri : Sénégal en tête (pays hôte), puis ordre alphabétique — géré automatiquement
+  par `lib/content.ts` (`getDelegations`), aucune modification de code nécessaire.
+- Le badge de statut par carte (« Confirmée »/« En attente ») a été retiré : sur 14
+  cartes il n'apportait plus d'information distincte. Seul le Sénégal porte
+  désormais le marqueur « Pays hôte ». Les 13 autres cartes n'affichent que le
+  drapeau et le nom du pays.
+- Les textes d'introduction (page `/equipes` et section d'accueil « Délégations »)
+  ont été reformulés : ils décrivent des délégations **engagées**, plus un
+  processus de confirmation en cours.
 
 ---
 
-## 5. Reformulations « accueil physique » → format distanciel (§2.4)
+## 6. Section Historique
 
-| Emplacement | Avant | Après |
-|---|---|---|
-| `Metadata.description` (fr/en) | « réunit à Dakar les meilleurs jeunes mathématiciens » | « rassemble, à distance, les meilleurs jeunes mathématiciens (…) Organisée par Terangamath (Dakar, Sénégal) » |
-| `Home.Hero.lead` | « Dakar accueille en 2027 les meilleurs jeunes mathématiciens (…) » | « Le Sénégal accueille l'organisation de l'édition 2027 (…), disputée à distance » |
-| `Home.Hero.metaLocation` | Libellé « Lieu » | Libellé « Pays organisateur » |
-| `Home.Event.lead` | « organisée par Terangamath, au cœur de Dakar » | « organisée par Terangamath, disputée entièrement à distance » |
-| `Home.Event` / `components/home/event-info.tsx` | Ligne « Lieu → Dakar, Sénégal » séparée | Fusionnée dans la ligne « Organisateur → Terangamath — Dakar, Sénégal » |
-| `Home.Countdown.title` | « Rendez-vous à Dakar » | « Compte à rebours — édition 2027 » |
-| `content/organisation.json` (comité d'organisation) | « il coordonne la logistique, l'accueil des délégations (…) » | Bloc entièrement restructuré selon les 3 comités réels de l'OFM (§3.4 du prompt), aucune mention de logistique physique |
-| `Pages.Olympiad.Presentation.body2` | « organisée **à** Dakar par Terangamath » | « portée **depuis** Dakar par Terangamath » |
-| `content/programme.json` | Jour 1 « Arrivées & ouverture », « Accueil des délégations » | Reconstruit : Jour 1 = épreuves à distance (27 mars), Jour 2 = correction coordonnée (28 mars) |
-| `Pages.Programme.lead` | « Des arrivées à la cérémonie de clôture (…) » | « Le déroulé des deux journées : épreuves à distance, puis correction coordonnée » |
-| `content/faq.json` (format) | « Deux jours d'épreuves (…) » | « Une compétition à distance : session unique de 4h30 (…) » |
-| Page `/informations` entière | Lieu, aéroport, visa, hébergement | **Supprimée** (§4) |
-
-**Conservé tel quel** (légitime au niveau symbolique) : `Footer.tagline` (« La
-géométrie de l'hospitalité — Dakar, 2027 »), les mentions de « la Teranga » comme
-valeur, et le motif constellation.
+- **Ligne OFM 2027 supprimée** du tableau : 2027 est l'édition en cours (présentée
+  dans le hero et les pages dédiées), pas une archive. Le tableau s'arrête donc à
+  2026.
+- Le libellé d'introduction (« éditions passées et à venir ») a été corrigé en
+  « éditions passées », cohérent avec la suppression de la ligne 2027.
+- Ligne OFM 2026 : dates, organisateur (Djibouti) et 14 pays participants
+  conservés ; la note qui affichait « Effectifs non publiés à ce jour » a été
+  retirée (cellule vide plutôt qu'un message d'indisponibilité).
+- Éditions 2020–2025 : inchangées.
 
 ---
 
-## 6. Fichiers importés d'ofm2026.org
+## 7. À faire confirmer par écrit par Terangamath
 
-| Source | Destination | Note |
-|---|---|---|
-| `ofm2026.org/historique` (tableau éditions + effectifs + pays) | `content/editions.json`, `content/nations.json` | Recoupé et conforme aux données déjà fournies dans le prompt |
-| `ofm2026.org/à-propos` (format : catégories, taille délégation, durée, correction, distinctions) | `content/format.json` | Catégorie B, `provisional: true` |
-| `ofm2026.org/organisation` (structure des 3 comités — **sans aucun nom 2026**) | `content/organisation.json` | Noms 2026 identifiés et exclus (voir liste ci-dessous), structure seule reprise |
-| 34 PDF (`/assets/sujets/{2020..2025}/...`) | `public/archives/{année}/ofm-{année}-{junior\|senior}-{sujet\|solutions\|resultats}.pdf` | Renommés sans accents, indexés dans `content/archives.json`, référencés depuis `/historique` |
-| Règlement (`/assets/pdf/reglement-OFM-version-2025.pdf`) | `public/documents/ofm-reglement-2025.pdf` | Référencé depuis `content/documents.json` et affiché sur `/olympiade` |
-
-**Noms identifiés sur ofm2026.org et explicitement exclus** (catégorie C) : Mohamed Ali
-Beyle, Mohamed Abdo Ali (contacts ADAM-Maths / MENFOP Djibouti), Arnaud Maret, Coumba
-Sarr, Mariam Elkaf, Mohamed Omar, Paul Boureau, Pierre Alain Jacqmin, Abdoulahy
-Coundou, Ali Akir, Harbi Hassan, Mahamoud Omar, Mahmoud Essamet, Marco Cavaleri,
-Moustapha Houssein, Noura Lidersa, Said Guirre Atteyeh, Tanish Patil, Valentin Imbach,
-Mohamed Barreh Sougal. Aucun de ces noms, ni ADAM-Maths, ni MENFOP Djibouti, ni les
-dates du 28-29 mars 2026, n'apparaissent dans le site livré.
-
----
-
-## 7. Échecs et anomalies constatées
-
-### Téléchargements PDF
-**Aucun échec.** Les 35 documents (34 archives + règlement) ont été téléchargés,
-vérifiés (HTTP 200, type PDF réel, taille non nulle) et sont servis correctement par
-le site. Comme prévu par le prompt, les résultats 2025 et 2026 n'existent pas encore
-sur ofm2026.org (`/assets/sujets/2025/OFM-*-Résultats.pdf` renvoie une redirection 302
-vers l'accueil, pas un PDF) : aucun lien n'a donc été créé pour ces deux cas, ce n'est
-pas un échec mais un état confirmé.
-
-### Lien externe cassé — hors périmètre de contenu, à signaler
-`https://terangamath.org` (référencé dans `content/partenaires.json`, utilisé sur les
-pages Organisation et Contact) répond avec le certificat TLS par défaut de Traefik
-(non valide, `CN = TRAEFIK DEFAULT CERT`) et un `404` une fois la vérification
-TLS contournée. **Le domaine de l'association elle-même semble mal configuré ou en
-cours de déploiement côté hébergeur.** Ce lien préexistait dans le scaffold (avant
-cette mission) et n'a pas été modifié : il s'agit du domaine officiel de
-l'association, donc il n'a pas été retiré, mais Terangamath doit vérifier la
-configuration de son serveur/reverse-proxy avant la mise en ligne.
-
-### Domaine du site lui-même
-`lib/site.ts` utilise un domaine placeholder (`https://ofm2027.org`, non confirmé) pour
-`metadataBase`, le sitemap et les JSON-LD, faute de domaine de production communiqué.
-**À définir via la variable d'environnement `NEXT_PUBLIC_SITE_URL`** avant déploiement
-(sans quoi les URLs canoniques, OG et sitemap resteront sur ce placeholder).
+1. Composition nominative des deux comités (sélection des problèmes, coordination).
+2. Partenaires financier et technique (aucun nom à ce jour).
+3. Modalités d'inscription des délégations pour 2027.
+4. Coordonnées légales : raison sociale et adresse de Terangamath, hébergeur, nom
+   du directeur de publication, politique de confidentialité.
+5. Présentation et/ou liste des compétiteurs pour les délégations autres que le
+   Sénégal, à mesure de leur communication.
+6. Horaire précis des épreuves (heure de début), si Terangamath souhaite le
+   publier pour 2027 — non repris de 2026 car jamais publié à l'heure près par
+   Djibouti.
+7. Domaine de production du site (`lib/site.ts` utilise toujours un placeholder
+   `https://ofm2027.org`, non modifié par ce lot de corrections — hors périmètre
+   du prompt traité ici).
 
 ---
 
 ## 8. Commits de cette livraison
 
 ```
-299dbb4 refactor(routes): suppression des sections deroule, actualites et infos pratiques
-aef8e88 feat(i18n): francais comme langue par defaut du site
-e0d9857 feat(content): integration du format de competition et de l'historique OFM
-69590f9 feat(ui): badge de contenu provisoire et etats vides
+d34207a fix(links): correction de l'url de l'association terangamath
+61e5ac2 feat(contact): coordonnees officielles terangamath
+bb2e897 refactor(content): suppression des placeholders visibles, reprise des valeurs 2026
+a9bd7d7 refactor(historique): tableau limite aux editions passees, cellules non publiees masquees
+4ef1709 fix(equipes): delegations confirmees et marqueur pays hote
 ```
 
-(Un 6e commit ajoute ce document.)
+(Un 6e commit ajoute la mise à jour de ce document.)
+
+---
+
+## 9. Historique — livraison précédente
+
+Pour le détail de la livraison initiale (scaffolding, i18n, contenu importé
+d'ofm2026.org, pages supprimées, reformulations « accueil physique » → format
+distanciel), voir `git show 299dbb4` et les commits antérieurs à `d34207a`. Cette
+mise à jour ne revient sur aucune de ces décisions ; elle traite exclusivement le
+lot de corrections décrit dans `PROMPT-CORRECTIONS-GLOBALES.md`.
