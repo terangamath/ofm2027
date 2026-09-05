@@ -1,0 +1,88 @@
+[
+  {
+    "path": "/",
+    "form": "mobile",
+    "scheme": "light",
+    "perf": 88,
+    "a11y": 96,
+    "bp": 100,
+    "seo": 100,
+    "cls": 0,
+    "lcp": 3581,
+    "tbt": 144,
+    "a11yFails": [
+      "color-contrast"
+    ]
+  },
+  {
+    "path": "/",
+    "form": "desktop",
+    "scheme": "light",
+    "perf": 71,
+    "a11y": 96,
+    "bp": 100,
+    "seo": 100,
+    "cls": 0,
+    "lcp": 3606,
+    "tbt": 172,
+    "a11yFails": [
+      "color-contrast"
+    ]
+  },
+  {
+    "path": "/equipes",
+    "form": "mobile",
+    "scheme": "light",
+    "perf": 93,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "cls": 0,
+    "lcp": 3089,
+    "tbt": 102,
+    "a11yFails": []
+  },
+  {
+    "path": "/equipes",
+    "form": "desktop",
+    "scheme": "light",
+    "perf": 68,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "cls": 0,
+    "lcp": 3182,
+    "tbt": 319,
+    "a11yFails": []
+  },
+  {
+    "path": "/historique",
+    "form": "mobile",
+    "scheme": "light",
+    "perf": 91,
+    "a11y": 96,
+    "bp": 100,
+    "seo": 100,
+    "cls": 0,
+    "lcp": 3092,
+    "tbt": 188,
+    "a11yFails": [
+      "color-contrast"
+    ]
+  },
+  {
+    "path": "/historique",
+    "form": "desktop",
+    "scheme": "light",
+    "perf": 82,
+    "a11y": 95,
+    "bp": 100,
+    "seo": 100,
+    "cls": 0,
+    "lcp": 2937,
+    "tbt": 109,
+    "a11yFails": [
+      "color-contrast"
+    ]
+  }
+]

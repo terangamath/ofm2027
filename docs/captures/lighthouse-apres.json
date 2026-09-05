@@ -1,0 +1,80 @@
+[
+  {
+    "path": "/",
+    "form": "mobile",
+    "scheme": "light",
+    "perf": 91,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "cls": 0,
+    "lcp": 3470,
+    "tbt": 84,
+    "a11yFails": []
+  },
+  {
+    "path": "/",
+    "form": "desktop",
+    "scheme": "light",
+    "perf": 74,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "cls": 0,
+    "lcp": 3545,
+    "tbt": 117,
+    "a11yFails": []
+  },
+  {
+    "path": "/equipes",
+    "form": "mobile",
+    "scheme": "light",
+    "perf": 93,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "cls": 0,
+    "lcp": 3018,
+    "tbt": 127,
+    "a11yFails": []
+  },
+  {
+    "path": "/equipes",
+    "form": "desktop",
+    "scheme": "light",
+    "perf": 67,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "cls": 0,
+    "lcp": 3540,
+    "tbt": 301,
+    "a11yFails": []
+  },
+  {
+    "path": "/historique",
+    "form": "mobile",
+    "scheme": "light",
+    "perf": 90,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "cls": 0,
+    "lcp": 3315,
+    "tbt": 161,
+    "a11yFails": []
+  },
+  {
+    "path": "/historique",
+    "form": "desktop",
+    "scheme": "light",
+    "perf": 80,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "cls": 0,
+    "lcp": 3315,
+    "tbt": 101,
+    "a11yFails": []
+  }
+]
