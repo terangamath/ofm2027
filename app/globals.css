@@ -403,11 +403,7 @@
     opacity: 0.85;
     animation: figure-apparaitre 220ms var(--ease-signature) var(--delai, 0ms) both;
   }
-  /* Déjà jouée dans cette session, ou mouvement réduit : état final immédiat. */
-  .figure-construction.terminee *,
-  .figure-construction.terminee {
-    animation: none !important;
-  }
+  /* Mouvement réduit : état final immédiat. */
   @media (prefers-reduced-motion: reduce) {
     .figure-construction * {
       animation: none !important;

@@ -1,7 +1,3 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-
 /**
  * La figure du problème 3 (Senior) de l'OFM 2024, construite à la règle et au
  * compas dans l'ordre de l'énoncé :
@@ -12,7 +8,9 @@ import { useEffect, useRef } from "react";
  * Coordonnées calculées une fois (O = (300, 300), R = 250, A à 108°, B à 203°,
  * C à 332°) ; le parallélisme est vérifié numériquement (produit vectoriel nul).
  * La chorégraphie est en CSS (globals.css, `.figure-construction`) : 1,8 s,
- * une fois par session, état final direct sous prefers-reduced-motion.
+ * rejouée à chaque affichage de l'accueil (le composant est remonté à chaque
+ * navigation vers la page, donc les animations CSS repartent), état final
+ * direct sous prefers-reduced-motion.
  */
 const P = {
   A: { x: 222.7, y: 62.2 },
@@ -25,8 +23,6 @@ const P = {
 } as const;
 const OMEGA_R = 250;
 const K = { x: 356.6, y: 459.8, r: 169.5 };
-
-const CLE_SESSION = "ofm2027:figure-jouee";
 
 type Point = { x: number; y: number };
 const seg = (a: Point, b: Point) => `M${a.x} ${a.y}L${b.x} ${b.y}`;
@@ -50,25 +46,8 @@ function Pt({ p, delai }: { p: Point; delai: number }) {
 }
 
 export function FigureConstruction({ className }: { className?: string }) {
-  const ref = useRef<SVGSVGElement>(null);
-
-  // Déjà jouée dans cette session : on passe directement à l'état final, par
-  // une classe posée sur le DOM (pas de nouvel état React, pas de re-rendu).
-  useEffect(() => {
-    try {
-      if (window.sessionStorage.getItem(CLE_SESSION)) {
-        ref.current?.classList.add("terminee");
-      } else {
-        window.sessionStorage.setItem(CLE_SESSION, "1");
-      }
-    } catch {
-      /* stockage indisponible : la séquence se joue simplement */
-    }
-  }, []);
-
   return (
     <svg
-      ref={ref}
       viewBox="0 0 600 600"
       aria-hidden="true"
       className={`figure-construction ${className ?? ""}`}
