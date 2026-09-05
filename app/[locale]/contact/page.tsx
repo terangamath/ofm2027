@@ -31,7 +31,6 @@ export default async function ContactPage({
 
   const rows = [
     { label: t("organizerLabel"), value: eventInfo.organizer },
-    { label: t("emailLabel"), value: t("emailValue"), muted: true },
     {
       label: t("locationLabel"),
       value: `${eventInfo.city[typedLocale]}, ${eventInfo.country[typedLocale]}`,
@@ -51,13 +50,20 @@ export default async function ContactPage({
                 className="grid grid-cols-[minmax(8rem,auto)_1fr] items-baseline gap-6 border-b border-hairline py-5 first:pt-0"
               >
                 <dt className="label-mono text-muted-foreground">{row.label}</dt>
-                <dd
-                  className={`text-body-l ${row.muted ? "italic text-muted-foreground" : "font-medium text-foreground"}`}
-                >
-                  {row.value}
-                </dd>
+                <dd className="text-body-l font-medium text-foreground">{row.value}</dd>
               </div>
             ))}
+            <div className="grid grid-cols-[minmax(8rem,auto)_1fr] items-baseline gap-6 border-b border-hairline py-5">
+              <dt className="label-mono text-muted-foreground">{t("emailLabel")}</dt>
+              <dd>
+                <a
+                  href={`mailto:${t("emailValue")}`}
+                  className="text-body-l font-medium text-link underline decoration-hairline underline-offset-4 transition-colors hover:text-foreground"
+                >
+                  {t("emailValue")}
+                </a>
+              </dd>
+            </div>
             {terangamath?.url && (
               <div className="grid grid-cols-[minmax(8rem,auto)_1fr] items-baseline gap-6 py-5">
                 <dt className="label-mono text-muted-foreground">{t("websiteLabel")}</dt>
