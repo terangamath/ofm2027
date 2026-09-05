@@ -47,7 +47,7 @@ export default async function OrganisationPage({
               rel="noopener noreferrer"
               className="label-mono self-start text-link underline decoration-hairline underline-offset-4 transition-colors hover:text-foreground"
             >
-              terangamath.org →
+              www.terangamath.org →
             </a>
           )}
         </div>

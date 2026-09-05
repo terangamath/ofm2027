@@ -68,7 +68,7 @@ export default async function ContactPage({
                     rel="noopener noreferrer"
                     className="text-body-l font-medium text-link underline decoration-hairline underline-offset-4 transition-colors hover:text-foreground"
                   >
-                    terangamath.org
+                    www.terangamath.org
                   </a>
                 </dd>
               </div>

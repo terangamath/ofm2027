@@ -25,7 +25,7 @@ export function EventJsonLd({ event, locale }: { event: EventInfo; locale: Local
     organizer: {
       "@type": "Organization",
       name: event.organizer,
-      url: "https://terangamath.org",
+      url: "https://www.terangamath.org/",
     },
     inLanguage: locale,
   };
