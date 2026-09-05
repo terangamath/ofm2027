@@ -1,20 +1,11 @@
 [
   {
-    "year": 2027,
-    "host": { "fr": "Sénégal", "en": "Senegal" },
-    "city": { "fr": "Dakar", "en": "Dakar" },
-    "dates": { "fr": "27-28 mars 2027", "en": "27-28 March 2027" },
-    "countriesCount": null,
-    "note": { "fr": "Édition à venir, organisée par Terangamath.", "en": "Upcoming edition, organised by Terangamath." },
-    "status": "coming_soon"
-  },
-  {
     "year": 2026,
     "host": { "fr": "Djibouti", "en": "Djibouti" },
     "city": null,
     "dates": { "fr": "28-29 mars 2026", "en": "28-29 March 2026" },
     "countriesCount": 14,
-    "note": { "fr": "Effectifs non publiés à ce jour.", "en": "Figures not published to date." },
+    "note": null,
     "status": "published"
   },
   {
