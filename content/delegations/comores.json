@@ -1,0 +1,10 @@
+{
+  "slug": "comores",
+  "countryCode": "KM",
+  "name": { "fr": "Comores", "en": "Comoros" },
+  "flagEmoji": "🇰🇲",
+  "status": "confirmed",
+  "isHost": false,
+  "description": null,
+  "members": null
+}

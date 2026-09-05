@@ -1,0 +1,10 @@
+{
+  "slug": "congo",
+  "countryCode": "CG",
+  "name": { "fr": "Congo", "en": "Congo" },
+  "flagEmoji": "🇨🇬",
+  "status": "confirmed",
+  "isHost": false,
+  "description": null,
+  "members": null
+}

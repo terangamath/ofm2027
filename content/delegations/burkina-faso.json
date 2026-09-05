@@ -1,0 +1,10 @@
+{
+  "slug": "burkina-faso",
+  "countryCode": "BF",
+  "name": { "fr": "Burkina Faso", "en": "Burkina Faso" },
+  "flagEmoji": "🇧🇫",
+  "status": "confirmed",
+  "isHost": false,
+  "description": null,
+  "members": null
+}

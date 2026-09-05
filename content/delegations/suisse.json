@@ -1,0 +1,10 @@
+{
+  "slug": "suisse",
+  "countryCode": "CH",
+  "name": { "fr": "Suisse", "en": "Switzerland" },
+  "flagEmoji": "🇨🇭",
+  "status": "confirmed",
+  "isHost": false,
+  "description": null,
+  "members": null
+}

@@ -1,0 +1,10 @@
+{
+  "slug": "belgique",
+  "countryCode": "BE",
+  "name": { "fr": "Belgique", "en": "Belgium" },
+  "flagEmoji": "🇧🇪",
+  "status": "confirmed",
+  "isHost": false,
+  "description": null,
+  "members": null
+}

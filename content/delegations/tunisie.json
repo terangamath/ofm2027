@@ -1,0 +1,10 @@
+{
+  "slug": "tunisie",
+  "countryCode": "TN",
+  "name": { "fr": "Tunisie", "en": "Tunisia" },
+  "flagEmoji": "🇹🇳",
+  "status": "confirmed",
+  "isHost": false,
+  "description": null,
+  "members": null
+}

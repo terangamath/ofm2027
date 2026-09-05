@@ -1,0 +1,10 @@
+{
+  "slug": "cameroun",
+  "countryCode": "CM",
+  "name": { "fr": "Cameroun", "en": "Cameroon" },
+  "flagEmoji": "🇨🇲",
+  "status": "confirmed",
+  "isHost": false,
+  "description": null,
+  "members": null
+}

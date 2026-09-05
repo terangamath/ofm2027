@@ -1,0 +1,10 @@
+{
+  "slug": "niger",
+  "countryCode": "NE",
+  "name": { "fr": "Niger", "en": "Niger" },
+  "flagEmoji": "🇳🇪",
+  "status": "confirmed",
+  "isHost": false,
+  "description": null,
+  "members": null
+}

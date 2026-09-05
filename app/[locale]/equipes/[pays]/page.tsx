@@ -61,13 +61,13 @@ export default async function TeamDetailPage({
           </div>
         </div>
 
-        <p className="text-body-l text-ivoire/80">
-          {delegation.description ? delegation.description[typedLocale] : t("descriptionPending")}
-        </p>
+        {delegation.description && (
+          <p className="text-body-l text-ivoire/80">{delegation.description[typedLocale]}</p>
+        )}
 
-        <div className="flex flex-col gap-4 border-t border-ivoire/15 pt-8">
-          <h2 className="label-mono text-ivoire/50">{t("membersTitle")}</h2>
-          {delegation.members && delegation.members.length > 0 ? (
+        {delegation.members && delegation.members.length > 0 && (
+          <div className="flex flex-col gap-4 border-t border-ivoire/15 pt-8">
+            <h2 className="label-mono text-ivoire/50">{t("membersTitle")}</h2>
             <ul className="flex flex-col gap-3">
               {delegation.members.map((member, index) => (
                 <li key={index} className="flex items-baseline justify-between gap-4">
@@ -76,10 +76,8 @@ export default async function TeamDetailPage({
                 </li>
               ))}
             </ul>
-          ) : (
-            <p className="text-body text-ivoire/60 italic">{t("membersPending")}</p>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </section>
   );

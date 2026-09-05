@@ -67,7 +67,7 @@
     "Delegations": {
       "eyebrow": "05 — Nations",
       "title": "La constellation des délégations",
-      "lead": "Les pays francophones confirment progressivement leur participation à l'édition 2027.",
+      "lead": "Les pays francophones engagés dans l'édition 2027, réunis autour du Sénégal, pays hôte.",
       "statusConfirmed": "Confirmée",
       "statusPending": "En attente",
       "hostBadge": "Pays hôte",
@@ -161,9 +161,7 @@
     "Teams": {
       "eyebrow": "Équipes",
       "title": "Les délégations de l'OFM 2027",
-      "lead": "Les pays francophones confirment progressivement leur participation. Chaque délégation réunit des compétiteurs des catégories Junior et Senior.",
-      "statusConfirmed": "Confirmée",
-      "statusPending": "En attente",
+      "lead": "Les pays francophones engagés dans l'édition 2027. Chaque délégation réunit des compétiteurs des catégories Junior et Senior.",
       "hostBadge": "Pays hôte",
       "viewTeam": "Voir la fiche"
     },
@@ -173,8 +171,6 @@
       "statusConfirmed": "Délégation confirmée",
       "statusPending": "Participation en attente de confirmation",
       "membersTitle": "Délégation",
-      "membersPending": "La liste des membres sera publiée prochainement.",
-      "descriptionPending": "Présentation à venir.",
       "notFoundTitle": "Délégation introuvable",
       "notFoundBody": "Cette délégation n'existe pas ou n'a pas encore été confirmée."
     },

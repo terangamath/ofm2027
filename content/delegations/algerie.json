@@ -1,0 +1,10 @@
+{
+  "slug": "algerie",
+  "countryCode": "DZ",
+  "name": { "fr": "Algérie", "en": "Algeria" },
+  "flagEmoji": "🇩🇿",
+  "status": "confirmed",
+  "isHost": false,
+  "description": null,
+  "members": null
+}

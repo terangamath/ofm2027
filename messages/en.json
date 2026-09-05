@@ -67,7 +67,7 @@
     "Delegations": {
       "eyebrow": "05 — Nations",
       "title": "The constellation of delegations",
-      "lead": "French-speaking countries are progressively confirming their participation in the 2027 edition.",
+      "lead": "The French-speaking countries engaged in the 2027 edition, gathered around Senegal, the host country.",
       "statusConfirmed": "Confirmed",
       "statusPending": "Pending",
       "hostBadge": "Host country",
@@ -161,9 +161,7 @@
     "Teams": {
       "eyebrow": "Teams",
       "title": "The OFM 2027 delegations",
-      "lead": "French-speaking countries are progressively confirming their participation. Each delegation brings together competitors in the Junior and Senior categories.",
-      "statusConfirmed": "Confirmed",
-      "statusPending": "Pending",
+      "lead": "The French-speaking countries engaged in the 2027 edition. Each delegation brings together competitors in the Junior and Senior categories.",
       "hostBadge": "Host country",
       "viewTeam": "View team"
     },
@@ -173,8 +171,6 @@
       "statusConfirmed": "Delegation confirmed",
       "statusPending": "Participation pending confirmation",
       "membersTitle": "Delegation",
-      "membersPending": "The roster will be published soon.",
-      "descriptionPending": "Description coming soon.",
       "notFoundTitle": "Delegation not found",
       "notFoundBody": "This delegation does not exist or has not been confirmed yet."
     },

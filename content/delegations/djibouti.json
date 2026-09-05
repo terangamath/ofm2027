@@ -1,0 +1,10 @@
+{
+  "slug": "djibouti",
+  "countryCode": "DJ",
+  "name": { "fr": "Djibouti", "en": "Djibouti" },
+  "flagEmoji": "🇩🇯",
+  "status": "confirmed",
+  "isHost": false,
+  "description": null,
+  "members": null
+}

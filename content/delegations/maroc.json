@@ -1,0 +1,10 @@
+{
+  "slug": "maroc",
+  "countryCode": "MA",
+  "name": { "fr": "Maroc", "en": "Morocco" },
+  "flagEmoji": "🇲🇦",
+  "status": "confirmed",
+  "isHost": false,
+  "description": null,
+  "members": null
+}
