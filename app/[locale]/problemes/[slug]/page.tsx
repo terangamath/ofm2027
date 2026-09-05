@@ -39,17 +39,17 @@ export default async function ProblemDetailPage({
       <div className="mx-auto flex max-w-3xl flex-col gap-8 px-6">
         <Link
           href="/problemes"
-          className="label-mono self-start text-link underline decoration-hairline underline-offset-4 transition-colors hover:text-foreground"
+          className="link-text self-start text-link"
         >
-          ← {t("back")}
+          {t("back")}
         </Link>
 
         <div className="flex flex-col gap-3 border-b border-hairline pb-8">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="label-mono text-link">
-              {frontmatter.category.toUpperCase()} · N°{frontmatter.number} · {frontmatter.edition}
+            <span className="label text-link">
+              {t(`category.${frontmatter.category}`)} · <span className="data">nº {frontmatter.number} · {frontmatter.edition}</span>
             </span>
-            <span className="label-mono text-muted-foreground">
+            <span className="label text-muted-foreground">
               {frontmatter.hasSolution ? t("solutionAvailable") : t("solutionPending")}
             </span>
           </div>
@@ -58,7 +58,7 @@ export default async function ProblemDetailPage({
             {frontmatter.topics.map((topic) => (
               <span
                 key={topic}
-                className="label-mono rounded-full border border-hairline px-2.5 py-0.5 text-muted-foreground"
+                className="label rounded-full border border-hairline px-2.5 py-0.5 text-muted-foreground"
               >
                 {topic}
               </span>

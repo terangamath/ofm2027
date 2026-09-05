@@ -26,13 +26,23 @@ Le site parle deux langues à la fois :
 
 ### Motif signature : la constellation des nations
 Un **réseau de points reliés** (graphe) qui évoque simultanément la théorie des graphes et la constellation des délégations francophones réunies à Dakar. Rendu en SVG/canvas léger, animation lente et discrète (dérive douce des nœuds, liens qui se dessinent), **toujours** conditionnée à `prefers-reduced-motion`. Palette or sur fond vert profond dans le hero.
-En texture secondaire : une **grille isométrique / triangulée très fine** façon « papier millimétré élégant », en filets or à très faible opacité, pour habiller certaines sections sans les charger.
+Aucune texture secondaire : la grille isométrique a été retirée (voir « Chrome interdit »).
 
 ### Signes récurrents (à réutiliser partout pour la cohérence)
 - Le sigle **Σ** comme marque.
-- Des **eyebrows en mono** numérotant les sections comme une démonstration : `01 — L'Olympiade`, `02 — Équipes`…
 - Des **filets or (hairlines)** comme séparateurs.
 - De **grands chiffres en display** (chiffres tabulaires) pour les statistiques et le compte à rebours.
+
+### Chrome interdit (décision de la montée en gamme — voir `RAPPORT-DESIGN.md`)
+Ces traits ont été retirés parce que leur accumulation signe un site généré. **Ne pas les réintroduire.**
+- ❌ **Eyebrow** au-dessus des titres (« 01 — L'Olympiade », « ÉQUIPES »…) : le titre porte seul la hiérarchie. Les `SectionHeading` et `PageHero` n'ont plus de prop `eyebrow`.
+- ❌ **Capitales espacées** sur les libellés : aucun `uppercase`, aucun `letter-spacing` sur du texte d'interface.
+- ❌ **Flèche `→`** dans le texte des liens. Un lien texte utilise la classe `.link-text` (filet or qui s'épaissit au survol).
+- ❌ **Mono comme chrome** : JetBrains Mono (`.data`) est réservé à ce qui se trie ou se calcule — dates, heures, durées, effectifs, numéros. Les libellés d'interface sont en Inter (`.label`).
+- ❌ **Grille isométrique** en fond de section : supprimée. La seule géométrie du site est la figure construite du hero.
+- ❌ **Drapeaux emoji** : ils ne rendent pas sous Windows. Utiliser `components/shared/flag.tsx` (SVG dans `public/flags/`, issus de flag-icons, MIT).
+- ❌ **Survol qui soulève** (`hover:-translate-y`, ombre élevée) et `transition-colors` uniforme sur tous les éléments interactifs.
+- ❌ **Bande sombre** en tête des pages internes : le fond `vert-nuit` est réservé à l'accueil (hero et geste signature). Les pages internes ouvrent sur sable.
 
 ---
 
@@ -65,6 +75,7 @@ Exposer en variables CSS + thème Tailwind. Rôles sémantiques à respecter.
 
 - Contraste **WCAG AA minimum** sur toute paire texte/fond (viser AAA sur le corps de texte).
 - L'or ne passe pas AA sur fond clair pour du petit texte : le réserver aux accents, filets, gros titres, ou l'assombrir si besoin.
+- Tons dérivés pour tenir AA sur sable (`--gris` y échoue à 4,26:1) : `--encre` `#4B5563` pour le texte secondaire (6,7:1), `--or-encre` `#6F5314` pour les liens (6,3:1). `--link` pointe sur `--or-encre`.
 - **Dark mode** recommandé : surfaces `--vert-nuit`, texte `--ivoire`/`--sable`, l'or ressort. Prévoir les tokens dès le départ.
 
 ---
@@ -75,7 +86,7 @@ Système à **3 familles** (chargées via next/font) :
 
 - **Display — `Fraunces`** (variable) : titres, chiffres héros. Optical size élevée, contraste marqué, tracking légèrement resserré sur les grands titres. *(Remplace volontairement Playfair Display : plus caractériel et contemporain.)*
 - **UI / Corps — `Inter`** : navigation, paragraphes, boutons, formulaires.
-- **Data / Labels — `JetBrains Mono`** : dates, eyebrows de section, scores, compte à rebours, tags de statut. Uppercase + letter-spacing pour les labels.
+- **Data — `JetBrains Mono`** : uniquement de la donnée — dates, horaires, durées, effectifs, scores, numéros de problème, compte à rebours. Chiffres tabulaires. Jamais de capitales ni de letter-spacing ; jamais pour un libellé d'interface.
 
 Fallbacks système déclarés dans chaque `next/font`.
 
@@ -111,7 +122,7 @@ Fallbacks système déclarés dans chaque `next/font`.
 - **Fiche événement** : bloc élégant récapitulant lieu / dates / organisateur / langue / format.
 - **Bloc statistiques** : grands chiffres tabulaires (pays, élèves, catégories, éditions) — placeholders si non confirmés.
 - **Deux catégories** : cartes Junior (collège) / Senior (lycée) différenciées, pas deux cartes vides jumelles.
-- **Grille des délégations** : pastilles pays + drapeaux, hover riche, **statut `confirmé` / `en attente`** clairement distingué, lien vers page pays.
+- **Registre des délégations** : lignes filetées, drapeau SVG + nom, **statut `confirmé` / `en attente`** distingué par la couleur du nom et un libellé, lien vers page pays. Pas de cartes, pas de pastilles.
 - **Timeline / Programme** : déroulé des épreuves et temps forts.
 - **Cartes actualités** éditoriales (type, date, titre, extrait).
 - **Bloc Problèmes & Solutions** : rendu **KaTeX** soigné (aligné à la palette, délimiteurs discrets), état `coming_soon`.

@@ -19,14 +19,14 @@ export async function ProblemsTeaserSection({ locale }: { locale: Locale }) {
   return (
     <section className="bg-vert-nuit py-24 text-ivoire lg:py-32">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-14 px-6 lg:grid-cols-[1fr_1fr] lg:items-center">
-        <SectionHeading eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} tone="inverted" />
+        <SectionHeading title={t("title")} lead={t("lead")} tone="inverted" />
 
         <div className="flex flex-col gap-6 rounded-xl border border-ivoire/15 bg-vert/30 p-10">
           <div
             className="katex-preview flex justify-center text-ivoire [&_.katex]:text-ivoire"
             dangerouslySetInnerHTML={{ __html: formulaHtml }}
           />
-          <p className="label-mono text-center text-ivoire/40">
+          <p className="label text-center text-ivoire/40">
             {t("comingSoon")}
           </p>
         </div>
@@ -35,9 +35,9 @@ export async function ProblemsTeaserSection({ locale }: { locale: Locale }) {
       <div className="mx-auto max-w-7xl px-6 pt-14">
         <Link
           href="/problemes"
-          className="label-mono text-or-clair underline decoration-hairline underline-offset-4 transition-colors hover:text-ivoire"
+          className="link-text text-or-clair"
         >
-          {t("cta")} →
+          {t("cta")}
         </Link>
       </div>
     </section>

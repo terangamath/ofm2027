@@ -12,7 +12,7 @@ export async function CountdownSection({ locale }: { locale: Locale }) {
   return (
     <section className="bg-vert py-24 text-ivoire lg:py-32">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-10 px-6 text-center">
-        <SectionHeading eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} align="center" tone="inverted" />
+        <SectionHeading title={t("title")} lead={t("lead")} align="center" tone="inverted" />
 
         {eventInfo.datesConfirmed && eventInfo.startDate ? (
           <CountdownTimer
@@ -32,7 +32,7 @@ export async function CountdownSection({ locale }: { locale: Locale }) {
                 <span className="font-display text-display-l tabular-nums text-or-clair" aria-hidden>
                   —
                 </span>
-                <span className="label-mono text-ivoire/60">{label}</span>
+                <span className="label text-ivoire/60">{label}</span>
               </div>
             ))}
           </div>

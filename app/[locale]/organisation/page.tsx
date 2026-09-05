@@ -32,20 +32,20 @@ export default async function OrganisationPage({
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} />
+      <PageHero title={t("title")} lead={t("lead")} />
 
       <section className="bg-background py-24 lg:py-32">
         <div className="mx-auto flex max-w-3xl flex-col gap-6 px-6">
-          <SectionHeading eyebrow={t("About.eyebrow")} title={t("About.title")} />
+          <SectionHeading title={t("About.title")} />
           <p className="text-body-l text-foreground/85">{t("About.body")}</p>
           {terangamath?.url && (
             <a
               href={terangamath.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="label-mono self-start text-link underline decoration-hairline underline-offset-4 transition-colors hover:text-foreground"
+              className="link-text self-start text-link"
             >
-              www.terangamath.org →
+              www.terangamath.org
             </a>
           )}
         </div>
@@ -54,7 +54,6 @@ export default async function OrganisationPage({
       <section className="bg-sable py-24 lg:py-32">
         <div className="mx-auto flex max-w-7xl flex-col gap-14 px-6">
           <SectionHeading
-            eyebrow={t("Committees.eyebrow")}
             title={t("Committees.title")}
             lead={t("Committees.lead")}
             tone="warm"

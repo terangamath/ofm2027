@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { Flag } from "@/components/shared/flag";
 import { getDelegations } from "@/lib/content";
 import type { Locale } from "@/content/types";
 
@@ -39,22 +40,17 @@ export default async function TeamDetailPage({
   if (!delegation) notFound();
 
   return (
-    <section className="bg-vert-nuit py-20 text-ivoire lg:py-28">
+    <section className="bg-sable py-16 text-anthracite lg:py-24">
       <div className="mx-auto flex max-w-3xl flex-col gap-8 px-6">
-        <Link
-          href="/equipes"
-          className="label-mono self-start text-or-clair underline decoration-hairline underline-offset-4 transition-colors hover:text-ivoire"
-        >
-          ← {t("back")}
+        <Link href="/equipes" className="link-text self-start text-vert">
+          {t("back")}
         </Link>
 
         <div className="flex items-center gap-5">
-          <span className="text-5xl" aria-hidden>
-            {delegation.flagEmoji}
-          </span>
+          <Flag countryCode={delegation.countryCode} size={64} />
           <div className="flex flex-col gap-1">
-            <h1 className="font-display text-display-l">{delegation.name[typedLocale]}</h1>
-            <p className="label-mono text-or-clair">
+            <h1 className="font-display text-display-l text-vert">{delegation.name[typedLocale]}</h1>
+            <p className="label text-encre">
               {delegation.isHost && `${t("hostBadge")} · `}
               {delegation.status === "confirmed" ? t("statusConfirmed") : t("statusPending")}
             </p>
@@ -62,17 +58,17 @@ export default async function TeamDetailPage({
         </div>
 
         {delegation.description && (
-          <p className="text-body-l text-ivoire/80">{delegation.description[typedLocale]}</p>
+          <p className="text-body-l text-anthracite/85">{delegation.description[typedLocale]}</p>
         )}
 
         {delegation.members && delegation.members.length > 0 && (
-          <div className="flex flex-col gap-4 border-t border-ivoire/15 pt-8">
-            <h2 className="label-mono text-ivoire/50">{t("membersTitle")}</h2>
+          <div className="flex flex-col gap-4 border-t border-hairline pt-8">
+            <h2 className="label text-encre">{t("membersTitle")}</h2>
             <ul className="flex flex-col gap-3">
               {delegation.members.map((member, index) => (
                 <li key={index} className="flex items-baseline justify-between gap-4">
                   <span className="font-medium">{member.name}</span>
-                  <span className="text-small text-ivoire/60">{member.role[typedLocale]}</span>
+                  <span className="text-small text-encre">{member.role[typedLocale]}</span>
                 </li>
               ))}
             </ul>

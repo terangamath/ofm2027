@@ -52,7 +52,7 @@ export function CountdownTimer({ targetDate, labels, groupLabel }: CountdownTime
           <span className="font-display text-display-l tabular-nums text-or-clair" aria-hidden>
             {unit.value === undefined ? "—" : String(unit.value).padStart(2, "0")}
           </span>
-          <span className="label-mono text-ivoire/60">{unit.label}</span>
+          <span className="label text-ivoire/60">{unit.label}</span>
         </div>
       ))}
     </div>

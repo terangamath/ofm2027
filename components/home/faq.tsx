@@ -9,7 +9,7 @@ export async function FaqSection({ locale }: { locale: Locale }) {
   return (
     <section className="bg-background py-24 lg:py-32">
       <div className="mx-auto flex max-w-3xl flex-col gap-14 px-6">
-        <SectionHeading eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} align="center" />
+        <SectionHeading title={t("title")} lead={t("lead")} align="center" />
         <FaqAccordion locale={locale} />
       </div>
     </section>

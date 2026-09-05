@@ -1,56 +1,47 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { IsometricGrid } from "@/components/motifs/isometric-grid";
 import { SectionHeading } from "@/components/home/section-heading";
+import { Flag } from "@/components/shared/flag";
 import { getDelegations } from "@/lib/content";
 import type { Locale } from "@/content/types";
 
+/** Registre des délégations : lignes filetées, pas de pastilles ni de cartes. */
 export async function DelegationsSection({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "Home.Delegations" });
   const delegations = getDelegations();
 
   return (
-    <section className="relative overflow-hidden bg-sable py-24 lg:py-32">
-      <IsometricGrid className="pointer-events-none absolute inset-0 opacity-30" />
+    <section className="bg-sable py-20 lg:py-28">
+      <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6">
+        <SectionHeading title={t("title")} lead={t("lead")} tone="warm" />
 
-      <div className="relative mx-auto flex max-w-7xl flex-col gap-14 px-6">
-        <SectionHeading eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} tone="warm" />
-
-        <ul className="flex flex-wrap gap-4">
-          {delegations.map((delegation) => (
-            <li key={delegation.slug}>
-              <Link
-                href={`/equipes/${delegation.slug}`}
-                className="group flex items-center gap-3 rounded-full border border-hairline bg-card px-5 py-3 shadow-soft transition-all duration-150 hover:-translate-y-0.5 hover:border-accent hover:shadow-elevated"
-              >
-                <span className="text-xl" aria-hidden>
-                  {delegation.flagEmoji}
-                </span>
-                <span className="font-medium text-foreground">{delegation.name[locale]}</span>
-                {delegation.isHost && (
-                  <span className="label-mono rounded-full bg-accent/15 px-2 py-0.5 text-link">
-                    {t("hostBadge")}
+        <ul className="grid grid-cols-1 gap-x-12 sm:grid-cols-2 lg:grid-cols-3">
+          {delegations.map((delegation) => {
+            const pending = delegation.status !== "confirmed";
+            return (
+              <li key={delegation.slug} className="border-b border-hairline">
+                <Link
+                  href={`/equipes/${delegation.slug}`}
+                  className="flex min-h-14 items-center gap-3 py-3 text-anthracite hover:text-vert"
+                >
+                  <Flag countryCode={delegation.countryCode} size={24} />
+                  <span className={`font-medium ${pending ? "text-encre" : ""}`}>
+                    {delegation.name[locale]}
                   </span>
-                )}
-                <span
-                  className={`size-2 rounded-full ${
-                    delegation.status === "confirmed" ? "bg-vert-clair" : "bg-muted-foreground/40"
-                  }`}
-                  aria-label={
-                    delegation.status === "confirmed" ? t("statusConfirmed") : t("statusPending")
-                  }
-                  title={delegation.status === "confirmed" ? t("statusConfirmed") : t("statusPending")}
-                />
-              </Link>
-            </li>
-          ))}
+                  {delegation.isHost && (
+                    <span className="label ml-auto text-vert">{t("hostBadge")}</span>
+                  )}
+                  {pending && (
+                    <span className="label ml-auto text-encre">{t("statusPending")}</span>
+                  )}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
-        <Link
-          href="/equipes"
-          className="label-mono self-start text-vert underline decoration-hairline underline-offset-4 transition-colors hover:text-anthracite"
-        >
-          {t("cta")} →
+        <Link href="/equipes" className="link-text self-start text-vert">
+          {t("cta")}
         </Link>
       </div>
     </section>

@@ -42,17 +42,15 @@ export default async function ProgrammePage({
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} />
+      <PageHero title={t("title")} lead={t("lead")} />
 
       <section className="bg-background py-24 lg:py-32">
         <div className="mx-auto flex max-w-3xl flex-col gap-14 px-6">
           <div className="flex flex-col gap-14">
-            {programme.days.map((day, dayIndex) => (
+            {programme.days.map((day) => (
               <div key={day.label.fr} className="flex flex-col gap-6">
                 <div className="flex flex-col gap-1 border-b border-hairline pb-4">
-                  <span className="label-mono text-link">
-                    {String(dayIndex + 1).padStart(2, "0")} — {formatDate(day.date)}
-                  </span>
+                  <span className="data text-link">{formatDate(day.date)}</span>
                   <h2 className="font-display text-h3 text-foreground">{day.label[typedLocale]}</h2>
                 </div>
 
@@ -64,11 +62,11 @@ export default async function ProgrammePage({
                     >
                       <div className="flex flex-wrap items-center gap-3">
                         {event.time && (
-                          <span className="label-mono tabular-nums text-muted-foreground">
+                          <span className="data text-muted-foreground">
                             {event.time}
                           </span>
                         )}
-                        <span className="label-mono rounded-full bg-accent/15 px-2 py-0.5 text-link">
+                        <span className="label rounded-full bg-accent/15 px-2.5 py-0.5 text-link">
                           {kindLabel(event.kind)}
                         </span>
                       </div>

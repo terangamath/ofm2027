@@ -18,7 +18,7 @@ export function LanguageSwitcher() {
   return (
     <nav
       aria-label={t("languageSwitcherLabel")}
-      className="label-mono flex items-center gap-1"
+      className="label flex items-center gap-1"
     >
       {routing.locales.map((loc, index) => {
         const active = loc === locale;
@@ -36,7 +36,7 @@ export function LanguageSwitcher() {
               className={
                 active
                   ? "text-link"
-                  : "text-muted-foreground transition-colors duration-150 hover:text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
               }
             >
               {LOCALE_LABELS[loc]}

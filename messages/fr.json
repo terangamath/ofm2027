@@ -33,17 +33,16 @@
   },
   "Home": {
     "Hero": {
-      "eyebrow": "01 — L'Olympiade",
       "title": "L'Olympiade Francophone de Mathématiques",
       "lead": "Le Sénégal accueille l'organisation de l'édition 2027 de l'Olympiade Francophone de Mathématiques, disputée à distance par les meilleurs jeunes mathématiciens du monde francophone.",
       "ctaPrimary": "Découvrir l'Olympiade",
       "ctaSecondary": "Voir les équipes",
+      "metaDates": "Dates",
       "metaLocation": "Pays organisateur",
       "metaLanguage": "Langue officielle",
       "metaFormat": "Catégories"
     },
     "Event": {
-      "eyebrow": "02 — Rendez-vous",
       "title": "La fiche de l'événement",
       "lead": "Une édition organisée par Terangamath, disputée entièrement à distance.",
       "dates": "Dates",
@@ -52,12 +51,10 @@
       "format": "Catégories"
     },
     "Stats": {
-      "eyebrow": "03 — En chiffres",
       "title": "Une olympiade en construction",
       "provisionalNote": "Chiffres de l'édition précédente, utilisés à titre de repère."
     },
     "Categories": {
-      "eyebrow": "04 — Catégories",
       "title": "Deux catégories, une même exigence",
       "lead": "L'Olympiade rassemble collégiens et lycéens autour d'épreuves pensées pour leur niveau, avec la même rigueur scientifique.",
       "juniorNote": "Épreuves de géométrie, combinatoire, arithmétique et algèbre adaptées au collège.",
@@ -65,7 +62,6 @@
       "cta": "Voir le programme"
     },
     "Delegations": {
-      "eyebrow": "05 — Nations",
       "title": "La constellation des délégations",
       "lead": "Les pays francophones engagés dans l'édition 2027, réunis autour du Sénégal, pays hôte.",
       "statusConfirmed": "Confirmée",
@@ -74,14 +70,12 @@
       "cta": "Voir toutes les équipes"
     },
     "Problems": {
-      "eyebrow": "06 — Épreuves",
       "title": "Problèmes & solutions",
       "lead": "Un aperçu des problèmes conçus par le comité scientifique international.",
       "comingSoon": "Les problèmes de l'édition 2027 seront publiés après les épreuves.",
       "cta": "Explorer les problèmes"
     },
     "Countdown": {
-      "eyebrow": "07 — Compte à rebours",
       "title": "Compte à rebours — édition 2027",
       "lead": "Les dates précises de l'édition 2027 seront annoncées prochainement.",
       "days": "Jours",
@@ -91,7 +85,6 @@
       "datesPending": "Dates en cours de confirmation."
     },
     "Partners": {
-      "eyebrow": "08 — Partenaires",
       "title": "Ils rendent l'Olympiade possible",
       "lead": "Institutions, partenaires financiers et techniques, aux côtés de Terangamath.",
       "categoryInstitutional": "Partenaires institutionnels",
@@ -100,7 +93,6 @@
       "statusPending": "En cours de confirmation"
     },
     "Faq": {
-      "eyebrow": "09 — Questions",
       "title": "Foire aux questions",
       "lead": "Les réponses aux questions les plus fréquentes sur l'Olympiade."
     }
@@ -114,17 +106,14 @@
   },
   "Pages": {
     "Olympiad": {
-      "eyebrow": "L'Olympiade",
       "title": "L'Olympiade Francophone de Mathématiques",
       "lead": "Une compétition d'excellence pour les jeunes mathématiciens du monde francophone, portée par l'association Terangamath et un comité scientifique international.",
       "Presentation": {
-        "eyebrow": "01 — Présentation",
         "title": "Une compétition d'excellence, un esprit d'hospitalité",
         "body1": "L'OFM réunit chaque année les meilleurs élèves de collège et de lycée des pays francophones autour d'épreuves de mathématiques originales, conçues pour révéler le raisonnement autant que la technique.",
         "body2": "L'édition 2027 est portée depuis Dakar par Terangamath, association sénégalaise dédiée à la promotion des mathématiques, avec l'ambition de conjuguer rigueur scientifique et hospitalité sénégalaise — la Teranga."
       },
       "Format": {
-        "eyebrow": "02 — Format",
         "title": "Le format des épreuves",
         "lead": "Une compétition entièrement à distance, dans la tradition de l'OFM. Les éléments ci-dessous suivent la règle générale de l'Olympiade ; Terangamath les confirmera pour l'édition 2027.",
         "facts": {
@@ -138,32 +127,28 @@
         }
       },
       "Faq": {
-        "eyebrow": "03 — Questions",
         "title": "Foire aux questions",
         "lead": "Les réponses aux questions les plus fréquentes sur l'Olympiade."
       }
     },
     "Organisation": {
-      "eyebrow": "Organisation",
       "title": "Terangamath & l'organisation de l'OFM 2027",
       "lead": "L'Olympiade est portée par l'association Terangamath, épaulée par des comités dédiés à la conception scientifique et à la correction des épreuves.",
       "About": {
-        "eyebrow": "01 — Terangamath",
         "title": "L'association organisatrice",
         "body": "Terangamath est l'association sénégalaise à l'origine de l'OFM 2027. Son nom s'inspire de la Teranga, l'hospitalité sénégalaise, qu'elle met au service de la promotion des mathématiques auprès des jeunes du monde francophone."
       },
       "Committees": {
-        "eyebrow": "02 — Comités",
         "title": "Comités",
         "lead": "Les comités qui préparent l'édition 2027."
       }
     },
     "Teams": {
-      "eyebrow": "Équipes",
       "title": "Les délégations de l'OFM 2027",
       "lead": "Les pays francophones engagés dans l'édition 2027. Chaque délégation réunit des compétiteurs des catégories Junior et Senior.",
       "hostBadge": "Pays hôte",
-      "viewTeam": "Voir la fiche"
+      "viewTeam": "Voir la fiche",
+      "statusPending": "En attente"
     },
     "TeamDetail": {
       "back": "Toutes les équipes",
@@ -175,7 +160,6 @@
       "notFoundBody": "Cette délégation n'existe pas ou n'a pas encore été confirmée."
     },
     "Programme": {
-      "eyebrow": "Programme",
       "title": "Le programme de l'Olympiade",
       "lead": "Le déroulé des deux journées de l'édition 2027 : épreuves à distance, puis correction coordonnée.",
       "dateTBC": "Date à confirmer",
@@ -185,22 +169,28 @@
       }
     },
     "Problems": {
-      "eyebrow": "Problèmes & solutions",
       "title": "Les problèmes de l'Olympiade",
       "lead": "Un aperçu des problèmes conçus par le comité scientifique international, avec leurs solutions lorsqu'elles sont disponibles.",
       "comingSoonTitle": "Les problèmes seront publiés après les épreuves",
       "comingSoonBody": "Les problèmes et solutions officiels de l'édition 2027 seront publiés ici à l'issue de la compétition. Les sujets des éditions précédentes restent consultables depuis la page Historique.",
       "hasSolution": "Solution disponible",
       "noSolutionYet": "Solution à venir",
-      "readProblem": "Consulter"
+      "readProblem": "Consulter",
+      "category": {
+        "junior": "Junior",
+        "senior": "Senior"
+      }
     },
     "ProblemDetail": {
       "back": "Tous les problèmes",
       "solutionAvailable": "Solution disponible",
-      "solutionPending": "Solution à venir"
+      "solutionPending": "Solution à venir",
+      "category": {
+        "junior": "Junior",
+        "senior": "Senior"
+      }
     },
     "History": {
-      "eyebrow": "Historique",
       "title": "L'histoire de l'Olympiade",
       "lead": "Les éditions passées de l'Olympiade Francophone de Mathématiques.",
       "hostLabel": "Pays hôte",
@@ -218,21 +208,18 @@
       "nationsLead": "Toutes les nations ayant engagé une délégation depuis la création de l'Olympiade, en 2020."
     },
     "Gallery": {
-      "eyebrow": "Galerie",
       "title": "Galerie",
       "lead": "Photos et vidéos de l'Olympiade.",
       "comingSoonTitle": "La galerie ouvrira après l'édition 2027",
       "comingSoonBody": "Les photos et vidéos de l'Olympiade seront publiées ici à l'issue de l'événement."
     },
     "Results": {
-      "eyebrow": "Résultats",
       "title": "Résultats",
       "lead": "Les résultats de l'Olympiade.",
       "comingSoonTitle": "Les résultats seront publiés après la correction",
       "comingSoonBody": "Les résultats de l'édition 2027 seront publiés à l'issue des épreuves et de la correction par le jury international."
     },
     "Contact": {
-      "eyebrow": "Contact",
       "title": "Contact",
       "lead": "Une question sur l'Olympiade, votre délégation ou l'organisation ? Contactez Terangamath.",
       "organizerLabel": "Organisateur",
@@ -242,7 +229,6 @@
       "websiteLabel": "Site de l'association"
     },
     "Legal": {
-      "eyebrow": "Mentions légales",
       "title": "Mentions légales",
       "Ip": {
         "title": "Propriété intellectuelle",

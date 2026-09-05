@@ -33,17 +33,16 @@
   },
   "Home": {
     "Hero": {
-      "eyebrow": "01 — The Olympiad",
       "title": "The Francophone Mathematical Olympiad",
       "lead": "Senegal hosts the organisation of the 2027 edition of the Francophone Mathematical Olympiad, contested online by the best young mathematicians of the French-speaking world.",
       "ctaPrimary": "Discover the Olympiad",
       "ctaSecondary": "See the teams",
+      "metaDates": "Dates",
       "metaLocation": "Host country",
       "metaLanguage": "Official language",
       "metaFormat": "Categories"
     },
     "Event": {
-      "eyebrow": "02 — At a glance",
       "title": "The event, at a glance",
       "lead": "An edition organised by Terangamath, contested entirely online.",
       "dates": "Dates",
@@ -52,12 +51,10 @@
       "format": "Categories"
     },
     "Stats": {
-      "eyebrow": "03 — By the numbers",
       "title": "An Olympiad taking shape",
       "provisionalNote": "Figures from the previous edition, shown for reference."
     },
     "Categories": {
-      "eyebrow": "04 — Categories",
       "title": "Two categories, one standard",
       "lead": "The Olympiad brings together middle and high school students around exams suited to their level, with the same scientific rigour.",
       "juniorNote": "Geometry, combinatorics, number theory and algebra problems suited to middle school.",
@@ -65,7 +62,6 @@
       "cta": "See the programme"
     },
     "Delegations": {
-      "eyebrow": "05 — Nations",
       "title": "The constellation of delegations",
       "lead": "The French-speaking countries engaged in the 2027 edition, gathered around Senegal, the host country.",
       "statusConfirmed": "Confirmed",
@@ -74,14 +70,12 @@
       "cta": "See all teams"
     },
     "Problems": {
-      "eyebrow": "06 — Exams",
       "title": "Problems & solutions",
       "lead": "A preview of the problems designed by the international scientific committee.",
       "comingSoon": "The 2027 edition's problems will be published after the exams.",
       "cta": "Explore the problems"
     },
     "Countdown": {
-      "eyebrow": "07 — Countdown",
       "title": "Countdown — 2027 edition",
       "lead": "The precise dates of the 2027 edition will be announced soon.",
       "days": "Days",
@@ -91,7 +85,6 @@
       "datesPending": "Dates being confirmed."
     },
     "Partners": {
-      "eyebrow": "08 — Partners",
       "title": "Making the Olympiad possible",
       "lead": "Institutions, financial and technical partners, alongside Terangamath.",
       "categoryInstitutional": "Institutional partners",
@@ -100,7 +93,6 @@
       "statusPending": "Being confirmed"
     },
     "Faq": {
-      "eyebrow": "09 — Questions",
       "title": "Frequently asked questions",
       "lead": "Answers to the most common questions about the Olympiad."
     }
@@ -114,17 +106,14 @@
   },
   "Pages": {
     "Olympiad": {
-      "eyebrow": "The Olympiad",
       "title": "The Francophone Mathematical Olympiad",
       "lead": "A competition of excellence for young mathematicians of the French-speaking world, led by the Terangamath association and an international scientific committee.",
       "Presentation": {
-        "eyebrow": "01 — About",
         "title": "A competition of excellence, a spirit of hospitality",
         "body1": "Each year, OFM brings together the best middle and high school students from French-speaking countries around original mathematics exams, designed to reveal reasoning as much as technique.",
         "body2": "The 2027 edition is led from Dakar by Terangamath, a Senegalese association dedicated to promoting mathematics, with the ambition of combining scientific rigour with Senegalese hospitality — the Teranga."
       },
       "Format": {
-        "eyebrow": "02 — Format",
         "title": "The exam format",
         "lead": "A fully online competition, in the OFM tradition. The details below follow the Olympiad's general rule; Terangamath will confirm them for the 2027 edition.",
         "facts": {
@@ -138,32 +127,28 @@
         }
       },
       "Faq": {
-        "eyebrow": "03 — Questions",
         "title": "Frequently asked questions",
         "lead": "Answers to the most common questions about the Olympiad."
       }
     },
     "Organisation": {
-      "eyebrow": "Organisation",
       "title": "Terangamath & the organisation of OFM 2027",
       "lead": "The Olympiad is led by the Terangamath association, supported by committees dedicated to the scientific design and marking of the exams.",
       "About": {
-        "eyebrow": "01 — Terangamath",
         "title": "The organising association",
         "body": "Terangamath is the Senegalese association behind OFM 2027. Its name draws on the Teranga, Senegalese hospitality, which it puts to work promoting mathematics among young people across the French-speaking world."
       },
       "Committees": {
-        "eyebrow": "02 — Committees",
         "title": "Committees",
         "lead": "The committees preparing the 2027 edition."
       }
     },
     "Teams": {
-      "eyebrow": "Teams",
       "title": "The OFM 2027 delegations",
       "lead": "The French-speaking countries engaged in the 2027 edition. Each delegation brings together competitors in the Junior and Senior categories.",
       "hostBadge": "Host country",
-      "viewTeam": "View team"
+      "viewTeam": "View team",
+      "statusPending": "Pending"
     },
     "TeamDetail": {
       "back": "All teams",
@@ -175,7 +160,6 @@
       "notFoundBody": "This delegation does not exist or has not been confirmed yet."
     },
     "Programme": {
-      "eyebrow": "Programme",
       "title": "The Olympiad programme",
       "lead": "The two days of the 2027 edition: exams online, then coordinated marking.",
       "dateTBC": "Date to be confirmed",
@@ -185,22 +169,28 @@
       }
     },
     "Problems": {
-      "eyebrow": "Problems & solutions",
       "title": "The Olympiad problems",
       "lead": "A preview of the problems designed by the international scientific committee, with solutions where available.",
       "comingSoonTitle": "Problems will be published after the exams",
       "comingSoonBody": "The official 2027 problems and solutions will be published here once the competition has taken place. Past editions' papers remain available from the History page.",
       "hasSolution": "Solution available",
       "noSolutionYet": "Solution coming soon",
-      "readProblem": "View"
+      "readProblem": "View",
+      "category": {
+        "junior": "Junior",
+        "senior": "Senior"
+      }
     },
     "ProblemDetail": {
       "back": "All problems",
       "solutionAvailable": "Solution available",
-      "solutionPending": "Solution coming soon"
+      "solutionPending": "Solution coming soon",
+      "category": {
+        "junior": "Junior",
+        "senior": "Senior"
+      }
     },
     "History": {
-      "eyebrow": "History",
       "title": "The Olympiad's history",
       "lead": "Past editions of the Francophone Mathematical Olympiad.",
       "hostLabel": "Host country",
@@ -218,21 +208,18 @@
       "nationsLead": "Every nation that has entered a delegation since the Olympiad began, in 2020."
     },
     "Gallery": {
-      "eyebrow": "Gallery",
       "title": "Gallery",
       "lead": "Photos and videos of the Olympiad.",
       "comingSoonTitle": "The gallery will open after the 2027 edition",
       "comingSoonBody": "Photos and videos of the Olympiad will be published here once the event has taken place."
     },
     "Results": {
-      "eyebrow": "Results",
       "title": "Results",
       "lead": "The Olympiad's results.",
       "comingSoonTitle": "Results will be published after marking",
       "comingSoonBody": "The 2027 edition's results will be published once the exams have been marked by the international jury."
     },
     "Contact": {
-      "eyebrow": "Contact",
       "title": "Contact",
       "lead": "A question about the Olympiad, your delegation, or the organisation? Get in touch with Terangamath.",
       "organizerLabel": "Organiser",
@@ -242,7 +229,6 @@
       "websiteLabel": "Association website"
     },
     "Legal": {
-      "eyebrow": "Legal notice",
       "title": "Legal notice",
       "Ip": {
         "title": "Intellectual property",

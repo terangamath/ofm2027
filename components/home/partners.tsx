@@ -18,7 +18,7 @@ export async function PartnersSection({ locale }: { locale: Locale }) {
   return (
     <section className="bg-sable py-24 lg:py-32">
       <div className="mx-auto flex max-w-7xl flex-col gap-14 px-6">
-        <SectionHeading eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} tone="warm" />
+        <SectionHeading title={t("title")} lead={t("lead")} tone="warm" />
 
         <div className="flex flex-col gap-12">
           {CATEGORY_ORDER.map((category) => {
@@ -27,7 +27,7 @@ export async function PartnersSection({ locale }: { locale: Locale }) {
 
             return (
               <div key={category} className="flex flex-col gap-5">
-                <h3 className="label-mono text-gris">{t(CATEGORY_LABEL_KEY[category])}</h3>
+                <h3 className="label text-encre">{t(CATEGORY_LABEL_KEY[category])}</h3>
                 <div className="flex flex-wrap gap-4">
                   {items.map((partner) => (
                     <div
@@ -48,7 +48,7 @@ export async function PartnersSection({ locale }: { locale: Locale }) {
                         {partner.name[locale]}
                       </span>
                       {partner.status === "pending" && (
-                        <span className="label-mono shrink-0 text-muted-foreground">
+                        <span className="label shrink-0 text-muted-foreground">
                           {t("statusPending")}
                         </span>
                       )}

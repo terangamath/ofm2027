@@ -1,5 +1,4 @@
 import { getTranslations } from "next-intl/server";
-import { IsometricGrid } from "@/components/motifs/isometric-grid";
 import { SectionHeading } from "@/components/home/section-heading";
 import statsData from "@/content/stats.json";
 import type { Locale, Stat } from "@/content/types";
@@ -12,10 +11,9 @@ export async function StatsSection({ locale }: { locale: Locale }) {
 
   return (
     <section className="relative overflow-hidden bg-vert py-24 text-ivoire lg:py-32">
-      <IsometricGrid className="pointer-events-none absolute inset-0 opacity-20" />
 
       <div className="relative mx-auto flex max-w-7xl flex-col gap-14 px-6">
-        <SectionHeading eyebrow={t("eyebrow")} title={t("title")} tone="inverted" />
+        <SectionHeading title={t("title")} tone="inverted" />
 
         <dl className="grid grid-cols-2 gap-x-8 gap-y-12 lg:grid-cols-4">
           {stats.map((stat) => (

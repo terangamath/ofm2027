@@ -40,7 +40,7 @@ export default async function HistoryPage({
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} />
+      <PageHero title={t("title")} lead={t("lead")} />
 
       <section className="bg-background py-24 lg:py-32">
         <div className="mx-auto flex max-w-3xl flex-col">
@@ -58,18 +58,18 @@ export default async function HistoryPage({
                   {edition.city && `, ${edition.city[typedLocale]}`}
                 </p>
                 {edition.dates && (
-                  <p className="label-mono text-muted-foreground">{edition.dates[typedLocale]}</p>
+                  <p className="data text-muted-foreground">{edition.dates[typedLocale]}</p>
                 )}
                 {edition.countriesCount !== null && (
-                  <p className="label-mono text-muted-foreground">
-                    {edition.countriesCount} {t("countriesLabel")}
+                  <p className="text-small text-muted-foreground">
+                    <span className="data">{edition.countriesCount}</span> {t("countriesLabel")}
                   </p>
                 )}
                 {edition.note && (
                   <p className="text-body text-muted-foreground">{edition.note[typedLocale]}</p>
                 )}
                 {edition.status === "coming_soon" && (
-                  <span className="label-mono self-start rounded-full bg-accent/15 px-2.5 py-0.5 text-link">
+                  <span className="label self-start rounded-full bg-accent/15 px-2.5 py-0.5 text-link">
                     {tCommon("comingSoon")}
                   </span>
                 )}
@@ -81,7 +81,7 @@ export default async function HistoryPage({
                       if (entries.length === 0) return null;
                       return (
                         <div key={category} className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                          <span className="label-mono text-muted-foreground">
+                          <span className="label text-muted-foreground">
                             {t(`archivesCategory.${category}`)}
                           </span>
                           {DOC_TYPES.map((type) => {
@@ -93,7 +93,7 @@ export default async function HistoryPage({
                                 href={entry.path}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="label-mono text-link underline decoration-hairline underline-offset-4 transition-colors hover:text-foreground"
+                                className="link-text text-small text-link"
                               >
                                 {t(`archivesType.${type}`)}
                               </a>
@@ -113,12 +113,12 @@ export default async function HistoryPage({
       <section className="bg-sable py-24 lg:py-32">
         <div className="mx-auto flex max-w-3xl flex-col gap-6 px-6">
           <h2 className="font-display text-h3 text-anthracite">{t("nationsTitle")}</h2>
-          <p className="text-body text-gris">{t("nationsLead")}</p>
+          <p className="text-body text-encre">{t("nationsLead")}</p>
           <ul className="flex flex-wrap gap-2">
             {nations.map((nation) => (
               <li
                 key={nation.countryCode}
-                className="label-mono rounded-full border border-hairline bg-card px-3 py-1 text-anthracite"
+                className="rounded-full border border-hairline bg-ivoire px-3 py-1 text-small text-anthracite"
               >
                 {nation.name[typedLocale]}
               </li>

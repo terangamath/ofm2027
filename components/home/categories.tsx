@@ -17,7 +17,7 @@ export async function CategoriesSection({ locale }: { locale: Locale }) {
   return (
     <section className="bg-background py-24 lg:py-32">
       <div className="mx-auto flex max-w-7xl flex-col gap-14 px-6">
-        <SectionHeading eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} />
+        <SectionHeading title={t("title")} lead={t("lead")} />
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {eventInfo.categories.map((category, index) => {
@@ -51,9 +51,9 @@ export async function CategoriesSection({ locale }: { locale: Locale }) {
 
         <Link
           href="/programme"
-          className="label-mono self-start text-link underline decoration-hairline underline-offset-4 transition-colors hover:text-foreground"
+          className="link-text self-start text-link"
         >
-          {t("cta")} →
+          {t("cta")}
         </Link>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
+import { Flag } from "@/components/shared/flag";
 import { Link } from "@/i18n/navigation";
 import { getDelegations } from "@/lib/content";
 import type { Locale } from "@/content/types";
@@ -28,56 +29,46 @@ export default async function TeamsPage({
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} />
+      <PageHero title={t("title")} lead={t("lead")} />
 
-      <section className="bg-background py-24 lg:py-32">
-        <div className="mx-auto flex max-w-7xl flex-col gap-10 px-6">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="bg-sable pb-24 lg:pb-32">
+        <div className="mx-auto max-w-7xl px-6">
+          <ul className="grid grid-cols-1 gap-x-16 md:grid-cols-2">
             {delegations.map((delegation) => {
               const hasFiche = Boolean(delegation.description);
-              const cardContent = (
-                <>
-                  <div className="flex flex-col gap-1">
-                    <span className="text-3xl" aria-hidden>
-                      {delegation.flagEmoji}
-                    </span>
-                    <h2 className="font-display text-h4 text-foreground">
+              const pending = delegation.status !== "confirmed";
+              return (
+                <li
+                  key={delegation.slug}
+                  className="flex flex-col gap-2 border-b border-hairline py-6"
+                >
+                  <div className="flex items-center gap-4">
+                    <Flag countryCode={delegation.countryCode} size={32} />
+                    <h2 className="font-display text-h4 text-anthracite">
                       {delegation.name[typedLocale]}
                     </h2>
                     {delegation.isHost && (
-                      <p className="label-mono text-muted-foreground">{t("hostBadge")}</p>
+                      <span className="label ml-auto text-vert">{t("hostBadge")}</span>
+                    )}
+                    {pending && (
+                      <span className="label ml-auto text-encre">{t("statusPending")}</span>
                     )}
                   </div>
-                  {hasFiche && (
-                    <span className="label-mono mt-auto text-link group-hover:text-foreground">
-                      {t("viewTeam")} →
-                    </span>
+                  {hasFiche && delegation.description && (
+                    <p className="pl-12 text-body text-encre">{delegation.description[typedLocale]}</p>
                   )}
-                </>
-              );
-
-              if (hasFiche) {
-                return (
-                  <Link
-                    key={delegation.slug}
-                    href={`/equipes/${delegation.slug}`}
-                    className="group flex h-full flex-col justify-between gap-4 rounded-xl border border-hairline bg-card p-7 transition-all duration-150 hover:-translate-y-0.5 hover:shadow-elevated"
-                  >
-                    {cardContent}
-                  </Link>
-                );
-              }
-
-              return (
-                <div
-                  key={delegation.slug}
-                  className="flex h-full flex-col justify-between gap-4 rounded-xl border border-hairline bg-card p-7"
-                >
-                  {cardContent}
-                </div>
+                  {hasFiche && (
+                    <Link
+                      href={`/equipes/${delegation.slug}`}
+                      className="link-text ml-12 self-start text-vert"
+                    >
+                      {t("viewTeam")}
+                    </Link>
+                  )}
+                </li>
               );
             })}
-          </div>
+          </ul>
         </div>
       </section>
     </>

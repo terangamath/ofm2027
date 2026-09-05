@@ -46,7 +46,7 @@ export async function generateMetadata({
       template: "%s — OFM 2027",
     },
     description: t("description"),
-    // Alternates au niveau racine : couverture générale fr/en + x-default → fr.
+    // Alternates au niveau racine : couverture générale fr/en + x-default fr.
     // Le détail par route (hreflang exact de chaque page) est porté par app/sitemap.ts.
     alternates: {
       languages: {

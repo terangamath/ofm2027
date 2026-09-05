@@ -24,7 +24,7 @@ export default async function GalleryPage({
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} />
+      <PageHero title={t("title")} lead={t("lead")} />
 
       <section className="bg-background py-24 lg:py-32">
         <div className="mx-auto max-w-3xl px-6">

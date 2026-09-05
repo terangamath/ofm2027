@@ -35,7 +35,7 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b bg-background/90 backdrop-blur transition-colors duration-[250ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] ${
+      className={`sticky top-0 z-50 border-b bg-background/90 backdrop-blur duration-[250ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] ${
         scrolled ? "border-hairline" : "border-transparent"
       }`}
     >
@@ -54,7 +54,7 @@ export function Header() {
           <span className="font-display text-2xl leading-none text-primary" aria-hidden>
             Σ
           </span>
-          <span className="label-mono text-foreground">OFM 2027</span>
+          <span className="label text-foreground">OFM 2027</span>
         </Link>
 
         <nav aria-label={t("home")} className="hidden items-center gap-8 md:flex">
@@ -65,7 +65,7 @@ export function Header() {
                 key={item.key}
                 href={item.href}
                 aria-current={active ? "page" : undefined}
-                className={`text-sm font-medium transition-colors duration-150 ${
+                className={`text-sm font-medium ${
                   active
                     ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground"
@@ -86,7 +86,7 @@ export function Header() {
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
             aria-controls="menu-mobile"
-            className="flex size-11 items-center justify-center rounded-md text-foreground transition-colors hover:bg-muted md:hidden"
+            className="flex size-11 items-center justify-center rounded-md text-foreground hover:bg-muted md:hidden"
           >
             {menuOpen ? (
               <X aria-hidden className="size-5" />
@@ -110,7 +110,7 @@ export function Header() {
               <Link
                 key={item.key}
                 href={item.href}
-                className="rounded-md px-2 py-3 text-base font-medium text-foreground transition-colors hover:bg-muted"
+                className="rounded-md px-2 py-3 text-base font-medium text-foreground hover:bg-muted"
               >
                 {t(item.key)}
               </Link>

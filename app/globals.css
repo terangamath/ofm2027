@@ -22,6 +22,12 @@
   --gris: #6b7280;
   --terracotta: #b24a2e;
   --blanc: #ffffff;
+
+  /* Tons dérivés pour tenir WCAG AA sur sable (le gris et l'or brut échouent) :
+     encre = texte secondaire (6,7:1 sur sable), or-encre = liens (6,3:1).
+     Fixes dans les deux thèmes : à n'employer que sur les surfaces claires fixes. */
+  --encre: #4b5563;
+  --or-encre: #6f5314;
 }
 
 /* ────────────────────────────────────────────────────────────────
@@ -41,7 +47,7 @@
   --secondary: var(--sable);
   --secondary-foreground: var(--vert-nuit);
   --muted: var(--sable);
-  --muted-foreground: var(--gris);
+  --muted-foreground: var(--encre);
   --accent: var(--or);
   --accent-foreground: var(--vert-nuit);
   --destructive: var(--terracotta);
@@ -49,15 +55,15 @@
 
   --border: color-mix(in srgb, var(--anthracite) 12%, transparent);
   --input: color-mix(in srgb, var(--anthracite) 18%, transparent);
-  --ring: var(--or);
+  --ring: var(--or-encre);
 
   /* Filet or — motif signature, à réserver aux séparateurs et accents. */
   --hairline: color-mix(in srgb, var(--or) 40%, transparent);
 
-  /* Or assombri pour le texte/liens sur fond clair — l'or brut ne passe pas
+  /* Or d'encre pour le texte/liens sur fond clair — l'or brut ne passe pas
      l'AA en petit texte (CLAUDE.md §4). En dark mode l'or clair reprend le
      dessus, lisible sur les fonds sombres. */
-  --link: #8a6a1f;
+  --link: var(--or-encre);
 
   --radius: 0.5rem;
 
@@ -96,6 +102,8 @@
   --hairline: color-mix(in srgb, var(--or) 55%, transparent);
 
   --link: var(--or-clair);
+  /* --encre et --or-encre ne changent pas en sombre : ce sont les tons fixes des
+     surfaces claires fixes (sable, ivoire), qui restent claires dans les deux thèmes. */
 
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.16);
   --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.32);
@@ -117,6 +125,8 @@
   --color-gris: var(--gris);
   --color-terracotta: var(--terracotta);
   --color-blanc: var(--blanc);
+  --color-encre: var(--encre);
+  --color-or-encre: var(--or-encre);
   --color-hairline: var(--hairline);
 
   /* Rôles sémantiques shadcn/ui */
@@ -186,7 +196,17 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
+  }
+
+  /* Focus clavier : un anneau or d'encre décalé, jamais l'outline par défaut. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: var(--radius-hairline);
+  }
+  :focus:not(:focus-visible) {
+    outline: none;
   }
   body {
     @apply bg-background text-foreground font-sans;
@@ -201,13 +221,36 @@
 }
 
 @layer utilities {
-  /* Eyebrow mono — numérote les sections comme une démonstration */
-  .label-mono {
+  /* Libellé d'interface : Inter, bas de casse, graisse moyenne. Jamais de capitales. */
+  .label {
+    font-family: var(--font-sans);
+    font-size: var(--text-small);
+    line-height: var(--text-small--line-height);
+    font-weight: 500;
+  }
+
+  /* Donnée : JetBrains Mono, chiffres tabulaires. Réservé à ce qui se trie ou se
+     calcule — dates, heures, durées, effectifs, numéros. */
+  .data {
     font-family: var(--font-mono);
     font-size: var(--text-label);
     line-height: var(--text-label--line-height);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Lien texte : filet or sous le texte, qui s'épaissit au survol. Le seul survol
+     transitionné des liens. */
+  .link-text {
+    text-decoration-line: underline;
+    text-decoration-color: var(--hairline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+    transition: text-decoration-thickness var(--duration-fast) var(--ease-signature),
+      text-decoration-color var(--duration-fast) var(--ease-signature);
+  }
+  .link-text:hover {
+    text-decoration-thickness: 2px;
+    text-decoration-color: currentColor;
   }
 
   /* Filet or — séparateur signature, à utiliser avec parcimonie */

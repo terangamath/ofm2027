@@ -25,7 +25,7 @@ export default async function LegalPage({
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} />
+      <PageHero title={t("title")} />
 
       <section className="bg-background py-24 lg:py-32">
         <div className="mx-auto flex max-w-3xl flex-col gap-10 px-6">

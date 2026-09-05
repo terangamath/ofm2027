@@ -39,7 +39,7 @@ export default async function ContactPage({
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} />
+      <PageHero title={t("title")} lead={t("lead")} />
 
       <section className="bg-background py-24 lg:py-32">
         <div className="mx-auto max-w-3xl px-6">
@@ -49,16 +49,16 @@ export default async function ContactPage({
                 key={row.label}
                 className="grid grid-cols-[minmax(8rem,auto)_1fr] items-baseline gap-6 border-b border-hairline py-5 first:pt-0"
               >
-                <dt className="label-mono text-muted-foreground">{row.label}</dt>
+                <dt className="label text-muted-foreground">{row.label}</dt>
                 <dd className="text-body-l font-medium text-foreground">{row.value}</dd>
               </div>
             ))}
             <div className="grid grid-cols-[minmax(8rem,auto)_1fr] items-baseline gap-6 border-b border-hairline py-5">
-              <dt className="label-mono text-muted-foreground">{t("emailLabel")}</dt>
+              <dt className="label text-muted-foreground">{t("emailLabel")}</dt>
               <dd>
                 <a
                   href={`mailto:${t("emailValue")}`}
-                  className="text-body-l font-medium text-link underline decoration-hairline underline-offset-4 transition-colors hover:text-foreground"
+                  className="link-text text-body-l font-medium text-link"
                 >
                   {t("emailValue")}
                 </a>
@@ -66,13 +66,13 @@ export default async function ContactPage({
             </div>
             {terangamath?.url && (
               <div className="grid grid-cols-[minmax(8rem,auto)_1fr] items-baseline gap-6 py-5">
-                <dt className="label-mono text-muted-foreground">{t("websiteLabel")}</dt>
+                <dt className="label text-muted-foreground">{t("websiteLabel")}</dt>
                 <dd>
                   <a
                     href={terangamath.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-body-l font-medium text-link underline decoration-hairline underline-offset-4 transition-colors hover:text-foreground"
+                    className="link-text text-body-l font-medium text-link"
                   >
                     www.terangamath.org
                   </a>

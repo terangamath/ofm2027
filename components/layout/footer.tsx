@@ -34,18 +34,18 @@ export async function Footer() {
               <span className="font-display text-2xl leading-none text-primary" aria-hidden>
                 Σ
               </span>
-              <span className="label-mono text-foreground">OFM 2027</span>
+              <span className="label text-foreground">OFM 2027</span>
             </Link>
             <p className="max-w-xs text-sm text-muted-foreground">{t("tagline")}</p>
           </div>
 
           <nav aria-label={t("sections")} className="flex flex-col gap-3">
-            <h2 className="label-mono text-muted-foreground">{t("sections")}</h2>
+            <h2 className="label text-muted-foreground">{t("sections")}</h2>
             {SECTIONS_A.map((item) => (
               <Link
                 key={item.key}
                 href={item.href}
-                className="text-sm text-foreground/80 transition-colors hover:text-foreground"
+                className="text-sm text-foreground/80 hover:text-foreground"
               >
                 {tNav(item.key)}
               </Link>
@@ -53,12 +53,12 @@ export async function Footer() {
           </nav>
 
           <nav aria-label={t("resources")} className="flex flex-col gap-3">
-            <h2 className="label-mono text-muted-foreground">{t("resources")}</h2>
+            <h2 className="label text-muted-foreground">{t("resources")}</h2>
             {SECTIONS_B.map((item) => (
               <Link
                 key={item.key}
                 href={item.href}
-                className="text-sm text-foreground/80 transition-colors hover:text-foreground"
+                className="text-sm text-foreground/80 hover:text-foreground"
               >
                 {tNav(item.key)}
               </Link>
@@ -67,23 +67,23 @@ export async function Footer() {
               href="https://ofm-officiel.org/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-foreground/80 transition-colors hover:text-foreground"
+              className="text-sm text-foreground/80 hover:text-foreground"
             >
               {t("officialSite")}
             </a>
           </nav>
 
           <div className="flex flex-col gap-3">
-            <h2 className="label-mono text-muted-foreground">{t("contact")}</h2>
+            <h2 className="label text-muted-foreground">{t("contact")}</h2>
             <Link
               href="/contact"
-              className="text-sm text-foreground/80 transition-colors hover:text-foreground"
+              className="text-sm text-foreground/80 hover:text-foreground"
             >
               {tNav("contact")}
             </Link>
             <Link
               href="/mentions-legales"
-              className="text-sm text-foreground/80 transition-colors hover:text-foreground"
+              className="text-sm text-foreground/80 hover:text-foreground"
             >
               {t("legalMentions")}
             </Link>

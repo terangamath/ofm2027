@@ -29,7 +29,7 @@ export default async function ProblemsPage({
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} />
+      <PageHero title={t("title")} lead={t("lead")} />
 
       <section className="bg-background py-24 lg:py-32">
         <div className="mx-auto max-w-3xl px-6">
@@ -41,13 +41,13 @@ export default async function ProblemsPage({
                 <Link
                   key={problem.slug}
                   href={`/problemes/${problem.slug}`}
-                  className="group flex flex-col gap-3 rounded-xl border border-hairline bg-card p-7 transition-all duration-150 hover:-translate-y-0.5 hover:shadow-elevated"
+                  className="group flex flex-col gap-3 border-b border-hairline py-6 hover:text-vert"
                 >
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="label-mono text-link">
-                      {problem.category.toUpperCase()} · N°{problem.number}
+                    <span className="label text-link">
+                      {t(`category.${problem.category}`)} · <span className="data">nº {problem.number}</span>
                     </span>
-                    <span className="label-mono text-muted-foreground">
+                    <span className="label text-muted-foreground">
                       {problem.hasSolution ? t("hasSolution") : t("noSolutionYet")}
                     </span>
                   </div>
@@ -56,14 +56,14 @@ export default async function ProblemsPage({
                     {problem.topics.map((topic) => (
                       <span
                         key={topic}
-                        className="label-mono rounded-full border border-hairline px-2.5 py-0.5 text-muted-foreground"
+                        className="label rounded-full border border-hairline px-2.5 py-0.5 text-muted-foreground"
                       >
                         {topic}
                       </span>
                     ))}
                   </div>
-                  <span className="label-mono mt-1 text-link group-hover:text-foreground">
-                    {t("readProblem")} →
+                  <span className="link-text mt-1 self-start text-link">
+                    {t("readProblem")}
                   </span>
                 </Link>
               ))}
