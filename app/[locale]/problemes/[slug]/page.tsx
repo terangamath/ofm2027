@@ -66,7 +66,7 @@ export default async function ProblemDetailPage({
           </div>
         </div>
 
-        <MdxContent source={content} />
+        <MdxContent source={content} locale={locale === "en" ? "en" : "fr"} />
       </div>
     </section>
   );

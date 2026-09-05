@@ -11,9 +11,12 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import "../globals.css";
 
+// Axes variables réellement chargés : opsz (taille optique, automatique selon
+// la taille du texte), SOFT et WONK (caractère du titrage, voir globals.css).
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
+  axes: ["opsz", "SOFT", "WONK"],
 });
 
 const inter = Inter({

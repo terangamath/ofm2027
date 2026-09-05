@@ -180,8 +180,8 @@
   --text-h4--line-height: 1.35;
   --text-body-l: 1.125rem;
   --text-body-l--line-height: 1.6;
-  --text-body: 1rem;
-  --text-body--line-height: 1.6;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.65;
   --text-small: 0.875rem;
   --text-small--line-height: 1.5;
   --text-label: 0.8125rem;
@@ -210,13 +210,36 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
-    font-variant-numeric: tabular-nums;
+    /* Chiffres proportionnels dans le texte courant ; tabulaires uniquement là
+       où des nombres se comparent en colonne (.data, tables, grands chiffres). */
+    font-variant-numeric: proportional-nums;
+    font-optical-sizing: auto;
   }
   h1,
   h2,
   h3,
   h4 {
     @apply font-display;
+    text-wrap: balance;
+  }
+  /* Titrage Fraunces : opsz automatique (l'axe suit la taille réelle), SOFT et
+     WONK donnent le caractère. Les intertitres restent nets (SOFT 0, WONK 0). */
+  h1,
+  h2,
+  .titrage {
+    font-variation-settings: "SOFT" 30, "WONK" 1;
+    letter-spacing: -0.02em;
+  }
+  h3,
+  h4 {
+    font-variation-settings: "SOFT" 0, "WONK" 0;
+    letter-spacing: -0.01em;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  table {
+    font-variant-numeric: tabular-nums;
   }
 }
 

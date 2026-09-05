@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
-import event from "@/content/event.json";
-import partnersData from "@/content/partenaires.json";
-import type { EventInfo, Locale, Partner } from "@/content/types";
+import type { Locale } from "@/content/types";
+import { evenement as eventInfo, partenaires as partners } from "@/lib/contenu";
 
-const eventInfo = event as EventInfo;
-const partners = partnersData as Partner[];
 const terangamath = partners.find((partner) => partner.id === "terangamath");
 
 export async function generateMetadata({

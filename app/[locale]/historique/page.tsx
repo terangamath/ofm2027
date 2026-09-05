@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
-import editionsData from "@/content/editions.json";
-import archivesData from "@/content/archives.json";
-import nationsData from "@/content/nations.json";
-import type { ArchiveDocumentType, ArchiveEntry, Edition, HistoricalNation, Locale } from "@/content/types";
-
-const editions = editionsData as Edition[];
-const archives = archivesData as ArchiveEntry[];
-const nations = nationsData as HistoricalNation[];
+import type { ArchiveDocumentType, Locale } from "@/content/types";
+import { editions, archives, nations } from "@/lib/contenu";
 
 const DOC_TYPES: ArchiveDocumentType[] = ["sujet", "solutions", "resultats"];
 const CATEGORIES = ["junior", "senior"] as const;

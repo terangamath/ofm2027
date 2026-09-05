@@ -9,10 +9,8 @@ import { CountdownSection } from "@/components/home/countdown";
 import { PartnersSection } from "@/components/home/partners";
 import { FaqSection } from "@/components/home/faq";
 import { EventJsonLd } from "@/components/shared/event-jsonld";
-import eventData from "@/content/event.json";
-import type { EventInfo, Locale } from "@/content/types";
-
-const eventInfo = eventData as EventInfo;
+import type { Locale } from "@/content/types";
+import { evenement as eventInfo } from "@/lib/contenu";
 
 export default async function HomePage({
   params,

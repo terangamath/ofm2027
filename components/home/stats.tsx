@@ -1,9 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { SectionHeading } from "@/components/home/section-heading";
-import statsData from "@/content/stats.json";
-import type { Locale, Stat } from "@/content/types";
-
-const stats = statsData as Stat[];
+import type { Locale } from "@/content/types";
+import { statistiques as stats } from "@/lib/contenu";
 
 export async function StatsSection({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "Home.Stats" });

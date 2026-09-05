@@ -2,12 +2,9 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
 import { SectionHeading } from "@/components/home/section-heading";
-import organisationData from "@/content/organisation.json";
-import partnersData from "@/content/partenaires.json";
-import type { Committee, Locale, Partner } from "@/content/types";
+import type { Locale } from "@/content/types";
+import { partenaires as partners, comites as committees } from "@/lib/contenu";
 
-const committees = organisationData as Committee[];
-const partners = partnersData as Partner[];
 const terangamath = partners.find((partner) => partner.id === "terangamath");
 
 export async function generateMetadata({

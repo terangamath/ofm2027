@@ -2,10 +2,12 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import { Callout } from "@/components/mdx/callout";
+import { remarkTypographie } from "@/lib/remark-typographie";
+import type { Locale } from "@/content/types";
 
 const components = { Callout };
 
-export function MdxContent({ source }: { source: string }) {
+export function MdxContent({ source, locale }: { source: string; locale: Locale }) {
   return (
     <div
       className="flex flex-col gap-5 text-body text-foreground/90
@@ -21,7 +23,9 @@ export function MdxContent({ source }: { source: string }) {
         components={components}
         options={{
           mdxOptions: {
-            remarkPlugins: [remarkMath],
+            // La composition française vient après remark-math : les formules sont déjà
+            // des nœuds distincts et ne sont jamais touchées.
+            remarkPlugins: locale === "fr" ? [remarkMath, remarkTypographie] : [remarkMath],
             rehypePlugins: [rehypeKatex],
           },
         }}

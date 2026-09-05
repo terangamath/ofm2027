@@ -1,5 +1,6 @@
 import { hasLocale } from "next-intl";
 import { getRequestConfig } from "next-intl/server";
+import { composerMessages } from "@/lib/typographie";
 import { routing } from "./routing";
 
 export default getRequestConfig(async ({ requestLocale }) => {
@@ -8,8 +9,12 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ? requested
     : routing.defaultLocale;
 
+  const messages = (await import(`../messages/${locale}.json`)).default;
+
   return {
     locale,
-    messages: (await import(`../messages/${locale}.json`)).default,
+    // Microtypographie française appliquée au chargement : les fichiers de
+    // messages restent en saisie brute, l'anglais n'est pas touché.
+    messages: locale === "fr" ? composerMessages(messages) : messages,
   };
 });

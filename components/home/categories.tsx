@@ -1,10 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { SectionHeading } from "@/components/home/section-heading";
-import event from "@/content/event.json";
-import type { EventInfo, Locale } from "@/content/types";
-
-const eventInfo = event as EventInfo;
+import type { Locale } from "@/content/types";
+import { evenement as eventInfo } from "@/lib/contenu";
 
 export async function CategoriesSection({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "Home.Categories" });

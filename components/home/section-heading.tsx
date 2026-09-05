@@ -1,3 +1,4 @@
+import { sansVeuve } from "@/lib/typographie";
 interface SectionHeadingProps {
   title: string;
   lead?: string;
@@ -30,7 +31,7 @@ export function SectionHeading({
     <div
       className={`flex flex-col gap-4 ${centered ? "items-center text-center" : "items-start text-left"}`}
     >
-      <h2 className={`text-h2 font-display ${styles.title}`}>{title}</h2>
+      <h2 className={`text-h2 font-display ${styles.title}`}>{sansVeuve(title)}</h2>
       {lead && (
         <p className={`text-body-l ${styles.lead} ${centered ? "max-w-2xl" : "max-w-xl"}`}>
           {lead}

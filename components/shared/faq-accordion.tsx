@@ -4,10 +4,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import faqData from "@/content/faq.json";
-import type { FaqItem, Locale } from "@/content/types";
-
-const faqItems = faqData as FaqItem[];
+import type { Locale } from "@/content/types";
+import { faq as faqItems } from "@/lib/contenu";
 
 export function FaqAccordion({ locale }: { locale: Locale }) {
   return (

@@ -3,14 +3,9 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
 import { SectionHeading } from "@/components/home/section-heading";
 import { FaqAccordion } from "@/components/shared/faq-accordion";
-import event from "@/content/event.json";
-import formatData from "@/content/format.json";
-import documentsData from "@/content/documents.json";
-import type { CompetitionFormat, EventInfo, Locale, ReferenceDocument } from "@/content/types";
+import type { Locale } from "@/content/types";
+import { evenement as eventInfo, format, documents } from "@/lib/contenu";
 
-const eventInfo = event as EventInfo;
-const format = formatData as CompetitionFormat;
-const documents = documentsData as ReferenceDocument[];
 const reglement = documents.find((doc) => doc.id === "reglement-2025");
 
 export async function generateMetadata({

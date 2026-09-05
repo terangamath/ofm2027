@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import type { Delegation, Locale, ProblemFrontmatter } from "@/content/types";
+import { composerContenu, composerFrancais } from "@/lib/typographie";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
@@ -11,7 +12,7 @@ export function getDelegations(): Delegation[] {
   return fs
     .readdirSync(dir)
     .filter((file) => file.endsWith(".json"))
-    .map((file) => JSON.parse(fs.readFileSync(path.join(dir, file), "utf-8")) as Delegation)
+    .map((file) => composerContenu(JSON.parse(fs.readFileSync(path.join(dir, file), "utf-8")) as Delegation))
     .sort((a, b) => {
       if (a.isHost !== b.isHost) return a.isHost ? -1 : 1;
       return a.name.fr.localeCompare(b.name.fr);
@@ -35,7 +36,7 @@ export function getProblems(locale: Locale): ProblemFrontmatter[] {
   const fallbackDir = path.join(CONTENT_DIR, "problemes", "fr");
   const items = readFrontmatter<ProblemFrontmatter>(
     fs.existsSync(dir) ? dir : fallbackDir
-  );
+  ).map((item) => (locale === "fr" ? { ...item, title: composerFrancais(item.title) } : item));
   return items.sort((a, b) => a.number - b.number);
 }
 

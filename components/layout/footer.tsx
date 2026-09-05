@@ -1,9 +1,7 @@
 import { getTranslations, getLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import event from "@/content/event.json";
-import type { EventInfo, Locale } from "@/content/types";
-
-const eventInfo = event as EventInfo;
+import type { Locale } from "@/content/types";
+import { evenement as eventInfo } from "@/lib/contenu";
 
 const SECTIONS_A = [
   { key: "olympiad", href: "/olympiade" },
@@ -34,7 +32,7 @@ export async function Footer() {
               <span className="font-display text-2xl leading-none text-primary" aria-hidden>
                 Σ
               </span>
-              <span className="label text-foreground">OFM 2027</span>
+              <span className="label text-foreground">OFM 2027</span>
             </Link>
             <p className="max-w-xs text-sm text-muted-foreground">{t("tagline")}</p>
           </div>

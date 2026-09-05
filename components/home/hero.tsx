@@ -1,10 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Constellation } from "@/components/motifs/constellation";
-import event from "@/content/event.json";
-import type { EventInfo, Locale } from "@/content/types";
-
-const eventInfo = event as EventInfo;
+import type { Locale } from "@/content/types";
+import { evenement as eventInfo } from "@/lib/contenu";
+import { sansVeuve } from "@/lib/typographie";
 
 export async function Hero({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "Home.Hero" });
@@ -26,7 +25,7 @@ export async function Hero({ locale }: { locale: Locale }) {
       />
 
       <div className="relative mx-auto flex max-w-7xl flex-col gap-10 px-6 py-28 lg:py-36">
-        <h1 className="max-w-4xl text-display-xl font-display">{t("title")}</h1>
+        <h1 className="max-w-4xl text-display-xl font-display">{sansVeuve(t("title"))}</h1>
 
         <p className="max-w-2xl text-body-l text-ivoire/80">{t("lead")}</p>
 

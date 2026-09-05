@@ -54,7 +54,7 @@ export function Header() {
           <span className="font-display text-2xl leading-none text-primary" aria-hidden>
             Σ
           </span>
-          <span className="label text-foreground">OFM 2027</span>
+          <span className="label text-foreground">OFM 2027</span>
         </Link>
 
         <nav aria-label={t("home")} className="hidden items-center gap-8 md:flex">

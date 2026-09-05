@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
-import programmeData from "@/content/programme.json";
-import type { Locale, Schedule, ScheduleEventKind } from "@/content/types";
-
-const programme = programmeData as Schedule;
+import type { Locale, ScheduleEventKind } from "@/content/types";
+import { programme } from "@/lib/contenu";
 
 const DATE_FORMAT: Record<Locale, string> = {
   fr: "fr-FR",

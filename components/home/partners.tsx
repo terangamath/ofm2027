@@ -1,9 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { SectionHeading } from "@/components/home/section-heading";
-import partnersData from "@/content/partenaires.json";
-import type { Locale, Partner, PartnerCategory } from "@/content/types";
-
-const partners = partnersData as Partner[];
+import type { Locale, PartnerCategory } from "@/content/types";
+import { partenaires as partners } from "@/lib/contenu";
 
 const CATEGORY_ORDER: PartnerCategory[] = ["institutionnel", "financier", "technique"];
 const CATEGORY_LABEL_KEY: Record<PartnerCategory, string> = {
