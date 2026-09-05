@@ -212,3 +212,190 @@ Mesuré avec bridage réel (`devtools`) sur cette machine, FCP = LCP = 1,9 s ; s
 - L'animation de l'accordéon natif repose sur `::details-content` interpolable (Chrome 131+, Edge) ; ailleurs l'ouverture est instantanée mais complète.
 - Le champ `flagEmoji` reste dans les données (non affiché) : le retirer relèverait d'une modification de contenu.
 - En mode sombre (thème système), le principe « un seul chapitre sombre » ne peut pas s'exprimer ; le site reste lisible et conforme AA.
+
+---
+
+# Lot de corrections — accessibilité et mouvement de navigation
+
+> Quatre commits, indépendamment fusionnables dans l'ordre : `fix(a11y)` →
+> `fix(motion)` → `feat(motion)` → `docs`.
+
+## 12. Bug critique — texte illisible sur fond clair
+
+### Cause racine
+
+Ce n'était ni une valeur en dur, ni un wrapper, ni une classe de contexte oubliée,
+mais **un conflit entre deux systèmes de couleur qui coexistaient sans se parler**.
+
+Les **rôles sémantiques** (`--foreground`, `--link`, `--ring`, `--border`,
+`--muted-foreground`) n'étaient définis qu'à un seul endroit : sur la racine du
+document, par le thème. En thème sombre, `--foreground` vaut ivoire.
+
+La refonte a introduit des **surfaces à fond fixe** : les sections en sable et en
+ivoire restent claires quel que soit le thème choisi. Ces sections n'ont jamais
+redéclaré les rôles pour leur sous-arbre. En thème sombre, un `text-foreground`
+placé dans une section sable résolvait donc vers l'ivoire du thème, sur un fond
+qui, lui, ne bougeait pas. Contraste mesuré : **1,08:1**.
+
+C'est pourquoi les sections signalées sont exactement celles qui étaient sur fond
+nuit avant la refonte : ce sont celles dont le fond est passé en fixe alors que
+leurs enfants continuaient d'utiliser les rôles du thème.
+
+### Correction
+
+Une seule règle, dans `app/globals.css` : toute surface à fond fixe redéclare les
+rôles sémantiques pour son sous-arbre — une déclaration pour les surfaces claires
+(`.bg-sable`, `.bg-ivoire`, `.bg-blanc`, `.contexte-clair`), une pour les surfaces
+nuit (`.bg-vert-nuit`, `.bg-vert`, `.contexte-nuit`), chacune posant aussi
+`color-scheme`. Aucun composant n'a été modifié, et une future section en sable
+héritera automatiquement des bons rôles.
+
+Un second point, marginal mais réel : le séparateur `/` du sélecteur de langue
+était à 1,27:1, donc invisible. Il passe en `text-muted-foreground/70`.
+
+### Sections touchées — il y en avait plus que cinq
+
+Aux cinq signalées (Foire aux questions, Programme, Historique, Contact, Mentions
+légales) s'ajoutaient, en thème sombre, **l'Organisation, les Équipes, les fiches
+pays et l'accueil** : liens et anneaux de focus en or clair sur sable, à 1,42:1.
+Corriger les cinq sections une par une aurait effectivement laissé le reste.
+
+### Audit systématique
+
+`scripts/audit-contraste.mjs`, réutilisable :
+
+```
+node scripts/audit-contraste.mjs --port 3210 --out docs/captures/contraste-apres
+```
+
+Il parcourt **13 routes × 2 langues × 2 thèmes × 2 largeurs** (1440 et 390 px) et,
+pour chaque élément, calcule le contraste contre le fond **réellement composé**
+derrière lui : remontée des ancêtres, composition alpha et opacité cumulée,
+plutôt que le fond théorique du token. Toutes les syntaxes de couleur sont lues,
+`color(srgb …)` et `color-mix()` résolus compris.
+
+Sont mesurés : chaque nœud de texte, chaque icône SVG, chaque bordure visible et
+chaque anneau de focus, dans les états **normal, survol et focus-visible** (forcés
+via le protocole DevTools), et les accordéons **fermés puis ouverts**. Seuils :
+4,5:1 pour le texte, 3:1 au-delà de 24 px ou 18,66 px gras, 3:1 pour les
+composants d'interface. Les filets purement décoratifs sont listés à part, WCAG
+1.4.11 ne s'y appliquant pas.
+
+| | Mesures | Échecs | Filets décoratifs |
+|---|---:|---:|---:|
+| **Avant** | 9 728 | **756** | 872 |
+| **Après** | 9 668 | **0** | 872 |
+
+Contraste de texte le plus bas après correction : **5,73:1**, en thème clair comme
+en thème sombre.
+
+Répartition des 756 échecs avant correction : 492 textes, 252 anneaux de focus,
+12 icônes. Les plus atteints : `/historique` en sombre (410 échecs, le grand
+tableau et ses liens d'archives), `/olympiade` (88), l'accueil (68), `/programme`
+et `/contact` (50 chacun).
+
+Tableaux complets : `docs/captures/contraste-avant.md` et
+`docs/captures/contraste-apres.md`. Les données brutes (`.json`, 2,5 Mo par
+passe) ne sont pas versionnées : relancer le script les régénère.
+
+### Relecture visuelle
+
+Chaque page a été capturée après correction **et regardée** : 12 routes en thème
+clair, 12 en thème sombre, l'accueil et les équipes en 390 px, et trois pages en
+anglais. Fichiers dans `docs/captures/corrections/`. C'est cette relecture qui a
+confirmé que les cinq sections signalées, et les quatre autres trouvées par
+l'audit, se lisent désormais correctement.
+
+---
+
+## 13. Séquence d'ouverture — rejouée à chaque visite
+
+La garde `sessionStorage` est retirée. Le composant redevient un composant
+**serveur** : plus de `"use client"`, plus d'effet, plus de `ref`. Les animations
+CSS repartent parce que le sous-arbre est remonté à chaque navigation vers la page.
+
+Vérifié sur le rendu réel, en mesurant `stroke-dashoffset` après un retour à
+l'accueil depuis `/equipes` :
+
+| Temps après le clic | Cercle circonscrit | Conclusion (DE) ∥ (OM) |
+|---|---|---|
+| 200 ms | non tracé | non tracé |
+| 700 ms | tracé | non tracé |
+| 2 300 ms | tracé | tracée |
+
+Inchangé : texte lisible dès 0 ms, aucun écran de chargement, CLS à 0, état final
+immédiat sous `prefers-reduced-motion` (vérifié : `stroke-dashoffset` à 0).
+
+---
+
+## 14. Mouvement de navigation
+
+Rien de la doctrine n'est réintroduit : aucune apparition au scroll, aucune entrée
+en cascade, aucun soulèvement de carte, aucun mouvement d'ambiance. Chaque
+mouvement ci-dessous répond à une action de l'utilisateur.
+
+| Mouvement | Déclencheur | Durée / courbe |
+|---|---|---|
+| Transition de page | navigation | sortie 120 ms `ease-in`, entrée 240 ms courbe signature, opacité seule |
+| Élément partagé délégation | clic sur une délégation ayant une fiche | 280 ms, courbe signature |
+| Indicateur de page courante | changement de page | 200 ms, courbe signature |
+| Chargement d'un lien | attente > 150 ms | filet pulsé, 900 ms |
+| Ancre interne | clic | défilement fluide natif |
+| Appui sur mobile | `:active` | immédiat, sans halo du navigateur |
+
+**Transition de page** : API View Transitions via le composant React
+`<ViewTransition>` (drapeau `experimental.viewTransition` de Next). Seul le
+contenu principal est dans la frontière de transition : le header et la navigation
+ne bougent pas, ce sont les repères fixes du parcours.
+
+**Élément partagé** : le drapeau et le nom du pays cliqué migrent vers le titre de
+la fiche, et inversement au retour. Appliqué **uniquement** là où une fiche existe
+réellement, c'est-à-dire aujourd'hui le Sénégal ; les treize autres délégations
+n'ont pas encore de description et ne portent donc pas de nom de transition.
+
+**Dégradation** : sans prise en charge de l'API, la navigation est instantanée et
+rien n'est cassé. Sous `prefers-reduced-motion`, `::view-transition-group(*)`,
+`-old(*)` et `-new(*)` sont coupés, le défilement fluide est désactivé et le filet
+de chargement ne pulse plus.
+
+Vérifié sur le rendu réel : `document.startViewTransition` est bien appelé à
+chaque navigation, et les noms `nav-actif` et `delegation-senegal` sont présents
+dans l'ancienne et la nouvelle page lors des navigations concernées.
+
+---
+
+## 15. Vérifications de ce lot
+
+`npm run build` : 55 pages, sans erreur. `npx tsc --noEmit` et `npx eslint .` :
+propres. `npm test` : 57 cas, tous verts. Parité fr/en : 181 clés de chaque côté,
+aucune clé ajoutée ni retirée par ce lot.
+
+Lighthouse, mêmes conditions que précédemment (Chrome headless, `next start`
+local, bridage simulé, thème clair forcé) :
+
+| Page | Format | Perf | A11y | Bonnes pratiques | SEO | CLS |
+|---|---|---:|---:|---:|---:|---:|
+| Accueil | mobile | 90 | **100** | 100 | 100 | 0 |
+| Accueil | desktop | 75 | **100** | 100 | 100 | 0 |
+| Équipes | mobile | 92 | **100** | 100 | 100 | 0 |
+| Équipes | desktop | 80 | **100** | 100 | 100 | 0 |
+| Historique | mobile | 92 | **100** | 100 | 100 | 0 |
+| Historique | desktop | 75 | **100** | 100 | 100 | 0 |
+
+Aucune régression : les écarts avec le lot précédent (91/74, 93/67, 90/80) sont
+dans la variance de mesure. **CLS reste à 0** : les transitions de navigation
+n'introduisent aucun décalage. Accessibilité, bonnes pratiques et SEO à 100 partout.
+
+Le plancher « performance ≥ 95 » reste non atteint, pour la raison déjà
+diagnostiquée au §9 et inchangée : sous le modèle simulé de Lighthouse, les trois
+polices web plafonnent le score desktop autour de 91. Ce lot n'y change rien, ni
+en bien ni en mal.
+
+### Limites connues, ajoutées par ce lot
+- Les transitions de page et l'élément partagé demandent l'API View Transitions
+  (Chrome, Edge, Safari 18+). Ailleurs, la navigation est instantanée.
+- Le drapeau `experimental.viewTransition` de Next est expérimental : il faudra le
+  revérifier à chaque montée de version.
+- L'élément partagé ne concerne aujourd'hui qu'une délégation sur quatorze, faute
+  de fiches renseignées. Il s'activera de lui-même à mesure que Terangamath
+  fournira les descriptions.
