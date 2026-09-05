@@ -1,3 +1,4 @@
+import { ViewTransition } from "react";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { SectionHeading } from "@/components/home/section-heading";
@@ -18,16 +19,27 @@ export async function DelegationsSection({ locale }: { locale: Locale }) {
         <ul className="grid grid-cols-1 gap-x-12 sm:grid-cols-2 lg:grid-cols-3">
           {delegations.map((delegation) => {
             const pending = delegation.status !== "confirmed";
+            const hasFiche = Boolean(delegation.description);
+            const identite = (
+              <span className="flex items-center gap-3">
+                <Flag countryCode={delegation.countryCode} size={24} />
+                <span className={`font-medium ${pending ? "text-encre" : ""}`}>{delegation.name[locale]}</span>
+              </span>
+            );
             return (
               <li key={delegation.slug} className="border-b border-hairline">
                 <Link
                   href={`/equipes/${delegation.slug}`}
-                  className="flex min-h-14 items-center gap-3 py-3 text-anthracite hover:text-vert"
+                  className="flex min-h-14 items-center gap-3 py-3 text-anthracite hover:text-vert active:text-vert"
                 >
-                  <Flag countryCode={delegation.countryCode} size={24} />
-                  <span className={`font-medium ${pending ? "text-encre" : ""}`}>
-                    {delegation.name[locale]}
-                  </span>
+                  {/* Là où une fiche existe, le drapeau et le nom migrent vers le titre de la fiche. */}
+                  {hasFiche ? (
+                    <ViewTransition name={`delegation-${delegation.slug}`} share="partage">
+                      {identite}
+                    </ViewTransition>
+                  ) : (
+                    identite
+                  )}
                   {delegation.isHost && (
                     <span className="label ml-auto text-vert">{t("hostBadge")}</span>
                   )}

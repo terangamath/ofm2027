@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ViewTransition } from "react";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -46,15 +47,25 @@ export default async function TeamDetailPage({
           {t("back")}
         </Link>
 
-        <div className="flex items-center gap-5">
-          <Flag countryCode={delegation.countryCode} size={64} />
-          <div className="flex flex-col gap-1">
-            <h1 className="font-display text-display-l text-vert">{delegation.name[typedLocale]}</h1>
-            <p className="label text-encre">
-              {delegation.isHost && `${t("hostBadge")} · `}
-              {delegation.status === "confirmed" ? t("statusConfirmed") : t("statusPending")}
-            </p>
-          </div>
+        <div className="flex flex-col gap-3">
+          {/* Cible de l'élément partagé venu du registre (uniquement si la fiche existe). */}
+          {delegation.description ? (
+            <ViewTransition name={`delegation-${delegation.slug}`} share="partage">
+              <span className="flex items-center gap-5">
+                <Flag countryCode={delegation.countryCode} size={64} />
+                <h1 className="font-display text-display-l text-vert">{delegation.name[typedLocale]}</h1>
+              </span>
+            </ViewTransition>
+          ) : (
+            <span className="flex items-center gap-5">
+              <Flag countryCode={delegation.countryCode} size={64} />
+              <h1 className="font-display text-display-l text-vert">{delegation.name[typedLocale]}</h1>
+            </span>
+          )}
+          <p className="label text-encre">
+            {delegation.isHost && `${t("hostBadge")} · `}
+            {delegation.status === "confirmed" ? t("statusConfirmed") : t("statusPending")}
+          </p>
         </div>
 
         {delegation.description && (

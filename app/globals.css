@@ -269,6 +269,16 @@
   :focus:not(:focus-visible) {
     outline: none;
   }
+  /* Ancres internes : défilement fluide (coupé sous prefers-reduced-motion, voir plus bas). */
+  html {
+    scroll-behavior: smooth;
+  }
+  /* Le retour à l'appui est dessiné par nos états :active, pas par le halo du navigateur. */
+  a,
+  button,
+  summary {
+    -webkit-tap-highlight-color: transparent;
+  }
   body {
     @apply bg-background text-foreground font-sans;
     /* Chiffres proportionnels dans le texte courant ; tabulaires uniquement là
@@ -519,5 +529,90 @@
     .accordeon {
       interpolate-size: allow-keywords;
     }
+  }
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Mouvement de navigation — chaque mouvement répond à une action.
+   1. Transition de page (API View Transitions, via <ViewTransition default="page">
+      autour du contenu principal) : fondu de 240 ms, sans translation. L'en-tête
+      n'est pas dans la frontière et ne bouge pas.
+   2. Élément partagé (share="partage") : le drapeau et le nom du pays cliqué
+      migrent vers le titre de la fiche, 280 ms sur la courbe signature.
+   3. Indicateur de page courante (share="nav-actif") : glisse en 200 ms.
+   Sans prise en charge de l'API, la navigation est instantanée ; sous
+   prefers-reduced-motion, tout est coupé.
+   ──────────────────────────────────────────────────────────────── */
+::view-transition-old(.page) {
+  animation: 120ms ease-in both page-sortie;
+}
+::view-transition-new(.page) {
+  animation: 240ms var(--ease-signature) both page-entree;
+}
+::view-transition-group(.partage) {
+  animation-duration: 280ms;
+  animation-timing-function: var(--ease-signature);
+}
+::view-transition-old(.partage),
+::view-transition-new(.partage) {
+  animation-duration: 280ms;
+  height: 100%;
+  object-fit: contain;
+}
+::view-transition-group(.nav-actif) {
+  animation-duration: 200ms;
+  animation-timing-function: var(--ease-signature);
+}
+@keyframes page-sortie {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes page-entree {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* Retour de chargement d'un lien de navigation : un filet or sous le libellé,
+   visible seulement si l'attente dépasse 150 ms (délai de l'animation). */
+.lien-chargement {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -2px;
+  height: 2px;
+  background: var(--hairline);
+  opacity: 0;
+  pointer-events: none;
+}
+.lien-chargement.en-cours {
+  animation: lien-chargement-pulse 900ms ease-in-out 150ms infinite both;
+}
+@keyframes lien-chargement-pulse {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.2);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(0.2);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lien-chargement.en-cours {
+    animation: none;
+    opacity: 1;
+    transition: opacity 0s 150ms;
   }
 }

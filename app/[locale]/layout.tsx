@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
+import { ViewTransition } from "react";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { setRequestLocale } from "next-intl/server";
@@ -94,7 +95,8 @@ export default async function LocaleLayout({
           <NextIntlClientProvider messages={{}}>
             <Header />
             <main id="contenu" className="flex flex-1 flex-col">
-              {children}
+              {/* Seul le contenu principal transitionne ; l'en-tête reste le repère fixe. */}
+              <ViewTransition default="page">{children}</ViewTransition>
             </main>
             <Footer />
           </NextIntlClientProvider>

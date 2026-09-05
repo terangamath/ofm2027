@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { ViewTransition, useEffect, useState } from "react";
+import { useLinkStatus } from "next/link";
 import { Menu, X } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
@@ -21,6 +22,16 @@ interface HeaderNavProps {
     navLabel: string;
     languageSwitcher: string;
   };
+}
+
+/**
+ * Retour de chargement d'un lien : un filet qui apparaît sous le libellé si la
+ * navigation dure plus de 150 ms (délai porté par l'animation CSS). Invisible
+ * quand la page arrive tout de suite.
+ */
+function Chargement() {
+  const { pending } = useLinkStatus();
+  return <span aria-hidden className={`lien-chargement ${pending ? "en-cours" : ""}`} />;
 }
 
 export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
@@ -58,7 +69,7 @@ export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
       </a>
 
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:h-20">
-        <Link href="/" className="flex items-center gap-2.5 rounded-sm">
+        <Link href="/" className="flex items-center gap-2.5 rounded-sm active:opacity-70">
           <span className="font-display text-2xl leading-none text-primary" aria-hidden>
             Σ
           </span>
@@ -73,9 +84,16 @@ export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
                 key={item.href}
                 href={item.href}
                 aria-current={active ? "page" : undefined}
-                className={`text-sm font-medium ${active ? "text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+                className={`relative py-1 text-sm font-medium active:text-primary ${active ? "text-foreground" : "text-muted-foreground hover:text-foreground"}`}
               >
                 {item.label}
+                <Chargement />
+                {/* L'indicateur de page courante glisse vers sa nouvelle position au changement de page. */}
+                {active && (
+                  <ViewTransition name="nav-actif" share="nav-actif">
+                    <span aria-hidden className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-accent" />
+                  </ViewTransition>
+                )}
               </Link>
             );
           })}
@@ -90,7 +108,7 @@ export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
             aria-controls="menu-mobile"
-            className="flex size-11 items-center justify-center rounded-md text-foreground hover:bg-muted md:hidden"
+            className="flex size-11 items-center justify-center rounded-md text-foreground hover:bg-muted active:bg-muted md:hidden"
           >
             {menuOpen ? <X aria-hidden className="size-5" /> : <Menu aria-hidden className="size-5" />}
             <span className="sr-only">{menuOpen ? labels.menuClose : labels.menuOpen}</span>
@@ -105,9 +123,11 @@ export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-md px-2 py-3 text-base font-medium text-foreground hover:bg-muted"
+                aria-current={pathname === item.href ? "page" : undefined}
+                className="relative rounded-md px-2 py-3 text-base font-medium text-foreground hover:bg-muted active:bg-muted aria-[current=page]:text-primary"
               >
                 {item.label}
+                <Chargement />
               </Link>
             ))}
           </nav>

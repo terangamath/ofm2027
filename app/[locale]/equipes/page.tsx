@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ViewTransition } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
 import { Flag } from "@/components/shared/flag";
@@ -43,10 +44,19 @@ export default async function TeamsPage({
                   className="flex flex-col gap-2 border-b border-hairline py-6"
                 >
                   <div className="flex items-center gap-4">
-                    <Flag countryCode={delegation.countryCode} size={32} />
-                    <h2 className="font-display text-h4 text-anthracite">
-                      {delegation.name[typedLocale]}
-                    </h2>
+                    {hasFiche ? (
+                      <ViewTransition name={`delegation-${delegation.slug}`} share="partage">
+                        <span className="flex items-center gap-4">
+                          <Flag countryCode={delegation.countryCode} size={32} />
+                          <h2 className="font-display text-h4 text-anthracite">{delegation.name[typedLocale]}</h2>
+                        </span>
+                      </ViewTransition>
+                    ) : (
+                      <>
+                        <Flag countryCode={delegation.countryCode} size={32} />
+                        <h2 className="font-display text-h4 text-anthracite">{delegation.name[typedLocale]}</h2>
+                      </>
+                    )}
                     {delegation.isHost && (
                       <span className="label ml-auto text-vert">{t("hostBadge")}</span>
                     )}
@@ -60,7 +70,7 @@ export default async function TeamsPage({
                   {hasFiche && (
                     <Link
                       href={`/equipes/${delegation.slug}`}
-                      className="link-text ml-12 self-start text-vert"
+                      className="link-text ml-12 self-start text-vert active:text-anthracite"
                     >
                       {t("viewTeam")}
                     </Link>
