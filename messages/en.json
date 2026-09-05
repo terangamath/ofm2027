@@ -221,7 +221,15 @@
         "resultats": "Results"
       },
       "nationsTitle": "Nations that have taken part in OFM",
-      "nationsLead": "Every nation that has entered a delegation since the Olympiad began, in 2020."
+      "nationsLead": "Every nation that has entered a delegation since the Olympiad began, in 2020.",
+      "columns": {
+        "edition": "Edition",
+        "host": "Host",
+        "dates": "Dates",
+        "countries": "Countries",
+        "note": "Note",
+        "archives": "Papers, solutions, results"
+      }
     },
     "Gallery": {
       "title": "Gallery",

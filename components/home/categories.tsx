@@ -1,9 +1,10 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { SectionHeading } from "@/components/home/section-heading";
-import type { Locale } from "@/content/types";
 import { evenement as eventInfo } from "@/lib/contenu";
+import type { Locale } from "@/content/types";
 
+/** Deux catégories en diptyque : un filet vertical, pas de boîtes. */
 export async function CategoriesSection({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "Home.Categories" });
 
@@ -13,44 +14,24 @@ export async function CategoriesSection({ locale }: { locale: Locale }) {
   };
 
   return (
-    <section className="bg-background py-24 lg:py-32">
-      <div className="mx-auto flex max-w-7xl flex-col gap-14 px-6">
+    <section className="bg-background py-16 lg:py-24">
+      <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6">
         <SectionHeading title={t("title")} lead={t("lead")} />
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {eventInfo.categories.map((category, index) => {
-            const inverted = index === 1;
-            return (
-              <div
-                key={category.id}
-                className={`flex flex-col gap-6 rounded-xl border p-8 lg:p-10 ${
-                  inverted
-                    ? "border-transparent bg-primary text-primary-foreground"
-                    : "border-hairline bg-card text-card-foreground"
-                }`}
-              >
-                <span
-                  aria-hidden
-                  className={`h-1 w-12 rounded-full ${inverted ? "bg-primary-foreground/60" : "bg-accent"}`}
-                />
-                <div className="flex flex-col gap-2">
-                  <h3 className="font-display text-h3">{category.name[locale]}</h3>
-                  <p className={inverted ? "text-primary-foreground/70" : "text-muted-foreground"}>
-                    {category.scope[locale]}
-                  </p>
-                </div>
-                <p className={`text-body ${inverted ? "text-primary-foreground/85" : "text-foreground/80"}`}>
-                  {notes[category.id]}
-                </p>
-              </div>
-            );
-          })}
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-0">
+          {eventInfo.categories.map((category, index) => (
+            <div
+              key={category.id}
+              className={`flex flex-col gap-4 ${index === 1 ? "md:border-l md:border-hairline md:pl-12" : "md:pr-12"}`}
+            >
+              <h3 className="font-display text-h2 text-foreground">{category.name[locale]}</h3>
+              <p className="text-body-l text-muted-foreground">{category.scope[locale]}</p>
+              <p className="max-w-md text-body text-foreground/85">{notes[category.id]}</p>
+            </div>
+          ))}
         </div>
 
-        <Link
-          href="/programme"
-          className="link-text self-start text-link"
-        >
+        <Link href="/programme" className="link-text self-start text-link">
           {t("cta")}
         </Link>
       </div>

@@ -221,7 +221,15 @@
         "resultats": "Résultats"
       },
       "nationsTitle": "Nations ayant déjà pris part à l'OFM",
-      "nationsLead": "Toutes les nations ayant engagé une délégation depuis la création de l'Olympiade, en 2020."
+      "nationsLead": "Toutes les nations ayant engagé une délégation depuis la création de l'Olympiade, en 2020.",
+      "columns": {
+        "edition": "Édition",
+        "host": "Organisateur",
+        "dates": "Dates",
+        "countries": "Pays",
+        "note": "Note",
+        "archives": "Sujets, solutions, résultats"
+      }
     },
     "Gallery": {
       "title": "Galerie",

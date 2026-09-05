@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
 import { SectionHeading } from "@/components/home/section-heading";
-import type { Locale } from "@/content/types";
 import { partenaires as partners, comites as committees } from "@/lib/contenu";
+import type { Locale } from "@/content/types";
 
 const terangamath = partners.find((partner) => partner.id === "terangamath");
 
@@ -31,64 +31,53 @@ export default async function OrganisationPage({
     <>
       <PageHero title={t("title")} lead={t("lead")} />
 
-      <section className="bg-background py-24 lg:py-32">
-        <div className="mx-auto flex max-w-3xl flex-col gap-6 px-6">
-          <SectionHeading title={t("About.title")} />
-          <p className="text-body-l text-foreground/85">{t("About.body")}</p>
-          {terangamath?.url && (
-            <a
-              href={terangamath.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-text self-start text-link"
-            >
-              www.terangamath.org
-            </a>
-          )}
+      <section className="bg-sable pb-20 text-anthracite lg:pb-28">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+          <h2 className="text-h2 font-display text-anthracite">{t("About.title")}</h2>
+          <div className="flex max-w-[62ch] flex-col gap-6">
+            <p className="text-body-l text-anthracite/85">{t("About.body")}</p>
+            {terangamath?.url && (
+              <a href={terangamath.url} target="_blank" rel="noopener noreferrer" className="link-text self-start text-vert">
+                www.terangamath.org
+              </a>
+            )}
+          </div>
         </div>
       </section>
 
-      <section className="bg-sable py-24 lg:py-32">
-        <div className="mx-auto flex max-w-7xl flex-col gap-14 px-6">
-          <SectionHeading
-            title={t("Committees.title")}
-            lead={t("Committees.lead")}
-            tone="warm"
-          />
+      <section className="bg-background py-20 lg:py-28">
+        <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6">
+          <SectionHeading title={t("Committees.title")} lead={t("Committees.lead")} />
 
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          {/* Comités en lignes filetées : la hiérarchie vient du titre, pas d'une boîte. */}
+          <dl className="flex flex-col border-t border-hairline">
             {committees.map((committee) => (
               <div
                 key={committee.id}
-                className="flex flex-col gap-5 rounded-xl border border-hairline bg-card p-8"
+                className="grid grid-cols-1 gap-3 border-b border-hairline py-6 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:gap-16"
               >
-                <div className="flex flex-col gap-2">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <h3 className="font-display text-h3 text-foreground">
-                      {committee.name[typedLocale]}
-                    </h3>
-                  </div>
+                <dt className="font-display text-h3 text-foreground">{committee.name[typedLocale]}</dt>
+                <dd className="flex max-w-[62ch] flex-col gap-4">
                   {committee.description && (
-                    <p className="text-muted-foreground">{committee.description[typedLocale]}</p>
+                    <p className="text-body text-muted-foreground">{committee.description[typedLocale]}</p>
                   )}
-                </div>
-
-                {committee.members.length > 0 && (
-                  <ul className="flex flex-col gap-3 border-t border-hairline pt-5">
-                    {committee.members.map((member, index) => (
-                      <li key={`${committee.id}-${index}`} className="flex flex-col">
-                        <span className="font-medium text-foreground">{member.name}</span>
-                        <span className="text-small text-muted-foreground">
-                          {member.role[typedLocale]}
-                          {member.org && ` — ${member.org}`}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                  {committee.members.length > 0 && (
+                    <ul className="flex flex-col gap-2">
+                      {committee.members.map((member, index) => (
+                        <li key={`${committee.id}-${index}`} className="flex flex-col">
+                          <span className="font-medium text-foreground">{member.name}</span>
+                          <span className="text-small text-muted-foreground">
+                            {member.role[typedLocale]}
+                            {member.org && ` — ${member.org}`}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </dd>
               </div>
             ))}
-          </div>
+          </dl>
         </div>
       </section>
     </>

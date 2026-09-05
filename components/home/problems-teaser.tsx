@@ -17,28 +17,22 @@ export async function ProblemsTeaserSection({ locale }: { locale: Locale }) {
   });
 
   return (
-    <section className="bg-vert-nuit py-24 text-ivoire lg:py-32">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-14 px-6 lg:grid-cols-[1fr_1fr] lg:items-center">
-        <SectionHeading title={t("title")} lead={t("lead")} tone="inverted" />
+    <section className="bg-background py-16 lg:py-24">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-center lg:gap-16">
+        <div className="flex flex-col gap-8">
+          <SectionHeading title={t("title")} lead={t("lead")} />
+          <Link href="/problemes" className="link-text self-start text-link">
+            {t("cta")}
+          </Link>
+        </div>
 
-        <div className="flex flex-col gap-6 rounded-xl border border-ivoire/15 bg-vert/30 p-10">
+        <figure className="flex flex-col gap-4 border-y border-hairline py-8">
           <div
-            className="katex-preview flex justify-center text-ivoire [&_.katex]:text-ivoire"
+            className="flex justify-center text-2xl text-foreground [&_.katex]:text-foreground"
             dangerouslySetInnerHTML={{ __html: formulaHtml }}
           />
-          <p className="label text-center text-ivoire/40">
-            {t("comingSoon")}
-          </p>
-        </div>
-      </div>
-
-      <div className="mx-auto max-w-7xl px-6 pt-14">
-        <Link
-          href="/problemes"
-          className="link-text text-or-clair"
-        >
-          {t("cta")}
-        </Link>
+          <figcaption className="text-center text-small text-muted-foreground">{t("comingSoon")}</figcaption>
+        </figure>
       </div>
     </section>
   );

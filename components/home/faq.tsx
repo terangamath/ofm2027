@@ -7,8 +7,8 @@ export async function FaqSection({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "Home.Faq" });
 
   return (
-    <section className="bg-background py-24 lg:py-32">
-      <div className="mx-auto flex max-w-3xl flex-col gap-14 px-6">
+    <section className="bg-background py-20 lg:py-28">
+      <div className="mx-auto flex max-w-3xl flex-col gap-12 px-6">
         <SectionHeading title={t("title")} lead={t("lead")} align="center" />
         <FaqAccordion locale={locale} />
       </div>

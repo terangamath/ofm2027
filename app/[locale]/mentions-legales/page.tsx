@@ -27,7 +27,7 @@ export default async function LegalPage({
     <>
       <PageHero title={t("title")} />
 
-      <section className="bg-background py-24 lg:py-32">
+      <section className="bg-sable pb-20 lg:pb-28">
         <div className="mx-auto flex max-w-3xl flex-col gap-10 px-6">
           {SECTIONS.map((section) => (
             <div key={section} className="flex flex-col gap-2 border-b border-hairline pb-8 last:border-b-0">

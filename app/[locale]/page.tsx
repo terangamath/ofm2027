@@ -1,17 +1,20 @@
 import { setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/home/hero";
-import { EventInfoSection } from "@/components/home/event-info";
-import { StatsSection } from "@/components/home/stats";
+import { SimultaneiteSection } from "@/components/home/simultaneite";
+import { FicheSection } from "@/components/home/fiche";
 import { CategoriesSection } from "@/components/home/categories";
 import { DelegationsSection } from "@/components/home/delegations";
 import { ProblemsTeaserSection } from "@/components/home/problems-teaser";
-import { SimultaneiteSection } from "@/components/home/simultaneite";
 import { PartnersSection } from "@/components/home/partners";
 import { FaqSection } from "@/components/home/faq";
 import { EventJsonLd } from "@/components/shared/event-jsonld";
-import type { Locale } from "@/content/types";
 import { evenement as eventInfo } from "@/lib/contenu";
+import type { Locale } from "@/content/types";
 
+/**
+ * Accueil : un seul chapitre sombre (hero, puis la partition), puis du papier.
+ * Six sections de hauteurs différentes, en alternant sable et ivoire.
+ */
 export default async function HomePage({
   params,
 }: {
@@ -26,8 +29,7 @@ export default async function HomePage({
       <EventJsonLd event={eventInfo} locale={typedLocale} />
       <Hero locale={typedLocale} />
       <SimultaneiteSection locale={typedLocale} />
-      <EventInfoSection locale={typedLocale} />
-      <StatsSection locale={typedLocale} />
+      <FicheSection locale={typedLocale} />
       <CategoriesSection locale={typedLocale} />
       <DelegationsSection locale={typedLocale} />
       <ProblemsTeaserSection locale={typedLocale} />

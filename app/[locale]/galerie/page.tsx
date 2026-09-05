@@ -26,7 +26,7 @@ export default async function GalleryPage({
     <>
       <PageHero title={t("title")} lead={t("lead")} />
 
-      <section className="bg-background py-24 lg:py-32">
+      <section className="bg-sable pb-20 lg:pb-28">
         <div className="mx-auto max-w-3xl px-6">
           <ComingSoonPanel title={t("comingSoonTitle")} body={t("comingSoonBody")} />
         </div>
