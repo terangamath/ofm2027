@@ -45,3 +45,6 @@ next-env.d.ts
 
 # Données brutes de l'audit de contraste : régénérables via scripts/audit-contraste.mjs
 docs/captures/contraste-*.json
+
+# prompts de travail (consignes de session, hors livrable)
+PROMPT-*.md
