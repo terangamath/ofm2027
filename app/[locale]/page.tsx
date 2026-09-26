@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/home/hero";
 import { SimultaneiteSection } from "@/components/home/simultaneite";
@@ -10,6 +11,16 @@ import { FaqSection } from "@/components/home/faq";
 import { EventJsonLd } from "@/components/shared/event-jsonld";
 import { evenement as eventInfo } from "@/lib/contenu";
 import type { Locale } from "@/content/types";
+import { metadonneesPage } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return metadonneesPage({ locale, chemin: "/" });
+}
 
 /**
  * Accueil : un seul chapitre sombre (hero, puis la partition), puis du papier.

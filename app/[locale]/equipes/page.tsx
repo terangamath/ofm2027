@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metadonneesPage } from "@/lib/seo";
 import { ViewTransition } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
@@ -14,7 +15,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Pages.Teams" });
-  return { title: t("title"), description: t("lead") };
+  return metadonneesPage({ locale, chemin: "/equipes", titre: t("title"), description: t("lead") });
 }
 
 export default async function TeamsPage({

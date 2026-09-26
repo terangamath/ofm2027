@@ -7,6 +7,7 @@ import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { SITE_URL } from "@/lib/site";
+import { robotsSite } from "@/lib/seo";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -50,23 +51,9 @@ export async function generateMetadata({
       template: "%s — OFM 2027",
     },
     description: t("description"),
-    // Alternates au niveau racine : couverture générale fr/en + x-default fr.
-    // Le détail par route (hreflang exact de chaque page) est porté par app/sitemap.ts.
-    alternates: {
-      languages: {
-        fr: "/",
-        en: "/en",
-        "x-default": "/",
-      },
-    },
-    openGraph: {
-      type: "website",
-      siteName: "OFM 2027",
-      locale: locale === "en" ? "en_US" : "fr_FR",
-      alternateLocale: locale === "en" ? "fr_FR" : "en_US",
-      title: t("title"),
-      description: t("description"),
-    },
+    // Canonique, hreflang et Open Graph sont portés par chaque page (lib/seo.ts) :
+    // un hreflang posé ici serait hérité tel quel par toutes les routes.
+    robots: robotsSite,
   };
 }
 
