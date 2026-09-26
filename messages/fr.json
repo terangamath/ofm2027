@@ -264,5 +264,10 @@
         "body": "Pour toute question relative aux présentes mentions légales, voir la page Contact."
       }
     }
+  },
+  "NotFound": {
+    "title": "Page introuvable",
+    "lead": "L'adresse demandée n'existe pas, ou plus. Le site a pu être réorganisé depuis que ce lien a été partagé.",
+    "suggestions": "Reprendre depuis"
   }
 }
