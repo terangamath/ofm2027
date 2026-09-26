@@ -23,13 +23,14 @@ npm run dev
 | `NEXT_PUBLIC_SITE_URL` | `.env.local` | `http://localhost:3000` |
 
 La variable est lue et validée par `lib/site.ts`, seul module autorisé à la lire.
-Absente ou malformée, elle fait échouer le build. Seule l'URL de production est
-indexable. Détails et procédures : `DEPLOIEMENT.md`.
+Absente ou malformée, elle fait échouer le build. Seule la production est
+indexable (cette URL, et l'environnement Production sur Vercel). Détails et procédures : `DEPLOIEMENT.md`.
 
 ## Vérifier
 
 ```bash
 npm test          # tests unitaires (fuseaux, typographie, URL du site, indexation)
+node scripts/images-marque.mjs  # régénère image de partage, favicon et icônes
 npm run test:seo  # construit le site deux fois (préproduction, production) et vérifie
                   # canoniques, hreflang réciproques, sitemap, robots et noindex
 npm run lint
