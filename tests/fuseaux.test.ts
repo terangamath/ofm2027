@@ -6,6 +6,7 @@ import {
   etatEpreuve,
   heureLocale,
   instantDepuisHeureMurale,
+  isoAvecDecalage,
   libelleDecalage,
   tempsRestant,
 } from "../lib/fuseaux.ts";
@@ -118,5 +119,23 @@ describe("décalages, états et compte à rebours", () => {
   it("temps restant, jamais négatif", () => {
     assert.deepEqual(tempsRestant(new Date("2027-03-26T07:58:30Z"), DEBUT), { jours: 1, heures: 0, minutes: 1, secondes: 30 });
     assert.deepEqual(tempsRestant(FIN, DEBUT), { jours: 0, heures: 0, minutes: 0, secondes: 0 });
+  });
+});
+
+describe("isoAvecDecalage", () => {
+  const epreuve = new Date("2027-03-27T08:00:00Z");
+
+  it("Dakar : 08:00 heure locale, décalage +00:00 explicite", () => {
+    assert.equal(isoAvecDecalage("Africa/Dakar", epreuve), "2027-03-27T08:00:00+00:00");
+  });
+
+  it("suit le changement d'heure du 28 mars 2027 à Paris", () => {
+    assert.equal(isoAvecDecalage("Europe/Paris", epreuve), "2027-03-27T09:00:00+01:00");
+    assert.equal(isoAvecDecalage("Europe/Paris", new Date("2027-03-28T08:00:00Z")), "2027-03-28T10:00:00+02:00");
+  });
+
+  it("décalages négatifs et non entiers", () => {
+    assert.equal(isoAvecDecalage("America/Montreal", epreuve), "2027-03-27T04:00:00-04:00");
+    assert.equal(isoAvecDecalage("Asia/Kolkata", epreuve), "2027-03-27T13:30:00+05:30");
   });
 });

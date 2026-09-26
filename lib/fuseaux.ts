@@ -61,6 +61,19 @@ export function dateLocale(zone: string, instant: Date): string {
   return `${annee}-${String(mois).padStart(2, "0")}-${String(jour).padStart(2, "0")}`;
 }
 
+/**
+ * ISO 8601 avec décalage explicite, à l'heure murale du fuseau :
+ * « 2027-03-27T08:00:00+00:00 » pour Dakar, « 2027-03-27T09:00:00+01:00 » pour Paris.
+ */
+export function isoAvecDecalage(zone: string, instant: Date): string {
+  const { heure, minute } = horlogeMurale(zone, instant);
+  const decalage = decalageMinutes(zone, instant);
+  const abs = Math.abs(decalage);
+  const deux = (n: number) => String(n).padStart(2, "0");
+  const signe = decalage < 0 ? "-" : "+";
+  return `${dateLocale(zone, instant)}T${deux(heure)}:${deux(minute)}:00${signe}${deux(Math.floor(abs / 60))}:${deux(abs % 60)}`;
+}
+
 /** Signe et heures d'un décalage : « +1 », « 0 », « +3 », « +5:30 ». */
 export function libelleDecalage(minutes: number): string {
   if (minutes === 0) return "0";
