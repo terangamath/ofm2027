@@ -27,8 +27,12 @@ export function alternatesPage(locale: Locale, chemin: string): Metadata["altern
 }
 
 /** Image de partage, 1200 × 630, une par langue (générée par scripts/og-image.mjs). */
+export function urlImagePartage(locale: Locale): string {
+  return `${SITE_URL}/og/ofm2027-${locale}.png`;
+}
+
 export function imagePartage(locale: Locale, alt: string) {
-  return { url: `${SITE_URL}/og/ofm2027-${locale}.png`, width: 1200, height: 630, alt, type: "image/png" };
+  return { url: urlImagePartage(locale), width: 1200, height: 630, alt, type: "image/png" };
 }
 
 /** Balise robots : absente en production, noindex/nofollow partout ailleurs. */
