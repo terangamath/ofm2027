@@ -128,9 +128,8 @@ du rendu. Chaque ligne indique ce qu'il faudra fournir pour les faire réappara�
 6. Horaire précis des épreuves (heure de début), si Terangamath souhaite le
    publier pour 2027 — non repris de 2026 car jamais publié à l'heure près par
    Djibouti.
-7. Domaine de production du site (`lib/site.ts` utilise toujours un placeholder
-   `https://ofm2027.org`, non modifié par ce lot de corrections — hors périmètre
-   du prompt traité ici).
+7. ~~Domaine de production du site~~ — réglé : `https://www.ofm2027.org`, fourni par
+   la variable `NEXT_PUBLIC_SITE_URL` (voir `DEPLOIEMENT.md`).
 
 ---
 

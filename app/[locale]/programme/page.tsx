@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metadonneesPage } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
 import type { Locale, ScheduleEventKind } from "@/content/types";
@@ -18,7 +19,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Pages.Programme" });
-  return { title: t("title"), description: t("lead") };
+  return metadonneesPage({ locale, chemin: "/programme", titre: t("title"), description: t("lead") });
 }
 
 export default async function ProgrammePage({

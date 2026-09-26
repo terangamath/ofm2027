@@ -5,24 +5,13 @@
  *   recoupe ω en D ; le cercle circonscrit à OCD recoupe [AC] en E ; M est le
  *   milieu de [BE]. À démontrer : (DE) ∥ (OM).
  *
- * Coordonnées calculées une fois (O = (300, 300), R = 250, A à 108°, B à 203°,
- * C à 332°) ; le parallélisme est vérifié numériquement (produit vectoriel nul).
+ * Coordonnées : lib/figure-geometrie.ts (partagées avec l'image de partage).
  * La chorégraphie est en CSS (globals.css, `.figure-construction`) : 1,8 s,
  * rejouée à chaque affichage de l'accueil (le composant est remonté à chaque
  * navigation vers la page, donc les animations CSS repartent), état final
  * direct sous prefers-reduced-motion.
  */
-const P = {
-  A: { x: 222.7, y: 62.2 },
-  B: { x: 69.9, y: 397.7 },
-  C: { x: 520.7, y: 417.4 },
-  O: { x: 300, y: 300 },
-  D: { x: 202.3, y: 530.1 },
-  E: { x: 426.9, y: 305.5 },
-  M: { x: 248.4, y: 351.6 },
-} as const;
-const OMEGA_R = 250;
-const K = { x: 356.6, y: 459.8, r: 169.5 };
+import { K, OMEGA_R, P } from "@/lib/figure-geometrie";
 
 type Point = { x: number; y: number };
 const seg = (a: Point, b: Point) => `M${a.x} ${a.y}L${b.x} ${b.y}`;

@@ -1,7 +1,8 @@
 {
   "Metadata": {
     "title": "OFM 2027 — Francophone Mathematical Olympiad · Dakar",
-    "description": "The 2027 Francophone Mathematical Olympiad brings together, online, the best young mathematicians of the French-speaking world, around exams designed by an international scientific committee. Organised by Terangamath (Dakar, Senegal)."
+    "description": "The 2027 Francophone Mathematical Olympiad brings together, online, the best young mathematicians of the French-speaking world, around exams designed by an international scientific committee. Organised by Terangamath (Dakar, Senegal).",
+    "ogAlt": "OFM 2027 — Francophone Mathematical Olympiad, 27 and 28 March 2027, organised by Terangamath from Dakar"
   },
   "Nav": {
     "home": "Home",
@@ -263,5 +264,10 @@
         "body": "For any question regarding this legal notice, see the Contact page."
       }
     }
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "lead": "The address you requested does not exist, or no longer does. The site may have been reorganised since this link was shared.",
+    "suggestions": "Start again from"
   }
 }

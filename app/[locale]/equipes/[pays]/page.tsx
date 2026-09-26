@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metadonneesPage } from "@/lib/seo";
 import { ViewTransition } from "react";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -24,7 +25,7 @@ export async function generateMetadata({
   const delegation = await findDelegation(pays);
   if (!delegation) return {};
   const typedLocale = locale as Locale;
-  return { title: delegation.name[typedLocale] };
+  return metadonneesPage({ locale, chemin: `/equipes/${delegation.slug}`, titre: delegation.name[typedLocale] });
 }
 
 export default async function TeamDetailPage({

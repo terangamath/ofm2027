@@ -1,9 +1,7 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/site";
+import { ENVIRONNEMENT_VERCEL, SITE_URL } from "@/lib/site";
+import { reglesRobots } from "@/lib/indexation";
 
 export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: { userAgent: "*", allow: "/" },
-    sitemap: `${SITE_URL}/sitemap.xml`,
-  };
+  return reglesRobots(SITE_URL, ENVIRONNEMENT_VERCEL);
 }

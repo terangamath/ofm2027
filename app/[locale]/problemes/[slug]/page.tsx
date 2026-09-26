@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metadonneesPage } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -17,7 +18,7 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const doc = getProblemBySlug(locale === "en" ? "en" : "fr", slug);
   if (!doc) return {};
-  return { title: doc.frontmatter.title };
+  return metadonneesPage({ locale, chemin: `/problemes/${doc.frontmatter.slug}`, titre: doc.frontmatter.title });
 }
 
 export default async function ProblemDetailPage({
