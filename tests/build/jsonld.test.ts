@@ -29,10 +29,17 @@ for (const locale of ["fr", "en"] as const) {
     const evenement = noeuds.find((n) => n["@type"] === "Event");
     const organisation = noeuds.find((n) => n["@type"] === "Organization");
 
-    it("Event : dates ISO 8601 à l'heure de Dakar, décalage explicite", () => {
+    it("Event : début à l'heure de Dakar avec décalage explicite, fin en date seule", () => {
       assert.ok(evenement);
       assert.equal(evenement.startDate, "2027-03-27T08:00:00+00:00");
-      assert.match(String(evenement.endDate), /^2027-03-28T\d{2}:\d{2}:\d{2}\+00:00$/);
+      assert.equal(evenement.endDate, "2027-03-28");
+    });
+
+    it("aucun nœud WebPage ou WebSite (qui porterait la langue de la page, pas fr)", () => {
+      const types = noeuds.map((n) => n["@type"]);
+      assert.deepEqual(types.filter((t) => t === "WebPage" || t === "WebSite"), []);
+      assert.ok(evenement);
+      assert.equal(evenement.inLanguage, "fr", "langue des épreuves");
     });
 
     it("Event : entièrement en ligne, avec une VirtualLocation vers le site", () => {

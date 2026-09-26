@@ -7,8 +7,9 @@ const TERANGAMATH = "https://www.terangamath.org/";
 /**
  * Données structurées de l'accueil : l'Olympiade (`Event`, entièrement en ligne,
  * donc `OnlineEventAttendanceMode` et une `VirtualLocation`) et son organisateur
- * (`Organization` Terangamath). Dates en ISO 8601 à l'heure de Dakar, décalage explicite :
- * début = début de l'épreuve (event.json, `exam`), fin = fin de la journée de correction.
+ * (`Organization` Terangamath). Début en ISO 8601 à l'heure de Dakar, décalage explicite
+ * (début de l'épreuve, event.json `exam`). Fin en date seule : aucune heure de fin de la
+ * journée de correction n'est connue, schema.org admet Date comme DateTime.
  */
 export function EventJsonLd({ event, locale }: { event: EventInfo; locale: Locale }) {
   const zone = event.exam?.referenceZone ?? "Africa/Dakar";
@@ -17,7 +18,6 @@ export function EventJsonLd({ event, locale }: { event: EventInfo; locale: Local
     : event.startDate
       ? instantDepuisHeureMurale(zone, event.startDate, "00:00")
       : null;
-  const fin = event.endDate ? instantDepuisHeureMurale(zone, event.endDate, "23:59") : null;
   const accueil = urlAbsolue(locale, "/");
 
   const organisation = {
@@ -46,7 +46,7 @@ export function EventJsonLd({ event, locale }: { event: EventInfo; locale: Local
     url: accueil,
     image: [urlImagePartage(locale)],
     ...(debut ? { startDate: isoAvecDecalage(zone, debut) } : {}),
-    ...(fin ? { endDate: isoAvecDecalage(zone, fin) } : {}),
+    ...(event.endDate ? { endDate: event.endDate } : {}),
     eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
     eventStatus: "https://schema.org/EventScheduled",
     location: { "@type": "VirtualLocation", url: accueil },
