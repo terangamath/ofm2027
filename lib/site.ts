@@ -1,3 +1,74 @@
-// URL canonique du site, utilisée pour metadataBase, le sitemap et les JSON-LD.
-// [À confirmer — Terangamath] : domaine de production non communiqué à ce jour.
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ofm2027.org";
+// URL du site : seule source de vérité pour toute URL absolue produite par le site
+// (metadataBase, canoniques, hreflang, sitemap, robots, JSON-LD, en-têtes).
+// Le reste du code importe d'ici, jamais `process.env` directement.
+//
+// Ce module est lu par next.config.ts : une variable absente ou malformée fait
+// échouer le build avant toute génération de page. Pas de valeur de secours.
+
+/** Adresse de production. Seul ce déploiement est indexable. */
+export const URL_PRODUCTION = "https://www.ofm2027.org";
+
+export interface EnvironnementSite {
+  NEXT_PUBLIC_SITE_URL?: string;
+  VERCEL_ENV?: string;
+  VERCEL_URL?: string;
+}
+
+const HOTES_LOCAUX = new Set(["localhost", "127.0.0.1", "[::1]"]);
+
+function echec(detail: string): never {
+  throw new Error(
+    `NEXT_PUBLIC_SITE_URL : ${detail}\n` +
+      `  Production : NEXT_PUBLIC_SITE_URL=${URL_PRODUCTION}\n` +
+      "  Développement : copier .env.example en .env.local (NEXT_PUBLIC_SITE_URL=http://localhost:3000)\n" +
+      "  Voir DEPLOIEMENT.md."
+  );
+}
+
+/**
+ * Lit, valide et normalise l'URL du site.
+ * Ordre : NEXT_PUBLIC_SITE_URL, sinon `https://$VERCEL_URL` sur un déploiement de
+ * prévisualisation Vercel (chaque branche reste cohérente avec elle-même), sinon échec.
+ * Résultat : une origine sans barre oblique finale (`https://www.ofm2027.org`).
+ */
+export function resoudreUrlSite(env: EnvironnementSite): string {
+  const declaree = env.NEXT_PUBLIC_SITE_URL?.trim();
+  const brute =
+    declaree ||
+    (env.VERCEL_ENV === "preview" && env.VERCEL_URL ? `https://${env.VERCEL_URL}` : "");
+
+  if (!brute) echec("variable absente.");
+
+  let url: URL;
+  try {
+    url = new URL(brute);
+  } catch {
+    echec(`« ${brute} » n'est pas une URL absolue.`);
+  }
+
+  if (url.protocol !== "https:" && url.protocol !== "http:") {
+    echec(`« ${brute} » : schéma ${url.protocol} non pris en charge.`);
+  }
+  if (url.protocol === "http:" && !HOTES_LOCAUX.has(url.hostname)) {
+    echec(`« ${brute} » : https obligatoire hors développement local.`);
+  }
+  if (url.pathname !== "/" || url.search || url.hash || url.username || url.password) {
+    echec(`« ${brute} » : attendu une origine seule, sans chemin, paramètre ni ancre.`);
+  }
+
+  // `URL.origin` normalise la casse et retire la barre oblique finale.
+  return url.origin;
+}
+
+export const SITE_URL = resoudreUrlSite({
+  NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
+  VERCEL_ENV: process.env.VERCEL_ENV,
+  VERCEL_URL: process.env.VERCEL_URL,
+});
+
+/** Seule la production est indexable : prévisualisations et préproduction ne le sont pas. */
+export function estIndexable(urlSite: string): boolean {
+  return urlSite === URL_PRODUCTION;
+}
+
+export const INDEXABLE = estIndexable(SITE_URL);
