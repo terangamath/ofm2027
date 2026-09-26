@@ -107,15 +107,37 @@ function page(locale, couleurs) {
  * ne doit pas dépendre de la police de repli de la machine qui la génère.
  */
 function pageIcone(cote, couleurs, { arrondi = false } = {}) {
-  const trait = cote <= 32 ? 11 : 8;
   return `<!doctype html><html><head><meta charset="utf-8"><style>
   * { margin: 0; }
   html, body { width: ${cote}px; height: ${cote}px; overflow: hidden; background: transparent; }
   svg { display: block; width: 100%; height: 100%; background: ${couleurs["vert-nuit"]}; border-radius: ${arrondi ? "18%" : "0"}; }
-</style></head><body>
-  <svg viewBox="0 0 100 100"><path d="M73 31V23H27L51 50L27 77H73V69" fill="none"
-    stroke="${couleurs["or-clair"]}" stroke-width="${trait}" stroke-linejoin="miter" stroke-linecap="square"/></svg>
-</body></html>`;
+</style></head><body>${sigma(cote, couleurs["or-clair"])}</body></html>`;
+}
+
+/**
+ * Σ dessiné pour sa taille de rendu. À 16 et 32 px, un tracé mis à l'échelle tombe
+ * entre deux pixels et se brouille en demi-teintes : le sigle y est calé sur la
+ * grille de pixels (traits pleins de 2 px à 16 px, de 3 px à 32 px).
+ */
+function sigma(cote, couleur) {
+  if (cote === 16) {
+    // Grille 16 × 16, un rectangle par pixel plein : barres de 2 px, diagonale en
+    // marches de 2 px, empattements d'un pixel sous les barres.
+    const pixels = [
+      [4, 3, 8, 2], [10, 5, 2, 1], // barre haute et son empattement
+      [4, 5, 2, 1], [5, 6, 2, 1], [6, 7, 2, 1], [6, 8, 2, 1], [5, 9, 2, 1], [4, 10, 2, 1], // diagonale
+      [10, 10, 2, 1], [4, 11, 8, 2], // empattement et barre basse
+    ];
+    const rects = pixels.map(([x, y, l, h]) => `<rect x="${x}" y="${y}" width="${l}" height="${h}"/>`).join("");
+    return `<svg viewBox="0 0 16 16" shape-rendering="crispEdges" fill="${couleur}">${rects}</svg>`;
+  }
+  if (cote === 32) {
+    // Trait de 3 px centré sur des demi-pixels : barres et empattements nets.
+    return `<svg viewBox="0 0 32 32"><path d="M23.5 12V7.5H8.5L16 16L8.5 24.5H23.5V20" fill="none"
+      stroke="${couleur}" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg>`;
+  }
+  return `<svg viewBox="0 0 100 100"><path d="M73 31V23H27L51 50L27 77H73V69" fill="none"
+    stroke="${couleur}" stroke-width="8" stroke-linejoin="miter" stroke-linecap="square"/></svg>`;
 }
 
 /** Fichier ICO contenant des PNG (format admis par tous les navigateurs actuels). */
