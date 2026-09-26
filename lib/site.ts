@@ -66,9 +66,17 @@ export const SITE_URL = resoudreUrlSite({
   VERCEL_URL: process.env.VERCEL_URL,
 });
 
-/** Seule la production est indexable : prévisualisations et préproduction ne le sont pas. */
-export function estIndexable(urlSite: string): boolean {
+/** Environnement Vercel (`production`, `preview`, `development`), absent hors Vercel. */
+export const ENVIRONNEMENT_VERCEL = process.env.VERCEL_ENV;
+
+/**
+ * Seule la production est indexable : l'URL doit être celle de production et, sur
+ * Vercel, le déploiement doit être celui de l'environnement Production. Une
+ * prévisualisation qui recevrait par erreur l'URL de production reste non indexable.
+ */
+export function estIndexable(urlSite: string, environnementVercel?: string): boolean {
+  if (environnementVercel && environnementVercel !== "production") return false;
   return urlSite === URL_PRODUCTION;
 }
 
-export const INDEXABLE = estIndexable(SITE_URL);
+export const INDEXABLE = estIndexable(SITE_URL, ENVIRONNEMENT_VERCEL);

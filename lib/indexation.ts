@@ -9,11 +9,12 @@ export interface EnTete {
 }
 
 /**
- * Production : tout est autorisé et le sitemap est annoncé.
+ * Production (URL de production, et environnement Production sur Vercel) :
+ * tout est autorisé et le sitemap est annoncé.
  * Ailleurs : `Disallow: /`, en plus du noindex porté par l'en-tête et la balise meta.
  */
-export function reglesRobots(urlSite: string): MetadataRoute.Robots {
-  if (!estIndexable(urlSite)) {
+export function reglesRobots(urlSite: string, environnementVercel?: string): MetadataRoute.Robots {
+  if (!estIndexable(urlSite, environnementVercel)) {
     return { rules: { userAgent: "*", disallow: "/" } };
   }
   return {
@@ -23,12 +24,12 @@ export function reglesRobots(urlSite: string): MetadataRoute.Robots {
 }
 
 /** En-têtes appliqués à toutes les réponses. */
-export function enTetesHttp(urlSite: string): EnTete[] {
+export function enTetesHttp(urlSite: string, environnementVercel?: string): EnTete[] {
   const securite: EnTete[] = [
     { key: "X-Content-Type-Options", value: "nosniff" },
     { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
     { key: "X-Frame-Options", value: "SAMEORIGIN" },
   ];
-  if (estIndexable(urlSite)) return securite;
+  if (estIndexable(urlSite, environnementVercel)) return securite;
   return [...securite, { key: "X-Robots-Tag", value: "noindex, nofollow" }];
 }

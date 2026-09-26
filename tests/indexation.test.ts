@@ -72,10 +72,25 @@ describe("indexation : production indexable", () => {
   });
 });
 
+describe("indexation : l'URL de production hors de l'environnement Production de Vercel", () => {
+  for (const environnement of ["preview", "development"]) {
+    it(`VERCEL_ENV=${environnement} : non indexable`, () => {
+      assert.equal(estIndexable(URL_PRODUCTION, environnement), false);
+      assert.deepEqual(reglesRobots(URL_PRODUCTION, environnement), { rules: { userAgent: "*", disallow: "/" } });
+      assert.ok(enTetesHttp(URL_PRODUCTION, environnement).some((e) => e.key === "X-Robots-Tag"));
+    });
+  }
+
+  it("VERCEL_ENV=production : indexable", () => {
+    assert.equal(estIndexable(URL_PRODUCTION, "production"), true);
+  });
+});
+
 describe("indexation : tout le reste non indexable", () => {
   for (const url of HORS_PRODUCTION) {
     it(url, () => {
       assert.equal(estIndexable(url), false);
+      assert.equal(estIndexable(url, "production"), false);
       assert.deepEqual(reglesRobots(url), { rules: { userAgent: "*", disallow: "/" } });
       assert.deepEqual(
         enTetesHttp(url).find((e) => e.key === "X-Robots-Tag"),
