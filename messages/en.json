@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "OFM 2027 — Francophone Mathematical Olympiad · organised from Dakar",
-    "description": "The 2027 Francophone Mathematical Olympiad brings together, online, the best young mathematicians of the French-speaking world, around exams designed by an international scientific committee. Organised by Terangamath (Dakar, Senegal).",
+    "description": "The 2027 Francophone Mathematical Olympiad brings together, online, the best young mathematicians of the French-speaking world, around exams selected by a committee appointed by the host country. Organised by Terangamath (Dakar, Senegal).",
     "ogAlt": "OFM 2027 — Francophone Mathematical Olympiad, 27 and 28 March 2027, organising committee in Dakar, Junior and Senior categories",
     "ogCommittee": "Committee in {city}"
   },
@@ -59,8 +59,8 @@
     },
     "Categories": {
       "title": "Two categories, one standard",
-      "lead": "The Olympiad brings together middle and high school students around exams suited to their level, with the same scientific rigour.",
-      "juniorNote": "Geometry, combinatorics, number theory and algebra problems suited to middle school.",
+      "lead": "Two separate papers, open according to students' date of birth, with the same scientific rigour.",
+      "juniorNote": "Four problems — algebra, combinatorics, geometry, number theory — for the youngest contestants.",
       "seniorNote": "Demanding problems, in the tradition of the international mathematical olympiads.",
       "cta": "See the programme"
     },
@@ -74,7 +74,7 @@
     },
     "Problems": {
       "title": "Problems & solutions",
-      "lead": "A preview of the problems designed by the international scientific committee.",
+      "lead": "A preview of the Olympiad's problems.",
       "comingSoon": "The 2027 edition's problems will be published after the exams.",
       "cta": "Explore the problems"
     },
@@ -118,15 +118,16 @@
     "toBeConfirmed": "To be confirmed",
     "learnMore": "Learn more",
     "confirmed": "Confirmed",
-    "pending": "Pending"
+    "pending": "Pending",
+    "categoriesReference": "Conditions set by <ofm>article 4.4 of the OFM rules</ofm>, which refers to <imo>clause 2.2 of the IMO regulations</imo>."
   },
   "Pages": {
     "Olympiad": {
       "title": "The Francophone Mathematical Olympiad",
-      "lead": "A competition of excellence for young mathematicians of the French-speaking world, led by the Terangamath association and an international scientific committee.",
+      "lead": "A competition of excellence for young mathematicians of the French-speaking world, led for the 2027 edition by the Terangamath association.",
       "Presentation": {
         "title": "A competition of excellence, a spirit of hospitality",
-        "body1": "Each year, OFM brings together the best middle and high school students from French-speaking countries around original mathematics exams, designed to reveal reasoning as much as technique.",
+        "body1": "Each year, OFM brings together the best young mathematicians from French-speaking countries, in two age categories, around original mathematics exams, designed to reveal reasoning as much as technique.",
         "body2": "The 2027 edition is led from Dakar by Terangamath, a Senegalese association dedicated to promoting mathematics, with the ambition of combining scientific rigour with Senegalese hospitality — the Teranga."
       },
       "Format": {
@@ -149,7 +150,7 @@
     },
     "Organisation": {
       "title": "Terangamath & the organisation of OFM 2027",
-      "lead": "The Olympiad is led by the Terangamath association, supported by committees dedicated to the scientific design and marking of the exams.",
+      "lead": "The Olympiad is led by the Terangamath association, supported by committees dedicated to problem selection and to the coordination of marking.",
       "About": {
         "title": "The organising association",
         "body": "Terangamath is the Senegalese association behind OFM 2027. Its name draws on the Teranga, Senegalese hospitality, which it puts to work promoting mathematics among young people across the French-speaking world."
@@ -161,7 +162,7 @@
     },
     "Teams": {
       "title": "The OFM 2027 delegations",
-      "lead": "The French-speaking countries engaged in the 2027 edition. Each delegation brings together competitors in the Junior and Senior categories.",
+      "lead": "The French-speaking countries engaged in the 2027 edition. Each country may enter a Junior delegation and a Senior delegation, of one to six students each.",
       "hostBadge": "Host country",
       "viewTeam": "View team",
       "statusPending": "Pending"
@@ -188,7 +189,7 @@
     },
     "Problems": {
       "title": "The Olympiad problems",
-      "lead": "A preview of the problems designed by the international scientific committee, with solutions where available.",
+      "lead": "A preview of the Olympiad's problems, with solutions where available.",
       "comingSoonTitle": "Problems will be published after the exams",
       "comingSoonBody": "The official 2027 problems and solutions will be published here once the competition has taken place. Past editions' papers remain available from the History page.",
       "hasSolution": "Solution available",

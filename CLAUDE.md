@@ -7,7 +7,12 @@
 
 ## 1. Contexte projet
 
-Site officiel de l'**OFM 2027**, l'Olympiade Francophone de Mathématiques organisée à **Dakar (Sénégal)** par l'association **Terangamath**. Elle réunit les meilleurs jeunes mathématiciens du monde francophone (catégories **Junior** collège et **Senior** lycée), autour d'épreuves conçues par un comité scientifique international.
+Site officiel de l'**OFM 2027**, l'Olympiade Francophone de Mathématiques organisée par l'association **Terangamath**, dont le comité d'organisation se réunit à **Dakar (Sénégal)** ; les épreuves se passent **à distance**, chaque pays sur son territoire (règlement OFM, art. 3.3). Elle réunit les meilleurs jeunes mathématiciens du monde francophone, autour de problèmes proposés par les pays, sélectionnés par un comité nommé par le pays organisateur et approuvés par le jury (art. 5.1 à 5.5).
+
+**Catégories — définies par l'âge, jamais par le niveau scolaire** (règlement OFM, art. 4.4, renvoyant à la clause 2.2 du règlement de l'IMO) :
+- **Junior** : nés le 1er janvier 2011 ou après, et scolarisés dans le primaire ou le secondaire.
+- **Senior** : nés le 1er juillet 2007 ou après, et scolarisés dans le primaire ou le secondaire.
+Ne jamais écrire « collège », « lycée », « 3ème », « terminale » : ces niveaux n'existent pas dans tous les pays participants. Règlement applicable : version du 23 mars 2025 (`public/documents/ofm-reglement-2025.pdf`), confirmée pour 2027.
 
 Public : élèves et délégations nationales, encadrants, partenaires institutionnels, presse, curieux. Le site doit inspirer **prestige, rigueur et hospitalité**.
 
@@ -121,7 +126,7 @@ Fallbacks système déclarés dans chaque `next/font`.
 - **Hero** : titre `display-xl` en Fraunces à gauche, figure construite à droite avec sa légende (lien vers le sujet PDF), méta-ligne (dates en mono, lieu, langue, catégories). Pas de hero vide (voir §13).
 - **Fiche événement** : bloc élégant récapitulant lieu / dates / organisateur / langue / format.
 - **Bloc statistiques** : grands chiffres tabulaires (pays, élèves, catégories, éditions) — placeholders si non confirmés.
-- **Deux catégories** : cartes Junior (collège) / Senior (lycée) différenciées, pas deux cartes vides jumelles.
+- **Deux catégories** : Junior / Senior différenciées (conditions d'âge citées avec leur article), pas deux cartes vides jumelles.
 - **Registre des délégations** : lignes filetées, drapeau SVG + nom, **statut `confirmé` / `en attente`** distingué par la couleur du nom et un libellé, lien vers page pays. Pas de cartes, pas de pastilles.
 - **Timeline / Programme** : déroulé des épreuves et temps forts.
 - **Cartes actualités** éditoriales (type, date, titre, extrait).

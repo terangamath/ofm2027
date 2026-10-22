@@ -3,10 +3,10 @@
     "id": "reglement-2025",
     "title": { "fr": "Règlement OFM — version 2025", "en": "OFM rules — 2025 version" },
     "note": {
-      "fr": "Dernière version publiée du règlement OFM, applicable jusqu'à la publication de la version 2027.",
-      "en": "Latest published version of the OFM rules, in force until the 2027 version is released."
+      "fr": "Version du 23 mars 2025, confirmée applicable à l'OFM 2027 par l'association le 22 octobre 2026.",
+      "en": "Version of 23 March 2025, confirmed by the association on 22 October 2026 as applying to OFM 2027."
     },
     "path": "/documents/ofm-reglement-2025.pdf",
-    "provisional": true
+    "provisional": false
   }
 ]

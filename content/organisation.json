@@ -3,8 +3,8 @@
     "id": "comite-selection",
     "name": { "fr": "Comité de sélection des problèmes", "en": "Problem selection committee" },
     "description": {
-      "fr": "Sélectionne les problèmes parmi les propositions reçues, affine les énoncés, rédige les solutions officielles et conçoit les barèmes.",
-      "en": "Selects problems among the proposals received, refines the statements, writes the official solutions and designs the marking schemes."
+      "fr": "Nommé par le pays organisateur et approuvé par le comité de l'OFM, il sélectionne les huit problèmes parmi les propositions des pays, rédige les épreuves et les barèmes, puis les soumet à l'approbation du jury.",
+      "en": "Appointed by the host country and approved by the OFM committee, it selects the eight problems from the countries' proposals, drafts the papers and marking schemes, then submits them to the jury for approval."
     },
     "provisional": true,
     "members": []
