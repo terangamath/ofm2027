@@ -236,6 +236,9 @@ for (const width of WIDTHS) {
         const page = await browser.newPage();
         await page.setViewport({ width, height: 900, deviceScaleFactor: 1 });
         await page.emulateMediaFeatures([{ name: "prefers-color-scheme", value: scheme }, { name: "prefers-reduced-motion", value: "reduce" }]);
+        // Le thème ne suit plus le système (clair par défaut) : on pose le choix
+        // du visiteur, tel que le sélecteur de l'en-tête l'enregistre (next-themes).
+        await page.evaluateOnNewDocument((t) => localStorage.setItem("theme", t), scheme);
         await page.goto(url, { waitUntil: "networkidle0" });
         await new Promise((r) => setTimeout(r, 400));
         const cdp = await page.target().createCDPSession();

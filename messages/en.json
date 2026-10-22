@@ -39,9 +39,10 @@
       "ctaPrimary": "Discover the Olympiad",
       "ctaSecondary": "See the teams",
       "metaDates": "Dates",
-      "metaLocation": "Organising committee",
-      "metaLanguage": "Official language",
-      "metaFormat": "Categories",
+      "metaMode": "Format",
+      "metaModeValue": "Remote exams",
+      "metaCategories": "Categories",
+      "metaOrganizer": "Organiser",
       "figureCaption": "Figure from Problem 3, OFM 2024 (Senior): (DE) is parallel to (OM)."
     },
     "Event": {

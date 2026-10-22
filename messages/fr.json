@@ -39,9 +39,10 @@
       "ctaPrimary": "Découvrir l'Olympiade",
       "ctaSecondary": "Voir les équipes",
       "metaDates": "Dates",
-      "metaLocation": "Comité d'organisation",
-      "metaLanguage": "Langue officielle",
-      "metaFormat": "Catégories",
+      "metaMode": "Format",
+      "metaModeValue": "Épreuves à distance",
+      "metaCategories": "Catégories",
+      "metaOrganizer": "Organisateur",
       "figureCaption": "Figure du problème 3, OFM 2024 (Senior) : (DE) est parallèle à (OM)."
     },
     "Event": {

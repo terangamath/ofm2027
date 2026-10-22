@@ -41,6 +41,15 @@
   --nuit-relevee: #1b3226;
   --sable-texte: #ede7db;
   --sable-doux: #cfc8ba;
+
+  /* Variante D — « Teranga géométrique » (maquette 5254) : le soleil du disque
+     et le rouge du tissage. Le vert reste celui de la palette.
+     soleil : vert sur soleil 6,6:1, vert-clair sur soleil 3,8:1 ;
+     rouge : ivoire sur rouge 5,4:1, rouge sur ivoire 5,3:1. */
+  --soleil: #f0c33c;
+  --rouge: #bc3a2a;
+  /* Vert de pastille en thème sombre : 6,1:1 sur la nuit adoucie. */
+  --vert-pastille-nuit: #52b788;
 }
 
 /* ────────────────────────────────────────────────────────────────
@@ -49,10 +58,11 @@
    alternées ; le vert devient l'accent (titres, bouton principal).
    ──────────────────────────────────────────────────────────────── */
 :root {
-  --background: var(--sable);
+  /* Variante D : l'ivoire domine (maquette 5254), le sable marque les sections alternées. */
+  --background: var(--ivoire);
   --foreground: var(--anthracite);
-  --surface: var(--sable);
-  --surface-alt: var(--ivoire);
+  --surface: var(--ivoire);
+  --surface-alt: var(--sable);
 
   --card: var(--ivoire);
   --card-foreground: var(--anthracite);
@@ -80,13 +90,30 @@
   --link: var(--or-encre);
   /* L'or en texte : grands chiffres, dates, heures. */
   --chiffre: var(--or-profond);
-  /* La figure du hero. */
-  --figure-trait: var(--or-trait);
-  --figure-construction: var(--or);
-  /* Les traits de construction restent en filigrane : plus marqués sur fond clair. */
-  --figure-construction-opacite: 0.45;
-  --figure-conclusion: var(--vert);
-  --figure-etiquette: var(--or-encre);
+  /* La figure du hero, sur son disque soleil. Chaque trait est mesuré contre
+     le soleil ET contre l'ivoire (le plus faible des deux est donné) :
+     trait et lettres vert 6,6:1 ; construction vert-clair 3,8:1 ;
+     conclusion rouge 3,3:1 (mesures au rendu, audit de la variante D). */
+  --figure-disque: var(--soleil);
+  --figure-trait: var(--vert);
+  --figure-construction: var(--vert-clair);
+  --figure-conclusion: var(--rouge);
+  --figure-etiquette: var(--vert);
+  --figure-repere-fond: var(--ivoire);
+  /* Bandeau tissé et pastilles de la rangée d'informations. */
+  --tissage-fond: var(--ivoire);
+  --tissage-vert: var(--vert);
+  --tissage-jaune: var(--soleil);
+  --tissage-rouge: var(--rouge);
+  --pastille-vert: var(--vert);
+  --pastille-vert-icone: var(--ivoire);
+  --pastille-jaune: var(--soleil);
+  --pastille-jaune-icone: var(--vert-nuit);
+  /* Le soleil ne fait que 1,6:1 sur l'ivoire : un liseré or profond (5,9:1)
+     dessine le bord de la pastille. */
+  --pastille-jaune-bord: var(--or-profond);
+  --pastille-rouge: var(--rouge);
+  --pastille-rouge-icone: var(--ivoire);
   /* Le trait « maintenant » de la partition, seul emploi de la terracotta. */
   --maintenant: var(--terracotta);
   --maintenant-texte: var(--terracotta-fonce);
@@ -133,11 +160,25 @@
 
   --link: var(--or-clair);
   --chiffre: var(--or-clair);
-  --figure-trait: var(--or-clair);
-  --figure-construction: var(--or);
-  --figure-construction-opacite: 0.16;
-  --figure-conclusion: var(--or-clair);
-  --figure-etiquette: var(--or-clair);
+  /* Le soleil s'éteint en braise : un disque or sourd, sur lequel les traits
+     clairs tiennent (sable 6,0:1, construction 4,5:1, conclusion 3,4:1). */
+  --figure-disque: color-mix(in srgb, var(--soleil) 30%, var(--nuit-douce));
+  --figure-trait: var(--sable-texte);
+  --figure-construction: var(--sable-doux);
+  --figure-conclusion: var(--terracotta-pale);
+  --figure-etiquette: var(--sable-texte);
+  --figure-repere-fond: var(--nuit-douce);
+  --tissage-fond: var(--sable-doux);
+  --tissage-vert: var(--vert);
+  --tissage-jaune: color-mix(in srgb, var(--soleil) 88%, var(--nuit-douce));
+  --tissage-rouge: color-mix(in srgb, var(--rouge) 88%, var(--nuit-douce));
+  --pastille-vert: var(--vert-pastille-nuit);
+  --pastille-vert-icone: var(--vert-nuit);
+  --pastille-jaune: var(--soleil);
+  --pastille-jaune-icone: var(--vert-nuit);
+  --pastille-jaune-bord: var(--soleil);
+  --pastille-rouge: var(--terracotta-clair);
+  --pastille-rouge-icone: var(--vert-nuit);
   --maintenant: var(--terracotta-clair);
   --maintenant-texte: var(--terracotta-pale);
 
@@ -366,30 +407,47 @@
   .figure-construction {
     --ease-trace: cubic-bezier(0.45, 0.05, 0.25, 1);
   }
+  .figure-disque {
+    fill: var(--figure-disque);
+  }
   .figure-trait,
-  .figure-construction-trait,
-  .figure-conclusion {
+  .figure-compas,
+  .figure-conclusion,
+  .figure-masque {
     stroke-dasharray: 1;
     stroke-dashoffset: 0;
     animation: figure-tracer var(--duree, 400ms) var(--ease-trace) var(--delai, 0ms) both;
   }
   .figure-trait {
     stroke: var(--figure-trait);
+    stroke-width: 1.6;
+  }
+  /* Arcs de compas : traits pleins, fins. */
+  .figure-compas {
+    stroke: var(--figure-construction);
     stroke-width: 1.25;
   }
-  .figure-construction-trait {
+  /* Médiatrices, hauteur, cercle OCD : pointillés ronds, révélés par un masque. */
+  .figure-masque {
+    stroke: white;
+    stroke-width: 6;
+  }
+  .figure-pointille {
     stroke: var(--figure-construction);
-    stroke-width: 1;
-    stroke-dasharray: 1;
-    opacity: var(--figure-construction-opacite);
-    /* trace, puis s'estompe : les traits de construction restent en filigrane */
-    animation:
-      figure-tracer var(--duree, 400ms) var(--ease-trace) var(--delai, 0ms) both,
-      figure-estomper 300ms ease-out 1600ms both;
+    stroke-width: 1.5;
+    stroke-dasharray: 0.5 5;
   }
   .figure-conclusion {
     stroke: var(--figure-conclusion);
-    stroke-width: 2;
+    stroke-width: 2.5;
+  }
+  .figure-repere {
+    fill: var(--figure-repere-fond);
+    stroke: var(--figure-construction);
+    stroke-width: 1.5;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: figure-apparaitre 220ms var(--ease-signature) var(--delai, 0ms) both;
   }
   .figure-point {
     fill: var(--figure-trait);
@@ -401,8 +459,8 @@
     fill: var(--figure-etiquette);
     font-family: var(--font-display);
     font-style: italic;
-    font-size: 17px;
-    opacity: 0.85;
+    font-weight: 600;
+    font-size: 21px;
     animation: figure-apparaitre 220ms var(--ease-signature) var(--delai, 0ms) both;
   }
   /* Mouvement réduit : état final immédiat. */
@@ -421,14 +479,6 @@
     stroke-dashoffset: 0;
   }
 }
-@keyframes figure-estomper {
-  from {
-    opacity: 0.55;
-  }
-  to {
-    opacity: var(--figure-construction-opacite);
-  }
-}
 @keyframes figure-apparaitre {
   from {
     opacity: 0;
@@ -437,6 +487,61 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Variante D — bandeau tissé et pastilles de la rangée d'informations.
+   Le bandeau ne s'anime pas ; ses couleurs suivent le thème.
+   ──────────────────────────────────────────────────────────────── */
+@layer components {
+  .tissage-fond {
+    fill: var(--tissage-fond);
+  }
+  .tissage-vert {
+    fill: var(--tissage-vert);
+  }
+  .tissage-jaune {
+    fill: var(--tissage-jaune);
+  }
+  .tissage-rouge {
+    fill: var(--tissage-rouge);
+  }
+  /* Titre du hero : Fraunces grasse, comme sur la maquette 5254. Plus serré
+     que display-xl pour tenir « Mathématiques » dans sa colonne. */
+  .titre-hero {
+    font-size: clamp(2.75rem, 6.2vw, 6rem);
+    line-height: 0.98;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+  .pastille {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+  }
+  @media (min-width: 40rem) {
+    .pastille {
+      width: 2.75rem;
+      height: 2.75rem;
+    }
+  }
+  .pastille-vert {
+    background: var(--pastille-vert);
+    color: var(--pastille-vert-icone);
+  }
+  .pastille-jaune {
+    background: var(--pastille-jaune);
+    color: var(--pastille-jaune-icone);
+    box-shadow: inset 0 0 0 1.5px var(--pastille-jaune-bord);
+  }
+  .pastille-rouge {
+    background: var(--pastille-rouge);
+    color: var(--pastille-rouge-icone);
   }
 }
 
