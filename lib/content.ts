@@ -1,18 +1,23 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import type { Delegation, Locale, ProblemFrontmatter } from "@/content/types";
+import type { Delegation, FicheDelegation, Locale, ProblemFrontmatter } from "@/content/types";
 import { composerContenu, composerFrancais } from "@/lib/typographie";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
-/** Délégations, pays hôte en tête puis ordre alphabétique. */
+/**
+ * Délégations affichées, pays hôte en tête puis ordre alphabétique.
+ * Les pays seulement invités (`status: "invited"`) sont écartés ici, donc de
+ * toutes les pages, de la partition et du sitemap.
+ */
 export function getDelegations(): Delegation[] {
   const dir = path.join(CONTENT_DIR, "delegations");
   return fs
     .readdirSync(dir)
     .filter((file) => file.endsWith(".json"))
-    .map((file) => composerContenu(JSON.parse(fs.readFileSync(path.join(dir, file), "utf-8")) as Delegation))
+    .map((file) => composerContenu(JSON.parse(fs.readFileSync(path.join(dir, file), "utf-8")) as FicheDelegation))
+    .filter((fiche): fiche is Delegation => fiche.status !== "invited")
     .sort((a, b) => {
       if (a.isHost !== b.isHost) return a.isHost ? -1 : 1;
       return a.name.fr.localeCompare(b.name.fr);

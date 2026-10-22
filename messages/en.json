@@ -79,7 +79,7 @@
     },
     "Simultaneite": {
       "title": "27 March 2027, at the same instant",
-      "lead": "Fourteen countries open the same paper at the same moment, on different clocks. The reference time is Dakar's, the host country.",
+      "lead": "All {count} delegations open the same paper at the same moment, on different clocks. The reference time is Dakar's, the host country.",
       "note": "Time taken from the OFM rules (art. 5.8): papers traditionally start at 09:00 Paris time, that is 08:00 in Dakar. Terangamath will confirm the 2027 schedule.",
       "listLabel": "Local start time of the paper, by delegation",
       "localTime": "local time",
@@ -92,7 +92,7 @@
       "before": "Before the paper starts",
       "during": "Paper in progress",
       "after": "Paper over",
-      "afterLine": "27 March 2027 · 08:00 in Dakar · 14 countries, one paper",
+      "afterLine": "27 March 2027 · 08:00 in Dakar · {count} countries, one paper",
       "days": "days",
       "hours": "hours",
       "minutes": "minutes",

@@ -79,7 +79,7 @@
     },
     "Simultaneite": {
       "title": "Le 27 mars 2027, au même instant",
-      "lead": "Quatorze pays ouvrent la même épreuve au même moment, sur des horloges différentes. L'heure de référence est celle de Dakar, pays hôte.",
+      "lead": "Les {count} délégations ouvrent la même épreuve au même moment, sur des horloges différentes. L'heure de référence est celle de Dakar, pays hôte.",
       "note": "Horaire repris du règlement de l'OFM (art. 5.8) : les épreuves commencent traditionnellement à 09:00 heure de Paris, soit 08:00 à Dakar. Terangamath confirmera l'horaire de l'édition 2027.",
       "listLabel": "Heure locale de début de l'épreuve, par délégation",
       "localTime": "heure locale",
@@ -92,7 +92,7 @@
       "before": "Avant le début de l'épreuve",
       "during": "Épreuve en cours",
       "after": "Épreuve terminée",
-      "afterLine": "27 mars 2027 · 08:00 à Dakar · 14 pays, une épreuve",
+      "afterLine": "27 mars 2027 · 08:00 à Dakar · {count} pays, une épreuve",
       "days": "jours",
       "hours": "heures",
       "minutes": "minutes",

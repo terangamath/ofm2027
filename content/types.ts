@@ -22,7 +22,7 @@ export type EngagementStatus = "confirmed" | "pending";
 // ─────────────────────────────────────────────────────────────
 
 /**
- * Session d'épreuve : l'instant unique auquel les quatorze délégations
+ * Session d'épreuve : l'instant unique auquel toutes les délégations
  * ouvrent le sujet. `startInstant` est en UTC ; `referenceZone` est le fuseau
  * dans lequel l'heure de référence est affichée (celui du pays hôte).
  * `provisional` : horaire repris de la règle générale du règlement OFM
@@ -94,6 +94,21 @@ export interface Delegation {
   /** null = roster pas encore publié (coming_soon). */
   members: DelegationMember[] | null;
 }
+
+/**
+ * Pays invité qui n'a pas encore répondu : présent dans `content/delegations/`
+ * pour être prêt le jour où il confirme, mais jamais rendu (ni liste, ni fiche,
+ * ni sitemap). Le fuseau peut rester inconnu tant que la délégation n'a pas
+ * dit d'où elle compose (pays à plusieurs fuseaux).
+ * Pour l'afficher : passer `status` à "confirmed" et renseigner `timeZone`.
+ */
+export interface DelegationInvitee extends Omit<Delegation, "status" | "timeZone"> {
+  status: "invited";
+  timeZone: string | null;
+}
+
+/** Contenu brut d'un fichier `content/delegations/*.json`. */
+export type FicheDelegation = Delegation | DelegationInvitee;
 
 // ─────────────────────────────────────────────────────────────
 // Problèmes & Solutions (/problemes)
