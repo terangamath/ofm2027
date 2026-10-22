@@ -19,7 +19,9 @@
     "languageSwitcherLabel": "Change language",
     "skipToContent": "Skip to main content",
     "menuOpen": "Open menu",
-    "menuClose": "Close menu"
+    "menuClose": "Close menu",
+    "themeToLight": "Switch to light theme",
+    "themeToDark": "Switch to dark theme"
   },
   "Footer": {
     "navLabel": "Useful links",

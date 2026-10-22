@@ -5,6 +5,7 @@ import { useLinkStatus } from "next/link";
 import { Menu, X } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { Logo } from "@/components/brand/logo";
 
 export interface NavItem {
@@ -22,6 +23,8 @@ interface HeaderNavProps {
     menuClose: string;
     navLabel: string;
     languageSwitcher: string;
+    themeToLight: string;
+    themeToDark: string;
   };
 }
 
@@ -97,10 +100,11 @@ export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
           })}
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-3">
           <div className="hidden sm:block">
             <LanguageSwitcher locale={locale} locales={locales} label={labels.languageSwitcher} />
           </div>
+          <ThemeToggle labels={{ toLight: labels.themeToLight, toDark: labels.themeToDark }} />
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
