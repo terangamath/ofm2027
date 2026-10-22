@@ -86,6 +86,11 @@
   /* Les traits de construction restent en filigrane : plus marqués sur fond clair. */
   --figure-construction-opacite: 0.45;
   --figure-conclusion: var(--vert);
+  /* Pavage (variante C) : la trame sous la figure et la bande tissée.
+     Aucune couleur nouvelle : l'or des traits de la figure. */
+  --trame-opacite: 0.22;
+  --pavage-trame: color-mix(in srgb, var(--or-trait) 70%, transparent);
+  --pavage-a: var(--or-trait);
   --figure-etiquette: var(--or-encre);
   /* Le trait « maintenant » de la partition, seul emploi de la terracotta. */
   --maintenant: var(--terracotta);
@@ -137,6 +142,9 @@
   --figure-construction: var(--or);
   --figure-construction-opacite: 0.16;
   --figure-conclusion: var(--or-clair);
+  --trame-opacite: 0.2;
+  --pavage-trame: color-mix(in srgb, var(--or) 60%, transparent);
+  --pavage-a: var(--or-clair);
   --figure-etiquette: var(--or-clair);
   --maintenant: var(--terracotta-clair);
   --maintenant-texte: var(--terracotta-pale);
@@ -175,6 +183,8 @@
   --color-chiffre: var(--chiffre);
   --color-maintenant: var(--maintenant);
   --color-maintenant-texte: var(--maintenant-texte);
+  --color-pavage-trame: var(--pavage-trame);
+  --color-pavage-a: var(--pavage-a);
 
   /* Rôles sémantiques shadcn/ui */
   --color-background: var(--background);
@@ -390,6 +400,12 @@
   .figure-conclusion {
     stroke: var(--figure-conclusion);
     stroke-width: 2;
+  }
+  .figure-trame {
+    fill: none;
+    stroke: var(--figure-construction);
+    stroke-width: 1;
+    opacity: var(--trame-opacite);
   }
   .figure-point {
     fill: var(--figure-trait);

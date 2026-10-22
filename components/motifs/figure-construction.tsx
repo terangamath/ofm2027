@@ -12,6 +12,7 @@
  * direct sous prefers-reduced-motion.
  */
 import { K, OMEGA_R, P } from "@/lib/figure-geometrie";
+import { COTE_FIGURE, ORIGINE_FIGURE, tuile } from "@/lib/pavage";
 
 type Point = { x: number; y: number };
 const seg = (a: Point, b: Point) => `M${a.x} ${a.y}L${b.x} ${b.y}`;
@@ -34,7 +35,33 @@ function Pt({ p, delai }: { p: Point; delai: number }) {
   return <circle cx={p.x} cy={p.y} r={4} className="figure-point" style={{ ["--delai" as string]: `${delai}ms` }} />;
 }
 
-export function FigureConstruction({ className }: { className?: string }) {
+/**
+ * Trame de la variante C : le pavage triangulaire {3,6} sur lequel la figure
+ * se construit, nœud en O, côté R/10, estompé hors du cercle. Statique : elle
+ * n'entre pas dans la chorégraphie.
+ */
+function Trame() {
+  const t = tuile(COTE_FIGURE);
+  return (
+    <>
+      <defs>
+        <pattern id="trame-pavage" x={ORIGINE_FIGURE.x} y={ORIGINE_FIGURE.y} width={t.largeur} height={t.hauteur} patternUnits="userSpaceOnUse">
+          <path d={t.chemin} className="figure-trame" />
+        </pattern>
+        <radialGradient id="trame-fondu" cx={ORIGINE_FIGURE.x} cy={ORIGINE_FIGURE.y} r={OMEGA_R + 40} gradientUnits="userSpaceOnUse">
+          <stop offset="0.55" stopColor="white" />
+          <stop offset="1" stopColor="black" />
+        </radialGradient>
+        <mask id="trame-masque" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="600">
+          <rect width="600" height="600" fill="url(#trame-fondu)" />
+        </mask>
+      </defs>
+      <rect width="600" height="600" fill="url(#trame-pavage)" mask="url(#trame-masque)" />
+    </>
+  );
+}
+
+export function FigureConstruction({ className, trame = false }: { className?: string; trame?: boolean }) {
   return (
     <svg
       viewBox="0 0 600 600"
@@ -44,6 +71,8 @@ export function FigureConstruction({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      {trame && <Trame />}
+
       {/* 1. ω et le triangle */}
       <circle cx={P.O.x} cy={P.O.y} r={OMEGA_R} pathLength={1} className="figure-trait" style={{ ["--delai" as string]: "0ms", ["--duree" as string]: "500ms" }} />
       <path d={seg(P.A, P.B)} pathLength={1} className="figure-trait" style={{ ["--delai" as string]: "250ms", ["--duree" as string]: "350ms" }} />

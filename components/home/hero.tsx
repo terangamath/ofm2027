@@ -44,7 +44,7 @@ export async function Hero({ locale }: { locale: Locale }) {
 
         {/* La figure se construit à côté du texte, sans jamais le bloquer. */}
         <figure className="mx-auto flex w-full max-w-md flex-col gap-3 lg:max-w-none">
-          <FigureConstruction className="h-auto w-full" />
+          <FigureConstruction trame className="h-auto w-full" />
           <figcaption className="text-small text-muted-foreground">
             <a href={FIGURE_SOURCE} target="_blank" rel="noopener noreferrer" className="link-text">
               {t("figureCaption")}
