@@ -1,8 +1,9 @@
 {
   "Metadata": {
-    "title": "OFM 2027 — Francophone Mathematical Olympiad · Dakar",
+    "title": "OFM 2027 — Francophone Mathematical Olympiad · organised from Dakar",
     "description": "The 2027 Francophone Mathematical Olympiad brings together, online, the best young mathematicians of the French-speaking world, around exams designed by an international scientific committee. Organised by Terangamath (Dakar, Senegal).",
-    "ogAlt": "OFM 2027 — Francophone Mathematical Olympiad, 27 and 28 March 2027, organised by Terangamath from Dakar"
+    "ogAlt": "OFM 2027 — Francophone Mathematical Olympiad, 27 and 28 March 2027, organising committee in Dakar, Junior and Senior categories",
+    "ogCommittee": "Committee in {city}"
   },
   "Nav": {
     "home": "Home",
@@ -39,7 +40,7 @@
       "ctaPrimary": "Discover the Olympiad",
       "ctaSecondary": "See the teams",
       "metaDates": "Dates",
-      "metaLocation": "Host country",
+      "metaLocation": "Organising committee",
       "metaLanguage": "Official language",
       "metaFormat": "Categories",
       "figureCaption": "Figure from Problem 3, OFM 2024 (Senior): (DE) is parallel to (OM)."
@@ -79,7 +80,7 @@
     },
     "Simultaneite": {
       "title": "27 March 2027, at the same instant",
-      "lead": "All {count} delegations open the same paper at the same moment, on different clocks. The reference time is Dakar's, the host country.",
+      "lead": "All {count} delegations open the same paper at the same moment, on different clocks. The reference time is Dakar's, where the organising committee meets.",
       "note": "Time taken from the OFM rules (art. 5.8): papers traditionally start at 09:00 Paris time, that is 08:00 in Dakar. Terangamath will confirm the 2027 schedule.",
       "listLabel": "Local start time of the paper, by delegation",
       "localTime": "local time",
@@ -250,7 +251,7 @@
       "organizerLabel": "Organiser",
       "emailLabel": "Email",
       "emailValue": "contact@terangamath.org",
-      "locationLabel": "Location",
+      "locationLabel": "Organising committee",
       "websiteLabel": "Association website"
     },
     "Legal": {

@@ -1,8 +1,9 @@
 {
   "Metadata": {
-    "title": "OFM 2027 — Olympiade Francophone de Mathématiques · Dakar",
+    "title": "OFM 2027 — Olympiade Francophone de Mathématiques · organisée depuis Dakar",
     "description": "L'Olympiade Francophone de Mathématiques 2027 rassemble, à distance, les meilleurs jeunes mathématiciens du monde francophone, autour d'épreuves conçues par un comité scientifique international. Organisée par Terangamath (Dakar, Sénégal).",
-    "ogAlt": "OFM 2027 — Olympiade Francophone de Mathématiques, 27 et 28 mars 2027, organisée par Terangamath depuis Dakar"
+    "ogAlt": "OFM 2027 — Olympiade Francophone de Mathématiques, 27 et 28 mars 2027, comité d'organisation à Dakar, catégories Junior et Senior",
+    "ogCommittee": "Comité à {city}"
   },
   "Nav": {
     "home": "Accueil",
@@ -39,7 +40,7 @@
       "ctaPrimary": "Découvrir l'Olympiade",
       "ctaSecondary": "Voir les équipes",
       "metaDates": "Dates",
-      "metaLocation": "Pays organisateur",
+      "metaLocation": "Comité d'organisation",
       "metaLanguage": "Langue officielle",
       "metaFormat": "Catégories",
       "figureCaption": "Figure du problème 3, OFM 2024 (Senior) : (DE) est parallèle à (OM)."
@@ -79,7 +80,7 @@
     },
     "Simultaneite": {
       "title": "Le 27 mars 2027, au même instant",
-      "lead": "Les {count} délégations ouvrent la même épreuve au même moment, sur des horloges différentes. L'heure de référence est celle de Dakar, pays hôte.",
+      "lead": "Les {count} délégations ouvrent la même épreuve au même moment, sur des horloges différentes. L'heure de référence est celle de Dakar, où se réunit le comité d'organisation.",
       "note": "Horaire repris du règlement de l'OFM (art. 5.8) : les épreuves commencent traditionnellement à 09:00 heure de Paris, soit 08:00 à Dakar. Terangamath confirmera l'horaire de l'édition 2027.",
       "listLabel": "Heure locale de début de l'épreuve, par délégation",
       "localTime": "heure locale",
@@ -250,7 +251,7 @@
       "organizerLabel": "Organisateur",
       "emailLabel": "Email",
       "emailValue": "contact@terangamath.org",
-      "locationLabel": "Lieu",
+      "locationLabel": "Comité d'organisation",
       "websiteLabel": "Site de l'association"
     },
     "Legal": {
