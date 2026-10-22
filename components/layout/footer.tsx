@@ -1,5 +1,6 @@
 import { getTranslations, getLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { Logo } from "@/components/brand/logo";
 import type { Locale } from "@/content/types";
 import { evenement as eventInfo } from "@/lib/contenu";
 
@@ -18,15 +19,12 @@ export async function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-hairline bg-background">
+    <footer className="border-t border-hairline bg-surface-alt">
       <div className="mx-auto max-w-7xl px-6 py-12 lg:py-14">
         <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <div className="flex flex-col gap-1">
-            <Link href="/" className="flex min-h-11 items-center gap-2.5 self-start">
-              <span className="font-display text-2xl leading-none text-primary" aria-hidden>
-                Σ
-              </span>
-              <span className="label text-foreground">OFM 2027</span>
+            <Link href="/" className="flex min-h-11 items-center self-start">
+              <Logo />
             </Link>
             <p className="text-sm text-muted-foreground">
               {t("organizedBy")}{" "}

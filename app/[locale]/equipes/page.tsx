@@ -33,7 +33,7 @@ export default async function TeamsPage({
     <>
       <PageHero title={t("title")} lead={t("lead")} />
 
-      <section className="bg-sable pb-24 lg:pb-32">
+      <section className="bg-surface pb-24 lg:pb-32">
         <div className="mx-auto max-w-7xl px-6">
           <ul className="grid grid-cols-1 gap-x-16 md:grid-cols-2">
             {delegations.map((delegation) => {
@@ -49,29 +49,29 @@ export default async function TeamsPage({
                       <ViewTransition name={`delegation-${delegation.slug}`} share="partage">
                         <span className="flex items-center gap-4">
                           <Flag countryCode={delegation.countryCode} size={32} />
-                          <h2 className="font-display text-h4 text-anthracite">{delegation.name[typedLocale]}</h2>
+                          <h2 className="font-display text-h4 text-foreground">{delegation.name[typedLocale]}</h2>
                         </span>
                       </ViewTransition>
                     ) : (
                       <>
                         <Flag countryCode={delegation.countryCode} size={32} />
-                        <h2 className="font-display text-h4 text-anthracite">{delegation.name[typedLocale]}</h2>
+                        <h2 className="font-display text-h4 text-foreground">{delegation.name[typedLocale]}</h2>
                       </>
                     )}
                     {delegation.isHost && (
-                      <span className="label ml-auto text-vert">{t("hostBadge")}</span>
+                      <span className="label ml-auto text-primary">{t("hostBadge")}</span>
                     )}
                     {pending && (
-                      <span className="label ml-auto text-encre">{t("statusPending")}</span>
+                      <span className="label ml-auto text-muted-foreground">{t("statusPending")}</span>
                     )}
                   </div>
                   {hasFiche && delegation.description && (
-                    <p className="pl-12 text-body text-encre">{delegation.description[typedLocale]}</p>
+                    <p className="pl-12 text-body text-muted-foreground">{delegation.description[typedLocale]}</p>
                   )}
                   {hasFiche && (
                     <Link
                       href={`/equipes/${delegation.slug}`}
-                      className="link-text ml-12 self-start text-vert active:text-anthracite"
+                      className="link-text ml-12 self-start text-primary active:text-foreground"
                     >
                       {t("viewTeam")}
                     </Link>

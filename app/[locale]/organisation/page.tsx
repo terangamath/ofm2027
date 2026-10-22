@@ -31,13 +31,13 @@ export default async function OrganisationPage({
     <>
       <PageHero title={t("title")} lead={t("lead")} />
 
-      <section className="bg-sable pb-20 text-anthracite lg:pb-28">
+      <section className="bg-surface pb-20 text-foreground lg:pb-28">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
-          <h2 className="text-h2 font-display text-anthracite">{t("About.title")}</h2>
+          <h2 className="text-h2 font-display text-foreground">{t("About.title")}</h2>
           <div className="flex max-w-[62ch] flex-col gap-6">
-            <p className="text-body-l text-anthracite/85">{t("About.body")}</p>
+            <p className="text-body-l text-foreground">{t("About.body")}</p>
             {eventInfo.organizerUrl && (
-              <a href={eventInfo.organizerUrl} target="_blank" rel="noopener noreferrer" className="link-text self-start text-vert">
+              <a href={eventInfo.organizerUrl} target="_blank" rel="noopener noreferrer" className="link-text self-start text-primary">
                 www.terangamath.org
               </a>
             )}
@@ -45,7 +45,7 @@ export default async function OrganisationPage({
         </div>
       </section>
 
-      <section className="bg-background py-20 lg:py-28">
+      <section className="bg-surface-alt py-20 lg:py-28">
         <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6">
           <SectionHeading title={t("Committees.title")} lead={t("Committees.lead")} />
 

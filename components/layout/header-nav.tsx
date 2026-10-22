@@ -5,6 +5,7 @@ import { useLinkStatus } from "next/link";
 import { Menu, X } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
+import { Logo } from "@/components/brand/logo";
 
 export interface NavItem {
   href: "/olympiade" | "/equipes" | "/programme" | "/problemes";
@@ -69,11 +70,8 @@ export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
       </a>
 
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:h-20">
-        <Link href="/" className="flex items-center gap-2.5 rounded-sm active:opacity-70">
-          <span className="font-display text-2xl leading-none text-primary" aria-hidden>
-            Σ
-          </span>
-          <span className="label text-foreground">OFM 2027</span>
+        <Link href="/" className="rounded-sm active:opacity-70">
+          <Logo />
         </Link>
 
         <nav aria-label={labels.navLabel} className="hidden items-center gap-8 md:flex">

@@ -32,7 +32,7 @@ export default async function ProblemsPage({
     <>
       <PageHero title={t("title")} lead={t("lead")} />
 
-      <section className="bg-sable pb-20 lg:pb-28">
+      <section className="bg-surface pb-20 lg:pb-28">
         <div className="mx-auto max-w-3xl px-6">
           {problems.length === 0 ? (
             <ComingSoonPanel title={t("comingSoonTitle")} body={t("comingSoonBody")} />
@@ -42,7 +42,7 @@ export default async function ProblemsPage({
                 <Link
                   key={problem.slug}
                   href={`/problemes/${problem.slug}`}
-                  className="group flex flex-col gap-3 border-b border-hairline py-6 hover:text-vert"
+                  className="group flex flex-col gap-3 border-b border-hairline py-6 hover:text-primary"
                 >
                   <div className="flex flex-wrap items-center gap-3">
                     <span className="label text-link">

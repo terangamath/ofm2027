@@ -36,7 +36,7 @@ export default async function ProblemDetailPage({
   const { frontmatter, content } = doc;
 
   return (
-    <section className="bg-background py-20 lg:py-28">
+    <section className="bg-surface-alt py-20 lg:py-28">
       <div className="mx-auto flex max-w-3xl flex-col gap-8 px-6">
         <Link
           href="/problemes"

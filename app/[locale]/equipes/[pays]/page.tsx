@@ -42,9 +42,9 @@ export default async function TeamDetailPage({
   if (!delegation) notFound();
 
   return (
-    <section className="bg-sable py-16 text-anthracite lg:py-24">
+    <section className="bg-surface py-16 text-foreground lg:py-24">
       <div className="mx-auto flex max-w-3xl flex-col gap-8 px-6">
-        <Link href="/equipes" className="link-text self-start text-vert">
+        <Link href="/equipes" className="link-text self-start text-primary">
           {t("back")}
         </Link>
 
@@ -54,33 +54,33 @@ export default async function TeamDetailPage({
             <ViewTransition name={`delegation-${delegation.slug}`} share="partage">
               <span className="flex items-center gap-5">
                 <Flag countryCode={delegation.countryCode} size={64} />
-                <h1 className="font-display text-display-l text-vert">{delegation.name[typedLocale]}</h1>
+                <h1 className="font-display text-display-l text-primary">{delegation.name[typedLocale]}</h1>
               </span>
             </ViewTransition>
           ) : (
             <span className="flex items-center gap-5">
               <Flag countryCode={delegation.countryCode} size={64} />
-              <h1 className="font-display text-display-l text-vert">{delegation.name[typedLocale]}</h1>
+              <h1 className="font-display text-display-l text-primary">{delegation.name[typedLocale]}</h1>
             </span>
           )}
-          <p className="label text-encre">
+          <p className="label text-muted-foreground">
             {delegation.isHost && `${t("hostBadge")} · `}
             {delegation.status === "confirmed" ? t("statusConfirmed") : t("statusPending")}
           </p>
         </div>
 
         {delegation.description && (
-          <p className="text-body-l text-anthracite/85">{delegation.description[typedLocale]}</p>
+          <p className="text-body-l text-foreground">{delegation.description[typedLocale]}</p>
         )}
 
         {delegation.members && delegation.members.length > 0 && (
           <div className="flex flex-col gap-4 border-t border-hairline pt-8">
-            <h2 className="label text-encre">{t("membersTitle")}</h2>
+            <h2 className="label text-muted-foreground">{t("membersTitle")}</h2>
             <ul className="flex flex-col gap-3">
               {delegation.members.map((member, index) => (
                 <li key={index} className="flex items-baseline justify-between gap-4">
                   <span className="font-medium">{member.name}</span>
-                  <span className="text-small text-encre">{member.role[typedLocale]}</span>
+                  <span className="text-small text-muted-foreground">{member.role[typedLocale]}</span>
                 </li>
               ))}
             </ul>

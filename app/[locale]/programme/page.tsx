@@ -47,7 +47,7 @@ export default async function ProgrammePage({
     <>
       <PageHero title={t("title")} lead={t("lead")} />
 
-      <section className="bg-sable pb-20 lg:pb-28">
+      <section className="bg-surface pb-20 lg:pb-28">
         <div className="mx-auto flex max-w-3xl flex-col gap-14 px-6">
           <div className="flex flex-col gap-14">
             {programme.days.map((day) => (

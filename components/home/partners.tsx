@@ -27,9 +27,9 @@ export async function PartnersSection({ locale }: { locale: Locale }) {
   const avecIntitules = categoriesPresentes.size > 1;
 
   return (
-    <section className="bg-sable py-16 text-anthracite lg:py-24">
+    <section className="bg-surface py-16 text-foreground lg:py-24">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
-        <SectionHeading title={t("title")} lead={t("lead")} tone="warm" />
+        <SectionHeading title={t("title")} lead={t("lead")} />
 
         <div className="flex flex-col gap-8">
           {CATEGORY_ORDER.map((category) => {
@@ -39,7 +39,7 @@ export async function PartnersSection({ locale }: { locale: Locale }) {
             return (
               <div key={category ?? "autres"} className="flex flex-col gap-3">
                 {avecIntitules && category && (
-                  <h3 className="label text-encre">{t(CATEGORY_LABEL_KEY[category])}</h3>
+                  <h3 className="label text-muted-foreground">{t(CATEGORY_LABEL_KEY[category])}</h3>
                 )}
                 <ul className="flex flex-wrap items-center gap-x-12 gap-y-8 border-y border-hairline py-8">
                   {items.map((partner) => {
