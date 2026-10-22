@@ -13,8 +13,6 @@
     "programme": "Programme",
     "problems": "Problems & Solutions",
     "history": "History",
-    "gallery": "Gallery",
-    "results": "Results",
     "contact": "Contact"
   },
   "Header": {
@@ -24,14 +22,13 @@
     "menuClose": "Close menu"
   },
   "Footer": {
-    "tagline": "The geometry of hospitality — Dakar, 2027.",
-    "sections": "Sections",
-    "resources": "Resources",
-    "contact": "Contact",
+    "navLabel": "Useful links",
+    "history": "Past editions",
     "legalMentions": "Legal notice",
     "officialSite": "Official OFM website",
     "organizedBy": "Organised by",
-    "rights": "© {year} Terangamath. All rights reserved."
+    "committee": "committee in {city}, {country}",
+    "rights": "© {year} Terangamath"
   },
   "Home": {
     "Hero": {
@@ -233,18 +230,6 @@
         "note": "Note",
         "archives": "Papers, solutions, results"
       }
-    },
-    "Gallery": {
-      "title": "Gallery",
-      "lead": "Photos and videos of the Olympiad.",
-      "comingSoonTitle": "The gallery will open after the 2027 edition",
-      "comingSoonBody": "Photos and videos of the Olympiad will be published here once the event has taken place."
-    },
-    "Results": {
-      "title": "Results",
-      "lead": "The Olympiad's results.",
-      "comingSoonTitle": "Results will be published after marking",
-      "comingSoonBody": "The 2027 edition's results will be published once the exams have been marked by the international jury."
     },
     "Contact": {
       "title": "Contact",

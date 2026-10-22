@@ -3,20 +3,14 @@ import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/content/types";
 import { evenement as eventInfo } from "@/lib/contenu";
 
-const SECTIONS_A = [
-  { key: "olympiad", href: "/olympiade" },
-  { key: "organisation", href: "/organisation" },
-  { key: "teams", href: "/equipes" },
-  { key: "programme", href: "/programme" },
-] as const;
+const LIEN = "inline-flex min-h-11 items-center text-sm text-foreground/80 hover:text-foreground";
 
-const SECTIONS_B = [
-  { key: "problems", href: "/problemes" },
-  { key: "history", href: "/historique" },
-  { key: "gallery", href: "/galerie" },
-  { key: "results", href: "/resultats" },
-] as const;
-
+/**
+ * Pied de page resserré : identité, contact, liens institutionnels, mentions
+ * légales. Pas de plan de site : les rubriques du menu principal n'y sont pas
+ * répétées. Le nom de l'association mène à /organisation, qui n'a pas d'autre
+ * entrée.
+ */
 export async function Footer() {
   const t = await getTranslations("Footer");
   const tNav = await getTranslations("Nav");
@@ -25,77 +19,51 @@ export async function Footer() {
 
   return (
     <footer className="border-t border-hairline bg-background">
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
-          <div className="flex flex-col gap-4">
-            <Link href="/" className="flex items-center gap-2.5">
+      <div className="mx-auto max-w-7xl px-6 py-12 lg:py-14">
+        <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+          <div className="flex flex-col gap-1">
+            <Link href="/" className="flex min-h-11 items-center gap-2.5 self-start">
               <span className="font-display text-2xl leading-none text-primary" aria-hidden>
                 Σ
               </span>
-              <span className="label text-foreground">OFM 2027</span>
+              <span className="label text-foreground">OFM 2027</span>
             </Link>
-            <p className="max-w-xs text-sm text-muted-foreground">{t("tagline")}</p>
+            <p className="text-sm text-muted-foreground">
+              {t("organizedBy")}{" "}
+              <Link href="/organisation" className="link-text font-medium text-foreground">
+                {eventInfo.organizer}
+              </Link>
+              {" — "}
+              {t("committee", { city: eventInfo.city[locale], country: eventInfo.country[locale] })}
+            </p>
           </div>
 
-          <nav aria-label={t("sections")} className="flex flex-col gap-3">
-            <h2 className="label text-muted-foreground">{t("sections")}</h2>
-            {SECTIONS_A.map((item) => (
-              <Link
-                key={item.key}
-                href={item.href}
-                className="text-sm text-foreground/80 hover:text-foreground"
-              >
-                {tNav(item.key)}
-              </Link>
-            ))}
+          <nav aria-label={t("navLabel")}>
+            <ul className="flex flex-col sm:flex-row sm:flex-wrap sm:gap-x-8">
+              <li>
+                <Link href="/contact" className={LIEN}>
+                  {tNav("contact")}
+                </Link>
+              </li>
+              <li>
+                <Link href="/historique" className={LIEN}>
+                  {t("history")}
+                </Link>
+              </li>
+              <li>
+                <a href="https://ofm-officiel.org/" target="_blank" rel="noopener noreferrer" className={LIEN}>
+                  {t("officialSite")}
+                </a>
+              </li>
+            </ul>
           </nav>
-
-          <nav aria-label={t("resources")} className="flex flex-col gap-3">
-            <h2 className="label text-muted-foreground">{t("resources")}</h2>
-            {SECTIONS_B.map((item) => (
-              <Link
-                key={item.key}
-                href={item.href}
-                className="text-sm text-foreground/80 hover:text-foreground"
-              >
-                {tNav(item.key)}
-              </Link>
-            ))}
-            <a
-              href="https://ofm-officiel.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-foreground/80 hover:text-foreground"
-            >
-              {t("officialSite")}
-            </a>
-          </nav>
-
-          <div className="flex flex-col gap-3">
-            <h2 className="label text-muted-foreground">{t("contact")}</h2>
-            <Link
-              href="/contact"
-              className="text-sm text-foreground/80 hover:text-foreground"
-            >
-              {tNav("contact")}
-            </Link>
-            <Link
-              href="/mentions-legales"
-              className="text-sm text-foreground/80 hover:text-foreground"
-            >
-              {t("legalMentions")}
-            </Link>
-          </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-4 border-t border-hairline pt-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-8 flex flex-col gap-1 border-t border-hairline pt-4 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p className="tabular-nums">{t("rights", { year })}</p>
-          <p>
-            {t("organizedBy")}{" "}
-            <span className="font-medium text-foreground">{eventInfo.organizer}</span>
-            {" — "}
-            {eventInfo.city[locale]}, {eventInfo.country[locale]}
-          </p>
+          <Link href="/mentions-legales" className={LIEN}>
+            {t("legalMentions")}
+          </Link>
         </div>
       </div>
     </footer>

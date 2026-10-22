@@ -13,8 +13,6 @@
     "programme": "Programme",
     "problems": "Problèmes & Solutions",
     "history": "Historique",
-    "gallery": "Galerie",
-    "results": "Résultats",
     "contact": "Contact"
   },
   "Header": {
@@ -24,14 +22,13 @@
     "menuClose": "Fermer le menu"
   },
   "Footer": {
-    "tagline": "La géométrie de l'hospitalité — Dakar, 2027.",
-    "sections": "Sections",
-    "resources": "Ressources",
-    "contact": "Contact",
+    "navLabel": "Liens utiles",
+    "history": "Historique des éditions",
     "legalMentions": "Mentions légales",
     "officialSite": "Site officiel de l'OFM",
     "organizedBy": "Organisée par",
-    "rights": "© {year} Terangamath. Tous droits réservés."
+    "committee": "comité à {city}, {country}",
+    "rights": "© {year} Terangamath"
   },
   "Home": {
     "Hero": {
@@ -233,18 +230,6 @@
         "note": "Note",
         "archives": "Sujets, solutions, résultats"
       }
-    },
-    "Gallery": {
-      "title": "Galerie",
-      "lead": "Photos et vidéos de l'Olympiade.",
-      "comingSoonTitle": "La galerie ouvrira après l'édition 2027",
-      "comingSoonBody": "Les photos et vidéos de l'Olympiade seront publiées ici à l'issue de l'événement."
-    },
-    "Results": {
-      "title": "Résultats",
-      "lead": "Les résultats de l'Olympiade.",
-      "comingSoonTitle": "Les résultats seront publiés après la correction",
-      "comingSoonBody": "Les résultats de l'édition 2027 seront publiés à l'issue des épreuves et de la correction par le jury international."
     },
     "Contact": {
       "title": "Contact",

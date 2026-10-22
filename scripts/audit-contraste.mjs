@@ -31,7 +31,7 @@ const args = Object.fromEntries(
 );
 const PORT = args.port ?? "3000";
 const OUT = args.out ?? "contraste";
-const ROUTES = (args.routes ?? "/,/olympiade,/organisation,/equipes,/equipes/senegal,/equipes/france,/programme,/problemes,/resultats,/galerie,/historique,/contact,/mentions-legales").split(",");
+const ROUTES = (args.routes ?? "/,/olympiade,/organisation,/equipes,/equipes/senegal,/equipes/france,/programme,/problemes,/historique,/contact,/mentions-legales").split(",");
 const LOCALES = ["fr", "en"];
 const SCHEMES = ["light", "dark"];
 const WIDTHS = [1440, 390];
