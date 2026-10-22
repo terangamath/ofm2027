@@ -37,6 +37,11 @@ export const archives = composerContenu(archivesData as ArchiveEntry[]);
 export const nations = composerContenu(nationsData as HistoricalNation[]);
 export const faq = composerContenu(faqData as FaqItem[]);
 export const partenaires = composerContenu(partenairesData as Partner[]);
+/** Partenaires affichables : confirmés et pourvus d'un logo. */
+export const partenairesAffiches = partenaires.filter(
+  (partner): partner is Partner & { logo: NonNullable<Partner["logo"]> } =>
+    partner.status === "confirmed" && partner.logo !== null
+);
 export const comites = composerContenu(organisationData as Committee[]);
 export const format = composerContenu(formatData as CompetitionFormat);
 export const documents = composerContenu(documentsData as ReferenceDocument[]);

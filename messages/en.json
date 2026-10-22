@@ -1,8 +1,9 @@
 {
   "Metadata": {
-    "title": "OFM 2027 — Francophone Mathematical Olympiad · Dakar",
-    "description": "The 2027 Francophone Mathematical Olympiad brings together, online, the best young mathematicians of the French-speaking world, around exams designed by an international scientific committee. Organised by Terangamath (Dakar, Senegal).",
-    "ogAlt": "OFM 2027 — Francophone Mathematical Olympiad, 27 and 28 March 2027, organised by Terangamath from Dakar"
+    "title": "OFM 2027 — Francophone Mathematical Olympiad · organised from Dakar",
+    "description": "The 2027 Francophone Mathematical Olympiad brings together, online, the best young mathematicians of the French-speaking world, around exams selected by a committee appointed by the host country. Organised by Terangamath (Dakar, Senegal).",
+    "ogAlt": "OFM 2027 — Francophone Mathematical Olympiad, 27 and 28 March 2027, organising committee in Dakar, Junior and Senior categories",
+    "ogCommittee": "Committee in {city}"
   },
   "Nav": {
     "home": "Home",
@@ -12,8 +13,6 @@
     "programme": "Programme",
     "problems": "Problems & Solutions",
     "history": "History",
-    "gallery": "Gallery",
-    "results": "Results",
     "contact": "Contact"
   },
   "Header": {
@@ -23,14 +22,13 @@
     "menuClose": "Close menu"
   },
   "Footer": {
-    "tagline": "The geometry of hospitality — Dakar, 2027.",
-    "sections": "Sections",
-    "resources": "Resources",
-    "contact": "Contact",
+    "navLabel": "Useful links",
+    "history": "Past editions",
     "legalMentions": "Legal notice",
     "officialSite": "Official OFM website",
     "organizedBy": "Organised by",
-    "rights": "© {year} Terangamath. All rights reserved."
+    "committee": "committee in {city}, {country}",
+    "rights": "© {year} Terangamath"
   },
   "Home": {
     "Hero": {
@@ -39,7 +37,7 @@
       "ctaPrimary": "Discover the Olympiad",
       "ctaSecondary": "See the teams",
       "metaDates": "Dates",
-      "metaLocation": "Host country",
+      "metaLocation": "Organising committee",
       "metaLanguage": "Official language",
       "metaFormat": "Categories",
       "figureCaption": "Figure from Problem 3, OFM 2024 (Senior): (DE) is parallel to (OM)."
@@ -58,8 +56,8 @@
     },
     "Categories": {
       "title": "Two categories, one standard",
-      "lead": "The Olympiad brings together middle and high school students around exams suited to their level, with the same scientific rigour.",
-      "juniorNote": "Geometry, combinatorics, number theory and algebra problems suited to middle school.",
+      "lead": "Two separate papers, open according to students' date of birth, with the same scientific rigour.",
+      "juniorNote": "Four problems — algebra, combinatorics, geometry, number theory — for the youngest contestants.",
       "seniorNote": "Demanding problems, in the tradition of the international mathematical olympiads.",
       "cta": "See the programme"
     },
@@ -73,13 +71,13 @@
     },
     "Problems": {
       "title": "Problems & solutions",
-      "lead": "A preview of the problems designed by the international scientific committee.",
+      "lead": "A preview of the Olympiad's problems.",
       "comingSoon": "The 2027 edition's problems will be published after the exams.",
       "cta": "Explore the problems"
     },
     "Simultaneite": {
       "title": "27 March 2027, at the same instant",
-      "lead": "Fourteen countries open the same paper at the same moment, on different clocks. The reference time is Dakar's, the host country.",
+      "lead": "All {count} delegations open the same paper at the same moment, on different clocks. The reference time is Dakar's, where the organising committee meets.",
       "note": "Time taken from the OFM rules (art. 5.8): papers traditionally start at 09:00 Paris time, that is 08:00 in Dakar. Terangamath will confirm the 2027 schedule.",
       "listLabel": "Local start time of the paper, by delegation",
       "localTime": "local time",
@@ -92,7 +90,7 @@
       "before": "Before the paper starts",
       "during": "Paper in progress",
       "after": "Paper over",
-      "afterLine": "27 March 2027 · 08:00 in Dakar · 14 countries, one paper",
+      "afterLine": "27 March 2027 · 08:00 in Dakar · {count} countries, one paper",
       "days": "days",
       "hours": "hours",
       "minutes": "minutes",
@@ -104,8 +102,7 @@
       "lead": "Institutions, financial and technical partners, alongside Terangamath.",
       "categoryInstitutional": "Institutional partners",
       "categoryFinancial": "Financial partners",
-      "categoryTechnical": "Technical partners",
-      "statusPending": "Being confirmed"
+      "categoryTechnical": "Technical partners"
     },
     "Faq": {
       "title": "Frequently asked questions",
@@ -117,15 +114,16 @@
     "toBeConfirmed": "To be confirmed",
     "learnMore": "Learn more",
     "confirmed": "Confirmed",
-    "pending": "Pending"
+    "pending": "Pending",
+    "categoriesReference": "Conditions set by <ofm>article 4.4 of the OFM rules</ofm>, which refers to <imo>clause 2.2 of the IMO regulations</imo>."
   },
   "Pages": {
     "Olympiad": {
       "title": "The Francophone Mathematical Olympiad",
-      "lead": "A competition of excellence for young mathematicians of the French-speaking world, led by the Terangamath association and an international scientific committee.",
+      "lead": "A competition of excellence for young mathematicians of the French-speaking world, led for the 2027 edition by the Terangamath association.",
       "Presentation": {
         "title": "A competition of excellence, a spirit of hospitality",
-        "body1": "Each year, OFM brings together the best middle and high school students from French-speaking countries around original mathematics exams, designed to reveal reasoning as much as technique.",
+        "body1": "Each year, OFM brings together the best young mathematicians from French-speaking countries, in two age categories, around original mathematics exams, designed to reveal reasoning as much as technique.",
         "body2": "The 2027 edition is led from Dakar by Terangamath, a Senegalese association dedicated to promoting mathematics, with the ambition of combining scientific rigour with Senegalese hospitality — the Teranga."
       },
       "Format": {
@@ -148,7 +146,7 @@
     },
     "Organisation": {
       "title": "Terangamath & the organisation of OFM 2027",
-      "lead": "The Olympiad is led by the Terangamath association, supported by committees dedicated to the scientific design and marking of the exams.",
+      "lead": "The Olympiad is led by the Terangamath association, supported by committees dedicated to problem selection and to the coordination of marking.",
       "About": {
         "title": "The organising association",
         "body": "Terangamath is the Senegalese association behind OFM 2027. Its name draws on the Teranga, Senegalese hospitality, which it puts to work promoting mathematics among young people across the French-speaking world."
@@ -160,7 +158,7 @@
     },
     "Teams": {
       "title": "The OFM 2027 delegations",
-      "lead": "The French-speaking countries engaged in the 2027 edition. Each delegation brings together competitors in the Junior and Senior categories.",
+      "lead": "The French-speaking countries engaged in the 2027 edition. Each country may enter a Junior delegation and a Senior delegation, of one to six students each.",
       "hostBadge": "Host country",
       "viewTeam": "View team",
       "statusPending": "Pending"
@@ -187,7 +185,7 @@
     },
     "Problems": {
       "title": "The Olympiad problems",
-      "lead": "A preview of the problems designed by the international scientific committee, with solutions where available.",
+      "lead": "A preview of the Olympiad's problems, with solutions where available.",
       "comingSoonTitle": "Problems will be published after the exams",
       "comingSoonBody": "The official 2027 problems and solutions will be published here once the competition has taken place. Past editions' papers remain available from the History page.",
       "hasSolution": "Solution available",
@@ -232,25 +230,13 @@
         "archives": "Papers, solutions, results"
       }
     },
-    "Gallery": {
-      "title": "Gallery",
-      "lead": "Photos and videos of the Olympiad.",
-      "comingSoonTitle": "The gallery will open after the 2027 edition",
-      "comingSoonBody": "Photos and videos of the Olympiad will be published here once the event has taken place."
-    },
-    "Results": {
-      "title": "Results",
-      "lead": "The Olympiad's results.",
-      "comingSoonTitle": "Results will be published after marking",
-      "comingSoonBody": "The 2027 edition's results will be published once the exams have been marked by the international jury."
-    },
     "Contact": {
       "title": "Contact",
       "lead": "A question about the Olympiad, your delegation, or the organisation? Get in touch with Terangamath.",
       "organizerLabel": "Organiser",
       "emailLabel": "Email",
       "emailValue": "contact@terangamath.org",
-      "locationLabel": "Location",
+      "locationLabel": "Organising committee",
       "websiteLabel": "Association website"
     },
     "Legal": {

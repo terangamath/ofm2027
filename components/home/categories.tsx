@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { SectionHeading } from "@/components/home/section-heading";
+import { ReferenceCategories } from "@/components/shared/reference-categories";
 import { evenement as eventInfo } from "@/lib/contenu";
 import type { Locale } from "@/content/types";
 
@@ -30,6 +31,8 @@ export async function CategoriesSection({ locale }: { locale: Locale }) {
             </div>
           ))}
         </div>
+
+        <ReferenceCategories locale={locale} className="-mt-4 max-w-2xl" />
 
         <Link href="/programme" className="link-text self-start text-link">
           {t("cta")}

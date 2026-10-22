@@ -22,7 +22,7 @@ export type EngagementStatus = "confirmed" | "pending";
 // ─────────────────────────────────────────────────────────────
 
 /**
- * Session d'épreuve : l'instant unique auquel les quatorze délégations
+ * Session d'épreuve : l'instant unique auquel toutes les délégations
  * ouvrent le sujet. `startInstant` est en UTC ; `referenceZone` est le fuseau
  * dans lequel l'heure de référence est affichée (celui du pays hôte).
  * `provisional` : horaire repris de la règle générale du règlement OFM
@@ -41,6 +41,7 @@ export interface EventInfo {
   city: LocalizedText;
   country: LocalizedText;
   organizer: string;          // "Terangamath"
+  organizerUrl: string;       // site de l'association
   officialLanguage: LocalizedText;
   /** false tant que les dates ne sont pas arrêtées. */
   datesConfirmed: boolean;
@@ -95,6 +96,21 @@ export interface Delegation {
   members: DelegationMember[] | null;
 }
 
+/**
+ * Pays invité qui n'a pas encore répondu : présent dans `content/delegations/`
+ * pour être prêt le jour où il confirme, mais jamais rendu (ni liste, ni fiche,
+ * ni sitemap). Le fuseau peut rester inconnu tant que la délégation n'a pas
+ * dit d'où elle compose (pays à plusieurs fuseaux).
+ * Pour l'afficher : passer `status` à "confirmed" et renseigner `timeZone`.
+ */
+export interface DelegationInvitee extends Omit<Delegation, "status" | "timeZone"> {
+  status: "invited";
+  timeZone: string | null;
+}
+
+/** Contenu brut d'un fichier `content/delegations/*.json`. */
+export type FicheDelegation = Delegation | DelegationInvitee;
+
 // ─────────────────────────────────────────────────────────────
 // Problèmes & Solutions (/problemes)
 // Corps = MDX avec KaTeX : content/problemes/{locale}/{slug}.mdx
@@ -147,12 +163,27 @@ export interface Schedule {
 
 export type PartnerCategory = "institutionnel" | "financier" | "technique";
 
+/**
+ * Logo fourni par le partenaire, déposé dans `public/partenaires/`.
+ * `width` et `height` : dimensions intrinsèques du fichier (viewBox pour un SVG),
+ * qui donnent le rapport d'aspect ; l'affichage normalise la hauteur.
+ */
+export interface PartnerLogo {
+  src: string;                // "/partenaires/nom.svg"
+  width: number;
+  height: number;
+}
+
+/**
+ * Un partenaire n'est affiché que s'il est `confirmed` ET a un `logo` :
+ * sans aucune entrée affichable, la section disparaît.
+ */
 export interface Partner {
   id: string;
-  name: LocalizedText;
-  category: PartnerCategory;
+  name: LocalizedText;        // texte alternatif du logo
+  category: PartnerCategory | null;
   status: EngagementStatus;
-  logo: string | null;        // chemin vers le logo, null si à venir
+  logo: PartnerLogo | null;
   url: string | null;
 }
 

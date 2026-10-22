@@ -1,13 +1,5 @@
 [
   {
-    "id": "terangamath",
-    "name": { "fr": "Terangamath", "en": "Terangamath" },
-    "category": "institutionnel",
-    "status": "confirmed",
-    "logo": null,
-    "url": "https://www.terangamath.org/"
-  },
-  {
     "id": "men-senegal",
     "name": {
       "fr": "Ministère de l'Éducation nationale du Sénégal",

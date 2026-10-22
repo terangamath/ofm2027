@@ -41,7 +41,7 @@ export async function SimultaneiteSection({ locale }: { locale: Locale }) {
     before: t("before"),
     during: t("during"),
     after: t("after"),
-    afterLine: t("afterLine"),
+    afterLine: t("afterLine", { count: lignes.length }),
     days: t("days"),
     hours: t("hours"),
     minutes: t("minutes"),
@@ -56,7 +56,7 @@ export async function SimultaneiteSection({ locale }: { locale: Locale }) {
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6">
         <div className="flex flex-col gap-4">
           <h2 className="text-h2 font-display text-ivoire">{t("title")}</h2>
-          <p className="max-w-2xl text-body-l text-ivoire/75">{t("lead")}</p>
+          <p className="max-w-2xl text-body-l text-ivoire/75">{t("lead", { count: lignes.length })}</p>
         </div>
 
         <Partition

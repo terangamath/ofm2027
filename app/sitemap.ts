@@ -10,9 +10,7 @@ const STATIC_ROUTES = [
   "/equipes",
   "/programme",
   "/problemes",
-  "/resultats",
   "/historique",
-  "/galerie",
   "/contact",
   "/mentions-legales",
 ];

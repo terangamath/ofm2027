@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
 import { SectionHeading } from "@/components/home/section-heading";
 import { FaqAccordion } from "@/components/shared/faq-accordion";
+import { ReferenceCategories } from "@/components/shared/reference-categories";
 import { evenement as eventInfo, format, documents } from "@/lib/contenu";
 import type { Locale } from "@/content/types";
 
@@ -67,6 +68,8 @@ export default async function OlympiadPage({
               </div>
             ))}
           </div>
+
+          <ReferenceCategories locale={typedLocale} className="-mt-6 max-w-2xl" />
 
           <dl className="flex flex-col border-t border-hairline">
             {facts.map((fact) => (

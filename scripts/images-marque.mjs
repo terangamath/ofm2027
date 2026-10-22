@@ -57,7 +57,9 @@ function page(locale, couleurs) {
   const titre = composer(messages.Home.Hero.title);
   const meta = [
     { texte: evenement.dates[locale], donnee: true },
-    { texte: composer(`${evenement.city[locale]}, ${evenement.country[locale]}`) },
+    // « Dakar » seul, entre la date et les catégories, se lit comme le lieu des épreuves :
+    // on nomme ce qui s'y tient, le comité d'organisation (les épreuves sont à distance).
+    { texte: composer(messages.Metadata.ogCommittee.replace("{city}", evenement.city[locale])) },
     { texte: evenement.categories.map((c) => c.name[locale]).join(" · ") },
   ];
 

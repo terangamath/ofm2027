@@ -1,0 +1,11 @@
+{
+  "slug": "mauritanie",
+  "countryCode": "MR",
+  "name": { "fr": "Mauritanie", "en": "Mauritania" },
+  "flagEmoji": "🇲🇷",
+  "timeZone": "Africa/Nouakchott",
+  "status": "confirmed",
+  "isHost": false,
+  "description": null,
+  "members": null
+}

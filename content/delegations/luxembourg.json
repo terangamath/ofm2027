@@ -1,0 +1,11 @@
+{
+  "slug": "luxembourg",
+  "countryCode": "LU",
+  "name": { "fr": "Luxembourg", "en": "Luxembourg" },
+  "flagEmoji": "🇱🇺",
+  "timeZone": "Europe/Luxembourg",
+  "status": "invited",
+  "isHost": false,
+  "description": null,
+  "members": null
+}

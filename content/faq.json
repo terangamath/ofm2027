@@ -5,8 +5,8 @@
       "en": "What is the Francophone Mathematical Olympiad?"
     },
     "answer": {
-      "fr": "L'OFM rassemble chaque année les meilleurs jeunes mathématiciens du monde francophone, autour de problèmes originaux conçus par un comité scientifique international.",
-      "en": "OFM brings together each year the best young mathematicians of the French-speaking world, around original problems designed by an international scientific committee."
+      "fr": "L'OFM rassemble chaque année les meilleurs jeunes mathématiciens du monde francophone autour de problèmes originaux, proposés par les pays participants, sélectionnés par un comité nommé par le pays organisateur et approuvés par le jury des chefs de délégation.",
+      "en": "OFM brings together each year the best young mathematicians of the French-speaking world around original problems, proposed by the participating countries, selected by a committee appointed by the host country and approved by the jury of delegation leaders."
     }
   },
   {
@@ -15,8 +15,8 @@
       "en": "Who can take part in OFM 2027?"
     },
     "answer": {
-      "fr": "Les élèves de collège (catégorie Junior) et de lycée (catégorie Senior) sélectionnés par la délégation nationale de leur pays.",
-      "en": "Middle school students (Junior category) and high school students (Senior category) selected by their country's national delegation."
+      "fr": "Les élèves scolarisés dans le primaire ou le secondaire, sélectionnés par leur pays. La catégorie Junior est ouverte aux élèves nés le 1er janvier 2011 ou après, la catégorie Senior à ceux nés le 1er juillet 2007 ou après (règlement OFM, art. 4.4, renvoyant à la clause 2.2 du règlement de l'IMO). Chaque pays peut présenter une délégation Junior et une délégation Senior, de un à six élèves chacune.",
+      "en": "Students enrolled in primary or secondary education, selected by their country. The Junior category is open to students born on or after 1 January 2011, the Senior category to those born on or after 1 July 2007 (OFM rules, art. 4.4, referring to clause 2.2 of the IMO regulations). Each country may enter a Junior delegation and a Senior delegation, of one to six students each."
     }
   },
   {
@@ -25,8 +25,8 @@
       "en": "What is the competition format?"
     },
     "answer": {
-      "fr": "Une compétition à distance : une session unique de 4h30 le samedi, suivie d'une correction coordonnée entre chefs de délégation et coordinateurs internationaux le dimanche.",
-      "en": "A fully online competition: a single 4.5-hour session on Saturday, followed by coordinated marking between delegation leaders and international coordinators on Sunday."
+      "fr": "Une compétition à distance : une session unique de 4h30 le samedi, suivie le dimanche de la coordination des notes entre chefs de délégation et coordinateurs nommés par le pays organisateur.",
+      "en": "A fully online competition: a single 4.5-hour session on Saturday, followed on Sunday by the coordination of marks between delegation leaders and coordinators appointed by the host country."
     }
   }
 ]

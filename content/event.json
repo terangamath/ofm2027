@@ -3,6 +3,7 @@
   "city": { "fr": "Dakar", "en": "Dakar" },
   "country": { "fr": "Sénégal", "en": "Senegal" },
   "organizer": "Terangamath",
+  "organizerUrl": "https://www.terangamath.org/",
   "officialLanguage": { "fr": "Français", "en": "French" },
   "datesConfirmed": true,
   "dates": { "fr": "27-28 mars 2027", "en": "27-28 March 2027" },
@@ -18,12 +19,18 @@
     {
       "id": "junior",
       "name": { "fr": "Junior", "en": "Junior" },
-      "scope": { "fr": "Jusqu'en 3ème incluse", "en": "Up to Year 9 (collège)" }
+      "scope": {
+        "fr": "Nés le 1er janvier 2011 ou après, et scolarisés dans le primaire ou le secondaire",
+        "en": "Born on or after 1 January 2011, and enrolled in primary or secondary education"
+      }
     },
     {
       "id": "senior",
       "name": { "fr": "Senior", "en": "Senior" },
-      "scope": { "fr": "Seconde à Terminale incluse", "en": "Years 10–12 (lycée)" }
+      "scope": {
+        "fr": "Nés le 1er juillet 2007 ou après, et scolarisés dans le primaire ou le secondaire",
+        "en": "Born on or after 1 July 2007, and enrolled in primary or secondary education"
+      }
     }
   ]
 }
