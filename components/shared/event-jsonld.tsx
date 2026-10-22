@@ -2,8 +2,6 @@ import type { EventInfo, Locale } from "@/content/types";
 import { instantDepuisHeureMurale, isoAvecDecalage } from "@/lib/fuseaux";
 import { urlAbsolue, urlImagePartage } from "@/lib/seo";
 
-const TERANGAMATH = "https://www.terangamath.org/";
-
 /**
  * Données structurées de l'accueil : l'Olympiade (`Event`, entièrement en ligne,
  * donc `OnlineEventAttendanceMode` et une `VirtualLocation`) et son organisateur
@@ -22,9 +20,9 @@ export function EventJsonLd({ event, locale }: { event: EventInfo; locale: Local
 
   const organisation = {
     "@type": "Organization",
-    "@id": `${TERANGAMATH}#organisation`,
+    "@id": `${event.organizerUrl}#organisation`,
     name: event.organizer,
-    url: TERANGAMATH,
+    url: event.organizerUrl,
     address: {
       "@type": "PostalAddress",
       addressLocality: event.city[locale],

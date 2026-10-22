@@ -11,7 +11,7 @@ content/
   event.json          # Fiche événement globale (lieu, dates, catégories)
   stats.json          # Chiffres clés accueil (champ `provisional`)
   faq.json            # FAQ bilingue
-  partenaires.json    # Partenaires (institutionnel | financier | technique, status)
+  partenaires.json    # Partenaires : affichés seulement si confirmed + logo (public/partenaires/)
   programme.json      # Programme (status coming_soon + jours/événements)
   editions.json       # Historique des éditions
   organisation.json   # Comités et membres
@@ -37,7 +37,13 @@ content/
   comme un fait acquis** (partenaire signé, résultat, chiffre précis).
 - **Statuts** : `EngagementStatus` = `confirmed | pending` (délégations, partenaires) ;
   `ContentStatus` = `published | coming_soon` (programme, problèmes, éditions).
-- **Ajouter un pays** : déposer `delegations/<slug>.json` (voir les 3 exemples).
+- **Ajouter un pays** : déposer `delegations/<slug>.json` (voir les exemples).
+  `status: "invited"` : pays invité sans réponse, présent dans les données mais
+  jamais rendu ; passer à `"confirmed"` (et renseigner `timeZone`) pour l'afficher.
+- **Ajouter un partenaire** : déposer le logo dans `public/partenaires/`, puis une
+  entrée dans `partenaires.json` avec `status: "confirmed"` et
+  `logo: { src, width, height }` (dimensions intrinsèques). Format détaillé dans
+  `RECAP-LIVRAISON.md`.
 - **Ajouter une actualité** : créer `actualites/fr/<slug>.mdx` + `actualites/en/<slug>.mdx`
   avec le même `slug` et la même `date`.
 - **KaTeX** : dans les MDX de `problemes/`, `$...$` en ligne et `$$...$$` en bloc.

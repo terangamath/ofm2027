@@ -3,9 +3,8 @@ import { metadonneesPage } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
 import type { Locale } from "@/content/types";
-import { evenement as eventInfo, partenaires as partners } from "@/lib/contenu";
+import { evenement as eventInfo } from "@/lib/contenu";
 
-const terangamath = partners.find((partner) => partner.id === "terangamath");
 
 export async function generateMetadata({
   params,
@@ -62,12 +61,12 @@ export default async function ContactPage({
                 </a>
               </dd>
             </div>
-            {terangamath?.url && (
+            {eventInfo.organizerUrl && (
               <div className="grid grid-cols-[minmax(8rem,auto)_1fr] items-baseline gap-6 py-5">
                 <dt className="label text-muted-foreground">{t("websiteLabel")}</dt>
                 <dd>
                   <a
-                    href={terangamath.url}
+                    href={eventInfo.organizerUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="link-text text-body-l font-medium text-link"

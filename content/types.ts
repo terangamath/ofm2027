@@ -41,6 +41,7 @@ export interface EventInfo {
   city: LocalizedText;
   country: LocalizedText;
   organizer: string;          // "Terangamath"
+  organizerUrl: string;       // site de l'association
   officialLanguage: LocalizedText;
   /** false tant que les dates ne sont pas arrêtées. */
   datesConfirmed: boolean;
@@ -162,12 +163,27 @@ export interface Schedule {
 
 export type PartnerCategory = "institutionnel" | "financier" | "technique";
 
+/**
+ * Logo fourni par le partenaire, déposé dans `public/partenaires/`.
+ * `width` et `height` : dimensions intrinsèques du fichier (viewBox pour un SVG),
+ * qui donnent le rapport d'aspect ; l'affichage normalise la hauteur.
+ */
+export interface PartnerLogo {
+  src: string;                // "/partenaires/nom.svg"
+  width: number;
+  height: number;
+}
+
+/**
+ * Un partenaire n'est affiché que s'il est `confirmed` ET a un `logo` :
+ * sans aucune entrée affichable, la section disparaît.
+ */
 export interface Partner {
   id: string;
-  name: LocalizedText;
-  category: PartnerCategory;
+  name: LocalizedText;        // texte alternatif du logo
+  category: PartnerCategory | null;
   status: EngagementStatus;
-  logo: string | null;        // chemin vers le logo, null si à venir
+  logo: PartnerLogo | null;
   url: string | null;
 }
 

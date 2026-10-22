@@ -3,10 +3,9 @@ import { metadonneesPage } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
 import { SectionHeading } from "@/components/home/section-heading";
-import { partenaires as partners, comites as committees } from "@/lib/contenu";
+import { evenement as eventInfo, comites as committees } from "@/lib/contenu";
 import type { Locale } from "@/content/types";
 
-const terangamath = partners.find((partner) => partner.id === "terangamath");
 
 export async function generateMetadata({
   params,
@@ -37,8 +36,8 @@ export default async function OrganisationPage({
           <h2 className="text-h2 font-display text-anthracite">{t("About.title")}</h2>
           <div className="flex max-w-[62ch] flex-col gap-6">
             <p className="text-body-l text-anthracite/85">{t("About.body")}</p>
-            {terangamath?.url && (
-              <a href={terangamath.url} target="_blank" rel="noopener noreferrer" className="link-text self-start text-vert">
+            {eventInfo.organizerUrl && (
+              <a href={eventInfo.organizerUrl} target="_blank" rel="noopener noreferrer" className="link-text self-start text-vert">
                 www.terangamath.org
               </a>
             )}
