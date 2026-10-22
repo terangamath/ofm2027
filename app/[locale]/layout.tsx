@@ -5,6 +5,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { routing } from "@/i18n/routing";
 import { SITE_URL } from "@/lib/site";
 import { robotsSite } from "@/lib/seo";
@@ -88,6 +89,9 @@ export default async function LocaleLayout({
             <Footer />
           </NextIntlClientProvider>
         </ThemeProvider>
+        {/* Mesures de terrain (Core Web Vitals des vrais visiteurs), sans cookie ;
+            actives une fois Speed Insights activé dans le tableau de bord Vercel. */}
+        <SpeedInsights />
       </body>
     </html>
   );

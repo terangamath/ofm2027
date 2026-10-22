@@ -314,9 +314,15 @@ du rendu. Chaque ligne indique ce qu'il faudra fournir pour les faire réappara�
    Djibouti.
 7. Luxembourg et Canada : réponse à la relance (invités, non affichés, §0.4) ;
    pour le Canada, la ville d'où la délégation compose (fuseau horaire).
-8. ~~Règlement amendé par le jury de l'OFM 2026 ?~~ — réglé : non, la version du
+8. Activer **Speed Insights** dans le tableau de bord Vercel (projet → onglet Speed
+   Insights → Enable). Le composant est en place dans `app/[locale]/layout.tsx` ;
+   il ne mesure rien tant que ce n'est pas fait. Objectif : des données de visiteurs
+   réels (LCP, INP, CLS par pays et par appareil) d'ici mars 2027 — PageSpeed n'en
+   a aucune pour ofm2027.org au 22 octobre 2026. Sans cookie ; à mentionner dans la
+   politique de confidentialité quand elle sera rédigée.
+9. ~~Règlement amendé par le jury de l'OFM 2026 ?~~ — réglé : non, la version du
    23 mars 2025 s'applique à 2027 (§0.1).
-9. ~~Domaine de production du site~~ — réglé : `https://www.ofm2027.org`, fourni par
+10. ~~Domaine de production du site~~ — réglé : `https://www.ofm2027.org`, fourni par
    la variable `NEXT_PUBLIC_SITE_URL` (voir `DEPLOIEMENT.md`).
 
 ---
