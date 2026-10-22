@@ -51,7 +51,7 @@ export async function SimultaneiteSection({ locale }: { locale: Locale }) {
   return (
     <section
       id="simultaneite"
-      className="border-t border-foreground/10 bg-surface-alt py-20 text-foreground lg:py-28"
+      className="bg-surface-alt py-20 text-foreground lg:py-28"
     >
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6">
         <div className="flex flex-col gap-4">

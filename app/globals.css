@@ -37,6 +37,15 @@
 
   /* Nuit adoucie du thème sombre : moins noire que vert-nuit, et un texte
      sable plutôt qu'ivoire pur, pour limiter le halo autour des lettres. */
+  /* Couleurs du drapeau sénégalais — accents ponctuels, jamais des aplats :
+     le jaune n'existe qu'au contact d'un ton sombre (1,05:1 sur sable), le
+     rouge porte le trait « maintenant ». */
+  --senegal-vert: #00853f;
+  --senegal-jaune: #fdef42;
+  --senegal-rouge: #e31b23;
+  --senegal-rouge-fonce: #b3141c;
+  --senegal-rouge-pale: #ff8a80;
+
   --nuit-douce: #162a20;
   --nuit-relevee: #1b3226;
   --sable-texte: #ede7db;
@@ -87,9 +96,14 @@
   --figure-construction-opacite: 0.45;
   --figure-conclusion: var(--vert);
   --figure-etiquette: var(--or-encre);
-  /* Le trait « maintenant » de la partition, seul emploi de la terracotta. */
-  --maintenant: var(--terracotta);
-  --maintenant-texte: var(--terracotta-fonce);
+  /* Le trait « maintenant » de la partition : le rouge du drapeau. */
+  --maintenant: var(--senegal-rouge);
+  --maintenant-texte: var(--senegal-rouge-fonce);
+  /* Le bouton principal : le jaune du drapeau, bordé de nuit pour garder un
+     contour visible sur sable. */
+  --appel: var(--senegal-jaune);
+  --appel-texte: var(--vert-nuit);
+  --appel-bord: var(--vert-nuit);
 
   --radius: 0.5rem;
 
@@ -138,8 +152,11 @@
   --figure-construction-opacite: 0.16;
   --figure-conclusion: var(--or-clair);
   --figure-etiquette: var(--or-clair);
-  --maintenant: var(--terracotta-clair);
-  --maintenant-texte: var(--terracotta-pale);
+  --maintenant: var(--senegal-rouge);
+  --maintenant-texte: var(--senegal-rouge-pale);
+  --appel: var(--senegal-jaune);
+  --appel-texte: var(--vert-nuit);
+  --appel-bord: var(--senegal-jaune);
 
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.16);
   --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.32);
@@ -175,6 +192,12 @@
   --color-chiffre: var(--chiffre);
   --color-maintenant: var(--maintenant);
   --color-maintenant-texte: var(--maintenant-texte);
+  --color-appel: var(--appel);
+  --color-appel-texte: var(--appel-texte);
+  --color-appel-bord: var(--appel-bord);
+  --color-senegal-vert: var(--senegal-vert);
+  --color-senegal-jaune: var(--senegal-jaune);
+  --color-senegal-rouge: var(--senegal-rouge);
 
   /* Rôles sémantiques shadcn/ui */
   --color-background: var(--background);
@@ -607,4 +630,19 @@
     opacity: 1;
     transition: opacity 0s 150ms;
   }
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Frise Teranga (variante B) — trois triangles aux couleurs du drapeau,
+   répétés en nombre entier (background-repeat: space) : jamais de triangle
+   coupé au bord, l'espace restant se répartit entre les motifs. Les couleurs
+   sont celles de --senegal-vert, --senegal-jaune, --senegal-rouge (une URL
+   de données ne lit pas les variables CSS).
+   ──────────────────────────────────────────────────────────────── */
+.frise-teranga {
+  height: 9px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='9' viewBox='0 0 42 9'%3E%3Cpolygon points='0,9 5,0 10,9' fill='%2300853f'/%3E%3Cpolygon points='14,9 19,0 24,9' fill='%23fdef42'/%3E%3Cpolygon points='28,9 33,0 38,9' fill='%23e31b23'/%3E%3C/svg%3E");
+  background-size: 42px 9px;
+  background-repeat: space no-repeat;
+  background-position: center bottom;
 }

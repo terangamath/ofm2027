@@ -29,7 +29,7 @@ export async function Hero({ locale }: { locale: Locale }) {
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <Link
               href="/olympiade"
-              className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 active:translate-y-px"
+              className="inline-flex min-h-11 items-center justify-center rounded-md border border-appel-bord bg-appel px-6 py-3 text-sm font-medium text-appel-texte hover:bg-appel/85 active:translate-y-px"
             >
               {t("ctaPrimary")}
             </Link>

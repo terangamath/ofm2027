@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/home/hero";
 import { SimultaneiteSection } from "@/components/home/simultaneite";
+import { FriseTeranga } from "@/components/motifs/frise-teranga";
 import { FicheSection } from "@/components/home/fiche";
 import { CategoriesSection } from "@/components/home/categories";
 import { DelegationsSection } from "@/components/home/delegations";
@@ -39,6 +40,7 @@ export default async function HomePage({
     <>
       <EventJsonLd event={eventInfo} locale={typedLocale} />
       <Hero locale={typedLocale} />
+      <FriseTeranga />
       <SimultaneiteSection locale={typedLocale} />
       <FicheSection locale={typedLocale} />
       <CategoriesSection locale={typedLocale} />
