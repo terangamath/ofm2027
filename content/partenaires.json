@@ -1,11 +1,11 @@
 [
   {
     "id": "caci",
-    "name": { "fr": "CACI Assurance", "en": "CACI Assurance" },
+    "name": { "fr": "CaCi", "en": "CaCi" },
     "category": null,
     "status": "confirmed",
-    "logo": { "src": "/partenaires/caci.png", "width": 580, "height": 360 },
-    "url": "https://www.ca-assurances.com/en/the-group/our-companies/caci/caci-life-non-life/"
+    "logo": null,
+    "url": null
   },
   {
     "id": "animath",

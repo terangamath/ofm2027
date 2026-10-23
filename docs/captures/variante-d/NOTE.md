@@ -113,7 +113,7 @@ Commit source `4850108`. Logos dans `src/assets/partners/`, données dans
 
 | Partenaire | Fichier source | Format | Dimensions | Poids | Fond | Catégorie sur le site Terangamath | Ici |
 |---|---|---|---|---:|---|---|---|
-| CACI Assurance | `CaCI.png` | PNG | 580 × 360 | 22,1 Kio | transparent | Entreprises | **affiché** |
+| « CACI Assurance » | `CaCI.png` | PNG | 580 × 360 | 22,1 Kio | transparent | Entreprises | **non repris** : c'est le logo de Crédit Agricole Assurances, rangé par erreur sous CACI |
 | Animath | `animath.png` | PNG | 300 × 120 | 13,6 Kio | transparent | Associations | **affiché** |
 | Force N | `ForceN.webp` | WebP | 448 × 170 | 19,9 Kio | transparent | Académiques | **affiché** |
 | AIMS Sénégal | `aimssn.png` | PNG → WebP sans perte | 2352 × 433 | 65,6 → 24,3 Kio | transparent | Académiques | en attente |
@@ -135,7 +135,10 @@ dans les données, sans logo, en attente.
 ### Choix
 
 - Affichés : les trois noms cités par l'association pour l'OFM **et** présents dans le
-  dépôt — CACI, Animath, Force N. Tous les autres logos sont versés et en `pending` :
+  dépôt — Animath, Force N. **CaCi** reste confirmé mais sans logo ni lien (donc masqué) :
+  le fichier du dépôt est celui de Crédit Agricole Assurances, et le lien pointait vers
+  leur site ; le bon logo sera fourni par l'association. Les autres logos sont versés et
+  en `pending` :
   passer `status` à `"confirmed"` suffit à les afficher, sans toucher au code.
 - Catégories laissées à `null` : celles du site Terangamath (associations, entreprises,
   académiques) ne recouvrent pas celles de l'OFM (institutionnel, financier, technique).
@@ -156,7 +159,7 @@ dans les données, sans logo, en attente.
   `<li>`, l'anneau à l'intérieur de la plaque, or d'encre sur blanc, 7,18:1 dans les deux
   thèmes).
 - Logos : `next/image`, dimensions explicites, chargement différé, `srcset` 1x/2x
-  (13 Kio en 1x pour les trois logos, 33 Kio en 2x). CLS 0.
+  (8 Kio en 1x pour les deux logos affichés, 22 Kio en 2x). CLS 0.
 - Lighthouse mobile, accueil, 3 passages : 85 / 91 / 90, accessibilité 100 (avant ces
   ajouts : 88 / 89 / 85). Équipes : 93, accessibilité 100.
 - Test `tests/partenaires.test.ts` : chaque logo référencé existe, ses dimensions
