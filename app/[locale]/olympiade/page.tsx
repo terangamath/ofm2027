@@ -40,19 +40,19 @@ export default async function OlympiadPage({
 
   return (
     <>
-      <PageHero title={t("title")} lead={t("lead")} />
+      <PageHero chemin="/olympiade" title={t("title")} lead={t("lead")} />
 
-      <section className="bg-sable pb-20 text-anthracite lg:pb-28">
+      <section className="bg-surface pb-20 text-foreground lg:pb-28">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
-          <h2 className="text-h2 font-display text-anthracite">{t("Presentation.title")}</h2>
+          <h2 className="text-h2 font-display text-foreground">{t("Presentation.title")}</h2>
           <div className="flex max-w-[62ch] flex-col gap-5">
-            <p className="text-body-l text-anthracite/85">{t("Presentation.body1")}</p>
-            <p className="text-body-l text-anthracite/85">{t("Presentation.body2")}</p>
+            <p className="text-body-l text-foreground">{t("Presentation.body1")}</p>
+            <p className="text-body-l text-foreground">{t("Presentation.body2")}</p>
           </div>
         </div>
       </section>
 
-      <section className="bg-background py-20 lg:py-28">
+      <section className="bg-surface-alt py-20 lg:py-28">
         <div className="mx-auto flex max-w-7xl flex-col gap-14 px-6">
           <SectionHeading title={t("Format.title")} lead={t("Format.lead")} />
 
@@ -91,9 +91,9 @@ export default async function OlympiadPage({
         </div>
       </section>
 
-      <section className="bg-sable py-20 lg:py-28">
+      <section className="bg-surface py-20 lg:py-28">
         <div className="mx-auto flex max-w-3xl flex-col gap-12 px-6">
-          <SectionHeading title={t("Faq.title")} lead={t("Faq.lead")} align="center" tone="warm" />
+          <SectionHeading title={t("Faq.title")} lead={t("Faq.lead")} align="center" />
           <FaqAccordion locale={typedLocale} />
         </div>
       </section>

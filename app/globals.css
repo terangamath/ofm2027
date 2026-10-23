@@ -6,7 +6,7 @@
 /* ────────────────────────────────────────────────────────────────
    Palette OFM 2027 — « Géométrie de l'hospitalité »
    Source de vérité : CLAUDE.md §4. Ne jamais coder une valeur hex
-   en dur dans un composant : toujours passer par ces tokens.
+   en dur dans un composant : toujours passer par les rôles ci-dessous.
    ──────────────────────────────────────────────────────────────── */
 :root {
   --vert: #1b4332;
@@ -21,151 +21,169 @@
   --terracotta: #b24a2e;
   --blanc: #ffffff;
 
-  /* Tons dérivés pour tenir WCAG AA sur sable (le gris et l'or brut échouent) :
-     encre = texte secondaire (6,7:1 sur sable), or-encre = liens (6,3:1).
-     Fixes dans les deux thèmes : à n'employer que sur les surfaces claires fixes. */
-  --encre: #4b5563;
+  /* Tons dérivés, choisis pour le confort de lecture et non pour le seuil :
+     encre = texte secondaire (9,2:1 sur sable, contre 6,7:1 auparavant) ;
+     or-encre = liens (6,3:1) ; or-profond = chiffres et dates en or (5,5:1) ;
+     or-trait = traits de la figure sur fond clair (3,1:1, seuil des graphiques) ;
+     terracotta-fonce = libellé « maintenant » sur fond clair (6,2:1). */
+  --encre: #3b4049;
   --or-encre: #6f5314;
-  /* Terracotta éclaircie pour le texte sur fond nuit (le trait « maintenant »). */
+  --or-profond: #7a5c14;
+  --or-trait: #a8842a;
+  --terracotta-fonce: #9a3a22;
   --terracotta-clair: #e07a5a;
+  /* Libellé « maintenant » sur fond sombre : 6,3:1 (la terracotta claire n'y fait que 4,6:1). */
+  --terracotta-pale: #ec9c82;
+
+  /* Nuit adoucie du thème sombre : moins noire que vert-nuit, et un texte
+     sable plutôt qu'ivoire pur, pour limiter le halo autour des lettres. */
+  --nuit-douce: #162a20;
+  --nuit-relevee: #1b3226;
+  --sable-texte: #ede7db;
+  --sable-doux: #cfc8ba;
+
+  /* Variante D — « Teranga géométrique » (maquette 5254) : le soleil du disque
+     et le rouge du tissage. Le vert reste celui de la palette.
+     soleil : vert sur soleil 6,6:1, vert-clair sur soleil 3,8:1 ;
+     rouge : ivoire sur rouge 5,4:1, rouge sur ivoire 5,3:1. */
+  --soleil: #f0c33c;
+  --rouge: #bc3a2a;
+  /* Vert de pastille en thème sombre : 6,1:1 sur la nuit adoucie. */
+  --vert-pastille-nuit: #52b788;
 }
 
 /* ────────────────────────────────────────────────────────────────
    Rôles sémantiques — thème clair (par défaut)
+   Le sable est la surface dominante ; l'ivoire marque les sections
+   alternées ; le vert devient l'accent (titres, bouton principal).
    ──────────────────────────────────────────────────────────────── */
 :root {
+  /* Variante D : l'ivoire domine (maquette 5254), le sable marque les sections alternées. */
   --background: var(--ivoire);
   --foreground: var(--anthracite);
+  --surface: var(--ivoire);
+  --surface-alt: var(--sable);
 
-  --card: var(--blanc);
+  --card: var(--ivoire);
   --card-foreground: var(--anthracite);
-  --popover: var(--blanc);
+  --popover: var(--ivoire);
   --popover-foreground: var(--anthracite);
 
   --primary: var(--vert);
   --primary-foreground: var(--ivoire);
-  --secondary: var(--sable);
+  --secondary: var(--ivoire);
   --secondary-foreground: var(--vert-nuit);
-  --muted: var(--sable);
+  --muted: color-mix(in srgb, var(--anthracite) 6%, var(--sable));
   --muted-foreground: var(--encre);
   --accent: var(--or);
   --accent-foreground: var(--vert-nuit);
   --destructive: var(--terracotta);
   --destructive-foreground: var(--ivoire);
 
-  --border: color-mix(in srgb, var(--anthracite) 12%, transparent);
-  --input: color-mix(in srgb, var(--anthracite) 18%, transparent);
+  --border: color-mix(in srgb, var(--anthracite) 14%, transparent);
+  --input: color-mix(in srgb, var(--anthracite) 22%, transparent);
   --ring: var(--or-encre);
 
-  /* Filet or — motif signature, à réserver aux séparateurs et accents. */
-  --hairline: color-mix(in srgb, var(--or) 40%, transparent);
+  /* Filet or — plus présent qu'avant (60 % au lieu de 40 %), toujours un trait. */
+  --hairline: color-mix(in srgb, var(--or) 60%, transparent);
 
-  /* Or d'encre pour le texte/liens sur fond clair — l'or brut ne passe pas
-     l'AA en petit texte (CLAUDE.md §4). En dark mode l'or clair reprend le
-     dessus, lisible sur les fonds sombres. */
   --link: var(--or-encre);
+  /* L'or en texte : grands chiffres, dates, heures. */
+  --chiffre: var(--or-profond);
+  /* La figure du hero, sur son disque soleil. Chaque trait est mesuré contre
+     le soleil ET contre l'ivoire (le plus faible des deux est donné) :
+     trait et lettres vert 6,6:1 ; construction vert-clair 3,8:1 ;
+     conclusion rouge 3,3:1 (mesures au rendu, audit de la variante D). */
+  --figure-disque: var(--soleil);
+  --figure-trait: var(--vert);
+  --figure-construction: var(--vert-clair);
+  --figure-conclusion: var(--rouge);
+  --figure-etiquette: var(--vert);
+  --figure-repere-fond: var(--ivoire);
+  /* Bandeau tissé et pastilles de la rangée d'informations. */
+  --tissage-fond: var(--ivoire);
+  --tissage-vert: var(--vert);
+  --tissage-jaune: var(--soleil);
+  --tissage-rouge: var(--rouge);
+  --pastille-vert: var(--vert);
+  --pastille-vert-icone: var(--ivoire);
+  --pastille-jaune: var(--soleil);
+  --pastille-jaune-icone: var(--vert-nuit);
+  /* Le soleil ne fait que 1,6:1 sur l'ivoire : un liseré or profond (5,9:1)
+     dessine le bord de la pastille. */
+  --pastille-jaune-bord: var(--or-profond);
+  --pastille-rouge: var(--rouge);
+  --pastille-rouge-icone: var(--ivoire);
+  /* Le trait « maintenant » de la partition, seul emploi de la terracotta. */
+  --maintenant: var(--terracotta);
+  --maintenant-texte: var(--terracotta-fonce);
 
   --radius: 0.5rem;
 
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-elevated: 0 8px 24px rgba(14, 32, 24, 0.08);
+  color-scheme: light;
 }
 
 /* ────────────────────────────────────────────────────────────────
    Rôles sémantiques — thème sombre
-   Surfaces vert-nuit, texte ivoire/sable, l'or ressort.
+   Toutes les surfaces basculent ensemble : plus de section claire
+   « fixe » au milieu d'une page sombre.
    ──────────────────────────────────────────────────────────────── */
 .dark {
-  --background: var(--vert-nuit);
-  --foreground: var(--ivoire);
+  --background: var(--nuit-douce);
+  --foreground: var(--sable-texte);
+  --surface: var(--nuit-douce);
+  --surface-alt: var(--nuit-relevee);
 
-  --card: color-mix(in srgb, var(--vert) 55%, var(--vert-nuit));
-  --card-foreground: var(--ivoire);
-  --popover: color-mix(in srgb, var(--vert) 55%, var(--vert-nuit));
-  --popover-foreground: var(--ivoire);
+  --card: var(--nuit-relevee);
+  --card-foreground: var(--sable-texte);
+  --popover: var(--nuit-relevee);
+  --popover-foreground: var(--sable-texte);
 
-  --primary: var(--or);
+  --primary: var(--or-clair);
   --primary-foreground: var(--vert-nuit);
-  --secondary: color-mix(in srgb, var(--vert) 40%, var(--vert-nuit));
-  --secondary-foreground: var(--sable);
-  --muted: color-mix(in srgb, var(--vert) 30%, var(--vert-nuit));
-  --muted-foreground: color-mix(in srgb, var(--sable) 65%, var(--gris));
+  --secondary: var(--nuit-relevee);
+  --secondary-foreground: var(--sable-texte);
+  --muted: color-mix(in srgb, var(--sable) 8%, var(--nuit-douce));
+  --muted-foreground: var(--sable-doux);
   --accent: var(--or-clair);
   --accent-foreground: var(--vert-nuit);
-  --destructive: var(--terracotta);
-  --destructive-foreground: var(--ivoire);
+  --destructive: var(--terracotta-clair);
+  --destructive-foreground: var(--vert-nuit);
 
-  --border: color-mix(in srgb, var(--sable) 16%, transparent);
-  --input: color-mix(in srgb, var(--sable) 22%, transparent);
+  --border: color-mix(in srgb, var(--sable) 18%, transparent);
+  --input: color-mix(in srgb, var(--sable) 24%, transparent);
   --ring: var(--or-clair);
 
   --hairline: color-mix(in srgb, var(--or) 55%, transparent);
 
   --link: var(--or-clair);
-  /* --encre et --or-encre ne changent pas en sombre : ce sont les tons fixes des
-     surfaces claires fixes (sable, ivoire), qui restent claires dans les deux thèmes. */
+  --chiffre: var(--or-clair);
+  /* Le soleil s'éteint en braise : un disque or sourd, sur lequel les traits
+     clairs tiennent (sable 6,0:1, construction 4,5:1, conclusion 3,4:1). */
+  --figure-disque: color-mix(in srgb, var(--soleil) 30%, var(--nuit-douce));
+  --figure-trait: var(--sable-texte);
+  --figure-construction: var(--sable-doux);
+  --figure-conclusion: var(--terracotta-pale);
+  --figure-etiquette: var(--sable-texte);
+  --figure-repere-fond: var(--nuit-douce);
+  --tissage-fond: var(--sable-doux);
+  --tissage-vert: var(--vert);
+  --tissage-jaune: color-mix(in srgb, var(--soleil) 88%, var(--nuit-douce));
+  --tissage-rouge: color-mix(in srgb, var(--rouge) 88%, var(--nuit-douce));
+  --pastille-vert: var(--vert-pastille-nuit);
+  --pastille-vert-icone: var(--vert-nuit);
+  --pastille-jaune: var(--soleil);
+  --pastille-jaune-icone: var(--vert-nuit);
+  --pastille-jaune-bord: var(--soleil);
+  --pastille-rouge: var(--terracotta-clair);
+  --pastille-rouge-icone: var(--vert-nuit);
+  --maintenant: var(--terracotta-clair);
+  --maintenant-texte: var(--terracotta-pale);
 
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.16);
   --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.32);
-}
-
-/* ────────────────────────────────────────────────────────────────
-   Surfaces fixes — cause racine du bug « texte clair sur sable » :
-   les rôles sémantiques (--foreground, --link, --ring, --border…) sont
-   définis par le thème sur <html>, alors que certaines sections ont un fond
-   fixe (sable, ivoire, nuit) quel que soit le thème. Une surface fixe doit
-   donc redéclarer les rôles pour son sous-arbre. Ainsi text-foreground,
-   text-link, l'anneau de focus, les bordures et les icônes (currentColor)
-   restent justes dans les deux thèmes, sans rien changer dans les composants.
-   ──────────────────────────────────────────────────────────────── */
-.bg-sable,
-.bg-ivoire,
-.bg-blanc,
-.contexte-clair {
-  --background: var(--ivoire);
-  --foreground: var(--anthracite);
-  --card: var(--blanc);
-  --card-foreground: var(--anthracite);
-  --popover: var(--blanc);
-  --popover-foreground: var(--anthracite);
-  --primary: var(--vert);
-  --primary-foreground: var(--ivoire);
-  --secondary: var(--sable);
-  --secondary-foreground: var(--vert-nuit);
-  --muted: var(--sable);
-  --muted-foreground: var(--encre);
-  --accent: var(--or);
-  --accent-foreground: var(--vert-nuit);
-  --border: color-mix(in srgb, var(--anthracite) 12%, transparent);
-  --input: color-mix(in srgb, var(--anthracite) 18%, transparent);
-  --ring: var(--or-encre);
-  --hairline: color-mix(in srgb, var(--or) 40%, transparent);
-  --link: var(--or-encre);
-  color-scheme: light;
-}
-
-.bg-vert-nuit,
-.bg-vert,
-.contexte-nuit {
-  --background: var(--vert-nuit);
-  --foreground: var(--ivoire);
-  --card: color-mix(in srgb, var(--vert) 55%, var(--vert-nuit));
-  --card-foreground: var(--ivoire);
-  --popover: color-mix(in srgb, var(--vert) 55%, var(--vert-nuit));
-  --popover-foreground: var(--ivoire);
-  --primary: var(--or);
-  --primary-foreground: var(--vert-nuit);
-  --secondary: color-mix(in srgb, var(--vert) 40%, var(--vert-nuit));
-  --secondary-foreground: var(--sable);
-  --muted: color-mix(in srgb, var(--vert) 30%, var(--vert-nuit));
-  --muted-foreground: color-mix(in srgb, var(--sable) 65%, var(--gris));
-  --accent: var(--or-clair);
-  --accent-foreground: var(--vert-nuit);
-  --border: color-mix(in srgb, var(--sable) 16%, transparent);
-  --input: color-mix(in srgb, var(--sable) 22%, transparent);
-  --ring: var(--or-clair);
-  --hairline: color-mix(in srgb, var(--or) 55%, transparent);
-  --link: var(--or-clair);
   color-scheme: dark;
 }
 
@@ -188,7 +206,16 @@
   --color-encre: var(--encre);
   --color-or-encre: var(--or-encre);
   --color-terracotta-clair: var(--terracotta-clair);
+  --color-terracotta-fonce: var(--terracotta-fonce);
   --color-hairline: var(--hairline);
+  --color-or-profond: var(--or-profond);
+
+  /* Surfaces et rôles propres au site */
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-chiffre: var(--chiffre);
+  --color-maintenant: var(--maintenant);
+  --color-maintenant-texte: var(--maintenant-texte);
 
   /* Rôles sémantiques shadcn/ui */
   --color-background: var(--background);
@@ -309,6 +336,12 @@
   p {
     text-wrap: pretty;
   }
+  /* Page courte sur grand écran : la dernière section s'étire jusqu'au pied de
+     page. Sans cela, <main> (flex-1) laissait voir le fond de page entre le
+     contenu et le pied de page — une bande d'une autre couleur. */
+  #contenu > :last-child {
+    flex-grow: 1;
+  }
   table {
     font-variant-numeric: tabular-nums;
   }
@@ -374,43 +407,60 @@
   .figure-construction {
     --ease-trace: cubic-bezier(0.45, 0.05, 0.25, 1);
   }
+  .figure-disque {
+    fill: var(--figure-disque);
+  }
   .figure-trait,
-  .figure-construction-trait,
-  .figure-conclusion {
+  .figure-compas,
+  .figure-conclusion,
+  .figure-masque {
     stroke-dasharray: 1;
     stroke-dashoffset: 0;
     animation: figure-tracer var(--duree, 400ms) var(--ease-trace) var(--delai, 0ms) both;
   }
   .figure-trait {
-    stroke: var(--or-clair);
+    stroke: var(--figure-trait);
+    stroke-width: 1.6;
+  }
+  /* Arcs de compas : traits pleins, fins. */
+  .figure-compas {
+    stroke: var(--figure-construction);
     stroke-width: 1.25;
   }
-  .figure-construction-trait {
-    stroke: var(--or);
-    stroke-width: 1;
-    stroke-dasharray: 1;
-    opacity: 0.14;
-    /* trace, puis s'estompe : les traits de construction restent en filigrane */
-    animation:
-      figure-tracer var(--duree, 400ms) var(--ease-trace) var(--delai, 0ms) both,
-      figure-estomper 300ms ease-out 1600ms both;
+  /* Médiatrices, hauteur, cercle OCD : pointillés ronds, révélés par un masque. */
+  .figure-masque {
+    stroke: white;
+    stroke-width: 6;
+  }
+  .figure-pointille {
+    stroke: var(--figure-construction);
+    stroke-width: 1.5;
+    stroke-dasharray: 0.5 5;
   }
   .figure-conclusion {
-    stroke: var(--or-clair);
-    stroke-width: 2;
+    stroke: var(--figure-conclusion);
+    stroke-width: 2.5;
+  }
+  .figure-repere {
+    fill: var(--figure-repere-fond);
+    stroke: var(--figure-construction);
+    stroke-width: 1.5;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: figure-apparaitre 220ms var(--ease-signature) var(--delai, 0ms) both;
   }
   .figure-point {
-    fill: var(--or-clair);
+    fill: var(--figure-trait);
     transform-box: fill-box;
     transform-origin: center;
     animation: figure-apparaitre 220ms var(--ease-signature) var(--delai, 0ms) both;
   }
   .figure-etiquette {
-    fill: var(--or-clair);
+    fill: var(--figure-etiquette);
     font-family: var(--font-display);
     font-style: italic;
-    font-size: 17px;
-    opacity: 0.85;
+    font-weight: 600;
+    font-size: 21px;
     animation: figure-apparaitre 220ms var(--ease-signature) var(--delai, 0ms) both;
   }
   /* Mouvement réduit : état final immédiat. */
@@ -429,14 +479,6 @@
     stroke-dashoffset: 0;
   }
 }
-@keyframes figure-estomper {
-  from {
-    opacity: 0.55;
-  }
-  to {
-    opacity: 0.14;
-  }
-}
 @keyframes figure-apparaitre {
   from {
     opacity: 0;
@@ -445,6 +487,81 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Variante D — bandeau tissé et pastilles de la rangée d'informations.
+   Le bandeau ne s'anime pas ; ses couleurs suivent le thème.
+   ──────────────────────────────────────────────────────────────── */
+@layer components {
+  /* Section qui porte le bandeau vertical : sa largeur selon l'écran.
+     Absent sur téléphone (le bandeau y est couché sous le hero). */
+  .avec-bandeau {
+    --bandeau: 0px;
+  }
+  @media (min-width: 48rem) {
+    .avec-bandeau {
+      --bandeau: 1.75rem;
+    }
+  }
+  @media (min-width: 64rem) {
+    .avec-bandeau {
+      --bandeau: 3.25rem;
+    }
+  }
+  /* Conteneur centré (max-w-7xl, gouttière 1,5 rem) : à droite, la marge
+     s'élargit juste assez pour que le contenu ne passe jamais sous le bandeau. */
+  .marge-bandeau {
+    padding-right: max(1.5rem, calc(var(--bandeau) + 1.5rem - max(0px, (100vw - 80rem) / 2)));
+  }
+  .tissage-fond {
+    fill: var(--tissage-fond);
+  }
+  .tissage-vert {
+    fill: var(--tissage-vert);
+  }
+  .tissage-jaune {
+    fill: var(--tissage-jaune);
+  }
+  .tissage-rouge {
+    fill: var(--tissage-rouge);
+  }
+  /* Titre du hero : Fraunces grasse, comme sur la maquette 5254. Plus serré
+     que display-xl pour tenir « Mathématiques » dans sa colonne. */
+  .titre-hero {
+    font-size: clamp(2.75rem, 6.2vw, 6rem);
+    line-height: 0.98;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+  .pastille {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+  }
+  @media (min-width: 40rem) {
+    .pastille {
+      width: 2.75rem;
+      height: 2.75rem;
+    }
+  }
+  .pastille-vert {
+    background: var(--pastille-vert);
+    color: var(--pastille-vert-icone);
+  }
+  .pastille-jaune {
+    background: var(--pastille-jaune);
+    color: var(--pastille-jaune-icone);
+    box-shadow: inset 0 0 0 1.5px var(--pastille-jaune-bord);
+  }
+  .pastille-rouge {
+    background: var(--pastille-rouge);
+    color: var(--pastille-rouge-icone);
   }
 }
 
@@ -485,7 +602,7 @@
   }
   .partition-apres .partition-bande {
     background: color-mix(in srgb, var(--or) 55%, transparent);
-    border-color: var(--or-clair);
+    border-color: var(--chiffre);
   }
   .partition-maintenant,
   .partition-maintenant-legende {
@@ -493,8 +610,8 @@
     display: none;
   }
   .partition-maintenant {
-    background: var(--terracotta-clair);
-    box-shadow: 0 0 0 1px color-mix(in srgb, var(--terracotta-clair) 25%, transparent);
+    background: var(--maintenant);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--maintenant) 25%, transparent);
   }
   .partition-maintenant-legende {
     transform: translateX(-50%);

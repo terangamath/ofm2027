@@ -36,9 +36,9 @@ export default async function ContactPage({
 
   return (
     <>
-      <PageHero title={t("title")} lead={t("lead")} />
+      <PageHero chemin="/contact" title={t("title")} lead={t("lead")} />
 
-      <section className="bg-sable pb-20 lg:pb-28">
+      <section className="bg-surface pb-20 lg:pb-28">
         <div className="mx-auto max-w-3xl px-6">
           <dl className="flex flex-col">
             {rows.map((row) => (

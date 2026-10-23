@@ -32,6 +32,8 @@ export async function Header() {
         menuClose: tHeader("menuClose"),
         navLabel: t("home"),
         languageSwitcher: tHeader("languageSwitcherLabel"),
+        themeToLight: tHeader("themeToLight"),
+        themeToDark: tHeader("themeToDark"),
       }}
     />
   );

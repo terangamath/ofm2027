@@ -19,7 +19,9 @@
     "languageSwitcherLabel": "Changer de langue",
     "skipToContent": "Aller au contenu principal",
     "menuOpen": "Ouvrir le menu",
-    "menuClose": "Fermer le menu"
+    "menuClose": "Fermer le menu",
+    "themeToLight": "Passer au thème clair",
+    "themeToDark": "Passer au thème sombre"
   },
   "Footer": {
     "navLabel": "Liens utiles",
@@ -37,9 +39,10 @@
       "ctaPrimary": "Découvrir l'Olympiade",
       "ctaSecondary": "Voir les équipes",
       "metaDates": "Dates",
-      "metaLocation": "Comité d'organisation",
-      "metaLanguage": "Langue officielle",
-      "metaFormat": "Catégories",
+      "metaMode": "Format",
+      "metaModeValue": "Épreuves à distance",
+      "metaCategories": "Catégories",
+      "metaOrganizer": "Organisateur",
       "figureCaption": "Figure du problème 3, OFM 2024 (Senior) : (DE) est parallèle à (OM)."
     },
     "Event": {
@@ -99,7 +102,7 @@
     },
     "Partners": {
       "title": "Ils rendent l'Olympiade possible",
-      "lead": "Institutions, partenaires financiers et techniques, aux côtés de Terangamath.",
+      "lead": "Aux côtés de Terangamath pour l'édition 2027.",
       "categoryInstitutional": "Partenaires institutionnels",
       "categoryFinancial": "Partenaires financiers",
       "categoryTechnical": "Partenaires techniques"

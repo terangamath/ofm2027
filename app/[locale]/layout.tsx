@@ -77,7 +77,9 @@ export default async function LocaleLayout({
       className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        {/* Clair par défaut, quel que soit le réglage du système ; le choix du
+            visiteur (sélecteur de l'en-tête) est retenu par next-themes. */}
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
           {/* Aucun composant client ne traduit : on n'envoie pas les messages au navigateur. */}
           <NextIntlClientProvider messages={{}}>
             <Header />

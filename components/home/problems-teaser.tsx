@@ -17,7 +17,7 @@ export async function ProblemsTeaserSection({ locale }: { locale: Locale }) {
   });
 
   return (
-    <section className="bg-background py-16 lg:py-24">
+    <section className="bg-surface-alt py-16 lg:py-24">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-center lg:gap-16">
         <div className="flex flex-col gap-8">
           <SectionHeading title={t("title")} lead={t("lead")} />

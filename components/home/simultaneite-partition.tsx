@@ -79,11 +79,11 @@ function Regle({ decalage, enAvant }: { decalage: number; enAvant?: boolean }) {
           className={`absolute bottom-0 flex h-full flex-col justify-between ${h % 6 === 0 ? "" : "hidden sm:flex"}`}
           style={{ left: pourcent(h * 60) }}
         >
-          <span className="data text-[0.6875rem] leading-none text-ivoire/60">{graduationLocale(h, decalage)}</span>
-          <span className={`block h-2 w-px ${enAvant ? "bg-ivoire/40" : "bg-ivoire/25"}`} />
+          <span className="data text-[0.6875rem] leading-none text-muted-foreground">{graduationLocale(h, decalage)}</span>
+          <span className={`block h-2 w-px ${enAvant ? "bg-foreground/40" : "bg-foreground/25"}`} />
         </span>
       ))}
-      <span className="absolute bottom-0 left-0 h-px w-full bg-ivoire/15" />
+      <span className="absolute bottom-0 left-0 h-px w-full bg-foreground/15" />
       {/* La bande de l'épreuve et le trait « maintenant » : mêmes positions sur toutes les lignes. */}
       <span className="partition-bande absolute top-0 bottom-0" />
       <span className="partition-maintenant absolute top-0 bottom-0 w-px" />
@@ -150,18 +150,18 @@ export function Partition({ lignes, debutIso, finIso, libelles }: PartitionProps
           return (
             <li
               key={ligne.slug}
-              className={`grid grid-cols-[minmax(0,1fr)_2rem_3.5rem] sm:grid-cols-[minmax(7rem,11rem)_2rem_1fr_3.5rem] items-end gap-x-3 border-b border-ivoire/10 py-2 sm:gap-x-6 ${estVous ? "bg-ivoire/[0.04]" : ""}`}
+              className={`grid grid-cols-[minmax(0,1fr)_2rem_3.5rem] sm:grid-cols-[minmax(7rem,11rem)_2rem_1fr_3.5rem] items-end gap-x-3 border-b border-foreground/10 py-2 sm:gap-x-6 ${estVous ? "bg-foreground/[0.04]" : ""}`}
             >
-              <span className={`flex min-w-0 items-center gap-2.5 pb-1 text-small font-medium ${ligne.isHost ? "text-or-clair" : "text-ivoire"}`}>
+              <span className={`flex min-w-0 items-center gap-2.5 pb-1 text-small font-medium ${ligne.isHost ? "text-chiffre" : "text-foreground"}`}>
                 <Flag countryCode={ligne.countryCode} size={18} />
                 <span className="truncate">
                   {ligne.name}
                   {ligne.isHost && <span className="sr-only"> · {libelles.hostBadge}</span>}
                 </span>
-                {estVous && <span className="label shrink-0 text-terracotta-clair">{libelles.you}</span>}
+                {estVous && <span className="label shrink-0 text-maintenant-texte">{libelles.you}</span>}
               </span>
-              <span className="data pb-1 text-[0.6875rem] text-ivoire/60">{libelleDecalage(ligne.decalage)}</span>
-              <span className="data order-3 pb-1 text-right text-body text-or-clair sm:order-4">
+              <span className="data pb-1 text-[0.6875rem] text-muted-foreground">{libelleDecalage(ligne.decalage)}</span>
+              <span className="data order-3 pb-1 text-right text-body text-chiffre sm:order-4">
                 {ligne.heure}
                 <span className="sr-only"> {libelles.localTime}</span>
               </span>
@@ -174,23 +174,23 @@ export function Partition({ lignes, debutIso, finIso, libelles }: PartitionProps
 
         {/* Ligne du visiteur : espace réservé côté serveur, remplie après hydratation (zéro décalage de mise en page). */}
         <li
-          className="grid min-h-14 grid-cols-[minmax(0,1fr)_2rem_3.5rem] sm:grid-cols-[minmax(7rem,11rem)_2rem_1fr_3.5rem] items-end gap-x-3 border-b border-dashed border-ivoire/20 py-2 sm:gap-x-6"
+          className="grid min-h-14 grid-cols-[minmax(0,1fr)_2rem_3.5rem] sm:grid-cols-[minmax(7rem,11rem)_2rem_1fr_3.5rem] items-end gap-x-3 border-b border-dashed border-foreground/20 py-2 sm:gap-x-6"
           aria-hidden={!visiteur}
         >
           {visiteur && !ligneVisiteur && (
             <>
-              <span className="flex min-w-0 items-center pb-1 text-small font-medium text-terracotta-clair">
+              <span className="flex min-w-0 items-center pb-1 text-small font-medium text-maintenant-texte">
                 <span className="truncate">{libelles.yourZone.replace("{zone}", visiteur.zone)}</span>
               </span>
-              <span className="data pb-1 text-[0.6875rem] text-ivoire/60">{libelleDecalage(visiteur.decalage)}</span>
-              <span className="data order-3 pb-1 text-right text-body text-terracotta-clair sm:order-4">{visiteur.heure}</span>
+              <span className="data pb-1 text-[0.6875rem] text-muted-foreground">{libelleDecalage(visiteur.decalage)}</span>
+              <span className="data order-3 pb-1 text-right text-body text-maintenant-texte sm:order-4">{visiteur.heure}</span>
               <div className="order-4 col-span-3 sm:order-3 sm:col-span-1">
                 <Regle decalage={visiteur.decalage} />
               </div>
             </>
           )}
           {visiteur && ligneVisiteur && (
-            <span className="col-span-3 pb-1 text-small text-ivoire/60 sm:col-span-4">
+            <span className="col-span-3 pb-1 text-small text-muted-foreground sm:col-span-4">
               {libelles.sameAs.replace("{country}", ligneVisiteur.name)}
             </span>
           )}
@@ -203,12 +203,12 @@ export function Partition({ lignes, debutIso, finIso, libelles }: PartitionProps
         <span className="hidden sm:block" />
         <div className="relative h-10">
           <span
-            className="label absolute top-0 whitespace-nowrap text-or-clair"
+            className="label absolute top-0 whitespace-nowrap text-chiffre"
             style={{ left: "var(--partition-debut)" }}
           >
             {libelles.exam}
           </span>
-          <span className="partition-maintenant-legende label absolute top-5 whitespace-nowrap text-terracotta-clair">
+          <span className="partition-maintenant-legende label absolute top-5 whitespace-nowrap text-maintenant-texte">
             {libelles.now}
           </span>
         </div>
@@ -219,24 +219,24 @@ export function Partition({ lignes, debutIso, finIso, libelles }: PartitionProps
       <div className="flex flex-col gap-3" role="status" aria-live="polite">
         {etat === "avant" && (
           <>
-            <p className="label text-ivoire/60">{libelles.before}</p>
+            <p className="label text-muted-foreground">{libelles.before}</p>
             <div className="flex flex-wrap gap-x-8 gap-y-4">
               {unites.map((u) => (
                 <span key={u.libelle} className="flex flex-col gap-1">
-                  <span className="font-mono text-h2 leading-none tabular-nums text-or-clair">
+                  <span className="font-mono text-h2 leading-none tabular-nums text-chiffre">
                     {u.valeur === undefined ? "—".repeat(u.pad) : String(u.valeur).padStart(u.pad, "0")}
                   </span>
-                  <span className="label text-ivoire/55">{u.libelle}</span>
+                  <span className="label text-muted-foreground">{u.libelle}</span>
                 </span>
               ))}
             </div>
           </>
         )}
-        {etat === "pendant" && <p className="text-h3 font-display text-or-clair">{libelles.during}</p>}
+        {etat === "pendant" && <p className="text-h3 font-display text-chiffre">{libelles.during}</p>}
         {etat === "apres" && (
           <>
-            <p className="label text-ivoire/60">{libelles.after}</p>
-            <p className="data text-body text-or-clair">{libelles.afterLine}</p>
+            <p className="label text-muted-foreground">{libelles.after}</p>
+            <p className="data text-body text-chiffre">{libelles.afterLine}</p>
           </>
         )}
       </div>

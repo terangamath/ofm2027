@@ -43,7 +43,11 @@ content/
 - **Ajouter un partenaire** : déposer le logo dans `public/partenaires/`, puis une
   entrée dans `partenaires.json` avec `status: "confirmed"` et
   `logo: { src, width, height }` (dimensions intrinsèques). Format détaillé dans
-  `RECAP-LIVRAISON.md`.
+  `RECAP-LIVRAISON.md`. Pour retirer un partenaire sans supprimer son entrée,
+  repasser son `status` à `"pending"`.
+  Logos actuels : repris tels quels du dépôt `terangamath/terangamath-website`
+  (`src/assets/partners/`, commit `4850108`) ; seul AIMS est réencodé en WebP
+  sans perte (pixels identiques, 24 Kio au lieu de 66).
 - **Ajouter une actualité** : créer `actualites/fr/<slug>.mdx` + `actualites/en/<slug>.mdx`
   avec le même `slug` et la même `date`.
 - **KaTeX** : dans les MDX de `problemes/`, `$...$` en ligne et `$$...$$` en bloc.

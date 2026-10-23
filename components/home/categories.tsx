@@ -15,7 +15,7 @@ export async function CategoriesSection({ locale }: { locale: Locale }) {
   };
 
   return (
-    <section className="bg-background py-16 lg:py-24">
+    <section className="bg-surface-alt py-16 lg:py-24">
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6">
         <SectionHeading title={t("title")} lead={t("lead")} />
 

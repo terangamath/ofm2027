@@ -31,14 +31,14 @@ export async function FicheSection({ locale }: { locale: Locale }) {
   ];
 
   return (
-    <section className="bg-sable py-20 text-anthracite lg:py-28">
+    <section className="bg-surface py-20 text-foreground lg:py-28">
       <div className="mx-auto flex max-w-7xl flex-col gap-16 px-6">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
           <div className="flex flex-col gap-6">
-            <p className="font-display text-display-l leading-none text-vert" aria-hidden>
+            <p className="font-display text-display-l leading-none text-chiffre" aria-hidden>
               {eventInfo.edition}
             </p>
-            <SectionHeading title={t("title")} lead={t("lead")} tone="warm" />
+            <SectionHeading title={t("title")} lead={t("lead")} />
           </div>
 
           <dl className="flex flex-col self-end">
@@ -47,8 +47,8 @@ export async function FicheSection({ locale }: { locale: Locale }) {
                 key={row.label}
                 className="grid grid-cols-[minmax(8rem,10rem)_1fr] items-baseline gap-6 border-b border-hairline py-4 first:border-t"
               >
-                <dt className="label text-encre">{row.label}</dt>
-                <dd className={row.data ? "data text-body-l text-vert" : "text-body-l font-medium text-anthracite"}>
+                <dt className="label text-muted-foreground">{row.label}</dt>
+                <dd className={row.data ? "data text-body-l text-chiffre" : "text-body-l font-medium text-foreground"}>
                   {row.value}
                 </dd>
               </div>
@@ -61,15 +61,15 @@ export async function FicheSection({ locale }: { locale: Locale }) {
           <dl className="grid grid-cols-2 gap-x-8 gap-y-8 border-y border-hairline py-8 md:grid-cols-4">
             {stats.map((stat) => (
               <div key={stat.label.fr} className="flex flex-col gap-1">
-                <dd className="font-display text-h2 leading-none tabular-nums text-vert">{stat.value}</dd>
-                <dt className="text-small text-encre">
+                <dd className="font-display text-h2 leading-none tabular-nums text-chiffre">{stat.value}</dd>
+                <dt className="text-small text-muted-foreground">
                   {stat.label[locale]}
                   {stat.provisional && <span aria-hidden> *</span>}
                 </dt>
               </div>
             ))}
           </dl>
-          {hasProvisional && <p className="text-small text-encre">* {tStats("provisionalNote")}</p>}
+          {hasProvisional && <p className="text-small text-muted-foreground">* {tStats("provisionalNote")}</p>}
         </div>
       </div>
     </section>

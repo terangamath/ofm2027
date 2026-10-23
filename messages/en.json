@@ -19,7 +19,9 @@
     "languageSwitcherLabel": "Change language",
     "skipToContent": "Skip to main content",
     "menuOpen": "Open menu",
-    "menuClose": "Close menu"
+    "menuClose": "Close menu",
+    "themeToLight": "Switch to light theme",
+    "themeToDark": "Switch to dark theme"
   },
   "Footer": {
     "navLabel": "Useful links",
@@ -37,9 +39,10 @@
       "ctaPrimary": "Discover the Olympiad",
       "ctaSecondary": "See the teams",
       "metaDates": "Dates",
-      "metaLocation": "Organising committee",
-      "metaLanguage": "Official language",
-      "metaFormat": "Categories",
+      "metaMode": "Format",
+      "metaModeValue": "Remote exams",
+      "metaCategories": "Categories",
+      "metaOrganizer": "Organiser",
       "figureCaption": "Figure from Problem 3, OFM 2024 (Senior): (DE) is parallel to (OM)."
     },
     "Event": {
@@ -99,7 +102,7 @@
     },
     "Partners": {
       "title": "Making the Olympiad possible",
-      "lead": "Institutions, financial and technical partners, alongside Terangamath.",
+      "lead": "Alongside Terangamath for the 2027 edition.",
       "categoryInstitutional": "Institutional partners",
       "categoryFinancial": "Financial partners",
       "categoryTechnical": "Technical partners"

@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import type { ContentStatus } from "@/content/types";
 
 const STATUS_STYLES: Record<ContentStatus, string> = {
-  coming_soon: "border-hairline bg-sable text-anthracite",
+  coming_soon: "border-hairline bg-surface-alt text-foreground",
   published: "border-accent/40 bg-accent/10 text-foreground",
 };
 

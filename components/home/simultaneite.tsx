@@ -51,12 +51,12 @@ export async function SimultaneiteSection({ locale }: { locale: Locale }) {
   return (
     <section
       id="simultaneite"
-      className="border-t border-ivoire/10 bg-vert-nuit py-20 text-ivoire lg:py-28"
+      className="border-t border-foreground/10 bg-surface-alt py-20 text-foreground lg:py-28"
     >
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6">
         <div className="flex flex-col gap-4">
-          <h2 className="text-h2 font-display text-ivoire">{t("title")}</h2>
-          <p className="max-w-2xl text-body-l text-ivoire/75">{t("lead", { count: lignes.length })}</p>
+          <h2 className="text-h2 font-display text-foreground">{t("title")}</h2>
+          <p className="max-w-2xl text-body-l text-muted-foreground">{t("lead", { count: lignes.length })}</p>
         </div>
 
         <Partition
@@ -66,7 +66,7 @@ export async function SimultaneiteSection({ locale }: { locale: Locale }) {
           libelles={libelles}
         />
 
-        <p className="max-w-3xl text-small text-ivoire/55">
+        <p className="max-w-3xl text-small text-muted-foreground">
           {t("referenceLine", { time: heureLocale(exam.referenceZone, debut), zone: exam.referenceZone })}
           {exam.provisional && <> — {t("note")}</>}
         </p>
