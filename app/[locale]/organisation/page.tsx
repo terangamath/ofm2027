@@ -29,7 +29,7 @@ export default async function OrganisationPage({
 
   return (
     <>
-      <PageHero title={t("title")} lead={t("lead")} />
+      <PageHero chemin="/organisation" title={t("title")} lead={t("lead")} />
 
       <section className="bg-surface pb-20 text-foreground lg:pb-28">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">

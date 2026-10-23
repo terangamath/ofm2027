@@ -47,7 +47,7 @@ export default async function HistoryPage({
 
   return (
     <>
-      <PageHero title={t("title")} lead={t("lead")} />
+      <PageHero chemin="/historique" title={t("title")} lead={t("lead")} />
 
       {/* Le seul endroit du site où des chiffres se comparent en colonne : une vraie table. */}
       <section className="bg-surface pb-20 lg:pb-28">

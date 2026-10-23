@@ -495,6 +495,26 @@
    Le bandeau ne s'anime pas ; ses couleurs suivent le thème.
    ──────────────────────────────────────────────────────────────── */
 @layer components {
+  /* Section qui porte le bandeau vertical : sa largeur selon l'écran.
+     Absent sur téléphone (le bandeau y est couché sous le hero). */
+  .avec-bandeau {
+    --bandeau: 0px;
+  }
+  @media (min-width: 48rem) {
+    .avec-bandeau {
+      --bandeau: 1.75rem;
+    }
+  }
+  @media (min-width: 64rem) {
+    .avec-bandeau {
+      --bandeau: 3.25rem;
+    }
+  }
+  /* Conteneur centré (max-w-7xl, gouttière 1,5 rem) : à droite, la marge
+     s'élargit juste assez pour que le contenu ne passe jamais sous le bandeau. */
+  .marge-bandeau {
+    padding-right: max(1.5rem, calc(var(--bandeau) + 1.5rem - max(0px, (100vw - 80rem) / 2)));
+  }
   .tissage-fond {
     fill: var(--tissage-fond);
   }

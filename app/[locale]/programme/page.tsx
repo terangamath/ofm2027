@@ -45,7 +45,7 @@ export default async function ProgrammePage({
 
   return (
     <>
-      <PageHero title={t("title")} lead={t("lead")} />
+      <PageHero chemin="/programme" title={t("title")} lead={t("lead")} />
 
       <section className="bg-surface pb-20 lg:pb-28">
         <div className="mx-auto flex max-w-3xl flex-col gap-14 px-6">

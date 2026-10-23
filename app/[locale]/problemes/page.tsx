@@ -30,7 +30,7 @@ export default async function ProblemsPage({
 
   return (
     <>
-      <PageHero title={t("title")} lead={t("lead")} />
+      <PageHero chemin="/problemes" title={t("title")} lead={t("lead")} />
 
       <section className="bg-surface pb-20 lg:pb-28">
         <div className="mx-auto max-w-3xl px-6">

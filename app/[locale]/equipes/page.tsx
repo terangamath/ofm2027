@@ -31,7 +31,7 @@ export default async function TeamsPage({
 
   return (
     <>
-      <PageHero title={t("title")} lead={t("lead")} />
+      <PageHero chemin="/equipes" title={t("title")} lead={t("lead")} />
 
       <section className="bg-surface pb-24 lg:pb-32">
         <div className="mx-auto max-w-7xl px-6">

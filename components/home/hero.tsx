@@ -32,11 +32,10 @@ export async function Hero({ locale }: { locale: Locale }) {
   ];
 
   return (
-    <section className="relative isolate overflow-hidden bg-surface text-foreground [--bandeau:0px] md:[--bandeau:1.75rem] lg:[--bandeau:3.25rem]">
+    <section className="avec-bandeau relative isolate overflow-hidden bg-surface text-foreground">
       <BandeauVertical className="absolute inset-y-0 right-0 hidden w-(--bandeau) md:block" />
 
-      {/* À droite, la marge s'élargit juste assez pour que le contenu ne passe jamais sous le bandeau. */}
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-x-10 gap-y-8 pt-8 pb-10 pl-6 pr-[max(1.5rem,calc(var(--bandeau)_+_1.5rem_-_max(0px,(100vw_-_80rem)_/_2)))] md:pt-12 lg:grid-cols-[minmax(0,13fr)_minmax(0,10fr)] lg:gap-y-10 lg:pt-14 lg:pb-12">
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-x-10 gap-y-8 marge-bandeau pt-8 pb-10 pl-6 md:pt-12 lg:grid-cols-[minmax(0,13fr)_minmax(0,10fr)] lg:gap-y-10 lg:pt-14 lg:pb-12">
         <div className="flex flex-col gap-5 lg:col-start-1 lg:row-start-1 lg:justify-center lg:gap-7">
           <h1 className="titre-hero font-display text-primary">{sansVeuve(t("title"))}</h1>
 
