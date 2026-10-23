@@ -201,3 +201,8 @@ curl -sI https://www.ofm2027.org/fr/equipes | head -1     # 308 vers /equipes
 **Image de partage, favicon et icônes** : générés par `node scripts/images-marque.mjs`
 à partir des textes et couleurs du site. À relancer si le titre, les dates ou la
 palette changent.
+
+Quand l'image de partage change, augmenter d'abord `VERSION_IMAGE_PARTAGE` dans
+`lib/image-partage.ts` : le nom du fichier change, donc son adresse. WhatsApp,
+Facebook et LinkedIn gardent l'image en mémoire plusieurs jours par adresse ; sous le
+même nom, l'ancienne continuerait de s'afficher.

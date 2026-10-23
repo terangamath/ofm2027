@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { INDEXABLE, SITE_URL } from "@/lib/site";
+import { cheminImagePartage } from "@/lib/image-partage";
 import type { Locale } from "@/content/types";
 
 /**
@@ -26,9 +27,12 @@ export function alternatesPage(locale: Locale, chemin: string): Metadata["altern
   return { canonical: urlAbsolue(locale, chemin), languages: languesAlternatives(chemin) };
 }
 
-/** Image de partage, 1200 × 630, une par langue (générée par scripts/og-image.mjs). */
+/**
+ * Image de partage, 1200 × 630, une par langue (générée par scripts/images-marque.mjs).
+ * URL absolue ; nom de fichier versionné (lib/image-partage.ts).
+ */
 export function urlImagePartage(locale: Locale): string {
-  return `${SITE_URL}/og/ofm2027-${locale}.png`;
+  return `${SITE_URL}${cheminImagePartage(locale)}`;
 }
 
 export function imagePartage(locale: Locale, alt: string) {
