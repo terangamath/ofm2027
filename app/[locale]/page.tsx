@@ -44,8 +44,8 @@ export default async function HomePage({
       <CategoriesSection locale={typedLocale} />
       <DelegationsSection locale={typedLocale} />
       <ProblemsTeaserSection locale={typedLocale} />
-      <PartnersSection locale={typedLocale} />
       <FaqSection locale={typedLocale} />
+      <PartnersSection locale={typedLocale} />
     </>
   );
 }

@@ -1,5 +1,67 @@
 [
   {
+    "id": "caci",
+    "name": { "fr": "CACI Assurance", "en": "CACI Assurance" },
+    "category": null,
+    "status": "confirmed",
+    "logo": { "src": "/partenaires/caci.png", "width": 580, "height": 360 },
+    "url": "https://www.ca-assurances.com/en/the-group/our-companies/caci/caci-life-non-life/"
+  },
+  {
+    "id": "animath",
+    "name": { "fr": "Animath", "en": "Animath" },
+    "category": null,
+    "status": "confirmed",
+    "logo": { "src": "/partenaires/animath.png", "width": 300, "height": 120 },
+    "url": "https://www.animath.fr/"
+  },
+  {
+    "id": "force-n",
+    "name": { "fr": "Force N", "en": "Force N" },
+    "category": null,
+    "status": "confirmed",
+    "logo": { "src": "/partenaires/force-n.webp", "width": 448, "height": 170 },
+    "url": "https://force-n.sn/en"
+  },
+  {
+    "id": "campus-france",
+    "name": { "fr": "Campus France", "en": "Campus France" },
+    "category": null,
+    "status": "pending",
+    "logo": null,
+    "url": null
+  },
+  {
+    "id": "aims-senegal",
+    "name": { "fr": "AIMS Sénégal", "en": "AIMS Senegal" },
+    "category": null,
+    "status": "pending",
+    "logo": { "src": "/partenaires/aims-senegal.webp", "width": 2352, "height": 433 },
+    "url": "https://aims-senegal.org/"
+  },
+  {
+    "id": "ansts",
+    "name": {
+      "fr": "Académie nationale des sciences et techniques du Sénégal",
+      "en": "National Academy of Sciences and Technology of Senegal"
+    },
+    "category": null,
+    "status": "pending",
+    "logo": { "src": "/partenaires/ansts.jpg", "width": 200, "height": 200 },
+    "url": "https://ansts.sn/"
+  },
+  {
+    "id": "apross",
+    "name": {
+      "fr": "Association pour la promotion des sciences au Sénégal",
+      "en": "Association for the Promotion of Science in Senegal"
+    },
+    "category": null,
+    "status": "pending",
+    "logo": { "src": "/partenaires/apross.jpg", "width": 554, "height": 554 },
+    "url": null
+  },
+  {
     "id": "men-senegal",
     "name": {
       "fr": "Ministère de l'Éducation nationale du Sénégal",
@@ -7,8 +69,8 @@
     },
     "category": "institutionnel",
     "status": "pending",
-    "logo": null,
-    "url": null
+    "logo": { "src": "/partenaires/men-senegal.png", "width": 225, "height": 225 },
+    "url": "https://www.education.sn/"
   },
   {
     "id": "ucad",

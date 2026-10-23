@@ -1,54 +1,54 @@
-# Audit de contraste — 2026-10-22 21:37
+# Audit de contraste — 2026-10-23 04:58
 
-10416 mesures, **0 KO**, 1004 filets décoratifs (hors 1.4.11).
+10544 mesures, **0 KO**, 1060 filets décoratifs (hors 1.4.11).
 
 | Route · locale · thème · largeur | Mesures | KO | Contraste texte min. |
 |---|---:|---:|---:|
-| / · fr · clair · 1440 | 660 | 0 | 5.5 |
-| /olympiade · fr · clair · 1440 | 120 | 0 | 6.33 |
-| /organisation · fr · clair · 1440 | 60 | 0 | 6.83 |
-| /equipes · fr · clair · 1440 | 78 | 0 | 6.83 |
+| / · fr · clair · 1440 | 672 | 0 | 5.5 |
+| /olympiade · fr · clair · 1440 | 121 | 0 | 6.33 |
+| /organisation · fr · clair · 1440 | 61 | 0 | 6.83 |
+| /equipes · fr · clair · 1440 | 79 | 0 | 6.83 |
 | /equipes/senegal · fr · clair · 1440 | 47 | 0 | 6.83 |
 | /equipes/france · fr · clair · 1440 | 46 | 0 | 6.83 |
-| /programme · fr · clair · 1440 | 59 | 0 | 6.83 |
-| /problemes · fr · clair · 1440 | 47 | 0 | 6.33 |
-| /historique · fr · clair · 1440 | 225 | 0 | 6.83 |
-| /contact · fr · clair · 1440 | 58 | 0 | 6.83 |
-| /mentions-legales · fr · clair · 1440 | 47 | 0 | 6.83 |
-| / · en · clair · 1440 | 660 | 0 | 5.5 |
-| /olympiade · en · clair · 1440 | 120 | 0 | 6.33 |
-| /organisation · en · clair · 1440 | 60 | 0 | 6.83 |
-| /equipes · en · clair · 1440 | 78 | 0 | 6.83 |
+| /programme · fr · clair · 1440 | 60 | 0 | 6.83 |
+| /problemes · fr · clair · 1440 | 48 | 0 | 6.33 |
+| /historique · fr · clair · 1440 | 226 | 0 | 6.83 |
+| /contact · fr · clair · 1440 | 59 | 0 | 6.83 |
+| /mentions-legales · fr · clair · 1440 | 48 | 0 | 6.83 |
+| / · en · clair · 1440 | 672 | 0 | 5.5 |
+| /olympiade · en · clair · 1440 | 121 | 0 | 6.33 |
+| /organisation · en · clair · 1440 | 61 | 0 | 6.83 |
+| /equipes · en · clair · 1440 | 79 | 0 | 6.83 |
 | /equipes/senegal · en · clair · 1440 | 47 | 0 | 6.83 |
 | /equipes/france · en · clair · 1440 | 46 | 0 | 6.83 |
-| /programme · en · clair · 1440 | 59 | 0 | 6.83 |
-| /problemes · en · clair · 1440 | 47 | 0 | 6.33 |
-| /historique · en · clair · 1440 | 225 | 0 | 6.83 |
-| /contact · en · clair · 1440 | 58 | 0 | 6.83 |
-| /mentions-legales · en · clair · 1440 | 47 | 0 | 6.83 |
-| / · fr · sombre · 1440 | 660 | 0 | 6.3 |
-| /olympiade · fr · sombre · 1440 | 120 | 0 | 8.25 |
-| /organisation · fr · sombre · 1440 | 60 | 0 | 8.25 |
-| /equipes · fr · sombre · 1440 | 78 | 0 | 8.25 |
+| /programme · en · clair · 1440 | 60 | 0 | 6.83 |
+| /problemes · en · clair · 1440 | 48 | 0 | 6.33 |
+| /historique · en · clair · 1440 | 226 | 0 | 6.83 |
+| /contact · en · clair · 1440 | 59 | 0 | 6.83 |
+| /mentions-legales · en · clair · 1440 | 48 | 0 | 6.83 |
+| / · fr · sombre · 1440 | 672 | 0 | 6.3 |
+| /olympiade · fr · sombre · 1440 | 121 | 0 | 8.25 |
+| /organisation · fr · sombre · 1440 | 61 | 0 | 8.25 |
+| /equipes · fr · sombre · 1440 | 79 | 0 | 8.25 |
 | /equipes/senegal · fr · sombre · 1440 | 47 | 0 | 8.25 |
 | /equipes/france · fr · sombre · 1440 | 46 | 0 | 8.25 |
-| /programme · fr · sombre · 1440 | 59 | 0 | 8.25 |
-| /problemes · fr · sombre · 1440 | 47 | 0 | 8.25 |
-| /historique · fr · sombre · 1440 | 225 | 0 | 8.25 |
-| /contact · fr · sombre · 1440 | 58 | 0 | 8.25 |
-| /mentions-legales · fr · sombre · 1440 | 47 | 0 | 8.25 |
-| / · en · sombre · 1440 | 660 | 0 | 6.3 |
-| /olympiade · en · sombre · 1440 | 120 | 0 | 8.25 |
-| /organisation · en · sombre · 1440 | 60 | 0 | 8.25 |
-| /equipes · en · sombre · 1440 | 78 | 0 | 8.25 |
+| /programme · fr · sombre · 1440 | 60 | 0 | 8.25 |
+| /problemes · fr · sombre · 1440 | 48 | 0 | 8.25 |
+| /historique · fr · sombre · 1440 | 226 | 0 | 8.25 |
+| /contact · fr · sombre · 1440 | 59 | 0 | 8.25 |
+| /mentions-legales · fr · sombre · 1440 | 48 | 0 | 8.25 |
+| / · en · sombre · 1440 | 672 | 0 | 6.3 |
+| /olympiade · en · sombre · 1440 | 121 | 0 | 8.25 |
+| /organisation · en · sombre · 1440 | 61 | 0 | 8.25 |
+| /equipes · en · sombre · 1440 | 79 | 0 | 8.25 |
 | /equipes/senegal · en · sombre · 1440 | 47 | 0 | 8.25 |
 | /equipes/france · en · sombre · 1440 | 46 | 0 | 8.25 |
-| /programme · en · sombre · 1440 | 59 | 0 | 8.25 |
-| /problemes · en · sombre · 1440 | 47 | 0 | 8.25 |
-| /historique · en · sombre · 1440 | 225 | 0 | 8.25 |
-| /contact · en · sombre · 1440 | 58 | 0 | 8.25 |
-| /mentions-legales · en · sombre · 1440 | 47 | 0 | 8.25 |
-| / · fr · clair · 390 | 521 | 0 | 5.5 |
+| /programme · en · sombre · 1440 | 60 | 0 | 8.25 |
+| /problemes · en · sombre · 1440 | 48 | 0 | 8.25 |
+| /historique · en · sombre · 1440 | 226 | 0 | 8.25 |
+| /contact · en · sombre · 1440 | 59 | 0 | 8.25 |
+| /mentions-legales · en · sombre · 1440 | 48 | 0 | 8.25 |
+| / · fr · clair · 390 | 533 | 0 | 5.5 |
 | /olympiade · fr · clair · 390 | 104 | 0 | 6.33 |
 | /organisation · fr · clair · 390 | 45 | 0 | 9.18 |
 | /equipes · fr · clair · 390 | 63 | 0 | 9.18 |
@@ -59,7 +59,7 @@
 | /historique · fr · clair · 390 | 210 | 0 | 6.83 |
 | /contact · fr · clair · 390 | 43 | 0 | 6.83 |
 | /mentions-legales · fr · clair · 390 | 32 | 0 | 9.18 |
-| / · en · clair · 390 | 521 | 0 | 5.5 |
+| / · en · clair · 390 | 533 | 0 | 5.5 |
 | /olympiade · en · clair · 390 | 104 | 0 | 6.33 |
 | /organisation · en · clair · 390 | 45 | 0 | 9.18 |
 | /equipes · en · clair · 390 | 63 | 0 | 9.18 |
@@ -70,7 +70,7 @@
 | /historique · en · clair · 390 | 210 | 0 | 6.83 |
 | /contact · en · clair · 390 | 43 | 0 | 6.83 |
 | /mentions-legales · en · clair · 390 | 32 | 0 | 9.18 |
-| / · fr · sombre · 390 | 521 | 0 | 6.3 |
+| / · fr · sombre · 390 | 533 | 0 | 6.3 |
 | /olympiade · fr · sombre · 390 | 104 | 0 | 8.25 |
 | /organisation · fr · sombre · 390 | 45 | 0 | 8.25 |
 | /equipes · fr · sombre · 390 | 63 | 0 | 8.25 |
@@ -81,7 +81,7 @@
 | /historique · fr · sombre · 390 | 210 | 0 | 8.25 |
 | /contact · fr · sombre · 390 | 43 | 0 | 8.25 |
 | /mentions-legales · fr · sombre · 390 | 32 | 0 | 8.25 |
-| / · en · sombre · 390 | 521 | 0 | 6.3 |
+| / · en · sombre · 390 | 533 | 0 | 6.3 |
 | /olympiade · en · sombre · 390 | 104 | 0 | 8.25 |
 | /organisation · en · sombre · 390 | 45 | 0 | 8.25 |
 | /equipes · en · sombre · 390 | 63 | 0 | 8.25 |

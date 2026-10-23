@@ -79,3 +79,85 @@ Audit complet (11 routes × fr/en × clair/sombre × 1440/390) : **10 416 mesure
 - 390 × 844 : titre, texte, bouton et **les quatre** informations visibles sans défiler.
 - `prefers-reduced-motion` : figure à l'état final, aucune animation ; le bandeau n'est
   jamais animé.
+
+---
+
+# Suite — bandeau des pages internes et partenaires
+
+## Bandeau sur le hero des pages internes
+
+- Un seul bandeau par page, dans le `PageHero` des huit pages internes (Olympiade,
+  Organisation, Équipes, Programme, Problèmes, Historique, Contact, Mentions légales).
+  Vertical à droite dès la tablette, couché sous le hero sur téléphone. Rien dans le pied
+  de page, rien entre deux sections.
+- Phase propre à chaque page (`PHASES`, `components/layout/page-hero.tsx`) : même pavage,
+  morceau différent — le haut de la colonne tombe tantôt sur un flanc rouge, tantôt sur
+  un jaune, tantôt au milieu d'un losange.
+- Les fiches pays et les pages d'un problème n'ont pas de hero distinct (titre et contenu
+  dans une même section) : pas de bandeau, il y courrait sur toute la page.
+- Hauteurs : de ~230 px (Mentions légales, titre seul) à ~450 px (Équipes). Même au plus
+  court, quatre losanges entiers : pas de timbre-poste, pas besoin de passer à
+  l'horizontale en desktop.
+
+**Avis.** Ça tient, à une condition que j'ai ajoutée : le bandeau doit reposer sur
+quelque chose. Sur l'accueil il s'arrête sur un changement de fond ; sur les pages
+internes, la section suivante a le même ivoire, et la première version flottait. Le filet
+or qui fermait l'en-tête est désormais tiré sur toute la largeur et reçoit le pied du
+bandeau : la bande se lit comme une lisière d'en-tête, pas comme un ornement collé. Une
+colonne par page, en tête, ne pèse pas ; je n'irais pas plus loin.
+
+## Partenaires — inventaire du dépôt `terangamath/terangamath-website`
+
+Commit source `4850108`. Logos dans `src/assets/partners/`, données dans
+`src/components/partners/Partners.jsx` (et un bandeau de logos dans `Home.jsx`).
+
+| Partenaire | Fichier source | Format | Dimensions | Poids | Fond | Catégorie sur le site Terangamath | Ici |
+|---|---|---|---|---:|---|---|---|
+| CACI Assurance | `CaCI.png` | PNG | 580 × 360 | 22,1 Kio | transparent | Entreprises | **affiché** |
+| Animath | `animath.png` | PNG | 300 × 120 | 13,6 Kio | transparent | Associations | **affiché** |
+| Force N | `ForceN.webp` | WebP | 448 × 170 | 19,9 Kio | transparent | Académiques | **affiché** |
+| AIMS Sénégal | `aimssn.png` | PNG → WebP sans perte | 2352 × 433 | 65,6 → 24,3 Kio | transparent | Académiques | en attente |
+| ANSTS | `ANSTS.jpg` | JPEG | 200 × 200 | 8,1 Kio | blanc | Institutionnels | en attente |
+| Ministère de l'Éducation nationale | `men.png` | PNG | 225 × 225 | 4,6 Kio | blanc | Institutionnels | en attente |
+| APROSS | `afr.jpg` | JPEG | 554 × 554 | 39,2 Kio | gris clair | — | en attente |
+
+Trouvés mais **sans logo dans le dépôt** (non repris) :
+- **Math & Maroc** (page Partenaires) : logo chargé depuis `mathmaroc.com`.
+- **POFM** et **ADAM-Maths (Djibouti)** (bandeau de l'accueil Terangamath) : logos chargés
+  depuis des sites tiers.
+- Le Ministère y est affiché en initiales « MEN » ; le fichier `men.png` existe pourtant
+  dans le dépôt, sans être utilisé.
+- `afr.jpg` (APROSS) est importé dans `Home.jsx` mais affiché nulle part.
+
+**Campus France** (cité par l'association pour l'OFM) : **absent du dépôt**. Entrée créée
+dans les données, sans logo, en attente.
+
+### Choix
+
+- Affichés : les trois noms cités par l'association pour l'OFM **et** présents dans le
+  dépôt — CACI, Animath, Force N. Tous les autres logos sont versés et en `pending` :
+  passer `status` à `"confirmed"` suffit à les afficher, sans toucher au code.
+- Catégories laissées à `null` : celles du site Terangamath (associations, entreprises,
+  académiques) ne recouvrent pas celles de l'OFM (institutionnel, financier, technique).
+  Le Ministère et l'UCAD gardent la leur (`institutionnel`), déjà présente.
+- Aucun logo modifié. AIMS est seulement réencodé en WebP sans perte (0 pixel différent,
+  vérifié) : 24 Kio au lieu de 66.
+- Aucune version claire dans le dépôt : chaque logo est posé sur une plaque blanche, dans
+  les deux thèmes. Taille optique (surface constante, hauteur 28 à 72 px).
+- À signaler à l'association si ces logos doivent paraître : **APROSS** est un JPEG sur
+  fond gris clair (un carré gris se voit sur la plaque blanche) et **MEN** a de grandes
+  marges internes (il paraît petit). Des fichiers PNG transparents et recadrés seraient
+  préférables ; je ne les ai pas retouchés.
+
+## Vérifications
+
+- Audit de contraste complet : **10 544 mesures, 0 KO** (après correction : la première
+  version mettait le cadre et l'anneau de focus sur le lien ; le cadre est passé sur le
+  `<li>`, l'anneau à l'intérieur de la plaque, or d'encre sur blanc, 7,18:1 dans les deux
+  thèmes).
+- Logos : `next/image`, dimensions explicites, chargement différé, `srcset` 1x/2x
+  (13 Kio en 1x pour les trois logos, 33 Kio en 2x). CLS 0.
+- Lighthouse mobile, accueil, 3 passages : 85 / 91 / 90, accessibilité 100 (avant ces
+  ajouts : 88 / 89 / 85). Équipes : 93, accessibilité 100.
+- Test `tests/partenaires.test.ts` : chaque logo référencé existe, ses dimensions
+  déclarées sont les vraies, il pèse au plus 50 Kio, son nom est renseigné en fr et en en.
