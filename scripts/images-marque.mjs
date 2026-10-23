@@ -1,14 +1,17 @@
 #!/usr/bin/env node
-// Génère les images de marque du site, dans le langage du hero de l'accueil :
-//   public/og/ofm2027-{fr,en}.png   image de partage Open Graph, 1200 × 630, par langue
-//   app/favicon.ico                 Σ, 16 et 32 px (PNG encapsulés dans l'ICO)
-//   app/icon.png                    Σ, 96 px
-//   app/apple-icon.png              Σ, 180 px (apple-touch-icon)
-//   public/icons/icon-{192,512}.png Σ, icônes du manifeste web
+// Génère les images de marque du site, dans le traitement de la variante D :
+//   public/og/ofm2027-{fr,en}-v<N>.png  image de partage Open Graph, 1200 × 630, par langue
+//                                       (nom versionné : lib/image-partage.ts)
+//   app/favicon.ico                     maille du logo, 16 et 32 px (PNG encapsulés dans l'ICO)
+//   app/icon.png                        maille, 96 px
+//   app/apple-icon.png                  maille, 180 px (apple-touch-icon)
+//   public/icons/icon-{192,512}.png     maille, icônes du manifeste web
 //
-// Image de partage : fond vert-nuit, titre en Fraunces, méta-ligne sous un filet or,
-// la figure construite dans son état final. Textes, couleurs et géométrie viennent
-// des sources du site (messages, event.json, globals.css, lib/figure-geometrie.ts).
+// Image de partage : ce que voit celui qui clique — fond ivoire, titre Fraunces grasse
+// en vert, rangée d'informations à pastilles, la figure sur son disque soleil avec sa
+// construction au compas, le bandeau tissé sur le bord droit. Textes, couleurs et
+// géométrie viennent des sources du site (messages, event.json, globals.css,
+// lib/figure-geometrie.ts, lib/pavage.ts, icônes lucide).
 //
 // Usage : node scripts/images-marque.mjs   (CHROME_PATH pour un autre Chrome/Chromium)
 // Rendu par Chrome sans interface, piloté par le protocole DevTools ; polices Google Fonts.
@@ -16,9 +19,14 @@ import { spawn } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { K, OMEGA_R, P } from "../lib/figure-geometrie.ts";
+import { COMPAS, DISQUE, K, OMEGA_R, P } from "../lib/figure-geometrie.ts";
+import { bandeau, maille } from "../lib/pavage.ts";
+import { cheminImagePartage } from "../lib/image-partage.ts";
 import { composerFrancais } from "../lib/typographie.ts";
 import { lireJetons } from "../lib/jetons.ts";
+import { __iconNode as iconeCalendrier } from "../node_modules/lucide-react/dist/esm/icons/calendar-days.mjs";
+import { __iconNode as iconeComite } from "../node_modules/lucide-react/dist/esm/icons/building-2.mjs";
+import { __iconNode as iconeCategories } from "../node_modules/lucide-react/dist/esm/icons/users.mjs";
 
 const RACINE = path.resolve(import.meta.dirname, "..");
 const lireJson = (fichier) => JSON.parse(fs.readFileSync(path.join(RACINE, fichier), "utf-8"));
@@ -26,41 +34,85 @@ const CHROME = process.env.CHROME_PATH ?? "/usr/bin/google-chrome";
 const LARGEUR = 1200;
 const HAUTEUR = 630;
 const POLICES =
-  "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,0..100,0..1;1,9..144,300..600,0..100,0..1&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=block";
+  "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=block";
 
 const echapper = (texte) => texte.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 const seg = (a, b) => `M${a.x} ${a.y}L${b.x} ${b.y}`;
+const cercle = (c, r) => `M${c.x - r} ${c.y}a${r} ${r} 0 1 0 ${2 * r} 0a${r} ${r} 0 1 0 ${-2 * r} 0`;
 
-/** La figure du hero, état final de la construction (mêmes épaisseurs et opacités que globals.css). */
+/** Une icône lucide en SVG autonome (mêmes tracés que les composants du site). */
+function icone(noeuds, couleur) {
+  const enfants = noeuds
+    .map(([balise, attributs]) => {
+      const attrs = Object.entries(attributs)
+        .filter(([cle]) => cle !== "key")
+        .map(([cle, valeur]) => `${cle}="${valeur}"`)
+        .join(" ");
+      return `<${balise} ${attrs}/>`;
+    })
+    .join("");
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="${couleur}" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${enfants}</svg>`;
+}
+
+/** La maille du logo (components/brand/logo.tsx), même géométrie. */
+function svgMaille(c, hauteurCss) {
+  const m = maille(18);
+  return `<svg viewBox="0 0 ${m.largeur} ${m.hauteur}" style="height:${hauteurCss};width:auto;display:block">
+    <path d="${m.vert}" fill="${c.vert}"/><path d="${m.jaune}" fill="${c.soleil}"/><path d="${m.rouge}" fill="${c.rouge}"/></svg>`;
+}
+
+/** Bandeau tissé vertical (components/motifs/bandeau-tisse.tsx), même géométrie, même cadrage. */
+function svgBandeau(c) {
+  const b = bandeau(16);
+  const repetitions = 40;
+  return `<svg viewBox="0 0 ${b.largeur} ${b.periode * repetitions}" preserveAspectRatio="xMidYMin slice" style="display:block;width:100%;height:100%">
+    <defs><pattern id="tissage" width="${b.largeur}" height="${b.periode}" patternUnits="userSpaceOnUse">
+      <rect width="${b.largeur}" height="${b.periode}" fill="${c.ivoire}"/>
+      <path d="${b.vert}" fill="${c.vert}"/><path d="${b.jaune}" fill="${c.soleil}"/><path d="${b.rouge}" fill="${c.rouge}"/>
+    </pattern></defs>
+    <rect width="${b.largeur}" height="${b.periode * repetitions}" fill="url(#tissage)"/></svg>`;
+}
+
+/**
+ * La figure du hero, état final de la construction, sur son disque soleil
+ * (mêmes éléments que components/motifs/figure-construction.tsx). Traits un peu
+ * plus épais qu'à l'écran : l'image est surtout vue en vignette.
+ */
 function figure() {
-  const points = Object.values(P).map((p) => `<circle cx="${p.x}" cy="${p.y}" r="4" class="point"/>`).join("");
+  const points = ["A", "B", "C", "O", "D", "E", "M"].map((n) => `<circle cx="${P[n].x}" cy="${P[n].y}" r="5.5" class="point"/>`).join("");
   const etiquettes = [
-    ["A", -4, -14], ["B", -24, 8], ["C", 14, 8], ["O", -22, -8], ["D", -8, 26], ["E", 12, -10], ["M", -26, 18],
+    ["A", -5, -15], ["B", -26, 8], ["C", 14, 8], ["O", -8, -14], ["D", -8, 28], ["E", 12, -10], ["M", -22, 28],
   ]
     .map(([nom, dx, dy]) => `<text x="${P[nom].x + dx}" y="${P[nom].y + dy}" class="etiquette">${nom}</text>`)
     .join("");
-  return `<svg viewBox="0 0 600 600" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  const compas = [COMPAS.AB, COMPAS.AC];
+  return `<svg viewBox="0 0 600 640" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="${DISQUE.x}" cy="${DISQUE.y}" r="${DISQUE.r}" class="disque"/>
+    <path d="${compas.flatMap((m) => m.arcs).join("")}" class="compas"/>
+    <path d="${compas.map((m) => m.mediatrice).join("")}${seg(P.A, P.D)}${cercle(K, K.r)}" class="pointille"/>
+    <path d="${seg(P.A, P.B)}${seg(P.B, P.C)}${seg(P.C, P.A)}${seg(P.B, P.E)}" class="trait"/>
     <circle cx="${P.O.x}" cy="${P.O.y}" r="${OMEGA_R}" class="trait"/>
-    <path d="${seg(P.A, P.B)}${seg(P.B, P.C)}${seg(P.C, P.A)}" class="trait"/>
-    <path d="${seg(P.A, P.D)}" class="construction"/>
-    <circle cx="${K.x}" cy="${K.y}" r="${K.r}" class="construction"/>
-    <path d="${seg(P.B, P.E)}" class="trait"/>
     <path d="${seg(P.D, P.E)}${seg(P.O, P.M)}" class="conclusion"/>
+    ${compas.map((m) => `<circle cx="${m.X.x}" cy="${m.X.y}" r="6" class="repere"/>`).join("")}
     ${points}${etiquettes}
   </svg>`;
 }
 
-function page(locale, couleurs) {
+function page(locale, c) {
   const messages = lireJson(`messages/${locale}.json`);
   const evenement = lireJson("content/event.json");
   const composer = locale === "fr" ? composerFrancais : (texte) => texte;
   const titre = composer(messages.Home.Hero.title);
+  // Pastilles et icônes du hero de l'accueil (vert, soleil bordé d'or profond, rouge).
   const meta = [
-    { texte: evenement.dates[locale], donnee: true },
+    { texte: evenement.dates[locale], donnee: true, icone: iconeCalendrier, fond: c.vert, trait: c.ivoire },
     // « Dakar » seul, entre la date et les catégories, se lit comme le lieu des épreuves :
     // on nomme ce qui s'y tient, le comité d'organisation (les épreuves sont à distance).
-    { texte: composer(messages.Metadata.ogCommittee.replace("{city}", evenement.city[locale])) },
-    { texte: evenement.categories.map((c) => c.name[locale]).join(" · ") },
+    {
+      texte: composer(messages.Metadata.ogCommittee.replace("{city}", evenement.city[locale])),
+      icone: iconeComite, fond: c.soleil, trait: c["vert-nuit"], bord: c["or-profond"],
+    },
+    { texte: evenement.categories.map((cat) => cat.name[locale]).join(" · "), icone: iconeCategories, fond: c.rouge, trait: c.ivoire },
   ];
 
   return `<!doctype html><html lang="${locale}"><head><meta charset="utf-8">
@@ -70,76 +122,94 @@ function page(locale, couleurs) {
   * { margin: 0; box-sizing: border-box; }
   html, body { width: ${LARGEUR}px; height: ${HAUTEUR}px; overflow: hidden; }
   body {
-    background: ${couleurs["vert-nuit"]}; color: ${couleurs.ivoire};
+    position: relative; background: ${c.ivoire}; color: ${c.anthracite};
     font-family: Inter, system-ui, sans-serif;
-    display: grid; grid-template-columns: 1fr 440px; column-gap: 24px;
-    padding: 64px 56px 56px 72px;
+    /* Comme le hero : texte et figure côte à côte, la rangée d'informations dessous, sur toute la largeur. */
+    display: grid; grid-template-columns: minmax(0, 1fr) 420px; grid-template-rows: minmax(0, 1fr) auto;
+    column-gap: 24px; row-gap: 18px;
+    padding: 44px 92px 40px 64px;
   }
-  .texte { display: flex; flex-direction: column; justify-content: space-between; }
-  .marque { font-size: 22px; font-weight: 500; opacity: .72; display: flex; gap: 12px; align-items: baseline; }
-  .marque b { font-family: Fraunces, serif; font-weight: 500; font-size: 28px; color: ${couleurs["or-clair"]}; opacity: 1; }
+  .bandeau { position: absolute; top: 0; right: 0; bottom: 0; width: 52px; }
+  .texte { display: flex; flex-direction: column; justify-content: center; gap: 40px; }
+  .marque { display: flex; align-items: center; gap: 12px; font-family: Fraunces, serif; font-weight: 700; font-size: 30px; letter-spacing: -0.02em; }
+  .marque span { color: ${c.vert}; }
   h1 {
-    font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 78px; line-height: .98;
-    font-variation-settings: "SOFT" 30, "WONK" 1; letter-spacing: -0.02em; text-wrap: balance;
+    font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: 74px; line-height: .98; color: ${c.vert};
+    font-variation-settings: "SOFT" 30, "WONK" 1; letter-spacing: -0.025em; text-wrap: balance;
   }
-  .meta { border-top: 1px solid ${couleurs.or}; padding-top: 22px; display: flex; gap: 32px; font-size: 21px; font-weight: 500; white-space: nowrap; }
-  .donnee { font-family: "JetBrains Mono", monospace; font-weight: 400; font-variant-numeric: tabular-nums; color: ${couleurs["or-clair"]}; }
+  .meta { grid-column: 1 / -1; margin: 0; padding-left: 0; border-top: 1px solid color-mix(in srgb, ${c.anthracite} 14%, transparent); padding-top: 22px; display: flex; gap: 28px; font-size: 21px; font-weight: 500; white-space: nowrap; }
+  .meta li { display: flex; align-items: center; gap: 11px; list-style: none; }
+  .pastille { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex: none; }
+  .pastille svg { width: 20px; height: 20px; }
+  .donnee { font-family: "JetBrains Mono", monospace; font-weight: 500; font-variant-numeric: tabular-nums; }
   .figure { align-self: center; }
-  svg { width: 440px; height: 440px; display: block; overflow: visible; }
-  .trait { stroke: ${couleurs["or-clair"]}; stroke-width: 1.5; }
-  .construction { stroke: ${couleurs.or}; stroke-width: 1.25; opacity: .22; }
-  .conclusion { stroke: ${couleurs["or-clair"]}; stroke-width: 2.5; }
-  .point { fill: ${couleurs["or-clair"]}; }
-  .etiquette { fill: ${couleurs["or-clair"]}; font-family: Fraunces, serif; font-style: italic; font-size: 19px; opacity: .85; }
+  .figure svg { width: 420px; height: auto; display: block; overflow: visible; }
+  .disque { fill: ${c.soleil}; }
+  .trait { stroke: ${c.vert}; stroke-width: 2.2; }
+  .compas { stroke: ${c["vert-clair"]}; stroke-width: 1.8; }
+  .pointille { stroke: ${c["vert-clair"]}; stroke-width: 2.2; stroke-dasharray: 0.5 6; }
+  .conclusion { stroke: ${c.rouge}; stroke-width: 3.4; }
+  .repere { fill: ${c.ivoire}; stroke: ${c["vert-clair"]}; stroke-width: 2; }
+  .point { fill: ${c.vert}; }
+  .etiquette { fill: ${c.vert}; font-family: Fraunces, serif; font-style: italic; font-weight: 600; font-size: 25px; }
 </style></head><body>
   <div class="texte">
-    <p class="marque"><b>Σ</b>OFM 2027</p>
+    <p class="marque">${svgMaille(c, "38px")}OFM <span>2027</span></p>
     <h1>${echapper(titre)}</h1>
-    <p class="meta">${meta.map((m) => `<span${m.donnee ? ' class="donnee"' : ""}>${echapper(m.texte)}</span>`).join("")}</p>
   </div>
   <div class="figure">${figure()}</div>
+  <ul class="meta">${meta
+      .map(
+        (m) => `<li><span class="pastille" style="background:${m.fond};${m.bord ? `box-shadow:inset 0 0 0 1.5px ${m.bord}` : ""}">${icone(m.icone, m.trait)}</span><span${m.donnee ? ' class="donnee"' : ""}>${echapper(m.texte)}</span></li>`,
+      )
+      .join("")}</ul>
+  <div class="bandeau">${svgBandeau(c)}</div>
 </body></html>`;
 }
 
 /**
- * Le sigle Σ, or clair sur vert-nuit. Plein cadre pour les icônes que le système
- * arrondit lui-même (iOS, Android) ; coins arrondis pour le favicon, dont les coins
- * transparents imposent aussi le RGBA exigé par le décodeur ICO de Next.js.
- * Tracé à la règle plutôt que composé : Fraunces n'a pas de glyphe grec, et une icône
- * ne doit pas dépendre de la police de repli de la machine qui la génère.
+ * Icônes : la maille du logo sur fond ivoire. Plein cadre pour les icônes que le
+ * système arrondit lui-même (iOS, Android) ; coins arrondis pour le favicon, dont
+ * les coins transparents imposent aussi le RGBA exigé par le décodeur ICO de Next.js.
+ * Le fond ivoire garde la maille lisible sur un onglet sombre comme sur un clair.
  */
-function pageIcone(cote, couleurs, { arrondi = false } = {}) {
+function pageIcone(cote, c, { arrondi = false } = {}) {
   return `<!doctype html><html><head><meta charset="utf-8"><style>
   * { margin: 0; }
   html, body { width: ${cote}px; height: ${cote}px; overflow: hidden; background: transparent; }
-  svg { display: block; width: 100%; height: 100%; background: ${couleurs["vert-nuit"]}; border-radius: ${arrondi ? "18%" : "0"}; }
-</style></head><body>${sigma(cote, couleurs["or-clair"])}</body></html>`;
+  svg { display: block; width: 100%; height: 100%; background: ${c.ivoire}; border-radius: ${arrondi ? "18%" : "0"}; }
+</style></head><body>${svgIcone(cote, c)}</body></html>`;
 }
 
 /**
- * Σ dessiné pour sa taille de rendu. À 16 et 32 px, un tracé mis à l'échelle tombe
- * entre deux pixels et se brouille en demi-teintes : le sigle y est calé sur la
- * grille de pixels (traits pleins de 2 px à 16 px, de 3 px à 32 px).
+ * La maille dessinée pour sa taille de rendu. À 16 et 32 px, un tracé mis à
+ * l'échelle tombe entre deux pixels et se brouille en demi-teintes : la maille y
+ * est échantillonnée sur la grille (chaque pixel prend la couleur du losange qui
+ * contient son centre), symétrique par construction (centre sur un coin de pixel).
+ * À 16 px, le cœur rouge ne couvrirait que 2 × 2 pixels — un carré, qui fait lire
+ * une croix : la maille s'y réduit au losange vert et à son cœur jaune.
+ * Au-delà, tracé vectoriel, la maille occupant 76 % de la hauteur.
  */
-function sigma(cote, couleur) {
-  if (cote === 16) {
-    // Grille 16 × 16, un rectangle par pixel plein : barres de 2 px, diagonale en
-    // marches de 2 px, empattements d'un pixel sous les barres.
-    const pixels = [
-      [4, 3, 8, 2], [10, 5, 2, 1], // barre haute et son empattement
-      [4, 5, 2, 1], [5, 6, 2, 1], [6, 7, 2, 1], [6, 8, 2, 1], [5, 9, 2, 1], [4, 10, 2, 1], // diagonale
-      [10, 10, 2, 1], [4, 11, 8, 2], // empattement et barre basse
-    ];
-    const rects = pixels.map(([x, y, l, h]) => `<rect x="${x}" y="${y}" width="${l}" height="${h}"/>`).join("");
-    return `<svg viewBox="0 0 16 16" shape-rendering="crispEdges" fill="${couleur}">${rects}</svg>`;
+function svgIcone(cote, c) {
+  const m = maille(18);
+  if (cote <= 32) {
+    const demiH = cote === 16 ? 7.5 : 14.5;
+    const demiL = demiH / Math.sqrt(3);
+    const k = cote === 16 ? { jaune: 0.5, rouge: 0 } : { jaune: 0.56, rouge: 0.2 };
+    const rects = [];
+    for (let y = 0; y < cote; y++) {
+      for (let x = 0; x < cote; x++) {
+        const d = Math.abs(x + 0.5 - cote / 2) / demiL + Math.abs(y + 0.5 - cote / 2) / demiH;
+        const couleur = d <= k.rouge ? c.rouge : d <= k.jaune ? c.soleil : d <= 1 ? c.vert : null;
+        if (couleur) rects.push(`<rect x="${x}" y="${y}" width="1" height="1" fill="${couleur}"/>`);
+      }
+    }
+    return `<svg viewBox="0 0 ${cote} ${cote}" shape-rendering="crispEdges">${rects.join("")}</svg>`;
   }
-  if (cote === 32) {
-    // Trait de 3 px centré sur des demi-pixels : barres et empattements nets.
-    return `<svg viewBox="0 0 32 32"><path d="M23.5 12V7.5H8.5L16 16L8.5 24.5H23.5V20" fill="none"
-      stroke="${couleur}" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg>`;
-  }
-  return `<svg viewBox="0 0 100 100"><path d="M73 31V23H27L51 50L27 77H73V69" fill="none"
-    stroke="${couleur}" stroke-width="8" stroke-linejoin="miter" stroke-linecap="square"/></svg>`;
+  const h = 76;
+  const l = (h * m.largeur) / m.hauteur;
+  return `<svg viewBox="0 0 100 100"><g transform="translate(${50 - l / 2} 12) scale(${h / m.hauteur})">
+    <path d="${m.vert}" fill="${c.vert}"/><path d="${m.jaune}" fill="${c.soleil}"/><path d="${m.rouge}" fill="${c.rouge}"/></g></svg>`;
 }
 
 /** Fichier ICO contenant des PNG (format admis par tous les navigateurs actuels). */
@@ -263,13 +333,13 @@ const ecrire = (relatif, donnees) => {
 
 for (const locale of ["fr", "en"]) {
   const png = await capturer(page(locale, couleurs), LARGEUR, HAUTEUR, ["Fraunces", "Inter", "JetBrains Mono"]);
-  ecrire(`public/og/ofm2027-${locale}.png`, png);
+  ecrire(`public${cheminImagePartage(locale)}`, png);
 }
 
-const icone = (cote, options) => capturer(pageIcone(cote, couleurs, options), cote, cote, []);
-const favicon = (cote) => icone(cote, { arrondi: true });
+const rendreIcone = (cote, options) => capturer(pageIcone(cote, couleurs, options), cote, cote, []);
+const favicon = (cote) => rendreIcone(cote, { arrondi: true });
 ecrire("app/favicon.ico", ico([{ cote: 16, donnees: await favicon(16) }, { cote: 32, donnees: await favicon(32) }]));
-ecrire("app/icon.png", await icone(96));
-ecrire("app/apple-icon.png", await icone(180));
-ecrire("public/icons/icon-192.png", await icone(192));
-ecrire("public/icons/icon-512.png", await icone(512));
+ecrire("app/icon.png", await rendreIcone(96));
+ecrire("app/apple-icon.png", await rendreIcone(180));
+ecrire("public/icons/icon-192.png", await rendreIcone(192));
+ecrire("public/icons/icon-512.png", await rendreIcone(512));

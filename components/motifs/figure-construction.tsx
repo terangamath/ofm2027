@@ -19,13 +19,10 @@
  * direct sous prefers-reduced-motion.
  */
 import type { CSSProperties } from "react";
-import { COMPAS, K, OMEGA_R, P } from "@/lib/figure-geometrie";
+import { COMPAS, DISQUE, K, OMEGA_R, P } from "@/lib/figure-geometrie";
 
 type Point = { x: number; y: number };
 const seg = (a: Point, b: Point) => `M${a.x} ${a.y}L${b.x} ${b.y}`;
-
-/** Disque soleil : décentré vers le haut et la droite, comme sur la maquette 5254. */
-const DISQUE = { x: 352, y: 262, r: 204 };
 
 const temps = (delai: number, duree?: number) =>
   ({ "--delai": `${delai}ms`, ...(duree ? { "--duree": `${duree}ms` } : {}) }) as CSSProperties;

@@ -10,7 +10,8 @@ export default function manifest(): MetadataRoute.Manifest {
     start_url: "/",
     display: "browser",
     background_color: couleurs.ivoire,
-    theme_color: couleurs["vert-nuit"],
+    // Le site s'ouvre en clair : la barre du navigateur prend le fond de page.
+    theme_color: couleurs.ivoire,
     icons: [
       { src: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
       { src: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },

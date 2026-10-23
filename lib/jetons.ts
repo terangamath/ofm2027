@@ -4,7 +4,34 @@
 import fs from "node:fs";
 import path from "node:path";
 
-export type Jeton = "vert-nuit" | "vert" | "or" | "or-clair" | "ivoire" | "sable";
+export type Jeton =
+  | "vert-nuit"
+  | "vert"
+  | "vert-clair"
+  | "or"
+  | "or-clair"
+  | "or-profond"
+  | "ivoire"
+  | "sable"
+  | "anthracite"
+  | "encre"
+  | "soleil"
+  | "rouge";
+
+const JETONS: Jeton[] = [
+  "vert-nuit",
+  "vert",
+  "vert-clair",
+  "or",
+  "or-clair",
+  "or-profond",
+  "ivoire",
+  "sable",
+  "anthracite",
+  "encre",
+  "soleil",
+  "rouge",
+];
 
 export function lireJetons(racine: string = process.cwd()): Record<Jeton, string> {
   const css = fs.readFileSync(path.join(racine, "app", "globals.css"), "utf-8");
@@ -16,12 +43,5 @@ export function lireJetons(racine: string = process.cwd()): Record<Jeton, string
     if (!valeur) throw new Error(`Jeton --${nom} introuvable dans app/globals.css`);
     return valeur;
   };
-  return {
-    "vert-nuit": lire("vert-nuit"),
-    vert: lire("vert"),
-    or: lire("or"),
-    "or-clair": lire("or-clair"),
-    ivoire: lire("ivoire"),
-    sable: lire("sable"),
-  };
+  return Object.fromEntries(JETONS.map((nom) => [nom, lire(nom)])) as Record<Jeton, string>;
 }

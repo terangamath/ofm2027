@@ -1,5 +1,5 @@
 // Figure du problème 3 (Senior) de l'OFM 2024 : coordonnées de la construction,
-// partagées par le composant du hero et par scripts/og-image.mjs (image de partage).
+// partagées par le composant du hero et par scripts/images-marque.mjs (image de partage).
 // O = (300, 300), R = 250, A à 108°, B à 203°, C à 332°, dans un repère 600 × 600 ;
 // le parallélisme (DE) ∥ (OM) est vérifié numériquement (produit vectoriel nul).
 
@@ -18,6 +18,9 @@ export const OMEGA_R = 250;
 
 /** Cercle circonscrit à OCD. */
 export const K = { x: 356.6, y: 459.8, r: 169.5 };
+
+/** Disque soleil derrière la figure : décentré vers le haut et la droite (maquette 5254). */
+export const DISQUE = { x: 352, y: 262, r: 204 };
 
 // ── Construction au compas de O (variante D) ────────────────────────────────
 // O est le point de concours des médiatrices. Pour chacune, deux arcs de même
