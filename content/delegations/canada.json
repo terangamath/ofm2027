@@ -1,10 +1,11 @@
 {
   "slug": "canada",
   "countryCode": "CA",
+  "iso3": "CAN",
   "name": { "fr": "Canada", "en": "Canada" },
   "flagEmoji": "🇨🇦",
-  "timeZone": null,
-  "status": "invited",
+  "timeZone": "America/Toronto",
+  "status": "confirmed",
   "isHost": false,
   "description": null,
   "members": null

@@ -1,6 +1,7 @@
 {
   "slug": "belgique",
   "countryCode": "BE",
+  "iso3": "BEL",
   "name": { "fr": "Belgique", "en": "Belgium" },
   "flagEmoji": "🇧🇪",
   "timeZone": "Europe/Brussels",

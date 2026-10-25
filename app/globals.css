@@ -55,6 +55,8 @@
      sauge, teinte de survol), blanc sur vert-profond 9,8:1 (élément actif). */
   --sauge: #edf1e9;
   --vert-profond: #174c3b;
+  /* Pied de page, identique dans les deux thèmes : ivoire dessus 11,3:1, à 78 % 7,6:1. */
+  --vert-pied: #123e32;
 }
 
 /* ────────────────────────────────────────────────────────────────
@@ -136,6 +138,13 @@
   --compte-texte: var(--ivoire);
   --compte-libelle: color-mix(in srgb, var(--ivoire) 86%, var(--vert-profond));
   --compte-accent: var(--or);
+  /* Carte des pays participants, sur fond vert profond (identique dans les deux
+     thèmes) : terres sable, participants soleil, pays hôte rouge. */
+  --carte-fond: var(--vert-profond);
+  --carte-terre: var(--sable);
+  --carte-frontiere: var(--vert-profond);
+  --carte-participant: var(--soleil);
+  --carte-hote: var(--rouge);
 
   --radius: 0.5rem;
 
@@ -256,7 +265,11 @@
   --color-nav-actif-texte: var(--nav-actif-texte);
   --color-compte-fond: var(--compte-fond);
   --color-bande-fond: var(--bande-fond);
+  --color-carte-fond: var(--carte-fond);
+  --color-carte-participant: var(--carte-participant);
+  --color-carte-hote: var(--carte-hote);
   --color-vert-profond: var(--vert-profond);
+  --color-vert-pied: var(--vert-pied);
   --color-compte-texte: var(--compte-texte);
   --color-compte-libelle: var(--compte-libelle);
   --color-compte-accent: var(--compte-accent);
@@ -796,4 +809,49 @@
 }
 .hero-texte {
   text-shadow: 0 1px 2px color-mix(in srgb, var(--vert-nuit) 45%, transparent);
+}
+
+/* Carte des pays participants : frontières fines, survol et focus sur les
+   seuls pays participants (des liens). */
+.carte path {
+  stroke: var(--carte-frontiere);
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+}
+.carte-pays {
+  fill: var(--carte-terre);
+}
+.carte-participant {
+  fill: var(--carte-participant);
+}
+.carte-hote {
+  fill: var(--carte-hote);
+}
+/* Petit pays participant : un halo de sa propre couleur, sous son tracé,
+   l'épaissit sans le déplacer ni effacer ses frontières. */
+.carte .carte-halo {
+  stroke-width: 3;
+}
+.carte .carte-participant .carte-halo {
+  stroke: var(--carte-participant);
+}
+.carte .carte-hote .carte-halo {
+  stroke: var(--carte-hote);
+}
+.carte .carte-halo + path {
+  stroke-width: 0.3;
+}
+.carte a {
+  cursor: pointer;
+  outline: none;
+}
+.carte a:hover path {
+  fill: var(--or-clair);
+}
+.carte a:hover .carte-halo {
+  stroke: var(--or-clair);
+}
+.carte a:focus-visible path {
+  stroke: var(--ivoire);
+  stroke-width: 2;
 }

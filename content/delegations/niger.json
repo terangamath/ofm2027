@@ -1,6 +1,7 @@
 {
   "slug": "niger",
   "countryCode": "NE",
+  "iso3": "NER",
   "name": { "fr": "Niger", "en": "Niger" },
   "flagEmoji": "🇳🇪",
   "timeZone": "Africa/Niamey",

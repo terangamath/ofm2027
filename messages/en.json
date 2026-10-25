@@ -24,13 +24,19 @@
     "themeToDark": "Switch to dark theme"
   },
   "Footer": {
-    "navLabel": "Useful links",
-    "history": "Past editions",
-    "legalMentions": "Legal notice",
+    "logoAlt": "OFM 2027 symbol: the letter π in the colours of Senegal, a baobab and a pirogue",
+    "organizedBy": "Organised by {organizer}",
+    "location": "{city}, {country}",
+    "usefulLinks": "Useful links",
     "officialSite": "Official OFM website",
-    "organizedBy": "Organised by",
-    "committee": "committee in {city}, {country}",
-    "rights": "© {year} Terangamath"
+    "rules": "Official rules",
+    "history": "Past editions",
+    "contact": "Contact",
+    "contactOrganisation": "Contact the organisers",
+    "terangamath": "Discover Terangamath",
+    "newTab": "(opens in a new tab)",
+    "rights": "© {year} Terangamath",
+    "legalMentions": "Legal notice"
   },
   "Home": {
     "Hero": {
@@ -46,6 +52,25 @@
       "hours": "hours",
       "minutes": "minutes",
       "seconds": "seconds"
+    },
+    "About": {
+      "title": "About the OFM",
+      "p1": "The Francophone Mathematical Olympiad is a competition for students across the French-speaking world. It sets problems in algebra, combinatorics, geometry and number theory, in two categories: Junior and Senior.",
+      "p2": "Participants represent their country in national delegations. Each paper consists of four problems to be solved in four and a half hours.",
+      "p3": "The 8<sup>th</sup> edition is organised by <b>Terangamath</b> in Senegal on <b>27 and 28 March 2027</b>, with papers sat remotely in the participating countries.",
+      "rules": "Official rules",
+      "terangamath": "Discover Terangamath",
+      "newTab": "(opens in a new tab)",
+      "logoAlt": "OFM 2027 logo: the letter π in the colours of Senegal, a baobab and a pirogue, above “OFM 2027 Sénégal, Olympiades francophones de mathématiques”."
+    },
+    "Countries": {
+      "title": "Participating countries",
+      "cta": "Discover the delegations",
+      "mapLabel": "World map of the countries taking part in OFM 2027",
+      "legendHost": "Senegal, host country",
+      "legendParticipant": "Confirmed participating country",
+      "listLabel": "Participating country pages",
+      "credit": "Base map: <link>Natural Earth</link>"
     },
     "Event": {
       "title": "The event, at a glance",
@@ -103,11 +128,8 @@
       "referenceLine": "Reference: {time} in Dakar ({zone})"
     },
     "Partners": {
-      "title": "Making the Olympiad possible",
-      "lead": "Alongside Terangamath for the 2027 edition.",
-      "categoryInstitutional": "Institutional partners",
-      "categoryFinancial": "Financial partners",
-      "categoryTechnical": "Technical partners"
+      "title": "Our partners",
+      "lead": "They support the 2027 edition."
     },
     "Faq": {
       "title": "Frequently asked questions",

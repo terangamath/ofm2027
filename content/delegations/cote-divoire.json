@@ -1,6 +1,7 @@
 {
   "slug": "cote-divoire",
   "countryCode": "CI",
+  "iso3": "CIV",
   "name": { "fr": "Côte d'Ivoire", "en": "Ivory Coast" },
   "flagEmoji": "🇨🇮",
   "timeZone": "Africa/Abidjan",
