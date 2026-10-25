@@ -810,8 +810,7 @@
 
 /* Carte des pays participants : frontières fines, survol et focus sur les
    seuls pays participants (des liens). */
-.carte path,
-.carte circle {
+.carte path {
   stroke: var(--carte-frontiere);
   stroke-width: 0.5;
   stroke-linejoin: round;
@@ -825,20 +824,31 @@
 .carte-hote {
   fill: var(--carte-hote);
 }
-.carte .carte-hote circle {
-  stroke: var(--ivoire);
-  stroke-width: 1.5;
+/* Petit pays participant : un halo de sa propre couleur, sous son tracé,
+   l'épaissit sans le déplacer ni effacer ses frontières. */
+.carte .carte-halo {
+  stroke-width: 3;
+}
+.carte .carte-participant .carte-halo {
+  stroke: var(--carte-participant);
+}
+.carte .carte-hote .carte-halo {
+  stroke: var(--carte-hote);
+}
+.carte .carte-halo + path {
+  stroke-width: 0.3;
 }
 .carte a {
   cursor: pointer;
   outline: none;
 }
-.carte a:hover path,
-.carte a:hover circle {
+.carte a:hover path {
   fill: var(--or-clair);
 }
-.carte a:focus-visible path,
-.carte a:focus-visible circle {
+.carte a:hover .carte-halo {
+  stroke: var(--or-clair);
+}
+.carte a:focus-visible path {
   stroke: var(--ivoire);
   stroke-width: 2;
 }

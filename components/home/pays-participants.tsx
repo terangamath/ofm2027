@@ -10,7 +10,7 @@ import { getDelegations } from "@/lib/content";
 
 const LARGEUR = 960;
 const HAUTEUR = 480;
-/** En dessous de cette aire (px² dans le repère de la carte), un pays participant reçoit aussi un point. */
+/** En dessous de cette aire (px² dans le repère de la carte), un pays participant est épaissi d'un contour de sa couleur. */
 const AIRE_MINIMALE = 40;
 
 const monde = mondeData as { source: string; pays: PaysCarte[] };
@@ -38,7 +38,10 @@ export async function PaysParticipantsSection({ locale }: { locale: Locale }) {
   const trace = geoPath(projection).digits(1);
 
   const neutres = features.filter((feature) => !parIso3.has(feature.properties.iso3));
-  const colores = features.filter((feature) => parIso3.has(feature.properties.iso3));
+  // Les petits pays en dernier : leur contour épaissi passe au-dessus des voisins.
+  const colores = features
+    .filter((feature) => parIso3.has(feature.properties.iso3))
+    .sort((a, b) => trace.area(b) - trace.area(a));
 
   return (
     <section aria-labelledby="pays-participants" className="bg-carte-fond py-14 text-ivoire lg:py-20">
@@ -75,8 +78,8 @@ export async function PaysParticipantsSection({ locale }: { locale: Locale }) {
                 {colores.map((feature) => {
                   const delegation = parIso3.get(feature.properties.iso3);
                   if (!delegation) return null;
-                  const [cx, cy] = trace.centroid(feature);
-                  // Petits pays, et le pays hôte : un point en plus du tracé, pour rester visibles.
+                  // Petits pays, et le pays hôte : un halo de leur couleur, sous le tracé, les épaissit sur place
+                  // sans effacer leurs frontières.
                   const petit = delegation.isHost || trace.area(feature) < AIRE_MINIMALE;
                   return (
                     <a
@@ -84,10 +87,10 @@ export async function PaysParticipantsSection({ locale }: { locale: Locale }) {
                       href={getPathname({ href: `/equipes/${delegation.slug}`, locale })}
                       aria-label={delegation.name[locale]}
                       data-nom={delegation.name[locale]}
-                      className={delegation.isHost ? "carte-hote" : "carte-participant"}
+                      className={`${delegation.isHost ? "carte-hote" : "carte-participant"} ${petit ? "carte-petit" : ""}`}
                     >
+                      {petit && <path d={trace(feature) ?? undefined} className="carte-halo" />}
                       <path d={trace(feature) ?? undefined} />
-                      {petit && <circle cx={cx} cy={cy} r={delegation.isHost ? 6 : 4.5} />}
                     </a>
                   );
                 })}
