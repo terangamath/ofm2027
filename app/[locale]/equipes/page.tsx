@@ -9,6 +9,10 @@ import { getDelegations } from "@/lib/content";
 import { calageDrapeau, srcDrapeau } from "@/lib/drapeaux";
 import type { Locale } from "@/content/types";
 
+/** Carte de déplacement de l'ondulation : une période de sinusoïde sur 60 % de la largeur. */
+const CARTE_ONDULATION =
+  "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27300%27%20height%3D%27200%27%20preserveAspectRatio%3D%27none%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27o%27%20x2%3D%270.6%27%20spreadMethod%3D%27repeat%27%3E%3Cstop%20offset%3D%270.000%27%20stop-color%3D%27rgb%28128%2C128%2C128%29%27/%3E%3Cstop%20offset%3D%270.125%27%20stop-color%3D%27rgb%28128%2C192%2C128%29%27/%3E%3Cstop%20offset%3D%270.250%27%20stop-color%3D%27rgb%28128%2C218%2C128%29%27/%3E%3Cstop%20offset%3D%270.375%27%20stop-color%3D%27rgb%28128%2C192%2C128%29%27/%3E%3Cstop%20offset%3D%270.500%27%20stop-color%3D%27rgb%28128%2C128%2C128%29%27/%3E%3Cstop%20offset%3D%270.625%27%20stop-color%3D%27rgb%28128%2C64%2C128%29%27/%3E%3Cstop%20offset%3D%270.750%27%20stop-color%3D%27rgb%28128%2C38%2C128%29%27/%3E%3Cstop%20offset%3D%270.875%27%20stop-color%3D%27rgb%28128%2C64%2C128%29%27/%3E%3Cstop%20offset%3D%271.000%27%20stop-color%3D%27rgb%28128%2C128%2C128%29%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%27300%27%20height%3D%27200%27%20fill%3D%27url%28%23o%29%27/%3E%3C/svg%3E";
+
 export async function generateMetadata({
   params,
 }: {
@@ -23,8 +27,9 @@ export async function generateMetadata({
  * Les délégations : une galerie de drapeaux sur fond blanc. Pays hôte en
  * premier, puis ordre alphabétique (getDelegations). Chaque élément est un
  * seul lien vers la fiche du pays. Tous les drapeaux occupent le même
- * rectangle 3:2 (remplissage centré, sans déformation) et flottent doucement ;
- * ils montent au survol et au focus (voir .drapeau dans globals.css).
+ * rectangle 3:2 (remplissage centré) et ondulent comme un tissu, de façon fixe
+ * (filtre SVG, sans animation) ; ils montent au survol et au focus (voir
+ * .drapeau dans globals.css).
  */
 export default async function TeamsPage({
   params,
@@ -60,8 +65,17 @@ export default async function TeamsPage({
         </div>
       </div>
 
+      {/* Ondulation fixe des drapeaux : une sinusoïde (canal vert) déplace verticalement
+          chaque drapeau, bords compris, comme un tissu qui flotte. Rendu une fois, sans animation. */}
+      <svg aria-hidden width="0" height="0" className="absolute">
+        <filter id="ondulation-drapeau" x="-0.1" y="-0.2" width="1.2" height="1.5" primitiveUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
+          <feImage href={CARTE_ONDULATION} x="0" y="0" width="1" height="1" preserveAspectRatio="none" result="carte" />
+          <feDisplacementMap in="SourceGraphic" in2="carte" scale="0.07" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </svg>
+
       <ul className="mx-auto grid max-w-[75rem] grid-cols-1 gap-x-4 gap-y-6 px-4 min-[22rem]:grid-cols-2 sm:px-6 md:grid-cols-3 md:gap-x-8 md:gap-y-8 lg:grid-cols-4 lg:gap-x-10">
-        {delegations.map((delegation, index) => {
+        {delegations.map((delegation) => {
           const nom = delegation.name[typedLocale];
           return (
             <li key={delegation.slug}>
@@ -69,12 +83,8 @@ export default async function TeamsPage({
                 href={`/equipes/${delegation.slug}`}
                 className="lien-drapeau group flex flex-col items-center gap-3 rounded-lg p-2 focus-visible:outline-or-trait dark:focus-visible:outline-or-clair"
               >
-                {/* Décalage de phase : les drapeaux ne flottent pas tous en même temps. */}
-                <span className="drapeau-flotte block w-full" style={{ animationDelay: `${-(index % 5) * 1.3}s` }}>
-                  <span
-                    className={`drapeau ${delegation.isHost ? "drapeau-hote" : ""}`}
-                    style={{ animationDelay: `${-(index % 4) * 1.7}s` }}
-                  >
+                <span className="drapeau-tissu block w-full">
+                  <span className={`drapeau ${delegation.isHost ? "drapeau-hote" : ""}`}>
                     <Image
                       src={srcDrapeau(delegation.countryCode)}
                       alt=""
