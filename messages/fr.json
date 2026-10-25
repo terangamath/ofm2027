@@ -122,11 +122,8 @@
       "referenceLine": "Référence : {time} à Dakar ({zone})"
     },
     "Partners": {
-      "title": "Ils rendent l'Olympiade possible",
-      "lead": "Aux côtés de Terangamath pour l'édition 2027.",
-      "categoryInstitutional": "Partenaires institutionnels",
-      "categoryFinancial": "Partenaires financiers",
-      "categoryTechnical": "Partenaires techniques"
+      "title": "Nos partenaires",
+      "lead": "Ils soutiennent l'édition 2027."
     },
     "Faq": {
       "title": "Foire aux questions",

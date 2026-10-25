@@ -175,6 +175,8 @@ export interface PartnerLogo {
   src: string;                // "/partenaires/nom.svg"
   width: number;
   height: number;
+  /** Ajustement optique de la taille affichée (1 par défaut) : > 1 pour un logo à grandes marges blanches. */
+  scale?: number;
 }
 
 /**
