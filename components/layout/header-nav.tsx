@@ -9,7 +9,7 @@ import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { Logo } from "@/components/brand/logo";
 
 export interface NavItem {
-  href: "/olympiade" | "/equipes" | "/programme" | "/problemes";
+  href: "/" | "/olympiade" | "/equipes" | "/programme" | "/problemes";
   label: string;
 }
 
@@ -38,8 +38,9 @@ function Chargement() {
   return <span aria-hidden className={`lien-chargement ${pending ? "en-cours" : ""}`} />;
 }
 
-/** Rubrique courante : la page elle-même ou l'une de ses sous-pages (fiche pays…). L'accueil n'en sélectionne aucune. */
+/** Rubrique courante : la page elle-même ou l'une de ses sous-pages (fiche pays…). L'accueil ne s'active que sur lui-même. */
 function estActif(pathname: string, href: NavItem["href"]): boolean {
+  if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
@@ -75,8 +76,8 @@ export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b bg-background transition-[border-color] duration-150 ${
-        scrolled ? "border-hairline" : "border-transparent"
+      className={`sticky top-0 z-50 border-b bg-entete-fond transition-[border-color] duration-150 ${
+        scrolled ? "border-hairline" : "border-nav-filet"
       }`}
     >
       <a
@@ -86,34 +87,30 @@ export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
         {labels.skipToContent}
       </a>
 
-      <div className="mx-auto grid h-[4.5rem] max-w-7xl grid-cols-[1fr_auto] items-center gap-4 px-4 sm:px-6 lg:h-[5.625rem] lg:grid-cols-[1fr_auto_1fr]">
-        <Link href="/" className="justify-self-start rounded-sm active:opacity-70">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:h-20">
+        <Link href="/" className="shrink-0 rounded-sm active:opacity-70">
           <Logo embleme="pi" />
         </Link>
 
-        <nav aria-label={labels.navLabel} className="hidden lg:block">
-          <ul className="flex h-[3.125rem] items-center gap-1 rounded-full border border-nav-capsule-bord bg-nav-capsule p-1">
+        <nav aria-label={labels.navLabel} className="ml-auto hidden lg:block">
+          <ul className="flex items-center gap-6 xl:gap-8">
             {items.map((item) => {
               const active = estActif(pathname, item.href);
               return (
-                <li key={item.href} className="h-full">
+                <li key={item.href}>
                   <Link
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`relative flex h-full items-center rounded-full px-4 text-[1.0625rem] leading-none font-semibold whitespace-nowrap transition-[background-color] duration-100 xl:px-5 ${
-                      active ? "text-nav-actif-texte" : "text-nav-texte hover:bg-nav-survol active:bg-nav-survol"
-                    }`}
+                    className="relative flex min-h-11 items-center text-[0.9375rem] font-medium whitespace-nowrap text-nav-texte hover:underline hover:decoration-nav-filet hover:decoration-2 hover:underline-offset-8 xl:text-base"
                   >
-                    {/* La capsule de la page courante glisse vers sa nouvelle position au changement de page. */}
+                    {item.label}
+                    <Chargement />
+                    {/* Le soulignement de la page courante glisse vers sa nouvelle position au changement de page. */}
                     {active && (
                       <ViewTransition name="nav-actif" share="nav-actif">
-                        <span aria-hidden className="absolute inset-0 rounded-full bg-nav-actif" />
+                        <span aria-hidden className="absolute inset-x-0 bottom-1.5 h-0.5 bg-accent" />
                       </ViewTransition>
                     )}
-                    <span className="relative">
-                      {item.label}
-                      <Chargement />
-                    </span>
                   </Link>
                 </li>
               );
@@ -121,11 +118,11 @@ export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2 justify-self-end sm:gap-3">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <div className="hidden sm:block">
             <LanguageSwitcher locale={locale} locales={locales} label={labels.languageSwitcher} />
           </div>
-          <span aria-hidden className="hidden h-6 w-px bg-nav-capsule-bord sm:block" />
+          <span aria-hidden className="hidden h-6 w-px bg-nav-filet sm:block" />
           <ThemeToggle labels={{ toLight: labels.themeToLight, toDark: labels.themeToDark }} />
           <button
             type="button"

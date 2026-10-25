@@ -20,8 +20,8 @@ interface CompteProps {
 
 /**
  * Compte à rebours du hero, jusqu'au début de l'épreuve. Le serveur rend des
- * tirets à la place des chiffres (rien ne bouge à l'hydratation) ; chaque
- * chiffre qui change entre par le haut, sauf sous prefers-reduced-motion.
+ * tirets à la place des chiffres (rien ne bouge à l'hydratation) ; le compte
+ * s'arrête à zéro, puis laisse place à « épreuve en cours » et « terminée ».
  */
 export function HeroCompte({ debutIso, finIso, libelles }: CompteProps) {
   const [maintenant, setMaintenant] = useState<Date | null>(null);
@@ -36,9 +36,8 @@ export function HeroCompte({ debutIso, finIso, libelles }: CompteProps) {
     };
   }, []);
 
-  const debut = new Date(debutIso);
-  const etat: EtatEpreuve = maintenant ? etatEpreuve(maintenant, debut, new Date(finIso)) : "avant";
-  const restant = maintenant ? tempsRestant(maintenant, debut) : null;
+  const etat: EtatEpreuve = maintenant ? etatEpreuve(maintenant, new Date(debutIso), new Date(finIso)) : "avant";
+  const restant = maintenant ? tempsRestant(maintenant, new Date(debutIso)) : null;
 
   const unites = [
     { valeur: restant?.jours, libelle: libelles.days },
@@ -47,42 +46,23 @@ export function HeroCompte({ debutIso, finIso, libelles }: CompteProps) {
     { valeur: restant?.secondes, libelle: libelles.seconds },
   ];
 
-  return (
-    <div
-      role="timer"
-      aria-label={libelles.label}
-      className="flex flex-col gap-4 rounded-lg bg-compte-fond px-5 py-5 text-compte-texte sm:px-6 xl:flex-row xl:items-center xl:justify-between xl:gap-8"
-    >
-      <p className="flex shrink-0 items-center gap-2.5 text-body font-semibold whitespace-nowrap">
-        <span aria-hidden className="size-2.5 shrink-0 rounded-full bg-compte-accent" />
-        {etat === "avant" ? libelles.before : etat === "pendant" ? libelles.during : libelles.after}
-      </p>
+  if (etat !== "avant") {
+    return <p className="text-h4 font-semibold">{etat === "pendant" ? libelles.during : libelles.after}</p>;
+  }
 
-      {etat === "avant" && (
-        <ol className="grid grid-cols-4 gap-2 sm:flex sm:items-start sm:gap-4">
-          {unites.map((u, i) => (
-            <li key={u.libelle} className="flex items-start justify-center gap-4">
-              <span className="flex flex-col items-center gap-1.5">
-                <span className="relative overflow-hidden font-mono text-[clamp(1.875rem,8vw,3rem)] leading-none font-semibold tabular-nums">
-                  {u.valeur === undefined ? (
-                    "--"
-                  ) : (
-                    <span key={u.valeur} className="compte-chiffre block">
-                      {String(u.valeur).padStart(2, "0")}
-                    </span>
-                  )}
-                </span>
-                <span className="text-small text-compte-libelle">{u.libelle}</span>
-              </span>
-              {i < unites.length - 1 && (
-                <span aria-hidden className="hidden font-mono text-[2.5rem] leading-none text-compte-accent sm:block">
-                  :
-                </span>
-              )}
-            </li>
-          ))}
-        </ol>
-      )}
+  return (
+    <div role="timer" aria-label={libelles.label} className="flex flex-col gap-2 xl:gap-1.5">
+      <p className="text-small text-compte-libelle">{libelles.before}</p>
+      <ol className="grid grid-cols-4 divide-x divide-compte-accent/60">
+        {unites.map((u, i) => (
+          <li key={u.libelle} className={`flex flex-col ${i === 0 ? "pr-4" : "px-4"} sm:px-6 sm:first:pl-0 lg:px-5 xl:px-6`}>
+            <span className="text-[1.75rem] leading-none font-semibold tabular-nums lg:text-[2rem]">
+              {u.valeur === undefined ? "--" : String(u.valeur).padStart(2, "0")}
+            </span>
+            <span className="mt-1 text-small text-compte-libelle">{u.libelle}</span>
+          </li>
+        ))}
+      </ol>
     </div>
   );
 }

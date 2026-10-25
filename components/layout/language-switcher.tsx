@@ -72,7 +72,7 @@ export function LanguageSwitcher({ locale, locales, label }: LanguageSwitcherPro
       <ul
         id={listId}
         hidden={!open}
-        className="animer-apparition absolute right-0 top-full z-10 mt-2 min-w-36 rounded-md border border-nav-capsule-bord bg-popover p-1 shadow-soft"
+        className="animer-apparition absolute right-0 top-full z-10 mt-2 min-w-36 rounded-md border border-nav-filet bg-popover p-1 shadow-soft"
       >
         {locales.map((loc) => (
           <li key={loc}>

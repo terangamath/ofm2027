@@ -3,6 +3,7 @@ import { HeaderNav, type NavItem } from "@/components/layout/header-nav";
 import { routing } from "@/i18n/routing";
 
 const PRIMARY_NAV = [
+  { key: "home", href: "/" },
   { key: "olympiad", href: "/olympiade" },
   { key: "teams", href: "/equipes" },
   { key: "programme", href: "/programme" },

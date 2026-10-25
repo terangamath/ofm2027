@@ -34,21 +34,20 @@
   },
   "Home": {
     "Hero": {
-      "title": "L'Olympiade Francophone de Mathématiques",
-      "lead": "Le Sénégal accueille l'organisation de l'édition 2027 de l'Olympiade Francophone de Mathématiques, disputée à distance par les meilleurs jeunes mathématiciens du monde francophone.",
+      "title": "Olympiade francophone de mathématiques",
+      "remote": "À distance",
       "ctaPrimary": "Découvrir l'Olympiade",
-      "ctaSecondary": "Voir les équipes",
-      "examLine": "Épreuve le {day} à {time}, heure de Dakar",
+      "photoAlt": "Pirogues peintes sur une plage du Sénégal ; l'une porte l'inscription « OFM 2027 Sénégal ».",
+      "examTime": "{time} à Dakar",
       "provisional": "horaire provisoire",
-      "countdownLabel": "Compte à rebours jusqu’au début de l’épreuve",
-      "countdownBefore": "Début de l’épreuve dans",
+      "countdownLabel": "Compte à rebours jusqu'au début de l'épreuve",
+      "countdownBefore": "Début de l'épreuve dans",
       "countdownDuring": "Épreuve en cours",
       "countdownAfter": "Épreuve terminée",
       "days": "jours",
       "hours": "heures",
       "minutes": "minutes",
-      "seconds": "secondes",
-      "figureCaption": "Figure du problème 3, OFM 2024 (Senior) : (DE) est parallèle à (OM)."
+      "seconds": "secondes"
     },
     "Event": {
       "title": "La fiche de l'événement",

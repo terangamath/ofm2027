@@ -34,11 +34,11 @@
   },
   "Home": {
     "Hero": {
-      "title": "The Francophone Mathematical Olympiad",
-      "lead": "Senegal hosts the organisation of the 2027 edition of the Francophone Mathematical Olympiad, contested online by the best young mathematicians of the French-speaking world.",
+      "title": "Francophone Mathematical Olympiad",
+      "remote": "Online",
       "ctaPrimary": "Discover the Olympiad",
-      "ctaSecondary": "See the teams",
-      "examLine": "Paper on {day} at {time}, Dakar time",
+      "photoAlt": "Painted pirogues on a beach in Senegal; one bears the inscription “OFM 2027 Sénégal”.",
+      "examTime": "{time} in Dakar",
       "provisional": "provisional time",
       "countdownLabel": "Countdown to the start of the paper",
       "countdownBefore": "The paper starts in",
@@ -47,8 +47,7 @@
       "days": "days",
       "hours": "hours",
       "minutes": "minutes",
-      "seconds": "seconds",
-      "figureCaption": "Figure from Problem 3, OFM 2024 (Senior): (DE) is parallel to (OM)."
+      "seconds": "seconds"
     },
     "Event": {
       "title": "The event, at a glance",
