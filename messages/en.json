@@ -188,7 +188,10 @@
       "lead": "The French-speaking countries engaged in the 2027 edition. Each country may enter a Junior delegation and a Senior delegation, of one to six students each.",
       "hostBadge": "Host country",
       "viewTeam": "View team",
-      "statusPending": "Pending"
+      "statusPending": "Pending",
+      "kicker": "OFM 2027",
+      "heading": "The delegations",
+      "hostLabel": "Host country"
     },
     "TeamDetail": {
       "back": "All teams",

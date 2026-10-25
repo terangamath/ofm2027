@@ -145,6 +145,12 @@
   --carte-frontiere: var(--vert-profond);
   --carte-participant: var(--soleil);
   --carte-hote: var(--rouge);
+  /* Drapeaux flottants de la page Équipes. */
+  --ombre-drapeau: 0 1px 3px color-mix(in srgb, var(--vert-nuit) 10%, transparent),
+    0 8px 18px color-mix(in srgb, var(--vert-nuit) 14%, transparent);
+  --ombre-drapeau-survol: 0 2px 4px color-mix(in srgb, var(--vert-nuit) 10%, transparent),
+    0 16px 30px color-mix(in srgb, var(--vert-nuit) 22%, transparent);
+  --annee-contour: color-mix(in srgb, var(--vert-profond) 11%, transparent);
 
   --radius: 0.5rem;
 
@@ -226,6 +232,9 @@
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.16);
   --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.32);
   color-scheme: dark;
+  --ombre-drapeau: 0 1px 3px rgba(0, 0, 0, 0.3), 0 8px 18px rgba(0, 0, 0, 0.35);
+  --ombre-drapeau-survol: 0 2px 4px rgba(0, 0, 0, 0.3), 0 16px 30px rgba(0, 0, 0, 0.5);
+  --annee-contour: color-mix(in srgb, var(--sable) 12%, transparent);
 }
 
 /* ────────────────────────────────────────────────────────────────
@@ -269,6 +278,10 @@
   --color-carte-participant: var(--carte-participant);
   --color-carte-hote: var(--carte-hote);
   --color-vert-profond: var(--vert-profond);
+  --color-or-trait: var(--or-trait);
+  --color-pastille-vert: var(--pastille-vert);
+  --color-rouge: var(--rouge);
+  --color-soleil: var(--soleil);
   --color-vert-pied: var(--vert-pied);
   --color-compte-texte: var(--compte-texte);
   --color-compte-libelle: var(--compte-libelle);
@@ -854,4 +867,79 @@
 .carte a:focus-visible path {
   stroke: var(--ivoire);
   stroke-width: 2;
+}
+
+/* Page Équipes : drapeaux flottants. Coins adoucis, ombre douce, et un léger
+   drapé (lumière et ombre en lumière douce) qui n'efface ni couleurs ni symboles. */
+.drapeau {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: var(--ombre-drapeau);
+  transition:
+    transform 220ms var(--ease-signature),
+    box-shadow 220ms var(--ease-signature);
+}
+.drapeau::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  background: linear-gradient(
+    102deg,
+    color-mix(in srgb, var(--blanc) 0%, transparent) 0%,
+    color-mix(in srgb, var(--blanc) 16%, transparent) 16%,
+    color-mix(in srgb, var(--anthracite) 0%, transparent) 30%,
+    color-mix(in srgb, var(--anthracite) 10%, transparent) 46%,
+    color-mix(in srgb, var(--blanc) 0%, transparent) 60%,
+    color-mix(in srgb, var(--blanc) 14%, transparent) 76%,
+    color-mix(in srgb, var(--anthracite) 8%, transparent) 100%
+  );
+}
+.drapeau-hote {
+  outline: 2px solid var(--or);
+  outline-offset: 3px;
+}
+.fleche-drapeau {
+  transition: transform 220ms var(--ease-signature);
+}
+/* Survol réservé aux appareils qui survolent vraiment ; focus clavier partout. */
+@media (hover: hover) {
+  .lien-drapeau:hover .drapeau {
+    box-shadow: var(--ombre-drapeau-survol);
+  }
+}
+.lien-drapeau:focus-visible .drapeau {
+  box-shadow: var(--ombre-drapeau-survol);
+}
+@media (prefers-reduced-motion: no-preference) {
+  @media (hover: hover) {
+    .lien-drapeau:hover .drapeau {
+      transform: translateY(-6px) scale(1.02);
+    }
+    .lien-drapeau:hover .fleche-drapeau {
+      transform: translateX(4px);
+    }
+  }
+  .lien-drapeau:focus-visible .drapeau {
+    transform: translateY(-6px) scale(1.02);
+  }
+  .lien-drapeau:focus-visible .fleche-drapeau {
+    transform: translateX(4px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .drapeau,
+  .fleche-drapeau {
+    transition: none;
+  }
+}
+/* « 2027 » décoratif, en contour très pâle. */
+.annee-contour {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--annee-contour);
 }
