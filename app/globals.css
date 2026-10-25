@@ -50,6 +50,11 @@
   --rouge: #bc3a2a;
   /* Vert de pastille en thème sombre : 6,1:1 sur la nuit adoucie. */
   --vert-pastille-nuit: #52b788;
+
+  /* En-tête : capsule de navigation. vert-profond sur sauge 8,6:1, blanc sur
+     vert-profond 9,8:1 (lien actif). */
+  --sauge: #edf1e9;
+  --vert-profond: #174c3b;
 }
 
 /* ────────────────────────────────────────────────────────────────
@@ -117,6 +122,13 @@
   /* Le trait « maintenant » de la partition, seul emploi de la terracotta. */
   --maintenant: var(--terracotta);
   --maintenant-texte: var(--terracotta-fonce);
+  /* Capsule de navigation de l'en-tête. */
+  --nav-capsule: var(--sauge);
+  --nav-capsule-bord: color-mix(in srgb, var(--vert-profond) 12%, transparent);
+  --nav-texte: var(--vert-profond);
+  --nav-survol: color-mix(in srgb, var(--vert-profond) 8%, var(--sauge));
+  --nav-actif: var(--vert-profond);
+  --nav-actif-texte: var(--blanc);
 
   --radius: 0.5rem;
 
@@ -181,6 +193,13 @@
   --pastille-rouge-icone: var(--vert-nuit);
   --maintenant: var(--terracotta-clair);
   --maintenant-texte: var(--terracotta-pale);
+  /* Sable-texte sur nuit-relevee 11,1:1 ; blanc sur vert-clair 6,4:1. */
+  --nav-capsule: var(--nuit-relevee);
+  --nav-capsule-bord: color-mix(in srgb, var(--sable) 14%, transparent);
+  --nav-texte: var(--sable-texte);
+  --nav-survol: color-mix(in srgb, var(--sable) 8%, var(--nuit-relevee));
+  --nav-actif: var(--vert-clair);
+  --nav-actif-texte: var(--blanc);
 
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.16);
   --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.32);
@@ -216,6 +235,12 @@
   --color-chiffre: var(--chiffre);
   --color-maintenant: var(--maintenant);
   --color-maintenant-texte: var(--maintenant-texte);
+  --color-nav-capsule: var(--nav-capsule);
+  --color-nav-capsule-bord: var(--nav-capsule-bord);
+  --color-nav-texte: var(--nav-texte);
+  --color-nav-survol: var(--nav-survol);
+  --color-nav-actif: var(--nav-actif);
+  --color-nav-actif-texte: var(--nav-actif-texte);
 
   /* Rôles sémantiques shadcn/ui */
   --color-background: var(--background);

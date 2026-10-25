@@ -16,7 +16,7 @@ export function ThemeToggle({ labels }: { labels: { toLight: string; toDark: str
     <button
       type="button"
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      className="flex size-11 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground active:bg-muted"
+      className="flex size-11 items-center justify-center rounded-full border border-nav-capsule-bord text-nav-texte transition-[background-color] duration-100 hover:bg-nav-survol active:bg-nav-survol"
     >
       <Moon aria-hidden className="size-[1.125rem] dark:hidden" />
       <Sun aria-hidden className="hidden size-[1.125rem] dark:block" />

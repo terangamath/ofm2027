@@ -4,7 +4,7 @@ import { ViewTransition, useEffect, useState } from "react";
 import { useLinkStatus } from "next/link";
 import { Menu, X } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
-import { LanguageSwitcher } from "@/components/layout/language-switcher";
+import { LanguageList, LanguageSwitcher } from "@/components/layout/language-switcher";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { Logo } from "@/components/brand/logo";
 
@@ -38,6 +38,11 @@ function Chargement() {
   return <span aria-hidden className={`lien-chargement ${pending ? "en-cours" : ""}`} />;
 }
 
+/** Rubrique courante : la page elle-même ou l'une de ses sous-pages (fiche pays…). L'accueil n'en sélectionne aucune. */
+function estActif(pathname: string, href: NavItem["href"]): boolean {
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -48,6 +53,15 @@ export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
     setPreviousPathname(pathname);
     setMenuOpen(false);
   }
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -61,7 +75,7 @@ export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b bg-background/90 backdrop-blur transition-colors duration-150 ${
+      className={`sticky top-0 z-50 border-b bg-background transition-[border-color] duration-150 ${
         scrolled ? "border-hairline" : "border-transparent"
       }`}
     >
@@ -72,45 +86,53 @@ export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
         {labels.skipToContent}
       </a>
 
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:h-20">
-        <Link href="/" className="rounded-sm active:opacity-70">
+      <div className="mx-auto grid h-[4.5rem] max-w-7xl grid-cols-[1fr_auto] items-center gap-4 px-4 sm:px-6 lg:h-[5.625rem] lg:grid-cols-[1fr_auto_1fr]">
+        <Link href="/" className="justify-self-start rounded-sm active:opacity-70">
           <Logo />
         </Link>
 
-        <nav aria-label={labels.navLabel} className="hidden items-center gap-8 md:flex">
-          {items.map((item) => {
-            const active = pathname === item.href;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={active ? "page" : undefined}
-                className={`relative py-1 text-sm font-medium active:text-primary ${active ? "text-foreground" : "text-muted-foreground hover:text-foreground"}`}
-              >
-                {item.label}
-                <Chargement />
-                {/* L'indicateur de page courante glisse vers sa nouvelle position au changement de page. */}
-                {active && (
-                  <ViewTransition name="nav-actif" share="nav-actif">
-                    <span aria-hidden className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-accent" />
-                  </ViewTransition>
-                )}
-              </Link>
-            );
-          })}
+        <nav aria-label={labels.navLabel} className="hidden lg:block">
+          <ul className="flex h-[3.125rem] items-center gap-1 rounded-full border border-nav-capsule-bord bg-nav-capsule p-1">
+            {items.map((item) => {
+              const active = estActif(pathname, item.href);
+              return (
+                <li key={item.href} className="h-full">
+                  <Link
+                    href={item.href}
+                    aria-current={active ? "page" : undefined}
+                    className={`relative flex h-full items-center rounded-full px-4 text-[1.0625rem] leading-none font-semibold whitespace-nowrap transition-[background-color] duration-100 xl:px-5 ${
+                      active ? "text-nav-actif-texte" : "text-nav-texte hover:bg-nav-survol active:bg-nav-survol"
+                    }`}
+                  >
+                    {/* La capsule de la page courante glisse vers sa nouvelle position au changement de page. */}
+                    {active && (
+                      <ViewTransition name="nav-actif" share="nav-actif">
+                        <span aria-hidden className="absolute inset-0 rounded-full bg-nav-actif" />
+                      </ViewTransition>
+                    )}
+                    <span className="relative">
+                      {item.label}
+                      <Chargement />
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-2 justify-self-end sm:gap-3">
           <div className="hidden sm:block">
             <LanguageSwitcher locale={locale} locales={locales} label={labels.languageSwitcher} />
           </div>
+          <span aria-hidden className="hidden h-6 w-px bg-nav-capsule-bord sm:block" />
           <ThemeToggle labels={{ toLight: labels.themeToLight, toDark: labels.themeToDark }} />
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
             aria-controls="menu-mobile"
-            className="flex size-11 items-center justify-center rounded-md text-foreground hover:bg-muted active:bg-muted md:hidden"
+            className="flex size-11 items-center justify-center rounded-full text-nav-texte transition-[background-color] duration-100 hover:bg-nav-survol active:bg-nav-survol lg:hidden"
           >
             {menuOpen ? <X aria-hidden className="size-5" /> : <Menu aria-hidden className="size-5" />}
             <span className="sr-only">{menuOpen ? labels.menuClose : labels.menuOpen}</span>
@@ -119,22 +141,27 @@ export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
       </div>
 
       {menuOpen && (
-        <div id="menu-mobile" className="animer-apparition border-t border-hairline bg-background md:hidden">
-          <nav className="flex flex-col gap-1 px-6 py-4" aria-label={labels.navLabel}>
-            {items.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={pathname === item.href ? "page" : undefined}
-                className="relative rounded-md px-2 py-3 text-base font-medium text-foreground hover:bg-muted active:bg-muted aria-[current=page]:text-primary"
-              >
-                {item.label}
-                <Chargement />
-              </Link>
-            ))}
+        <div id="menu-mobile" className="animer-apparition border-t border-hairline bg-background lg:hidden">
+          <nav aria-label={labels.navLabel} className="px-4 py-4 sm:px-6">
+            <ul className="flex flex-col gap-1">
+              {items.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    aria-current={estActif(pathname, item.href) ? "page" : undefined}
+                    className="relative flex min-h-11 items-center rounded-full px-4 py-2 text-[1.0625rem] font-semibold text-nav-texte transition-[background-color] duration-100 hover:bg-nav-survol active:bg-nav-survol aria-[current=page]:bg-nav-actif aria-[current=page]:text-nav-actif-texte"
+                  >
+                    <span className="relative">
+                      {item.label}
+                      <Chargement />
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </nav>
-          <div className="border-t border-hairline px-6 py-4 sm:hidden">
-            <LanguageSwitcher locale={locale} locales={locales} label={labels.languageSwitcher} />
+          <div className="border-t border-hairline px-4 py-4 sm:hidden">
+            <LanguageList locale={locale} locales={locales} label={labels.languageSwitcher} />
           </div>
         </div>
       )}
