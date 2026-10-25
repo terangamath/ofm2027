@@ -46,7 +46,7 @@ Ces traits ont été retirés parce que leur accumulation signe un site génér�
 - ❌ **Mono comme chrome** : JetBrains Mono (`.data`) est réservé à ce qui se trie ou se calcule — dates, heures, durées, effectifs, numéros. Les libellés d'interface sont en Inter (`.label`).
 - ❌ **Grille isométrique** en fond de section : supprimée. La seule géométrie du site est la figure construite du hero.
 - ❌ **Drapeaux emoji** : ils ne rendent pas sous Windows. Utiliser `components/shared/flag.tsx` (SVG dans `public/flags/`, issus de flag-icons, MIT).
-- ❌ **Survol qui soulève** (`hover:-translate-y`, ombre élevée) et `transition-colors` uniforme sur tous les éléments interactifs.
+
 - ❌ **Bande sombre** en tête des pages internes : le fond `vert-nuit` est réservé à l'accueil (hero et geste signature). Les pages internes ouvrent sur sable.
 
 ---
@@ -70,7 +70,6 @@ Exposer en variables CSS + thème Tailwind. Rôles sémantiques à respecter.
 | `--vert-clair` | `#2D6A4F` | Primaire clair, hovers, dégradés |
 | `--vert-nuit` | `#0E2018` | Surfaces sombres / dark mode |
 | `--or` | `#C9A84C` | Accent principal, filets, motif, focus |
-| `--or-clair` | `#E8C97A` | Accent clair, survols, dégradés or |
 | `--sable` | `#F5F0E8` | Fond chaud clair |
 | `--ivoire` | `#FBF9F4` | Fond « papier » très clair |
 | `--anthracite` | `#1C1C1E` | Texte principal |
@@ -116,7 +115,7 @@ Fallbacks système déclarés dans chaque `next/font`.
 - **Grille** : 12 colonnes éditoriales, marges larges, **compositions asymétriques bienvenues**. Alignements stricts (rigueur visible).
 - **Rayons** : `2px` (fin) · `8px` (cartes) · `16px` (grands blocs) · `full` (pastilles). Rester plutôt net.
 - **Ombres** : douces et basses. Ex. `0 1px 2px rgba(0,0,0,.04)`, `0 8px 24px rgba(14,32,24,.08)` (teinte verte discrète). Jamais d'ombre lourde.
-- **Motion — doctrine : surtout, en retirer.** Aucune animation d'ambiance, aucune apparition au scroll, aucune transition de survol uniforme. Trois familles seulement : (1) **une** séquence orchestrée à l'ouverture de l'accueil (la figure construite) ; (2) le mouvement qui **répond à une action** — accordéon (ouverture 280 ms `cubic-bezier(0.2, 0.8, 0.2, 1)`, fermeture 180 ms `ease-in`), menu mobile (200 ms, opacité seule), lien texte (filet 1 → 2 px, 120 ms), bouton (fond 100 ms) ; (3) le geste signature (voir §7). Durées et courbes différenciées selon la fonction : ce qui se déplie a une inertie, ce qui apparaît n'en a pas. **Tout** est désactivé sous `prefers-reduced-motion`.
+
 
 ---
 
