@@ -55,6 +55,8 @@
      sauge, teinte de survol), blanc sur vert-profond 9,8:1 (élément actif). */
   --sauge: #edf1e9;
   --vert-profond: #174c3b;
+  /* Pied de page, identique dans les deux thèmes : ivoire dessus 11,3:1, à 78 % 7,6:1. */
+  --vert-pied: #123e32;
 }
 
 /* ────────────────────────────────────────────────────────────────
@@ -267,6 +269,7 @@
   --color-carte-participant: var(--carte-participant);
   --color-carte-hote: var(--carte-hote);
   --color-vert-profond: var(--vert-profond);
+  --color-vert-pied: var(--vert-pied);
   --color-compte-texte: var(--compte-texte);
   --color-compte-libelle: var(--compte-libelle);
   --color-compte-accent: var(--compte-accent);

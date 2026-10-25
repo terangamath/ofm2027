@@ -24,13 +24,19 @@
     "themeToDark": "Switch to dark theme"
   },
   "Footer": {
-    "navLabel": "Useful links",
-    "history": "Past editions",
-    "legalMentions": "Legal notice",
+    "logoAlt": "OFM 2027 symbol: the letter π in the colours of Senegal, a baobab and a pirogue",
+    "organizedBy": "Organised by {organizer}",
+    "location": "{city}, {country}",
+    "usefulLinks": "Useful links",
     "officialSite": "Official OFM website",
-    "organizedBy": "Organised by",
-    "committee": "committee in {city}, {country}",
-    "rights": "© {year} Terangamath"
+    "rules": "Official rules",
+    "history": "Past editions",
+    "contact": "Contact",
+    "contactOrganisation": "Contact the organisers",
+    "terangamath": "Discover Terangamath",
+    "newTab": "(opens in a new tab)",
+    "rights": "© {year} Terangamath",
+    "legalMentions": "Legal notice"
   },
   "Home": {
     "Hero": {

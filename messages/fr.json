@@ -24,13 +24,19 @@
     "themeToDark": "Passer au thème sombre"
   },
   "Footer": {
-    "navLabel": "Liens utiles",
-    "history": "Historique des éditions",
-    "legalMentions": "Mentions légales",
+    "logoAlt": "Symbole de l'OFM 2027 : la lettre π aux couleurs du Sénégal, un baobab et une pirogue",
+    "organizedBy": "Organisée par {organizer}",
+    "location": "{city}, {country}",
+    "usefulLinks": "Liens utiles",
     "officialSite": "Site officiel de l'OFM",
-    "organizedBy": "Organisée par",
-    "committee": "comité à {city}, {country}",
-    "rights": "© {year} Terangamath"
+    "rules": "Règlement officiel",
+    "history": "Historique des éditions",
+    "contact": "Contact",
+    "contactOrganisation": "Contacter l'organisation",
+    "terangamath": "Découvrir Terangamath",
+    "newTab": "(s'ouvre dans un nouvel onglet)",
+    "rights": "© {year} Terangamath",
+    "legalMentions": "Mentions légales"
   },
   "Home": {
     "Hero": {
