@@ -867,102 +867,120 @@
   stroke-width: 2;
 }
 
-/* Drapeau flottant (components/shared/drapeau-flottant.tsx) : le CSS ne porte
-   que l'ombre et l'interaction. Le drapeau entier est centré dans une zone 3:2
-   commune ; une ombre ovale, détachée et indépendante, le fait flotter. Au
-   survol et au focus du lien .delegation, il monte de 6 px, l'ombre restée au
-   sol s'élargit, la flèche avance de 4 px. */
-.flag-stage {
+/* Drapeau flottant (components/shared/drapeau-flottant.tsx) : rectangle net,
+   plis de lumière très légers, et une ombre elliptique diffuse détachée sous
+   le drapeau. Au survol et au focus du lien .lien-drapeau, le drapeau monte de
+   6 px et l'ombre, restée au sol, s'élargit et s'estompe. */
+.drapeau-flottant {
   position: relative;
   isolation: isolate;
-  display: flex;
+  display: block;
   width: 100%;
-  aspect-ratio: 3 / 2;
-  align-items: center;
-  justify-content: center;
 }
-.flag-shadow {
+.drapeau-flottant::after {
+  content: "";
   position: absolute;
-  z-index: 0;
+  z-index: -1;
   left: 14%;
   right: 14%;
-  bottom: -16px;
-  height: 18px;
+  bottom: -22px;
+  height: 10px;
   border-radius: 50%;
   background: var(--ombre-drapeau-sol);
   filter: blur(12px);
   opacity: 0.45;
-  pointer-events: none;
   transition:
-    transform 250ms ease,
-    opacity 250ms ease;
+    transform 250ms var(--ease-signature),
+    opacity 250ms var(--ease-signature),
+    filter 250ms var(--ease-signature);
 }
-.flag-fabric {
+.drapeau {
   position: relative;
-  z-index: 1;
   display: block;
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 2px;
-  transition: translate 250ms ease;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 4px;
+  transition: translate 250ms var(--ease-signature);
 }
-/* Liseré à peine visible : un drapeau à bande blanche ne se fond pas dans le fond.
-   À retirer avec les drapeaux en tissu sur fond transparent. */
-.flag-fabric::after {
+/* Liseré intérieur à peine visible : les bandes blanches ne se fondent pas dans le fond. */
+.drapeau::before {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   pointer-events: none;
   border-radius: inherit;
   box-shadow: inset 0 0 0 1px var(--drapeau-lisere);
 }
-.flag-fabric-hote {
+/* Plis : lumière et ombre en lumière douce, très faibles. */
+.drapeau::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  background: linear-gradient(
+    100deg,
+    color-mix(in srgb, var(--anthracite) 9%, transparent) 0%,
+    color-mix(in srgb, var(--blanc) 0%, transparent) 14%,
+    color-mix(in srgb, var(--blanc) 16%, transparent) 28%,
+    color-mix(in srgb, var(--anthracite) 0%, transparent) 42%,
+    color-mix(in srgb, var(--anthracite) 8%, transparent) 58%,
+    color-mix(in srgb, var(--blanc) 0%, transparent) 72%,
+    color-mix(in srgb, var(--blanc) 12%, transparent) 86%,
+    color-mix(in srgb, var(--anthracite) 6%, transparent) 100%
+  );
+}
+.drapeau-hote {
   outline: 2px solid var(--or);
   outline-offset: 3px;
 }
-.delegation .fleche-drapeau {
-  transition: transform 250ms ease;
+.fleche-drapeau {
+  transition: transform 250ms var(--ease-signature);
 }
-@media (hover: hover) and (pointer: fine) {
-  .delegation:hover .flag-fabric {
+/* Survol réservé aux appareils qui survolent vraiment ; focus clavier partout. */
+@media (hover: hover) {
+  .lien-drapeau:hover .drapeau {
     translate: 0 -6px;
   }
-  .delegation:hover .flag-shadow {
-    transform: scaleX(1.15);
-    opacity: 0.3;
+  .lien-drapeau:hover .drapeau-flottant::after {
+    transform: scaleX(1.12);
+    filter: blur(16px);
+    opacity: 0.4;
   }
-  .delegation:hover .fleche-drapeau {
+  .lien-drapeau:hover .fleche-drapeau {
     transform: translateX(4px);
   }
 }
-.delegation:focus-visible .flag-fabric {
+.lien-drapeau:focus-visible .drapeau {
   translate: 0 -6px;
 }
-.delegation:focus-visible .flag-shadow {
-  transform: scaleX(1.15);
-  opacity: 0.3;
+.lien-drapeau:focus-visible .drapeau-flottant::after {
+  transform: scaleX(1.12);
+  filter: blur(16px);
+  opacity: 0.4;
 }
-.delegation:focus-visible .fleche-drapeau {
+.lien-drapeau:focus-visible .fleche-drapeau {
   transform: translateX(4px);
 }
-/* Mouvement réduit : rien ne bouge ; l'ombre qui s'estompe et le soulignement
-   du nom signalent encore le survol et le focus. */
+/* Mouvement réduit : ni montée ni déplacement de flèche ; l'ombre qui s'estompe
+   et le soulignement du nom signalent encore le survol. */
 @media (prefers-reduced-motion: reduce) {
-  .delegation .flag-fabric,
-  .delegation .flag-shadow,
-  .delegation .fleche-drapeau {
+  .drapeau,
+  .fleche-drapeau,
+  .drapeau-flottant::after {
     transition: none;
   }
-  .delegation:hover .flag-fabric,
-  .delegation:focus-visible .flag-fabric {
+  .lien-drapeau:hover .drapeau,
+  .lien-drapeau:focus-visible .drapeau {
     translate: none;
   }
-  .delegation:hover .fleche-drapeau,
-  .delegation:focus-visible .fleche-drapeau {
+  .lien-drapeau:hover .fleche-drapeau,
+  .lien-drapeau:focus-visible .fleche-drapeau {
     transform: none;
   }
 }
-
 /* « 2027 » décoratif, en contour très pâle. */
 .annee-contour {
   color: transparent;

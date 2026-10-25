@@ -21,8 +21,9 @@ export async function generateMetadata({
 /**
  * Les délégations : une galerie de drapeaux sur fond blanc. Pays hôte en
  * premier, puis ordre alphabétique (getDelegations). Chaque élément est un
- * seul lien vers la fiche du pays. Chaque drapeau, entier, est suspendu
- * au-dessus de la page (DrapeauFlottant) et monte au survol et au focus.
+ * seul lien vers la fiche du pays. Tous les drapeaux occupent le même
+ * rectangle 3:2 (remplissage centré), en tissu léger suspendu au-dessus de la
+ * page (DrapeauFlottant) ; ils montent au survol et au focus.
  */
 export default async function TeamsPage({
   params,
@@ -65,7 +66,7 @@ export default async function TeamsPage({
             <li key={delegation.slug}>
               <Link
                 href={`/equipes/${delegation.slug}`}
-                className="delegation group flex flex-col items-center gap-6 rounded-lg p-2 focus-visible:outline-or-trait dark:focus-visible:outline-or-clair"
+                className="lien-drapeau group flex flex-col items-center gap-6 rounded-lg p-2 focus-visible:outline-or-trait dark:focus-visible:outline-or-clair"
               >
                 <DrapeauFlottant
                   countryCode={delegation.countryCode}
