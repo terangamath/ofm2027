@@ -33,7 +33,7 @@ export default async function OrganisationPage({
 
       <section className="bg-surface pb-20 text-foreground lg:pb-28">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
-          <h2 className="text-h2 font-display text-foreground">{t("About.title")}</h2>
+          <h2 className="text-h2 text-foreground">{t("About.title")}</h2>
           <div className="flex max-w-[62ch] flex-col gap-6">
             <p className="text-body-l text-foreground">{t("About.body")}</p>
             {eventInfo.organizerUrl && (
@@ -56,7 +56,7 @@ export default async function OrganisationPage({
                 key={committee.id}
                 className="grid grid-cols-1 gap-3 border-b border-hairline py-6 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:gap-16"
               >
-                <dt className="font-display text-h3 text-foreground">{committee.name[typedLocale]}</dt>
+                <dt className="font-semibold text-h3 text-foreground">{committee.name[typedLocale]}</dt>
                 <dd className="flex max-w-[62ch] flex-col gap-4">
                   {committee.description && (
                     <p className="text-body text-muted-foreground">{committee.description[typedLocale]}</p>

@@ -73,7 +73,7 @@ export default async function HistoryPage({
                   const nombres = effectifs(edition);
                   return (
                     <tr key={edition.year} className="border-b border-hairline align-top">
-                      <th scope="row" className="py-5 pr-6 text-left font-display text-h3 leading-none tabular-nums text-primary">
+                      <th scope="row" className="py-5 pr-6 text-left font-semibold text-h3 leading-none tabular-nums text-primary">
                         {edition.year}
                       </th>
                       <td className="py-5 pr-6 font-medium">
@@ -126,7 +126,7 @@ export default async function HistoryPage({
 
       <section className="bg-surface-alt py-20 lg:py-28">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6">
-          <h2 className="font-display text-h3 text-foreground">{t("nationsTitle")}</h2>
+          <h2 className="text-h3 text-foreground">{t("nationsTitle")}</h2>
           <p className="max-w-2xl text-body text-muted-foreground">{t("nationsLead")}</p>
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {nations.map((nation) => (

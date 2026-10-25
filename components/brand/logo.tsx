@@ -35,7 +35,7 @@ export function Logo({ className, embleme = "maille" }: { className?: string; em
           <path d={MAILLE.rouge} style={{ fill: "var(--rouge)" }} />
         </svg>
       )}
-      <span className="font-display text-[1.375rem] leading-none font-bold tracking-[-0.02em] text-foreground">
+      <span className="text-[1.375rem] leading-none font-bold tracking-[-0.02em] text-foreground">
         OFM <span className="text-primary">2027</span>
       </span>
     </span>

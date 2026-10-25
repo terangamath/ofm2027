@@ -25,7 +25,7 @@ export async function CategoriesSection({ locale }: { locale: Locale }) {
               key={category.id}
               className={`flex flex-col gap-4 ${index === 1 ? "md:border-l md:border-hairline md:pl-12" : "md:pr-12"}`}
             >
-              <h3 className="font-display text-h2 text-foreground">{category.name[locale]}</h3>
+              <h3 className="text-h2 text-foreground">{category.name[locale]}</h3>
               <p className="text-body-l text-muted-foreground">{category.scope[locale]}</p>
               <p className="max-w-md text-body text-foreground/85">{notes[category.id]}</p>
             </div>

@@ -295,9 +295,7 @@
   --radius-full: 9999px;
 
   /* Familles de polices — variables injectées par next/font (voir app/[locale]/layout.tsx) */
-  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", monospace;
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
 
   /* Échelle typographique fluide — §5 */
   --text-display-xl: clamp(3rem, 8vw, 7rem);
@@ -355,26 +353,25 @@
     /* Chiffres proportionnels dans le texte courant ; tabulaires uniquement là
        où des nombres se comparent en colonne (.data, tables, grands chiffres). */
     font-variant-numeric: proportional-nums;
-    font-optical-sizing: auto;
+    font-weight: 400;
   }
+  /* Hiérarchie Montserrat : titres principaux 700, titres secondaires 600.
+     Boutons, champs et listes déroulantes héritent de la police (préflight
+     Tailwind : font: inherit). */
   h1,
   h2,
   h3,
   h4 {
-    @apply font-display;
     text-wrap: balance;
   }
-  /* Titrage Fraunces : opsz automatique (l'axe suit la taille réelle), SOFT et
-     WONK donnent le caractère. Les intertitres restent nets (SOFT 0, WONK 0). */
-  h1,
-  h2,
-  .titrage {
-    font-variation-settings: "SOFT" 30, "WONK" 1;
+  h1 {
+    font-weight: 700;
     letter-spacing: -0.02em;
   }
+  h2,
   h3,
   h4 {
-    font-variation-settings: "SOFT" 0, "WONK" 0;
+    font-weight: 600;
     letter-spacing: -0.01em;
   }
   p {
@@ -392,18 +389,16 @@
 }
 
 @layer utilities {
-  /* Libellé d'interface : Inter, bas de casse, graisse moyenne. Jamais de capitales. */
+  /* Petit libellé d'interface : bas de casse, graisse normale. Jamais de capitales. */
   .label {
-    font-family: var(--font-sans);
     font-size: var(--text-small);
     line-height: var(--text-small--line-height);
-    font-weight: 500;
+    font-weight: 400;
   }
 
-  /* Donnée : JetBrains Mono, chiffres tabulaires. Réservé à ce qui se trie ou se
-     calcule — dates, heures, durées, effectifs, numéros. */
+  /* Donnée : chiffres tabulaires. Réservé à ce qui se trie ou se calcule —
+     dates, heures, durées, effectifs, numéros. */
   .data {
-    font-family: var(--font-mono);
     font-size: var(--text-label);
     line-height: var(--text-label--line-height);
     font-variant-numeric: tabular-nums;
@@ -501,7 +496,7 @@
   }
   .figure-etiquette {
     fill: var(--figure-etiquette);
-    font-family: var(--font-display);
+    font-family: var(--font-sans);
     font-style: italic;
     font-weight: 600;
     font-size: 21px;
@@ -570,14 +565,6 @@
   }
   .tissage-rouge {
     fill: var(--tissage-rouge);
-  }
-  /* Titre du hero : Fraunces grasse, comme sur la maquette 5254. Plus serré
-     que display-xl pour tenir « Mathématiques » dans sa colonne. */
-  .titre-hero {
-    font-size: clamp(2.75rem, 6.2vw, 6rem);
-    line-height: 0.98;
-    font-weight: 700;
-    letter-spacing: -0.025em;
   }
   .pastille {
     display: flex;

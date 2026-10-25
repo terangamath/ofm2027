@@ -101,7 +101,7 @@ export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
                   <Link
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className="relative flex min-h-11 items-center text-[0.9375rem] font-medium whitespace-nowrap text-nav-texte hover:underline hover:decoration-nav-filet hover:decoration-2 hover:underline-offset-8 xl:text-base"
+                    className="relative flex min-h-11 items-center text-[0.9375rem] font-medium whitespace-nowrap text-nav-texte aria-[current=page]:font-semibold hover:underline hover:decoration-nav-filet hover:decoration-2 hover:underline-offset-8 xl:text-base"
                   >
                     {item.label}
                     <Chargement />
@@ -146,7 +146,7 @@ export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
                   <Link
                     href={item.href}
                     aria-current={estActif(pathname, item.href) ? "page" : undefined}
-                    className="relative flex min-h-11 items-center rounded-full px-4 py-2 text-[1.0625rem] font-semibold text-nav-texte transition-[background-color] duration-100 hover:bg-nav-survol active:bg-nav-survol aria-[current=page]:bg-nav-actif aria-[current=page]:text-nav-actif-texte"
+                    className="relative flex min-h-11 items-center rounded-full px-4 py-2 text-[1.0625rem] font-medium text-nav-texte aria-[current=page]:font-semibold transition-[background-color] duration-100 hover:bg-nav-survol active:bg-nav-survol aria-[current=page]:bg-nav-actif aria-[current=page]:text-nav-actif-texte"
                   >
                     <span className="relative">
                       {item.label}

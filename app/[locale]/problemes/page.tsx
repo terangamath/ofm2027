@@ -52,7 +52,7 @@ export default async function ProblemsPage({
                       {problem.hasSolution ? t("hasSolution") : t("noSolutionYet")}
                     </span>
                   </div>
-                  <h2 className="font-display text-h4 text-foreground">{problem.title}</h2>
+                  <h2 className="text-h4 text-foreground">{problem.title}</h2>
                   <div className="flex flex-wrap gap-2">
                     {problem.topics.map((topic) => (
                       <span

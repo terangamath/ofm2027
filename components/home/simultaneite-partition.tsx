@@ -223,7 +223,7 @@ export function Partition({ lignes, debutIso, finIso, libelles }: PartitionProps
             <div className="flex flex-wrap gap-x-8 gap-y-4">
               {unites.map((u) => (
                 <span key={u.libelle} className="flex flex-col gap-1">
-                  <span className="font-mono text-h2 leading-none tabular-nums text-chiffre">
+                  <span className="font-semibold text-h2 leading-none tabular-nums text-chiffre">
                     {u.valeur === undefined ? "—".repeat(u.pad) : String(u.valeur).padStart(u.pad, "0")}
                   </span>
                   <span className="label text-muted-foreground">{u.libelle}</span>
@@ -232,7 +232,7 @@ export function Partition({ lignes, debutIso, finIso, libelles }: PartitionProps
             </div>
           </>
         )}
-        {etat === "pendant" && <p className="text-h3 font-display text-chiffre">{libelles.during}</p>}
+        {etat === "pendant" && <p className="text-h3 font-semibold text-chiffre">{libelles.during}</p>}
         {etat === "apres" && (
           <>
             <p className="label text-muted-foreground">{libelles.after}</p>

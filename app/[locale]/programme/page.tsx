@@ -54,7 +54,7 @@ export default async function ProgrammePage({
               <div key={day.label.fr} className="flex flex-col gap-6">
                 <div className="flex flex-col gap-1 border-b border-hairline pb-4">
                   <span className="data text-link">{formatDate(day.date)}</span>
-                  <h2 className="font-display text-h3 text-foreground">{day.label[typedLocale]}</h2>
+                  <h2 className="text-h3 text-foreground">{day.label[typedLocale]}</h2>
                 </div>
 
                 <ol className="flex flex-col gap-5">

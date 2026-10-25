@@ -109,8 +109,8 @@ function LocaleLink({ loc, active, pathname }: { loc: string; active: boolean; p
       lang={loc}
       hrefLang={loc}
       aria-current={active ? "true" : undefined}
-      className={`flex min-h-11 items-center rounded-full px-4 text-base font-semibold transition-[background-color] duration-100 ${
-        active ? "bg-nav-actif text-nav-actif-texte" : "text-nav-texte hover:bg-nav-survol"
+      className={`flex min-h-11 items-center rounded-full px-4 text-base transition-[background-color] duration-100 ${
+        active ? "bg-nav-actif font-semibold text-nav-actif-texte" : "font-medium text-nav-texte hover:bg-nav-survol"
       }`}
     >
       {LOCALE_NAMES[loc] ?? loc.toUpperCase()}

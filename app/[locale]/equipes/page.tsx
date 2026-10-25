@@ -49,13 +49,13 @@ export default async function TeamsPage({
                       <ViewTransition name={`delegation-${delegation.slug}`} share="partage">
                         <span className="flex items-center gap-4">
                           <Flag countryCode={delegation.countryCode} size={32} />
-                          <h2 className="font-display text-h4 text-foreground">{delegation.name[typedLocale]}</h2>
+                          <h2 className="text-h4 text-foreground">{delegation.name[typedLocale]}</h2>
                         </span>
                       </ViewTransition>
                     ) : (
                       <>
                         <Flag countryCode={delegation.countryCode} size={32} />
-                        <h2 className="font-display text-h4 text-foreground">{delegation.name[typedLocale]}</h2>
+                        <h2 className="text-h4 text-foreground">{delegation.name[typedLocale]}</h2>
                       </>
                     )}
                     {delegation.isHost && (

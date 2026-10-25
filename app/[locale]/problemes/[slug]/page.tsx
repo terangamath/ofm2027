@@ -54,7 +54,7 @@ export default async function ProblemDetailPage({
               {frontmatter.hasSolution ? t("solutionAvailable") : t("solutionPending")}
             </span>
           </div>
-          <h1 className="font-display text-display-l text-foreground">{frontmatter.title}</h1>
+          <h1 className="text-display-l text-foreground">{frontmatter.title}</h1>
           <div className="flex flex-wrap gap-2">
             {frontmatter.topics.map((topic) => (
               <span

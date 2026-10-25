@@ -35,7 +35,7 @@ export async function FicheSection({ locale }: { locale: Locale }) {
       <div className="mx-auto flex max-w-7xl flex-col gap-16 px-6">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
           <div className="flex flex-col gap-6">
-            <p className="font-display text-display-l leading-none text-chiffre" aria-hidden>
+            <p className="font-semibold text-display-l leading-none text-chiffre" aria-hidden>
               {eventInfo.edition}
             </p>
             <SectionHeading title={t("title")} lead={t("lead")} />
@@ -61,7 +61,7 @@ export async function FicheSection({ locale }: { locale: Locale }) {
           <dl className="grid grid-cols-2 gap-x-8 gap-y-8 border-y border-hairline py-8 md:grid-cols-4">
             {stats.map((stat) => (
               <div key={stat.label.fr} className="flex flex-col gap-1">
-                <dd className="font-display text-h2 leading-none tabular-nums text-chiffre">{stat.value}</dd>
+                <dd className="font-semibold text-h2 leading-none tabular-nums text-chiffre">{stat.value}</dd>
                 <dt className="text-small text-muted-foreground">
                   {stat.label[locale]}
                   {stat.provisional && <span aria-hidden> *</span>}

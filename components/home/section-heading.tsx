@@ -16,7 +16,7 @@ export function SectionHeading({ title, lead, align = "left" }: SectionHeadingPr
     <div
       className={`flex flex-col gap-4 ${centered ? "items-center text-center" : "items-start text-left"}`}
     >
-      <h2 className="text-h2 font-display text-foreground">{sansVeuve(title)}</h2>
+      <h2 className="text-h2 text-foreground">{sansVeuve(title)}</h2>
       {lead && (
         <p className={`text-body-l text-muted-foreground ${centered ? "max-w-2xl" : "max-w-xl"}`}>
           {lead}

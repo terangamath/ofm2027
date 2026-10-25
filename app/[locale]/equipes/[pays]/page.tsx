@@ -54,13 +54,13 @@ export default async function TeamDetailPage({
             <ViewTransition name={`delegation-${delegation.slug}`} share="partage">
               <span className="flex items-center gap-5">
                 <Flag countryCode={delegation.countryCode} size={64} />
-                <h1 className="font-display text-display-l text-primary">{delegation.name[typedLocale]}</h1>
+                <h1 className="text-display-l text-primary">{delegation.name[typedLocale]}</h1>
               </span>
             </ViewTransition>
           ) : (
             <span className="flex items-center gap-5">
               <Flag countryCode={delegation.countryCode} size={64} />
-              <h1 className="font-display text-display-l text-primary">{delegation.name[typedLocale]}</h1>
+              <h1 className="text-display-l text-primary">{delegation.name[typedLocale]}</h1>
             </span>
           )}
           <p className="label text-muted-foreground">

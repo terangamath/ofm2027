@@ -42,7 +42,7 @@ export async function Hero({ locale }: { locale: Locale }) {
 
       <div className="relative col-start-1 row-start-1 mx-auto flex w-full max-w-7xl flex-col items-start gap-6 px-4 pt-10 pb-8 sm:px-6 lg:gap-8 lg:pt-14">
         <hgroup className="hero-texte flex flex-col gap-2 text-blanc lg:gap-3">
-          <h1 className="font-sans text-[clamp(2.75rem,1.9rem+3.4vw,4.5rem)] leading-none font-bold tracking-[-0.02em]">
+          <h1 className="text-[clamp(2.75rem,1.9rem+3.4vw,4.5rem)] leading-none font-bold tracking-[-0.02em]">
             {t("title")}
           </h1>
           <p className="max-w-[30ch] text-[clamp(1.125rem,0.95rem+0.75vw,1.5rem)] leading-snug font-medium text-balance">
