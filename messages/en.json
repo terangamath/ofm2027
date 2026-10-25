@@ -47,6 +47,16 @@
       "minutes": "minutes",
       "seconds": "seconds"
     },
+    "About": {
+      "title": "About the OFM",
+      "p1": "The Francophone Mathematical Olympiad is a competition for students across the French-speaking world. It sets problems in algebra, combinatorics, geometry and number theory, in two categories: Junior and Senior.",
+      "p2": "Participants represent their country in national delegations. Each paper consists of four problems to be solved in four and a half hours.",
+      "p3": "The 8<sup>th</sup> edition is organised by <b>Terangamath</b> in Senegal on <b>27 and 28 March 2027</b>, with papers sat remotely in the participating countries.",
+      "rules": "Official rules",
+      "terangamath": "Discover Terangamath",
+      "newTab": "(opens in a new tab)",
+      "logoAlt": "OFM 2027 logo: the letter π in the colours of Senegal, a baobab and a pirogue, above “OFM 2027 Sénégal, Olympiades francophones de mathématiques”."
+    },
     "Event": {
       "title": "The event, at a glance",
       "lead": "An edition organised by Terangamath, contested entirely online.",

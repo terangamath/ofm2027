@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/home/hero";
-import { SimultaneiteSection } from "@/components/home/simultaneite";
-import { FicheSection } from "@/components/home/fiche";
+import { AboutSection } from "@/components/home/about";
 import { CategoriesSection } from "@/components/home/categories";
 import { DelegationsSection } from "@/components/home/delegations";
 import { ProblemsTeaserSection } from "@/components/home/problems-teaser";
@@ -23,8 +22,8 @@ export async function generateMetadata({
 }
 
 /**
- * Accueil : un seul chapitre sombre (hero, puis la partition), puis du papier.
- * Six sections de hauteurs différentes, en alternant sable et ivoire.
+ * Accueil : le premier écran photographique (dates et compte à rebours), la
+ * présentation de l'OFM, puis les sections de contenu, en alternant sable et ivoire.
  */
 export default async function HomePage({
   params,
@@ -39,8 +38,7 @@ export default async function HomePage({
     <>
       <EventJsonLd event={eventInfo} locale={typedLocale} />
       <Hero locale={typedLocale} />
-      <SimultaneiteSection locale={typedLocale} />
-      <FicheSection locale={typedLocale} />
+      <AboutSection locale={typedLocale} />
       <CategoriesSection locale={typedLocale} />
       <DelegationsSection locale={typedLocale} />
       <ProblemsTeaserSection locale={typedLocale} />

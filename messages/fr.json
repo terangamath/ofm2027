@@ -47,6 +47,16 @@
       "minutes": "minutes",
       "seconds": "secondes"
     },
+    "About": {
+      "title": "À propos de l'OFM",
+      "p1": "L'Olympiade francophone de mathématiques est une compétition destinée aux élèves du monde francophone. Elle propose des problèmes d'algèbre, de combinatoire, de géométrie et de théorie des nombres, répartis en deux catégories : Junior et Senior.",
+      "p2": "Les participants représentent leur pays au sein de délégations nationales. Chaque épreuve comprend quatre problèmes à résoudre en quatre heures trente.",
+      "p3": "La 8<sup>e</sup> édition est organisée par <b>Terangamath</b>, au Sénégal, les <b>27 et 28 mars 2027</b>, avec des épreuves à distance dans les pays participants.",
+      "rules": "Règlement officiel",
+      "terangamath": "Découvrir Terangamath",
+      "newTab": "(s'ouvre dans un nouvel onglet)",
+      "logoAlt": "Logo de l'OFM 2027 : la lettre π aux couleurs du Sénégal, un baobab et une pirogue, au-dessus de « OFM 2027 Sénégal, Olympiades francophones de mathématiques »."
+    },
     "Event": {
       "title": "La fiche de l'événement",
       "lead": "Une édition organisée par Terangamath, disputée entièrement à distance.",
