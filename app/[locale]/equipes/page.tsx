@@ -6,11 +6,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { getDelegations } from "@/lib/content";
-import { rapportDrapeau, srcDrapeau } from "@/lib/drapeaux";
+import { calageDrapeau, srcDrapeau } from "@/lib/drapeaux";
 import type { Locale } from "@/content/types";
-
-/** Emplacement commun à tous les drapeaux (3:2) : les noms s'alignent, chaque drapeau y garde ses proportions. */
-const RAPPORT_EMPLACEMENT = 3 / 2;
 
 export async function generateMetadata({
   params,
@@ -25,8 +22,9 @@ export async function generateMetadata({
 /**
  * Les délégations : une galerie de drapeaux sur fond blanc. Pays hôte en
  * premier, puis ordre alphabétique (getDelegations). Chaque élément est un
- * seul lien vers la fiche du pays ; le drapeau, décoratif (alt vide), monte
- * légèrement au survol et au focus (voir .drapeau dans globals.css).
+ * seul lien vers la fiche du pays. Tous les drapeaux occupent le même
+ * rectangle 3:2 (remplissage centré, sans déformation) et flottent doucement ;
+ * ils montent au survol et au focus (voir .drapeau dans globals.css).
  */
 export default async function TeamsPage({
   params,
@@ -63,9 +61,7 @@ export default async function TeamsPage({
       </div>
 
       <ul className="mx-auto grid max-w-[75rem] grid-cols-1 gap-x-4 gap-y-6 px-4 min-[22rem]:grid-cols-2 sm:px-6 md:grid-cols-3 md:gap-x-8 md:gap-y-8 lg:grid-cols-4 lg:gap-x-10">
-        {delegations.map((delegation) => {
-          const rapport = rapportDrapeau(delegation.countryCode);
-          const large = rapport >= RAPPORT_EMPLACEMENT;
+        {delegations.map((delegation, index) => {
           const nom = delegation.name[typedLocale];
           return (
             <li key={delegation.slug}>
@@ -73,12 +69,19 @@ export default async function TeamsPage({
                 href={`/equipes/${delegation.slug}`}
                 className="lien-drapeau group flex flex-col items-center gap-3 rounded-lg p-2 focus-visible:outline-or-trait dark:focus-visible:outline-or-clair"
               >
-                <span className="flex aspect-[3/2] w-full items-center justify-center">
+                {/* Décalage de phase : les drapeaux ne flottent pas tous en même temps. */}
+                <span className="drapeau-flotte block w-full" style={{ animationDelay: `${-(index % 5) * 1.3}s` }}>
                   <span
                     className={`drapeau ${delegation.isHost ? "drapeau-hote" : ""}`}
-                    style={{ aspectRatio: rapport, width: large ? "100%" : "auto", height: large ? "auto" : "100%" }}
+                    style={{ animationDelay: `${-(index % 4) * 1.7}s` }}
                   >
-                    <Image src={srcDrapeau(delegation.countryCode)} alt="" fill sizes="(min-width: 1024px) 270px, 45vw" />
+                    <Image
+                      src={srcDrapeau(delegation.countryCode)}
+                      alt=""
+                      fill
+                      sizes="(min-width: 1024px) 270px, 45vw"
+                      className={`object-cover ${calageDrapeau(delegation.countryCode)}`}
+                    />
                   </span>
                 </span>
                 <span className="flex flex-col items-center gap-0.5 text-center">

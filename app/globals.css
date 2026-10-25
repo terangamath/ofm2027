@@ -869,18 +869,26 @@
   stroke-width: 2;
 }
 
-/* Page Équipes : drapeaux flottants. Coins adoucis, ombre douce, et un léger
-   drapé (lumière et ombre en lumière douce) qui n'efface ni couleurs ni symboles. */
+/* Page Équipes : drapeaux flottants. Tous dans le même rectangle 3:2, coins
+   adoucis, ombre douce. Le drapé est une lumière qui glisse sur le tissu
+   (lumière douce : couleurs et symboles restent lisibles) ; le drapeau entier
+   ondule à peine. Survol et focus le font monter. */
+.drapeau-flotte {
+  animation: drapeau-flotte 6s ease-in-out infinite;
+}
 .drapeau {
   position: relative;
   display: block;
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  aspect-ratio: 3 / 2;
   overflow: hidden;
   border-radius: 6px;
   box-shadow: var(--ombre-drapeau);
+  transform-origin: left center;
+  animation: drapeau-ondule 5s ease-in-out infinite;
   transition:
-    transform 220ms var(--ease-signature),
+    translate 220ms var(--ease-signature),
+    scale 220ms var(--ease-signature),
     box-shadow 220ms var(--ease-signature);
 }
 .drapeau::after {
@@ -889,16 +897,42 @@
   inset: 0;
   pointer-events: none;
   mix-blend-mode: soft-light;
-  background: linear-gradient(
-    102deg,
+  background: repeating-linear-gradient(
+    100deg,
     color-mix(in srgb, var(--blanc) 0%, transparent) 0%,
-    color-mix(in srgb, var(--blanc) 16%, transparent) 16%,
-    color-mix(in srgb, var(--anthracite) 0%, transparent) 30%,
-    color-mix(in srgb, var(--anthracite) 10%, transparent) 46%,
-    color-mix(in srgb, var(--blanc) 0%, transparent) 60%,
-    color-mix(in srgb, var(--blanc) 14%, transparent) 76%,
-    color-mix(in srgb, var(--anthracite) 8%, transparent) 100%
+    color-mix(in srgb, var(--blanc) 22%, transparent) 9%,
+    color-mix(in srgb, var(--anthracite) 0%, transparent) 17%,
+    color-mix(in srgb, var(--anthracite) 14%, transparent) 26%,
+    color-mix(in srgb, var(--blanc) 0%, transparent) 34%
   );
+  background-size: 300% 100%;
+  animation: drapeau-drape 7s linear infinite;
+}
+@keyframes drapeau-drape {
+  from {
+    background-position: 0% 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+@keyframes drapeau-ondule {
+  0%,
+  100% {
+    transform: perspective(600px) rotateY(0deg) skewY(0deg);
+  }
+  50% {
+    transform: perspective(600px) rotateY(-4deg) skewY(-0.6deg);
+  }
+}
+@keyframes drapeau-flotte {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
 }
 .drapeau-hote {
   outline: 2px solid var(--or);
@@ -907,35 +941,45 @@
 .fleche-drapeau {
   transition: transform 220ms var(--ease-signature);
 }
-/* Survol réservé aux appareils qui survolent vraiment ; focus clavier partout. */
+/* Survol réservé aux appareils qui survolent vraiment ; focus clavier partout.
+   translate/scale (propriétés distinctes) se combinent à l'ondulation. */
 @media (hover: hover) {
   .lien-drapeau:hover .drapeau {
     box-shadow: var(--ombre-drapeau-survol);
+    translate: 0 -6px;
+    scale: 1.02;
+  }
+  .lien-drapeau:hover .fleche-drapeau {
+    transform: translateX(4px);
   }
 }
 .lien-drapeau:focus-visible .drapeau {
   box-shadow: var(--ombre-drapeau-survol);
+  translate: 0 -6px;
+  scale: 1.02;
 }
-@media (prefers-reduced-motion: no-preference) {
-  @media (hover: hover) {
-    .lien-drapeau:hover .drapeau {
-      transform: translateY(-6px) scale(1.02);
-    }
-    .lien-drapeau:hover .fleche-drapeau {
-      transform: translateX(4px);
-    }
-  }
-  .lien-drapeau:focus-visible .drapeau {
-    transform: translateY(-6px) scale(1.02);
-  }
-  .lien-drapeau:focus-visible .fleche-drapeau {
-    transform: translateX(4px);
-  }
+.lien-drapeau:focus-visible .fleche-drapeau {
+  transform: translateX(4px);
 }
+/* Mouvement réduit : ni flottement ni montée ; l'ombre et le soulignement restent. */
 @media (prefers-reduced-motion: reduce) {
+  .drapeau-flotte,
+  .drapeau,
+  .drapeau::after {
+    animation: none;
+  }
   .drapeau,
   .fleche-drapeau {
     transition: none;
+  }
+  .lien-drapeau:hover .drapeau,
+  .lien-drapeau:focus-visible .drapeau {
+    translate: none;
+    scale: none;
+  }
+  .lien-drapeau:hover .fleche-drapeau,
+  .lien-drapeau:focus-visible .fleche-drapeau {
+    transform: none;
   }
 }
 /* « 2027 » décoratif, en contour très pâle. */
