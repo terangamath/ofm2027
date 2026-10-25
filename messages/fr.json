@@ -34,12 +34,10 @@
   },
   "Home": {
     "Hero": {
-      "title": "Olympiade francophone de mathématiques",
-      "remote": "À distance",
+      "title": "OFM 2027",
+      "subtitle": "8<sup>e</sup> Olympiade francophone de mathématiques",
       "ctaPrimary": "Découvrir l'Olympiade",
       "photoAlt": "Pirogues peintes sur une plage du Sénégal ; l'une porte l'inscription « OFM 2027 Sénégal ».",
-      "examTime": "{time} à Dakar",
-      "provisional": "horaire provisoire",
       "countdownLabel": "Compte à rebours jusqu'au début de l'épreuve",
       "countdownBefore": "Début de l'épreuve dans",
       "countdownDuring": "Épreuve en cours",

@@ -34,12 +34,10 @@
   },
   "Home": {
     "Hero": {
-      "title": "Francophone Mathematical Olympiad",
-      "remote": "Online",
+      "title": "OFM 2027",
+      "subtitle": "8<sup>th</sup> Francophone Mathematical Olympiad",
       "ctaPrimary": "Discover the Olympiad",
       "photoAlt": "Painted pirogues on a beach in Senegal; one bears the inscription “OFM 2027 Sénégal”.",
-      "examTime": "{time} in Dakar",
-      "provisional": "provisional time",
       "countdownLabel": "Countdown to the start of the paper",
       "countdownBefore": "The paper starts in",
       "countdownDuring": "Paper in progress",
