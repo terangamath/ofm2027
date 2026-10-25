@@ -8,9 +8,6 @@ import { getDelegations } from "@/lib/content";
 import { DrapeauFlottant } from "@/components/shared/drapeau-flottant";
 import type { Locale } from "@/content/types";
 
-/** Rendu « relief » des drapeaux, en essai sur ces pays avant d'être généralisé. */
-const RELIEF_EN_ESSAI = new Set(["SN", "DZ"]);
-
 export async function generateMetadata({
   params,
 }: {
@@ -24,9 +21,8 @@ export async function generateMetadata({
 /**
  * Les délégations : une galerie de drapeaux sur fond blanc. Pays hôte en
  * premier, puis ordre alphabétique (getDelegations). Chaque élément est un
- * seul lien vers la fiche du pays. Tous les drapeaux occupent le même
- * rectangle 3:2 (remplissage centré), en tissu léger suspendu au-dessus de la
- * page (DrapeauFlottant) ; ils montent au survol et au focus.
+ * seul lien vers la fiche du pays. Chaque drapeau, entier, est suspendu
+ * au-dessus de la page (DrapeauFlottant) et monte au survol et au focus.
  */
 export default async function TeamsPage({
   params,
@@ -62,33 +58,19 @@ export default async function TeamsPage({
         </div>
       </div>
 
-      {/* Souplesse du tissu (variante relief) : un bruit très doux déplace le drapeau
-          de 1,5 px au plus (repère de 300 unités, voir DrapeauFlottant). Rendu une
-          fois, sans animation ; la région déborde de 6 % pour ne pas rogner les bords. */}
-      <svg aria-hidden width="0" height="0" className="absolute">
-        <filter id="tissu-souple" x="-6%" y="-6%" width="112%" height="112%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
-          <feTurbulence type="fractalNoise" baseFrequency="0.012 0.025" numOctaves="1" seed="7" result="bruit" />
-          <feDisplacementMap in="SourceGraphic" in2="bruit" scale="3" xChannelSelector="R" yChannelSelector="G" result="tissu" />
-          {/* Le déplacement est échantillonné au pixel près : un flou infime lisse les crans des bords nets. */}
-          <feGaussianBlur in="tissu" stdDeviation="0.35" />
-        </filter>
-      </svg>
-
       <ul className="mx-auto grid max-w-[75rem] grid-cols-1 gap-x-4 gap-y-6 px-4 min-[22rem]:grid-cols-2 sm:px-6 md:grid-cols-3 md:gap-x-8 md:gap-y-8 lg:grid-cols-4 lg:gap-x-10">
         {delegations.map((delegation) => {
           const nom = delegation.name[typedLocale];
-          const relief = RELIEF_EN_ESSAI.has(delegation.countryCode);
           return (
             <li key={delegation.slug}>
               <Link
                 href={`/equipes/${delegation.slug}`}
-                className={`${relief ? "delegation" : "lien-drapeau"} group flex flex-col items-center gap-6 rounded-lg p-2 focus-visible:outline-or-trait dark:focus-visible:outline-or-clair`}
+                className="delegation group flex flex-col items-center gap-6 rounded-lg p-2 focus-visible:outline-or-trait dark:focus-visible:outline-or-clair"
               >
                 <DrapeauFlottant
                   countryCode={delegation.countryCode}
                   hote={delegation.isHost}
                   sizes="(min-width: 1024px) 270px, 45vw"
-                  relief={relief}
                 />
                 <span className="flex flex-col items-center gap-0.5 text-center">
                   {/* La flèche suit le dernier mot, même quand le nom passe sur deux lignes. */}
