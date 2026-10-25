@@ -88,7 +88,7 @@ export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
 
       <div className="mx-auto grid h-[4.5rem] max-w-7xl grid-cols-[1fr_auto] items-center gap-4 px-4 sm:px-6 lg:h-[5.625rem] lg:grid-cols-[1fr_auto_1fr]">
         <Link href="/" className="justify-self-start rounded-sm active:opacity-70">
-          <Logo />
+          <Logo embleme="pi" />
         </Link>
 
         <nav aria-label={labels.navLabel} className="hidden lg:block">
