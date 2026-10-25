@@ -1,35 +1,30 @@
 import { getTranslations } from "next-intl/server";
-import { CalendarDays, Laptop, Sigma, Users, type LucideIcon } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+import { HeroCompte } from "@/components/home/hero-compte";
 import { FigureConstruction } from "@/components/motifs/figure-construction";
 import { BandeauCouche, BandeauVertical } from "@/components/motifs/bandeau-tisse";
 import type { Locale } from "@/content/types";
 import { evenement as eventInfo } from "@/lib/contenu";
+import { heureLocale } from "@/lib/fuseaux";
 import { sansVeuve } from "@/lib/typographie";
 
 const FIGURE_SOURCE = "/archives/2024/ofm-2024-senior-sujet.pdf";
-
-type Pastille = "pastille-vert" | "pastille-jaune" | "pastille-rouge";
 
 /**
  * Hero de la variante D (maquette 5254) : titre, texte, bouton et rangée
  * d'informations tiennent sur un écran ; la figure sur son disque soleil à
  * droite ; le bandeau tissé sur le bord droit (couché sous le hero sur
- * téléphone). Sur téléphone, la rangée d'informations passe avant la figure
- * pour rester visible sans défiler.
+ * téléphone). Sous le texte, les dates en grand et le compte à rebours ; sur
+ * téléphone, ils passent avant la figure pour rester visibles sans défiler.
  */
 export async function Hero({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "Home.Hero" });
-  const categories = eventInfo.categories.map((category) => category.name[locale]).join(" · ");
-
-  const infos: { label: string; value: string; icone: LucideIcon; pastille: Pastille; data?: boolean }[] = [
-    ...(eventInfo.dates
-      ? [{ label: t("metaDates"), value: eventInfo.dates[locale], icone: CalendarDays, pastille: "pastille-vert" as const, data: true }]
-      : []),
-    { label: t("metaMode"), value: t("metaModeValue"), icone: Laptop, pastille: "pastille-jaune" },
-    { label: t("metaCategories"), value: categories, icone: Users, pastille: "pastille-rouge" },
-    { label: t("metaOrganizer"), value: eventInfo.organizer, icone: Sigma, pastille: "pastille-vert" },
-  ];
+  const exam = eventInfo.exam;
+  const debut = exam ? new Date(exam.startInstant) : null;
+  const jourEpreuve =
+    exam && debut
+      ? new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", timeZone: exam.referenceZone }).format(debut)
+      : null;
 
   return (
     <section className="avec-bandeau relative isolate overflow-hidden bg-surface text-foreground">
@@ -54,21 +49,38 @@ export async function Hero({ locale }: { locale: Locale }) {
           </div>
         </div>
 
-        <dl className="grid grid-cols-1 gap-x-6 gap-y-3 border-t border-border pt-5 sm:grid-cols-2 sm:gap-y-5 sm:pt-6 lg:col-span-2 lg:row-start-2 lg:grid-cols-4 lg:gap-0 lg:pt-7">
-          {infos.map(({ label, value, icone: Icone, pastille, data }, i) => (
-            <div
-              key={label}
-              className={`flex items-center gap-3 lg:gap-4 lg:px-6 ${i === 0 ? "lg:pl-0" : "lg:border-l lg:border-border"}`}
-            >
-              {/* La pastille porte l'intitulé, lu par les lecteurs d'écran seulement. */}
-              <dt className={`pastille ${pastille}`}>
-                <Icone aria-hidden className="size-5" strokeWidth={1.75} />
-                <span className="sr-only">{label}</span>
-              </dt>
-              <dd className={`min-w-0 text-body leading-snug font-medium ${data ? "font-mono tabular-nums" : ""}`}>{value}</dd>
+        <div className="grid grid-cols-1 gap-x-8 gap-y-5 border-t border-border pt-6 lg:col-span-2 lg:row-start-2 lg:grid-cols-[auto_minmax(0,1fr)] lg:items-center lg:pt-8">
+          {eventInfo.dates && (
+            <div className="flex flex-col gap-2">
+              <p className="font-display text-h2 font-semibold tracking-[-0.02em] text-primary tabular-nums">
+                <time dateTime={`${eventInfo.startDate}/${eventInfo.endDate}`}>{eventInfo.dates[locale]}</time>
+              </p>
+              {exam && debut && jourEpreuve && (
+                <p className="text-small text-muted-foreground">
+                  {t("examLine", { day: jourEpreuve, time: heureLocale(exam.referenceZone, debut) })}
+                  {exam.provisional && <> · {t("provisional")}</>}
+                </p>
+              )}
             </div>
-          ))}
-        </dl>
+          )}
+
+          {exam && debut && (
+            <HeroCompte
+              debutIso={exam.startInstant}
+              finIso={new Date(debut.getTime() + exam.durationMinutes * 60_000).toISOString()}
+              libelles={{
+                label: t("countdownLabel"),
+                before: t("countdownBefore"),
+                during: t("countdownDuring"),
+                after: t("countdownAfter"),
+                days: t("days"),
+                hours: t("hours"),
+                minutes: t("minutes"),
+                seconds: t("seconds"),
+              }}
+            />
+          )}
+        </div>
 
         {/* La figure se construit à côté du texte, sans jamais le bloquer. */}
         <figure className="mx-auto flex w-full max-w-sm flex-col gap-2 sm:max-w-md lg:col-start-2 lg:row-start-1 lg:max-w-none">

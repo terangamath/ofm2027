@@ -129,6 +129,11 @@
   --nav-survol: color-mix(in srgb, var(--vert-profond) 8%, var(--sauge));
   --nav-actif: var(--vert-profond);
   --nav-actif-texte: var(--blanc);
+  /* Compte à rebours du hero. Ivoire sur vert-profond 9,4:1, soleil 5,9:1. */
+  --compte-fond: var(--vert-profond);
+  --compte-texte: var(--ivoire);
+  --compte-libelle: color-mix(in srgb, var(--ivoire) 78%, var(--vert-profond));
+  --compte-accent: var(--soleil);
 
   --radius: 0.5rem;
 
@@ -200,6 +205,11 @@
   --nav-survol: color-mix(in srgb, var(--sable) 8%, var(--nuit-relevee));
   --nav-actif: var(--vert-clair);
   --nav-actif-texte: var(--blanc);
+  /* Sable-texte sur vert 9,0:1, sable-doux 6,7:1, soleil 6,6:1. */
+  --compte-fond: var(--vert);
+  --compte-texte: var(--sable-texte);
+  --compte-libelle: var(--sable-doux);
+  --compte-accent: var(--soleil);
 
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.16);
   --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.32);
@@ -241,6 +251,10 @@
   --color-nav-survol: var(--nav-survol);
   --color-nav-actif: var(--nav-actif);
   --color-nav-actif-texte: var(--nav-actif-texte);
+  --color-compte-fond: var(--compte-fond);
+  --color-compte-texte: var(--compte-texte);
+  --color-compte-libelle: var(--compte-libelle);
+  --color-compte-accent: var(--compte-accent);
 
   /* Rôles sémantiques shadcn/ui */
   --color-background: var(--background);
@@ -373,6 +387,10 @@
 }
 
 @layer utilities {
+  /* Compte à rebours : le chiffre qui change entre par le haut. */
+  .compte-chiffre {
+    animation: compte-chiffre 220ms var(--ease-signature) both;
+  }
   /* Libellé d'interface : Inter, bas de casse, graisse moyenne. Jamais de capitales. */
   .label {
     font-family: var(--font-sans);
@@ -756,5 +774,20 @@
     animation: none;
     opacity: 1;
     transition: opacity 0s 150ms;
+  }
+}
+@keyframes compte-chiffre {
+  from {
+    opacity: 0;
+    transform: translateY(-40%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .compte-chiffre {
+    animation: none;
   }
 }
