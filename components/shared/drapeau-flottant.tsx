@@ -3,6 +3,8 @@ import { calageDrapeau, rapportDrapeau, srcDrapeau } from "@/lib/drapeaux";
 
 /** Rapport de la zone commune à tous les drapeaux. */
 const RAPPORT_ZONE = 3 / 2;
+/** Largeur du repère SVG du drapeau en relief : le déplacement du filtre y est calibré. */
+const LARGEUR_TISSU = 300;
 
 /**
  * Drapeau « en tissu », suspendu au-dessus de la page. Décoratif : alt vide,
@@ -30,6 +32,7 @@ export function DrapeauFlottant({
   if (relief) {
     const rapport = rapportDrapeau(countryCode);
     const large = rapport >= RAPPORT_ZONE;
+    const hauteur = Math.round((LARGEUR_TISSU / rapport) * 100) / 100;
     return (
       <span className="flag-stage">
         <span className="flag-shadow" aria-hidden />
@@ -37,9 +40,23 @@ export function DrapeauFlottant({
           className={`flag-fabric ${hote ? "flag-fabric-hote" : ""}`}
           style={{ aspectRatio: rapport, width: large ? "100%" : "auto", height: large ? "auto" : "100%" }}
         >
-          <Image src={srcDrapeau(countryCode)} alt="" fill sizes={sizes} className="object-contain" />
-          <span className="flag-folds" aria-hidden />
-          <span className="flag-light" aria-hidden />
+          <span className="flag-clip">
+            {/* Souplesse du tissu : le filtre #tissu-souple (défini dans la page) tourne
+                dans ce SVG, rendu d'un bloc (un filtre CSS sur du HTML laisse des raccords
+                de tuiles). Repère de 300 unités de large : déplacement de 1,5 px au plus. */}
+            <svg
+              aria-hidden
+              viewBox={`0 0 ${LARGEUR_TISSU} ${hauteur}`}
+              preserveAspectRatio="none"
+              className="absolute inset-0 size-full overflow-visible"
+            >
+              <g filter="url(#tissu-souple)">
+                <image href={srcDrapeau(countryCode)} width={LARGEUR_TISSU} height={hauteur} preserveAspectRatio="xMidYMid meet" />
+              </g>
+            </svg>
+            <span className="flag-folds" aria-hidden />
+            <span className="flag-light" aria-hidden />
+          </span>
         </span>
       </span>
     );

@@ -62,6 +62,18 @@ export default async function TeamsPage({
         </div>
       </div>
 
+      {/* Souplesse du tissu (variante relief) : un bruit très doux déplace le drapeau
+          de 1,5 px au plus (repère de 300 unités, voir DrapeauFlottant). Rendu une
+          fois, sans animation ; la région déborde de 6 % pour ne pas rogner les bords. */}
+      <svg aria-hidden width="0" height="0" className="absolute">
+        <filter id="tissu-souple" x="-6%" y="-6%" width="112%" height="112%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012 0.025" numOctaves="1" seed="7" result="bruit" />
+          <feDisplacementMap in="SourceGraphic" in2="bruit" scale="3" xChannelSelector="R" yChannelSelector="G" result="tissu" />
+          {/* Le déplacement est échantillonné au pixel près : un flou infime lisse les crans des bords nets. */}
+          <feGaussianBlur in="tissu" stdDeviation="0.35" />
+        </filter>
+      </svg>
+
       <ul className="mx-auto grid max-w-[75rem] grid-cols-1 gap-x-4 gap-y-6 px-4 min-[22rem]:grid-cols-2 sm:px-6 md:grid-cols-3 md:gap-x-8 md:gap-y-8 lg:grid-cols-4 lg:gap-x-10">
         {delegations.map((delegation) => {
           const nom = delegation.name[typedLocale];
