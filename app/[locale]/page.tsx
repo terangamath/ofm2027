@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/home/hero";
 import { AboutSection } from "@/components/home/about";
+import { PaysParticipantsSection } from "@/components/home/pays-participants";
 import { CategoriesSection } from "@/components/home/categories";
 import { DelegationsSection } from "@/components/home/delegations";
 import { ProblemsTeaserSection } from "@/components/home/problems-teaser";
@@ -39,6 +40,7 @@ export default async function HomePage({
       <EventJsonLd event={eventInfo} locale={typedLocale} />
       <Hero locale={typedLocale} />
       <AboutSection locale={typedLocale} />
+      <PaysParticipantsSection locale={typedLocale} />
       <CategoriesSection locale={typedLocale} />
       <DelegationsSection locale={typedLocale} />
       <ProblemsTeaserSection locale={typedLocale} />

@@ -1,6 +1,7 @@
 {
   "slug": "suisse",
   "countryCode": "CH",
+  "iso3": "CHE",
   "name": { "fr": "Suisse", "en": "Switzerland" },
   "flagEmoji": "🇨🇭",
   "timeZone": "Europe/Zurich",

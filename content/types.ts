@@ -1,3 +1,5 @@
+import type { MultiPolygon, Polygon } from "geojson";
+
 // content/types.ts
 // Types stricts pour tout le contenu du site OFM 2027.
 // Règle CLAUDE.md : jamais de `any`, tout contenu non confirmé est explicitement marqué.
@@ -85,6 +87,7 @@ export interface DelegationMember {
 export interface Delegation {
   slug: string;               // "senegal"
   countryCode: string;        // ISO 3166-1 alpha-2, ex. "SN"
+  iso3: string;               // ISO 3166-1 alpha-3, ex. "SEN" : relie la fiche au fond de carte (content/geo/monde.json)
   name: LocalizedText;        // "Sénégal" / "Senegal"
   flagEmoji: string;          // "🇸🇳" (historique ; l'affichage utilise des SVG)
   /** Fuseau IANA de la délégation, ex. "Africa/Dakar". Jamais de décalage en dur. */
@@ -275,4 +278,12 @@ export interface Committee {
   /** true : structure reprise de la règle générale de l'OFM, non confirmée telle quelle pour 2027. */
   provisional: boolean;
   members: Person[];
+}
+
+/** Un pays du fond de carte Natural Earth (content/geo/monde.json, généré par scripts/carte-monde.mjs). */
+export interface PaysCarte {
+  iso3: string;
+  iso2: string;
+  name: LocalizedText;
+  geometry: Polygon | MultiPolygon;
 }

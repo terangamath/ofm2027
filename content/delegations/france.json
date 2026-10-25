@@ -1,6 +1,7 @@
 {
   "slug": "france",
   "countryCode": "FR",
+  "iso3": "FRA",
   "name": { "fr": "France", "en": "France" },
   "flagEmoji": "🇫🇷",
   "timeZone": "Europe/Paris",

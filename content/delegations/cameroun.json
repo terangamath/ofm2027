@@ -1,6 +1,7 @@
 {
   "slug": "cameroun",
   "countryCode": "CM",
+  "iso3": "CMR",
   "name": { "fr": "Cameroun", "en": "Cameroon" },
   "flagEmoji": "🇨🇲",
   "timeZone": "Africa/Douala",

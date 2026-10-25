@@ -1,6 +1,7 @@
 {
   "slug": "canada",
   "countryCode": "CA",
+  "iso3": "CAN",
   "name": { "fr": "Canada", "en": "Canada" },
   "flagEmoji": "🇨🇦",
   "timeZone": null,

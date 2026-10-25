@@ -1,6 +1,7 @@
 {
   "slug": "luxembourg",
   "countryCode": "LU",
+  "iso3": "LUX",
   "name": { "fr": "Luxembourg", "en": "Luxembourg" },
   "flagEmoji": "🇱🇺",
   "timeZone": "Europe/Luxembourg",

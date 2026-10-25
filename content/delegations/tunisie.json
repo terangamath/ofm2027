@@ -1,6 +1,7 @@
 {
   "slug": "tunisie",
   "countryCode": "TN",
+  "iso3": "TUN",
   "name": { "fr": "Tunisie", "en": "Tunisia" },
   "flagEmoji": "🇹🇳",
   "timeZone": "Africa/Tunis",

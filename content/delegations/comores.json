@@ -1,6 +1,7 @@
 {
   "slug": "comores",
   "countryCode": "KM",
+  "iso3": "COM",
   "name": { "fr": "Comores", "en": "Comoros" },
   "flagEmoji": "🇰🇲",
   "timeZone": "Indian/Comoro",

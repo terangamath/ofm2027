@@ -136,6 +136,13 @@
   --compte-texte: var(--ivoire);
   --compte-libelle: color-mix(in srgb, var(--ivoire) 86%, var(--vert-profond));
   --compte-accent: var(--or);
+  /* Carte des pays participants, sur fond vert profond (identique dans les deux
+     thèmes) : terres sable, participants soleil, pays hôte rouge. */
+  --carte-fond: var(--vert-profond);
+  --carte-terre: var(--sable);
+  --carte-frontiere: var(--vert-profond);
+  --carte-participant: var(--soleil);
+  --carte-hote: var(--rouge);
 
   --radius: 0.5rem;
 
@@ -256,6 +263,9 @@
   --color-nav-actif-texte: var(--nav-actif-texte);
   --color-compte-fond: var(--compte-fond);
   --color-bande-fond: var(--bande-fond);
+  --color-carte-fond: var(--carte-fond);
+  --color-carte-participant: var(--carte-participant);
+  --color-carte-hote: var(--carte-hote);
   --color-vert-profond: var(--vert-profond);
   --color-compte-texte: var(--compte-texte);
   --color-compte-libelle: var(--compte-libelle);
@@ -796,4 +806,39 @@
 }
 .hero-texte {
   text-shadow: 0 1px 2px color-mix(in srgb, var(--vert-nuit) 45%, transparent);
+}
+
+/* Carte des pays participants : frontières fines, survol et focus sur les
+   seuls pays participants (des liens). */
+.carte path,
+.carte circle {
+  stroke: var(--carte-frontiere);
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+}
+.carte-pays {
+  fill: var(--carte-terre);
+}
+.carte-participant {
+  fill: var(--carte-participant);
+}
+.carte-hote {
+  fill: var(--carte-hote);
+}
+.carte .carte-hote circle {
+  stroke: var(--ivoire);
+  stroke-width: 1.5;
+}
+.carte a {
+  cursor: pointer;
+  outline: none;
+}
+.carte a:hover path,
+.carte a:hover circle {
+  fill: var(--or-clair);
+}
+.carte a:focus-visible path,
+.carte a:focus-visible circle {
+  stroke: var(--ivoire);
+  stroke-width: 2;
 }

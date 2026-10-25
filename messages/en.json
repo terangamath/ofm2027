@@ -57,6 +57,15 @@
       "newTab": "(opens in a new tab)",
       "logoAlt": "OFM 2027 logo: the letter π in the colours of Senegal, a baobab and a pirogue, above “OFM 2027 Sénégal, Olympiades francophones de mathématiques”."
     },
+    "Countries": {
+      "title": "Participating countries",
+      "cta": "Discover the delegations",
+      "mapLabel": "World map of the countries taking part in OFM 2027",
+      "legendHost": "Senegal, host country",
+      "legendParticipant": "Confirmed participating country",
+      "listLabel": "Participating country pages",
+      "credit": "Base map: <link>Natural Earth</link>"
+    },
     "Event": {
       "title": "The event, at a glance",
       "lead": "An edition organised by Terangamath, contested entirely online.",
