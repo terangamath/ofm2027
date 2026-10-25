@@ -981,6 +981,114 @@
     transform: none;
   }
 }
+/* Drapeau en relief (variante « relief » de DrapeauFlottant, en essai) : le
+   relief vient de la lumière (plis larges éclairés et ombrés) et d'une légère
+   inclinaison en perspective ; les contours restent droits. L'ombre au sol
+   est indépendante du drapeau. Lien parent : .delegation. */
+.flag-stage {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  align-items: center;
+  justify-content: center;
+  perspective: 900px;
+}
+.flag-shadow {
+  position: absolute;
+  z-index: 0;
+  left: 14%;
+  right: 14%;
+  bottom: -16px;
+  height: 18px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--vert-nuit) 22%, transparent);
+  filter: blur(12px);
+  pointer-events: none;
+  transition:
+    transform 250ms ease,
+    opacity 250ms ease;
+}
+.flag-fabric {
+  position: relative;
+  z-index: 1;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px var(--drapeau-lisere);
+  transform: translateY(-3px) rotateY(-4deg) rotateZ(-0.6deg);
+  transform-origin: center;
+  transition: transform 250ms ease;
+}
+.flag-fabric-hote {
+  outline: 2px solid var(--or);
+  outline-offset: 3px;
+}
+/* Plis larges : alternance de lumière et d'ombre, visible au repos sans masquer les symboles. */
+.flag-folds {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    color-mix(in srgb, var(--blanc) 24%, transparent) 14%,
+    color-mix(in srgb, var(--anthracite) 14%, transparent) 30%,
+    color-mix(in srgb, var(--blanc) 20%, transparent) 47%,
+    color-mix(in srgb, var(--anthracite) 13%, transparent) 65%,
+    color-mix(in srgb, var(--blanc) 18%, transparent) 83%,
+    transparent 100%
+  );
+}
+.flag-light {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px var(--drapeau-lisere);
+  background: linear-gradient(
+    175deg,
+    color-mix(in srgb, var(--blanc) 12%, transparent),
+    transparent 45%,
+    color-mix(in srgb, var(--anthracite) 8%, transparent)
+  );
+}
+.delegation .fleche-drapeau {
+  transition: transform 250ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .delegation:hover .flag-fabric {
+    transform: translateY(-9px) rotateY(0deg) rotateZ(0deg);
+  }
+  .delegation:hover .flag-shadow {
+    transform: scaleX(1.15);
+    opacity: 0.65;
+  }
+  .delegation:hover .fleche-drapeau {
+    transform: translateX(4px);
+  }
+}
+.delegation:focus-visible .flag-fabric {
+  transform: translateY(-9px) rotateY(0deg) rotateZ(0deg);
+}
+.delegation:focus-visible .flag-shadow {
+  transform: scaleX(1.15);
+  opacity: 0.65;
+}
+.delegation:focus-visible .fleche-drapeau {
+  transform: translateX(4px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .delegation .flag-fabric,
+  .delegation .flag-shadow,
+  .delegation .fleche-drapeau {
+    transition: none;
+    transform: none;
+  }
+}
+
 /* « 2027 » décoratif, en contour très pâle. */
 .annee-contour {
   color: transparent;

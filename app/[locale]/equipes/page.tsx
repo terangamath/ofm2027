@@ -8,6 +8,9 @@ import { getDelegations } from "@/lib/content";
 import { DrapeauFlottant } from "@/components/shared/drapeau-flottant";
 import type { Locale } from "@/content/types";
 
+/** Rendu « relief » des drapeaux, en essai sur ces pays avant d'être généralisé. */
+const RELIEF_EN_ESSAI = new Set(["SN", "DZ"]);
+
 export async function generateMetadata({
   params,
 }: {
@@ -62,16 +65,18 @@ export default async function TeamsPage({
       <ul className="mx-auto grid max-w-[75rem] grid-cols-1 gap-x-4 gap-y-6 px-4 min-[22rem]:grid-cols-2 sm:px-6 md:grid-cols-3 md:gap-x-8 md:gap-y-8 lg:grid-cols-4 lg:gap-x-10">
         {delegations.map((delegation) => {
           const nom = delegation.name[typedLocale];
+          const relief = RELIEF_EN_ESSAI.has(delegation.countryCode);
           return (
             <li key={delegation.slug}>
               <Link
                 href={`/equipes/${delegation.slug}`}
-                className="lien-drapeau group flex flex-col items-center gap-6 rounded-lg p-2 focus-visible:outline-or-trait dark:focus-visible:outline-or-clair"
+                className={`${relief ? "delegation" : "lien-drapeau"} group flex flex-col items-center gap-6 rounded-lg p-2 focus-visible:outline-or-trait dark:focus-visible:outline-or-clair`}
               >
                 <DrapeauFlottant
                   countryCode={delegation.countryCode}
                   hote={delegation.isHost}
                   sizes="(min-width: 1024px) 270px, 45vw"
+                  relief={relief}
                 />
                 <span className="flex flex-col items-center gap-0.5 text-center">
                   {/* La flèche suit le dernier mot, même quand le nom passe sur deux lignes. */}
