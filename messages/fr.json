@@ -188,7 +188,10 @@
       "lead": "Les pays francophones engagés dans l'édition 2027. Chaque pays peut présenter une délégation Junior et une délégation Senior, de un à six élèves chacune.",
       "hostBadge": "Pays hôte",
       "viewTeam": "Voir la fiche",
-      "statusPending": "En attente"
+      "statusPending": "En attente",
+      "kicker": "OFM 2027",
+      "heading": "Les délégations",
+      "hostLabel": "Pays organisateur"
     },
     "TeamDetail": {
       "back": "Toutes les équipes",

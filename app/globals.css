@@ -145,6 +145,10 @@
   --carte-frontiere: var(--vert-profond);
   --carte-participant: var(--soleil);
   --carte-hote: var(--rouge);
+  /* Drapeaux flottants de la page Équipes : ombre au sol, liseré intérieur. */
+  --ombre-drapeau-sol: color-mix(in srgb, var(--vert-nuit) 70%, transparent);
+  --drapeau-lisere: color-mix(in srgb, var(--anthracite) 12%, transparent);
+  --annee-contour: color-mix(in srgb, var(--vert-profond) 11%, transparent);
 
   --radius: 0.5rem;
 
@@ -226,6 +230,9 @@
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.16);
   --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.32);
   color-scheme: dark;
+  --ombre-drapeau-sol: rgba(0, 0, 0, 0.9);
+  --drapeau-lisere: color-mix(in srgb, var(--blanc) 10%, transparent);
+  --annee-contour: color-mix(in srgb, var(--sable) 12%, transparent);
 }
 
 /* ────────────────────────────────────────────────────────────────
@@ -269,6 +276,10 @@
   --color-carte-participant: var(--carte-participant);
   --color-carte-hote: var(--carte-hote);
   --color-vert-profond: var(--vert-profond);
+  --color-or-trait: var(--or-trait);
+  --color-pastille-vert: var(--pastille-vert);
+  --color-rouge: var(--rouge);
+  --color-soleil: var(--soleil);
   --color-vert-pied: var(--vert-pied);
   --color-compte-texte: var(--compte-texte);
   --color-compte-libelle: var(--compte-libelle);
@@ -854,4 +865,124 @@
 .carte a:focus-visible path {
   stroke: var(--ivoire);
   stroke-width: 2;
+}
+
+/* Drapeau flottant (components/shared/drapeau-flottant.tsx) : rectangle net,
+   plis de lumière très légers, et une ombre elliptique diffuse détachée sous
+   le drapeau. Au survol et au focus du lien .lien-drapeau, le drapeau monte de
+   6 px et l'ombre, restée au sol, s'élargit et s'estompe. */
+.drapeau-flottant {
+  position: relative;
+  isolation: isolate;
+  display: block;
+  width: 100%;
+}
+.drapeau-flottant::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 14%;
+  right: 14%;
+  bottom: -22px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ombre-drapeau-sol);
+  filter: blur(12px);
+  opacity: 0.45;
+  transition:
+    transform 250ms var(--ease-signature),
+    opacity 250ms var(--ease-signature),
+    filter 250ms var(--ease-signature);
+}
+.drapeau {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 4px;
+  transition: translate 250ms var(--ease-signature);
+}
+/* Liseré intérieur à peine visible : les bandes blanches ne se fondent pas dans le fond. */
+.drapeau::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px var(--drapeau-lisere);
+}
+/* Plis : lumière et ombre en lumière douce, très faibles. */
+.drapeau::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  background: linear-gradient(
+    100deg,
+    color-mix(in srgb, var(--anthracite) 9%, transparent) 0%,
+    color-mix(in srgb, var(--blanc) 0%, transparent) 14%,
+    color-mix(in srgb, var(--blanc) 16%, transparent) 28%,
+    color-mix(in srgb, var(--anthracite) 0%, transparent) 42%,
+    color-mix(in srgb, var(--anthracite) 8%, transparent) 58%,
+    color-mix(in srgb, var(--blanc) 0%, transparent) 72%,
+    color-mix(in srgb, var(--blanc) 12%, transparent) 86%,
+    color-mix(in srgb, var(--anthracite) 6%, transparent) 100%
+  );
+}
+.drapeau-hote {
+  outline: 2px solid var(--or);
+  outline-offset: 3px;
+}
+.fleche-drapeau {
+  transition: transform 250ms var(--ease-signature);
+}
+/* Survol réservé aux appareils qui survolent vraiment ; focus clavier partout. */
+@media (hover: hover) {
+  .lien-drapeau:hover .drapeau {
+    translate: 0 -6px;
+  }
+  .lien-drapeau:hover .drapeau-flottant::after {
+    transform: scaleX(1.12);
+    filter: blur(16px);
+    opacity: 0.4;
+  }
+  .lien-drapeau:hover .fleche-drapeau {
+    transform: translateX(4px);
+  }
+}
+.lien-drapeau:focus-visible .drapeau {
+  translate: 0 -6px;
+}
+.lien-drapeau:focus-visible .drapeau-flottant::after {
+  transform: scaleX(1.12);
+  filter: blur(16px);
+  opacity: 0.4;
+}
+.lien-drapeau:focus-visible .fleche-drapeau {
+  transform: translateX(4px);
+}
+/* Mouvement réduit : ni montée ni déplacement de flèche ; l'ombre qui s'estompe
+   et le soulignement du nom signalent encore le survol. */
+@media (prefers-reduced-motion: reduce) {
+  .drapeau,
+  .fleche-drapeau,
+  .drapeau-flottant::after {
+    transition: none;
+  }
+  .lien-drapeau:hover .drapeau,
+  .lien-drapeau:focus-visible .drapeau {
+    translate: none;
+  }
+  .lien-drapeau:hover .fleche-drapeau,
+  .lien-drapeau:focus-visible .fleche-drapeau {
+    transform: none;
+  }
+}
+/* « 2027 » décoratif, en contour très pâle. */
+.annee-contour {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--annee-contour);
 }
