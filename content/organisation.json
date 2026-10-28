@@ -1,30 +1,41 @@
 [
   {
     "id": "comite-selection",
+    "kind": "committee",
     "name": { "fr": "Comité de sélection des problèmes", "en": "Problem selection committee" },
     "description": {
-      "fr": "Nommé par le pays organisateur et approuvé par le comité de l'OFM, il sélectionne les huit problèmes parmi les propositions des pays, rédige les épreuves et les barèmes, puis les soumet à l'approbation du jury.",
-      "en": "Appointed by the host country and approved by the OFM committee, it selects the eight problems from the countries' proposals, drafts the papers and marking schemes, then submits them to the jury for approval."
+      "fr": "Sélection des énoncés, préparation des solutions et des barèmes.",
+      "en": "Selection of the problems, preparation of the solutions and marking schemes."
     },
     "provisional": true,
     "members": []
   },
   {
-    "id": "equipe-coordination",
-    "name": { "fr": "Équipe de coordination", "en": "Coordination team" },
+    "id": "comite-ofm",
+    "kind": "committee",
+    "name": { "fr": "Comité de l'OFM", "en": "OFM committee" },
+    "description": null,
+    "provisional": true,
+    "members": []
+  },
+  {
+    "id": "comite-organisation",
+    "kind": "committee",
+    "name": { "fr": "Comité d'organisation", "en": "Organising committee" },
     "description": {
-      "fr": "Chaque problème est corrigé par un binôme de coordinateurs, qui rencontre les chefs de délégation pour arrêter les notes.",
-      "en": "Each problem is marked by a pair of coordinators, who meet delegation leaders to finalise the scores."
+      "fr": "Préparation et organisation de l'édition 2027.",
+      "en": "Preparation and organisation of the 2027 edition."
     },
     "provisional": true,
     "members": []
   },
   {
-    "id": "remerciements",
-    "name": { "fr": "Remerciements", "en": "Acknowledgements" },
+    "id": "coordinateurs",
+    "kind": "coordinators",
+    "name": { "fr": "Coordinateurs", "en": "Coordinators" },
     "description": {
-      "fr": "Terangamath remercie chaleureusement les personnes et institutions qui contribuent à la préparation de l'édition 2027.",
-      "en": "Terangamath warmly thanks the people and institutions contributing to the preparation of the 2027 edition."
+      "fr": "Coordination des corrections et échanges avec les délégations.",
+      "en": "Coordination of marking and liaison with the delegations."
     },
     "provisional": true,
     "members": []

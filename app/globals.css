@@ -20,6 +20,9 @@
   --gris: #6b7280;
   --terracotta: #b24a2e;
   --blanc: #ffffff;
+  /* Distinctions du classement (/resultats) : pastilles décoratives, le libellé est écrit à côté. */
+  --argent: #a8adb4;
+  --bronze: #b07a45;
 
   /* Tons dérivés, choisis pour le confort de lecture et non pour le seuil :
      encre = texte secondaire (9,2:1 sur sable, contre 6,7:1 auparavant) ;
@@ -277,6 +280,8 @@
   --color-carte-hote: var(--carte-hote);
   --color-vert-profond: var(--vert-profond);
   --color-or-trait: var(--or-trait);
+  --color-argent: var(--argent);
+  --color-bronze: var(--bronze);
   --color-pastille-vert: var(--pastille-vert);
   --color-rouge: var(--rouge);
   --color-soleil: var(--soleil);

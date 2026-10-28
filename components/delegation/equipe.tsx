@@ -11,29 +11,48 @@ interface Libelles {
 }
 
 /**
- * Carte d'un membre : photo, nom et, s'il est connu, un détail (âge, rôle).
- * Place encore vide : avatar neutre et « À confirmer », rien d'inventé.
- * La photo est décorative (alt vide) : le nom est écrit dessous.
+ * Carte d'une personne (délégation, comité) : photo, nom et, s'il est connu, un
+ * détail (âge, fonction). Personne pas encore nommée : avatar neutre et le
+ * libellé « à confirmer », rien d'inventé. La photo est décorative (alt vide) :
+ * le nom est écrit dessous.
  */
-function CarteMembre({ place, locale, aConfirmer }: { place: Place; locale: Locale; aConfirmer: string }) {
+export function CarteMembre({
+  nom,
+  photo,
+  detail,
+  aConfirmer,
+  className = "",
+}: {
+  nom: string | null;
+  photo?: string | null;
+  detail?: string | null;
+  aConfirmer: string;
+  className?: string;
+}) {
   return (
-    <li className="flex flex-col items-center gap-3 rounded-lg border border-hairline bg-card px-3 py-5 text-center text-card-foreground shadow-soft sm:px-4 sm:py-6">
-      {place?.photo ? (
-        <Image src={place.photo} alt="" width={96} height={96} className="size-20 rounded-full object-cover sm:size-24" />
+    <li className={`flex flex-col items-center gap-3 rounded-lg border border-hairline bg-card px-3 py-5 text-center text-card-foreground shadow-soft sm:px-4 sm:py-6 ${className}`}>
+      {photo ? (
+        <Image src={photo} alt="" width={96} height={96} className="size-20 rounded-full object-cover sm:size-24" />
       ) : (
         <span aria-hidden className="flex size-20 items-center justify-center rounded-full bg-muted text-muted-foreground sm:size-24">
           <UserRound className="size-9 sm:size-11" strokeWidth={1.5} />
         </span>
       )}
-      {place ? (
+      {nom ? (
         <span className="flex flex-col gap-0.5">
-          <span className="text-body font-semibold">{place.name}</span>
-          {place.detail && <span className="text-small text-muted-foreground">{place.detail[locale]}</span>}
+          <span className="text-body font-semibold">{nom}</span>
+          {detail && <span className="text-small text-muted-foreground">{detail}</span>}
         </span>
       ) : (
         <span className="text-body font-medium text-muted-foreground">{aConfirmer}</span>
       )}
     </li>
+  );
+}
+
+function CartePlace({ place, locale, aConfirmer }: { place: Place; locale: Locale; aConfirmer: string }) {
+  return (
+    <CarteMembre nom={place?.name ?? null} photo={place?.photo} detail={place?.detail?.[locale]} aConfirmer={aConfirmer} />
   );
 }
 
@@ -73,7 +92,7 @@ export function SectionEquipe({
           <h3 className={sousTitre}>{libelles.participants}</h3>
           <ul className="grid grid-cols-1 gap-3 min-[22rem]:grid-cols-2 sm:gap-4 md:grid-cols-3 lg:gap-6">
             {equipe.participants.map((place, i) => (
-              <CarteMembre key={place?.name ?? `place-${i}`} place={place} locale={locale} aConfirmer={libelles.aConfirmer} />
+              <CartePlace key={place?.name ?? `place-${i}`} place={place} locale={locale} aConfirmer={libelles.aConfirmer} />
             ))}
           </ul>
         </div>
@@ -82,7 +101,7 @@ export function SectionEquipe({
           <h3 className={sousTitre}>{libelles.encadrants}</h3>
           <ul className="mx-auto grid w-full max-w-2xl grid-cols-1 gap-3 min-[22rem]:grid-cols-2 sm:gap-4 lg:gap-6">
             {equipe.encadrants.map((place, i) => (
-              <CarteMembre key={place?.name ?? `place-${i}`} place={place} locale={locale} aConfirmer={libelles.aConfirmer} />
+              <CartePlace key={place?.name ?? `place-${i}`} place={place} locale={locale} aConfirmer={libelles.aConfirmer} />
             ))}
           </ul>
         </div>

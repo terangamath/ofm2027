@@ -55,6 +55,34 @@ content/
   ]
   ```
   `photo` et `detail` sont facultatifs (sans photo : avatar neutre).
+- **Publier un comité** (`organisation.json`, page Organisation) : l'ordre du
+  fichier est l'ordre des sections (fonds clair et vert alternés). Tant que
+  `members` est vide, la section affiche « Composition à venir ». Sinon, un
+  objet par personne, dans l'ordre d'affichage, en nombre libre ; `name: null`
+  marque une place prévue mais pas encore nommée (« Membre à confirmer », ou
+  « Coordinateur à confirmer » si le comité a `kind: "coordinators"`) :
+  ```json
+  "members": [
+    { "name": "Prénom Nom", "role": { "fr": "Président", "en": "Chair" },
+      "org": null, "country": "SN", "photo": "/organisation/prenom-nom.jpg" },
+    { "name": null, "role": null, "org": null, "country": null }
+  ]
+  ```
+  `role`, `org` et `photo` sont facultatifs (sans photo : avatar neutre).
+- **Publier les résultats** (`resultats.json`, page Résultats) : remplir `junior`
+  et `senior` dans l'ordre du classement, puis passer `published` à `true`.
+  Rangs et distinctions sont affichés tels quels, jamais recalculés : deux
+  ex æquo portent le même rang (1, 2, 2, 4…) ; `award` vaut `"gold"`,
+  `"silver"`, `"bronze"` ou `null`. Tant que `published` est `false`, la page
+  annonce que les résultats seront publiés après les épreuves.
+  ```json
+  { "rank": 1, "award": "gold", "name": "Prénom Nom", "countryCode": "SN",
+    "scores": [7, 7, 6, 7], "total": 27 }
+  ```
+  `tests/resultats.test.ts` vérifie totaux, ordre, rangs et drapeaux.
+  `apercu/resultats-fictifs.json` est un classement **fictif**, pour
+  prévisualiser le tableau : il n'apparaît qu'en développement, sur les
+  prévisualisations Vercel ou avec `OFM_APERCU=1`, jamais en production.
 - **Ajouter un partenaire** : déposer le logo dans `public/partenaires/`, puis une
   entrée dans `partenaires.json` avec `status: "confirmed"` et
   `logo: { src, width, height }` (dimensions intrinsèques). Format détaillé dans

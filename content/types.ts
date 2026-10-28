@@ -277,18 +277,25 @@ export interface ReferenceDocument {
 // ─────────────────────────────────────────────────────────────
 
 export interface Person {
-  name: string;               // "[À confirmer — Terangamath]" si non nommé
-  role: LocalizedText;
+  /** null : place prévue, personne pas encore nommée (« Membre à confirmer »). */
+  name: string | null;
+  /** Fonction dans le comité ; null si inconnue. */
+  role: LocalizedText | null;
   org: string | null;
   country: string | null;     // code ISO
+  /** Chemin dans public/ ; sans photo : avatar neutre. */
+  photo?: string | null;
 }
 
 export interface Committee {
   id: string;
-  name: LocalizedText;        // "Comité de sélection des problèmes", "Équipe de coordination"...
+  /** "coordinators" : une place sans nom s'affiche « Coordinateur à confirmer ». */
+  kind: "committee" | "coordinators";
+  name: LocalizedText;        // "Comité de sélection des problèmes", "Coordinateurs"...
   description: LocalizedText | null;
   /** true : structure reprise de la règle générale de l'OFM, non confirmée telle quelle pour 2027. */
   provisional: boolean;
+  /** Dans l'ordre d'affichage ; vide : « Composition à venir ». */
   members: Person[];
 }
 
@@ -298,4 +305,32 @@ export interface PaysCarte {
   iso2: string;
   name: LocalizedText;
   geometry: Polygon | MultiPolygon;
+}
+
+// ─────────────────────────────────────────────────────────────
+// Résultats (/resultats)
+// ─────────────────────────────────────────────────────────────
+
+/** Distinction attribuée par le jury ; null : aucune. Jamais déduite du rang. */
+export type Distinction = "gold" | "silver" | "bronze" | null;
+
+export interface LigneResultat {
+  /** Rang publié ; deux ex æquo portent le même rang (1, 2, 2, 4…). */
+  rank: number;
+  award: Distinction;
+  name: string;
+  countryCode: string;        // ISO 3166-1 alpha-2
+  /** Points obtenus aux problèmes 1 à 4. */
+  scores: [number, number, number, number];
+  total: number;
+}
+
+export interface Classements {
+  junior: LigneResultat[];
+  senior: LigneResultat[];
+}
+
+/** content/resultats.json : les classements officiels, affichés seulement une fois publiés. */
+export interface ResultatsOfficiels extends Classements {
+  published: boolean;
 }

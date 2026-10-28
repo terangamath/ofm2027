@@ -177,16 +177,11 @@
       }
     },
     "Organisation": {
-      "title": "Terangamath & l'organisation de l'OFM 2027",
-      "lead": "L'Olympiade est portée par l'association Terangamath, épaulée par des comités dédiés à la sélection des problèmes et à la coordination des corrections.",
-      "About": {
-        "title": "L'association organisatrice",
-        "body": "Terangamath est l'association sénégalaise à l'origine de l'OFM 2027. Son nom s'inspire de la Teranga, l'hospitalité sénégalaise, qu'elle met au service de la promotion des mathématiques auprès des jeunes du monde francophone."
-      },
-      "Committees": {
-        "title": "Comités",
-        "lead": "Les comités qui préparent l'édition 2027."
-      }
+      "title": "Organisation",
+      "lead": "Une édition organisée par TerangaMath, au Sénégal.",
+      "compositionPending": "Composition à venir",
+      "memberToConfirm": "Membre à confirmer",
+      "coordinatorToConfirm": "Coordinateur à confirmer"
     },
     "Teams": {
       "title": "Les délégations de l'OFM 2027",
@@ -248,7 +243,42 @@
       "title": "Solutions"
     },
     "Results": {
-      "title": "Résultats"
+      "title": "Résultats",
+      "lead": "Classements des épreuves Junior et Senior",
+      "notPublishedTitle": "Résultats à venir",
+      "notPublished": "Les résultats officiels seront publiés après les épreuves.",
+      "previewBadge": "Aperçu — données fictives",
+      "previewNote": "Ce classement d’exemple sert à prévisualiser la page. Il ne s’agit pas de résultats officiels.",
+      "categoriesLabel": "Catégorie",
+      "junior": "Junior",
+      "senior": "Senior",
+      "searchLabel": "Rechercher un participant",
+      "searchPlaceholder": "Nom du participant",
+      "countryLabel": "Pays",
+      "allCountries": "Tous les pays",
+      "caption": "Classement {category}",
+      "previewCaption": "(aperçu, données fictives)",
+      "colRank": "Rang",
+      "colAward": "Distinction",
+      "colParticipant": "Participant",
+      "colCountry": "Pays",
+      "colProblem": "P{n}",
+      "colProblemLong": "Problème {n}",
+      "colTotal": "Total",
+      "gold": "Or",
+      "silver": "Argent",
+      "bronze": "Bronze",
+      "noAward": "Aucune distinction",
+      "count": "{count, plural, =0 {Aucun participant} one {# participant} other {# participants}}",
+      "noMatch": "Aucun participant ne correspond à votre recherche.",
+      "resetFilters": "Effacer les filtres",
+      "paginationLabel": "Pages du classement",
+      "previous": "Précédent",
+      "next": "Suivant",
+      "pageOf": "Page {page} sur {pages}",
+      "legend": "P1 à P4 : points obtenus par problème.",
+      "download": "Télécharger le classement",
+      "scrollHint": "Faites défiler le tableau horizontalement."
     },
     "History": {
       "title": "L'histoire de l'Olympiade",

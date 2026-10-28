@@ -177,16 +177,11 @@
       }
     },
     "Organisation": {
-      "title": "Terangamath & the organisation of OFM 2027",
-      "lead": "The Olympiad is led by the Terangamath association, supported by committees dedicated to problem selection and to the coordination of marking.",
-      "About": {
-        "title": "The organising association",
-        "body": "Terangamath is the Senegalese association behind OFM 2027. Its name draws on the Teranga, Senegalese hospitality, which it puts to work promoting mathematics among young people across the French-speaking world."
-      },
-      "Committees": {
-        "title": "Committees",
-        "lead": "The committees preparing the 2027 edition."
-      }
+      "title": "Organisation",
+      "lead": "An edition organised by TerangaMath, in Senegal.",
+      "compositionPending": "Composition to be announced",
+      "memberToConfirm": "Member to be confirmed",
+      "coordinatorToConfirm": "Coordinator to be confirmed"
     },
     "Teams": {
       "title": "The OFM 2027 delegations",
@@ -248,7 +243,42 @@
       "title": "Solutions"
     },
     "Results": {
-      "title": "Results"
+      "title": "Results",
+      "lead": "Junior and Senior rankings",
+      "notPublishedTitle": "Results to come",
+      "notPublished": "The official results will be published after the papers.",
+      "previewBadge": "Preview — fictitious data",
+      "previewNote": "This sample ranking is used to preview the page. These are not official results.",
+      "categoriesLabel": "Category",
+      "junior": "Junior",
+      "senior": "Senior",
+      "searchLabel": "Search for a participant",
+      "searchPlaceholder": "Participant name",
+      "countryLabel": "Country",
+      "allCountries": "All countries",
+      "caption": "{category} ranking",
+      "previewCaption": "(preview, fictitious data)",
+      "colRank": "Rank",
+      "colAward": "Award",
+      "colParticipant": "Participant",
+      "colCountry": "Country",
+      "colProblem": "P{n}",
+      "colProblemLong": "Problem {n}",
+      "colTotal": "Total",
+      "gold": "Gold",
+      "silver": "Silver",
+      "bronze": "Bronze",
+      "noAward": "No award",
+      "count": "{count, plural, =0 {No participants} one {# participant} other {# participants}}",
+      "noMatch": "No participant matches your search.",
+      "resetFilters": "Clear filters",
+      "paginationLabel": "Ranking pages",
+      "previous": "Previous",
+      "next": "Next",
+      "pageOf": "Page {page} of {pages}",
+      "legend": "P1 to P4: points scored on each problem.",
+      "download": "Download the ranking",
+      "scrollHint": "Scroll the table horizontally."
     },
     "History": {
       "title": "The Olympiad's history",
