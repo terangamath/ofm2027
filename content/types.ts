@@ -137,6 +137,7 @@ export interface ProblemFrontmatter {
   category: ProblemCategory;
   number: number;             // 1..n
   title: string;
+  author?: string | null;     // auteur ou pays proposant, s'il est publié
   topics: string[];           // ["géométrie", "combinatoire"]
   hasSolution: boolean;
   status: ContentStatus;      // coming_soon tant que non publié
@@ -242,6 +243,7 @@ export interface ArchiveEntry {
   year: number;
   category: "junior" | "senior";
   type: ArchiveDocumentType;
+  problem?: number;            // 1..4 : document propre à un problème (corrigé), sinon toute l'épreuve
   path: string;                // chemin public, ex. "/archives/2024/ofm-2024-junior-sujet.pdf"
 }
 

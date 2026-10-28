@@ -12,6 +12,15 @@ const nextConfig: NextConfig = {
     // <ViewTransition>) ; dégradation propre là où l'API n'existe pas.
     viewTransition: true,
   },
+  // Problèmes et solutions partagent désormais une page : l'ancienne adresse
+  // des solutions y mène, dans chaque langue.
+  async redirects() {
+    return [
+      { source: "/solutions", destination: "/problemes", permanent: true },
+      { source: "/fr/solutions", destination: "/problemes", permanent: true },
+      { source: "/en/solutions", destination: "/en/problemes", permanent: true },
+    ];
+  },
   // Sécurité sur toutes les réponses ; X-Robots-Tag noindex hors production.
   async headers() {
     return [{ source: "/:path*", headers: enTetesHttp(SITE_URL, ENVIRONNEMENT_VERCEL) }];

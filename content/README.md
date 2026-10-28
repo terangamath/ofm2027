@@ -93,7 +93,35 @@ content/
   sans perte (pixels identiques, 24 Kio au lieu de 66).
 - **Ajouter une actualité** : créer `actualites/fr/<slug>.mdx` + `actualites/en/<slug>.mdx`
   avec le même `slug` et la même `date`.
-- **KaTeX** : dans les MDX de `problemes/`, `$...$` en ligne et `$$...$$` en bloc.
+- **Publier un énoncé** (page Problèmes et solutions, `/problemes` ;
+  `/solutions` y redirige) : `problemes/fr/<slug>.mdx` (et
+  `problemes/en/<slug>.mdx` pour la traduction, sinon le français s'affiche),
+  avec `edition` égale à celle de `event.json`, `number` de 1 à 4 et
+  `status: "published"`. `author` est facultatif. Les places sans énoncé
+  publié affichent « L'énoncé du problème sera publié ici ».
+  ```yaml
+  slug: "2027-junior-01"
+  edition: 2027
+  category: "junior"
+  number: 1
+  title: "Titre du problème"
+  author: "Pays proposant ou nom"
+  topics: []
+  hasSolution: false
+  status: "published"
+  ```
+  **PDF** : déposer le fichier dans `public/archives/2027/` et le déclarer
+  dans `archives.json`. Énoncés complets d'une catégorie (bouton « Énoncés
+  Junior PDF ») : `{ "year": 2027, "category": "junior", "type": "sujet",
+  "path": "/archives/2027/ofm-2027-junior-sujet.pdf" }`. Corrigé d'un
+  problème (bandeau de la carte) : même forme avec `"type": "solutions"` et
+  `"problem": 2`, ex. `ofm-2027-junior-p2-solution.pdf`. Sans fichier déclaré
+  et déposé : « PDF à venir », ou bouton de corrigé désactivé suivi de
+  « Disponible après publication », sans lien. Les corrigés
+  par problème n'apparaissent pas dans la page Historique. Les solutions ne
+  sont publiées qu'en PDF.
+- **KaTeX** : dans les MDX de `problemes/`, `$...$` en ligne et `$$...$$` en bloc
+  (le bloc sur ses propres lignes). Images : `![description](/chemin.png)`.
   Le composant `<Callout status="...">` gère l'état `coming_soon`.
 
 ## Reco (optionnel mais conseillé)

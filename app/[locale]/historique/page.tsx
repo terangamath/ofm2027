@@ -9,7 +9,8 @@ const DOC_TYPES: ArchiveDocumentType[] = ["sujet", "solutions", "resultats"];
 const CATEGORIES = ["junior", "senior"] as const;
 
 function archivesFor(year: number, category: "junior" | "senior") {
-  return archives.filter((entry) => entry.year === year && entry.category === category);
+  // Les corrigés propres à un problème (page Problèmes et solutions) ne sont pas listés ici.
+  return archives.filter((entry) => entry.year === year && entry.category === category && entry.problem === undefined);
 }
 
 /**

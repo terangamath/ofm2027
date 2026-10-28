@@ -8,7 +8,6 @@ const PRIMARY_NAV = [
   { key: "organisation", href: "/organisation" },
   { key: "teams", href: "/equipes" },
   { key: "problems", href: "/problemes" },
-  { key: "solutions", href: "/solutions" },
   { key: "results", href: "/resultats" },
 ] as const;
 

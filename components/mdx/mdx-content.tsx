@@ -16,7 +16,9 @@ export function MdxContent({ source, locale }: { source: string; locale: Locale 
         [&_strong]:font-semibold [&_strong]:text-foreground
         [&_blockquote]:border-l-2 [&_blockquote]:border-hairline [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-muted-foreground
         [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6
-        [&_a]:text-link [&_a]:underline [&_a]:decoration-hairline [&_a]:underline-offset-4"
+        [&_a]:text-link [&_a]:underline [&_a]:decoration-hairline [&_a]:underline-offset-4
+        [&_.katex-display]:overflow-x-auto [&_.katex-display]:overflow-y-hidden [&_.katex-display]:py-1
+        [&_img]:mx-auto [&_img]:h-auto [&_img]:max-w-full [&_figcaption]:text-center [&_figcaption]:text-small [&_figcaption]:text-muted-foreground"
     >
       <MDXRemote
         source={source}

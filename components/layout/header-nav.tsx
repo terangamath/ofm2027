@@ -9,7 +9,7 @@ import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { Logo } from "@/components/brand/logo";
 
 export interface NavItem {
-  href: "/#a-propos" | "/organisation" | "/equipes" | "/problemes" | "/solutions" | "/resultats";
+  href: "/#a-propos" | "/organisation" | "/equipes" | "/problemes" | "/resultats";
   label: string;
 }
 

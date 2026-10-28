@@ -12,10 +12,9 @@
     "organisation": "Organisation",
     "teams": "Teams",
     "programme": "Programme",
-    "problems": "Problems",
+    "problems": "Problems and solutions",
     "history": "History",
     "contact": "Contact",
-    "solutions": "Solutions",
     "results": "Results"
   },
   "Header": {
@@ -146,8 +145,7 @@
     "learnMore": "Learn more",
     "confirmed": "Confirmed",
     "pending": "Pending",
-    "categoriesReference": "Conditions set by <ofm>article 4.4 of the OFM rules</ofm>, which refers to <imo>clause 2.2 of the IMO regulations</imo>.",
-    "contentComingSoon": "Content coming soon"
+    "categoriesReference": "Conditions set by <ofm>article 4.4 of the OFM rules</ofm>, which refers to <imo>clause 2.2 of the IMO regulations</imo>."
   },
   "Pages": {
     "Olympiad": {
@@ -218,17 +216,26 @@
       "localTimes": "See the delegations' local times"
     },
     "Problems": {
-      "title": "The Olympiad problems",
-      "lead": "A preview of the Olympiad's problems, with solutions where available.",
-      "comingSoonTitle": "Problems will be published after the exams",
-      "comingSoonBody": "The official 2027 problems and solutions will be published here once the competition has taken place. Past editions' papers remain available from the History page.",
-      "hasSolution": "Solution available",
-      "noSolutionYet": "Solution coming soon",
-      "readProblem": "View",
+      "title": "Problems and solutions",
+      "lead": "Read the problem statements and download the solutions.",
+      "categoriesLabel": "Category",
+      "problemsLabel": "{category} problems",
+      "problem": "Problem {n}",
+      "author": "Author: {name}",
+      "pending": "The problem statement will be published here.",
+      "pdf": "{category} problems PDF",
+      "pdfLabel": "Download the {category} problems (PDF)",
+      "pdfPending": "PDF coming soon",
       "category": {
         "junior": "Junior",
         "senior": "Senior"
-      }
+      },
+      "marker": "{category} · Problem {n}",
+      "solutionTitle": "Solution to problem {n}",
+      "solutionFormat": "Solution in PDF format",
+      "solutionDownload": "Download the solution PDF",
+      "solutionDownloadLabel": "Download the solution to {category} problem {n} (PDF)",
+      "solutionPending": "Available after publication"
     },
     "ProblemDetail": {
       "back": "All problems",
@@ -238,9 +245,6 @@
         "junior": "Junior",
         "senior": "Senior"
       }
-    },
-    "Solutions": {
-      "title": "Solutions"
     },
     "Results": {
       "title": "Results",

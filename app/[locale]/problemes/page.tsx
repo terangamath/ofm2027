@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { metadonneesPage } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { PageHero } from "@/components/layout/page-hero";
-import { ComingSoonPanel } from "@/components/shared/coming-soon-panel";
-import { Link } from "@/i18n/navigation";
-import { getProblems } from "@/lib/content";
-import type { Locale } from "@/content/types";
+import { IntroCompacte } from "@/components/layout/intro-compacte";
+import { CarteProbleme } from "@/components/problemes/carte-probleme";
+import { OngletsProblemes, type CategorieProblemes } from "@/components/problemes/onglets-problemes";
+import { getEnonces, getPdfArchive } from "@/lib/content";
+import { evenement } from "@/lib/contenu";
+import type { Locale, ProblemCategory } from "@/content/types";
+
+const CATEGORIES: ProblemCategory[] = ["junior", "senior"];
 
 export async function generateMetadata({
   params,
@@ -17,6 +20,13 @@ export async function generateMetadata({
   return metadonneesPage({ locale, chemin: "/problemes", titre: t("title"), description: t("lead") });
 }
 
+/**
+ * Problèmes et solutions de l'édition en cours : énoncés de content/problemes/
+ * (statut `published`), un à la fois derrière deux niveaux d'onglets, chacun
+ * suivi de son corrigé PDF. Énoncés complets et corrigés viennent de
+ * content/archives.json ; ce qui manque est annoncé, jamais inventé.
+ * L'ancienne adresse /solutions redirige ici (next.config.ts).
+ */
 export default async function ProblemsPage({
   params,
 }: {
@@ -26,50 +36,62 @@ export default async function ProblemsPage({
   setRequestLocale(locale);
   const typedLocale = locale as Locale;
   const t = await getTranslations({ locale, namespace: "Pages.Problems" });
-  const problems = getProblems(typedLocale);
+  const edition = evenement.edition;
+  const enonces = getEnonces(typedLocale, edition);
+  const onglets = [1, 2, 3, 4].map((n) => t("problem", { n }));
+
+  const categories: CategorieProblemes[] = CATEGORIES.map((category) => {
+    const nom = t(`category.${category}`);
+    return {
+      id: category,
+      label: nom,
+      pdf: getPdfArchive(edition, category, "sujet"),
+      pdfTexte: t("pdf", { category: nom }),
+      pdfLabel: t("pdfLabel", { category: nom }),
+      problemes: enonces[category].map((enonce, i) => {
+        const n = i + 1;
+        return (
+          <CarteProbleme
+            key={n}
+            id={`solution-${category}-${n}`}
+            enonce={enonce}
+            solution={getPdfArchive(edition, category, "solutions", n)}
+            locale={typedLocale}
+            libelles={{
+              repere: t("marker", { category: nom, n }),
+              numero: onglets[i],
+              author: enonce?.frontmatter.author ? t("author", { name: enonce.frontmatter.author }) : null,
+              pending: t("pending"),
+              solutionTitle: t("solutionTitle", { n }),
+              solutionFormat: t("solutionFormat"),
+              solutionDownload: t("solutionDownload"),
+              solutionDownloadLabel: t("solutionDownloadLabel", { category: nom, n }),
+              solutionPending: t("solutionPending"),
+            }}
+          />
+        );
+      }),
+    };
+  });
 
   return (
     <>
-      <PageHero chemin="/problemes" title={t("title")} lead={t("lead")} />
-
-      <section className="bg-surface pb-20 lg:pb-28">
-        <div className="mx-auto max-w-3xl px-6">
-          {problems.length === 0 ? (
-            <ComingSoonPanel title={t("comingSoonTitle")} body={t("comingSoonBody")} />
-          ) : (
-            <div className="flex flex-col gap-4">
-              {problems.map((problem) => (
-                <Link
-                  key={problem.slug}
-                  href={`/problemes/${problem.slug}`}
-                  className="group flex flex-col gap-3 border-b border-hairline py-6 hover:text-primary"
-                >
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="label text-link">
-                      {t(`category.${problem.category}`)} · <span className="data">nº {problem.number}</span>
-                    </span>
-                    <span className="label text-muted-foreground">
-                      {problem.hasSolution ? t("hasSolution") : t("noSolutionYet")}
-                    </span>
-                  </div>
-                  <h2 className="text-h4 text-foreground">{problem.title}</h2>
-                  <div className="flex flex-wrap gap-2">
-                    {problem.topics.map((topic) => (
-                      <span
-                        key={topic}
-                        className="label rounded-full border border-hairline px-2.5 py-0.5 text-muted-foreground"
-                      >
-                        {topic}
-                      </span>
-                    ))}
-                  </div>
-                  <span className="link-text mt-1 self-start text-link">
-                    {t("readProblem")}
-                  </span>
-                </Link>
-              ))}
-            </div>
-          )}
+      <IntroCompacte title={t("title")} lead={t("lead")} />
+      <section className="bg-entete-fond pt-8 pb-16 text-foreground lg:pt-10 lg:pb-20">
+        {/* Un seul bloc centré : onglets, bouton PDF et carte partagent la même largeur. */}
+        <div className="mx-auto box-border w-full max-w-[75rem] px-4 sm:px-6">
+          <OngletsProblemes
+            categories={categories}
+            libelles={{
+              categories: t("categoriesLabel"),
+              problemes: {
+                junior: t("problemsLabel", { category: t("category.junior") }),
+                senior: t("problemsLabel", { category: t("category.senior") }),
+              },
+              onglets,
+              pdfPending: t("pdfPending"),
+            }}
+          />
         </div>
       </section>
     </>
