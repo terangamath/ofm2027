@@ -2,64 +2,96 @@
   {
     "year": 2026,
     "host": { "fr": "Djibouti", "en": "Djibouti" },
+    "hostCode": "DJ",
     "city": null,
     "dates": { "fr": "28-29 mars 2026", "en": "28-29 March 2026" },
     "countriesCount": 14,
-    "note": null,
+    "competitors": null,
+    "participants": null,
     "status": "published"
   },
   {
     "year": 2025,
     "host": { "fr": "France", "en": "France" },
+    "hostCode": "FR",
     "city": null,
     "dates": { "fr": "22-23 mars 2025", "en": "22-23 March 2025" },
     "countriesCount": null,
-    "note": { "fr": "60 Junior · 72 Senior participants.", "en": "60 Junior · 72 Senior competitors." },
+    "competitors": { "junior": 60, "senior": 72 },
+    "participants": {
+      "junior": ["DZ", "BE", "CM", "DJ", "FR", "LU", "MA", "MR", "SN", "TN"],
+      "senior": ["DZ", "BE", "CM", "CA", "CG", "DJ", "FR", "LU", "MA", "MR", "SN", "TN"]
+    },
     "status": "published"
   },
   {
     "year": 2024,
     "host": { "fr": "Belgique", "en": "Belgium" },
+    "hostCode": "BE",
     "city": null,
     "dates": { "fr": "23-24 mars 2024", "en": "23-24 March 2024" },
     "countriesCount": null,
-    "note": { "fr": "68 Junior · 77 Senior participants.", "en": "68 Junior · 77 Senior competitors." },
+    "competitors": { "junior": 68, "senior": 77 },
+    "participants": {
+      "junior": ["DZ", "BE", "BF", "CM", "DJ", "FR", "LU", "MA", "MR", "SN", "CH", "TN"],
+      "senior": ["DZ", "BE", "BF", "CM", "CA", "DJ", "FR", "LU", "MA", "MR", "SN", "CH", "TN"]
+    },
     "status": "published"
   },
   {
     "year": 2023,
     "host": { "fr": "Tunisie", "en": "Tunisia" },
+    "hostCode": "TN",
     "city": null,
     "dates": { "fr": "29-30 avril 2023", "en": "29-30 April 2023" },
     "countriesCount": null,
-    "note": { "fr": "53 Junior · 67 Senior participants.", "en": "53 Junior · 67 Senior competitors." },
+    "competitors": { "junior": 53, "senior": 67 },
+    "participants": {
+      "junior": ["DZ", "BE", "CM", "CG", "FR", "MA", "MR", "CH", "TN"],
+      "senior": ["DZ", "BE", "CM", "CA", "CG", "FR", "MG", "MA", "MR", "CH", "TN"]
+    },
     "status": "published"
   },
   {
     "year": 2022,
     "host": { "fr": "Maroc", "en": "Morocco" },
+    "hostCode": "MA",
     "city": null,
     "dates": { "fr": "21-22 mai 2022", "en": "21-22 May 2022" },
     "countriesCount": null,
-    "note": { "fr": "27 Junior · 40 Senior participants.", "en": "27 Junior · 40 Senior competitors." },
+    "competitors": { "junior": 27, "senior": 40 },
+    "participants": {
+      "junior": ["CM", "FR", "MA", "CH", "TN"],
+      "senior": ["DZ", "CM", "CA", "FR", "MA", "CH", "TN"]
+    },
     "status": "published"
   },
   {
     "year": 2021,
     "host": { "fr": "Suisse", "en": "Switzerland" },
+    "hostCode": "CH",
     "city": null,
     "dates": { "fr": "27-28 mars 2021", "en": "27-28 March 2021" },
     "countriesCount": null,
-    "note": { "fr": "38 Junior · 50 Senior participants.", "en": "38 Junior · 50 Senior competitors." },
+    "competitors": { "junior": 38, "senior": 50 },
+    "participants": {
+      "junior": ["DZ", "BE", "CM", "FR", "LU", "MA", "CH", "TN"],
+      "senior": ["DZ", "BE", "CM", "CA", "FR", "LU", "MA", "CH", "TN"]
+    },
     "status": "published"
   },
   {
     "year": 2020,
     "host": { "fr": "France", "en": "France" },
+    "hostCode": "FR",
     "city": null,
     "dates": { "fr": "27-28 juin 2020", "en": "27-28 June 2020" },
     "countriesCount": null,
-    "note": { "fr": "12 Junior · 36 Senior participants.", "en": "12 Junior · 36 Senior competitors." },
+    "competitors": { "junior": 12, "senior": 36 },
+    "participants": {
+      "junior": ["BE", "FR"],
+      "senior": ["BE", "CI", "FR", "LU", "MA", "CH"]
+    },
     "status": "published"
   }
 ]

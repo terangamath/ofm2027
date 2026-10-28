@@ -219,10 +219,14 @@ export interface FaqItem {
 export interface Edition {
   year: number;
   host: LocalizedText;        // "[À confirmer]" si donnée manquante
+  hostCode: string;           // ISO 3166-1 alpha-2 du pays organisateur (drapeau)
   city: LocalizedText | null;
   dates: LocalizedText | null;
   countriesCount: number | null;
-  note: LocalizedText | null;
+  /** Effectifs publiés par catégorie ; null tant qu'ils ne le sont pas. */
+  competitors: { junior: number; senior: number } | null;
+  /** Pays participants par catégorie (codes ISO, ordre publié) ; null s'ils ne sont pas publiés. */
+  participants: { junior: string[]; senior: string[] } | null;
   status: ContentStatus;
 }
 

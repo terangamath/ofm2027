@@ -9,6 +9,7 @@
     "home": "Home",
     "olympiad": "The Olympiad",
     "about": "About",
+    "edition": "{year} edition",
     "organisation": "Organisation",
     "teams": "Teams",
     "programme": "Programme",
@@ -285,29 +286,36 @@
       "scrollHint": "Scroll the table horizontally."
     },
     "History": {
-      "title": "The Olympiad's history",
-      "lead": "Past editions of the Francophone Mathematical Olympiad.",
-      "hostLabel": "Host country",
-      "countriesLabel": "participating countries",
-      "archivesCategory": {
-        "junior": "Junior",
-        "senior": "Senior"
-      },
+      "title": "OFM history",
+      "lead": "Past editions and their archives.",
+      "editionsLabel": "Editions",
+      "edition": "OFM {year} — {host}",
+      "dates": "Dates",
+      "competitorsUnit": "competitors",
+      "participants": "Participating countries",
+      "participantsCount": "{count, plural, one {# country} other {# countries}}",
+      "archives": "Archives",
       "archivesType": {
-        "sujet": "Exam",
+        "sujet": "Problems",
         "solutions": "Solutions",
         "resultats": "Results"
       },
-      "nationsTitle": "Nations that have taken part in OFM",
-      "nationsLead": "Every nation that has entered a delegation since the Olympiad began, in 2020.",
+      "archiveLabel": "{type} {category} {year} (PDF, new tab)",
+      "pdf": "PDF",
+      "unavailable": "Document unavailable",
+      "unavailableCategory": "{category}: document unavailable",
+      "category": {
+        "junior": "Junior",
+        "senior": "Senior"
+      },
+      "hostsTitle": "Host countries",
       "columns": {
         "edition": "Edition",
-        "host": "Host",
-        "dates": "Dates",
-        "countries": "Countries",
-        "note": "Note",
-        "archives": "Papers, solutions, results"
-      }
+        "host": "Host country",
+        "dates": "Dates"
+      },
+      "toComplete": "To be completed",
+      "countriesTotal": "{count} countries in total"
     },
     "Contact": {
       "title": "Contact",

@@ -2,10 +2,8 @@
 // Génère les images de marque du site, dans le traitement de la variante D :
 //   public/og/ofm2027-{fr,en}-v<N>.png  image de partage Open Graph, 1200 × 630, par langue
 //                                       (nom versionné : lib/image-partage.ts)
-//   app/favicon.ico                     maille du logo, 16 et 32 px (PNG encapsulés dans l'ICO)
-//   app/icon.png                        maille, 96 px
-//   app/apple-icon.png                  maille, 180 px (apple-touch-icon)
-//   public/icons/icon-{192,512}.png     maille, icônes du manifeste web
+// Les icônes (favicon, apple-touch-icon, manifeste) viennent de l'emblème officiel :
+// scripts/icones.mjs.
 //
 // Image de partage : ce que voit celui qui clique — fond ivoire, titre Fraunces grasse
 // en vert, rangée d'informations à pastilles, la figure sur son disque soleil avec sa
@@ -168,71 +166,6 @@ function page(locale, c) {
 }
 
 /**
- * Icônes : la maille du logo sur fond ivoire. Plein cadre pour les icônes que le
- * système arrondit lui-même (iOS, Android) ; coins arrondis pour le favicon, dont
- * les coins transparents imposent aussi le RGBA exigé par le décodeur ICO de Next.js.
- * Le fond ivoire garde la maille lisible sur un onglet sombre comme sur un clair.
- */
-function pageIcone(cote, c, { arrondi = false } = {}) {
-  return `<!doctype html><html><head><meta charset="utf-8"><style>
-  * { margin: 0; }
-  html, body { width: ${cote}px; height: ${cote}px; overflow: hidden; background: transparent; }
-  svg { display: block; width: 100%; height: 100%; background: ${c.ivoire}; border-radius: ${arrondi ? "18%" : "0"}; }
-</style></head><body>${svgIcone(cote, c)}</body></html>`;
-}
-
-/**
- * La maille dessinée pour sa taille de rendu. À 16 et 32 px, un tracé mis à
- * l'échelle tombe entre deux pixels et se brouille en demi-teintes : la maille y
- * est échantillonnée sur la grille (chaque pixel prend la couleur du losange qui
- * contient son centre), symétrique par construction (centre sur un coin de pixel).
- * À 16 px, le cœur rouge ne couvrirait que 2 × 2 pixels — un carré, qui fait lire
- * une croix : la maille s'y réduit au losange vert et à son cœur jaune.
- * Au-delà, tracé vectoriel, la maille occupant 76 % de la hauteur.
- */
-function svgIcone(cote, c) {
-  const m = maille(18);
-  if (cote <= 32) {
-    const demiH = cote === 16 ? 7.5 : 14.5;
-    const demiL = demiH / Math.sqrt(3);
-    const k = cote === 16 ? { jaune: 0.5, rouge: 0 } : { jaune: 0.56, rouge: 0.2 };
-    const rects = [];
-    for (let y = 0; y < cote; y++) {
-      for (let x = 0; x < cote; x++) {
-        const d = Math.abs(x + 0.5 - cote / 2) / demiL + Math.abs(y + 0.5 - cote / 2) / demiH;
-        const couleur = d <= k.rouge ? c.rouge : d <= k.jaune ? c.soleil : d <= 1 ? c.vert : null;
-        if (couleur) rects.push(`<rect x="${x}" y="${y}" width="1" height="1" fill="${couleur}"/>`);
-      }
-    }
-    return `<svg viewBox="0 0 ${cote} ${cote}" shape-rendering="crispEdges">${rects.join("")}</svg>`;
-  }
-  const h = 76;
-  const l = (h * m.largeur) / m.hauteur;
-  return `<svg viewBox="0 0 100 100"><g transform="translate(${50 - l / 2} 12) scale(${h / m.hauteur})">
-    <path d="${m.vert}" fill="${c.vert}"/><path d="${m.jaune}" fill="${c.soleil}"/><path d="${m.rouge}" fill="${c.rouge}"/></g></svg>`;
-}
-
-/** Fichier ICO contenant des PNG (format admis par tous les navigateurs actuels). */
-function ico(pngs) {
-  const entete = Buffer.alloc(6 + 16 * pngs.length);
-  entete.writeUInt16LE(0, 0);
-  entete.writeUInt16LE(1, 2);
-  entete.writeUInt16LE(pngs.length, 4);
-  let decalage = entete.length;
-  pngs.forEach(({ cote, donnees }, i) => {
-    const e = 6 + 16 * i;
-    entete.writeUInt8(cote >= 256 ? 0 : cote, e);
-    entete.writeUInt8(cote >= 256 ? 0 : cote, e + 1);
-    entete.writeUInt16LE(1, e + 4);
-    entete.writeUInt16LE(32, e + 6);
-    entete.writeUInt32LE(donnees.length, e + 8);
-    entete.writeUInt32LE(decalage, e + 12);
-    decalage += donnees.length;
-  });
-  return Buffer.concat([entete, ...pngs.map((p) => p.donnees)]);
-}
-
-/**
  * Capture exacte d'une page à la taille demandée via le protocole DevTools de Chrome
  * (WebSocket natif de Node, aucune dépendance). `--screenshot` en ligne de commande
  * ne convient pas : en mode sans interface, la fenêtre retire ~87 px à la hauteur.
@@ -285,7 +218,7 @@ async function capturer(html, largeur, hauteur, polices) {
     await envoyer("Emulation.setDeviceMetricsOverride", {
       width: largeur, height: hauteur, deviceScaleFactor: 1, mobile: false,
     });
-    // Fond de page transparent : ce qui n'est pas peint reste transparent (coins du favicon).
+    // Fond de page transparent : ce qui n'est pas peint reste transparent.
     await envoyer("Emulation.setDefaultBackgroundColorOverride", { color: { r: 0, g: 0, b: 0, a: 0 } });
     const fichierHtml = path.join(profil, "page.html");
     fs.writeFileSync(fichierHtml, html);
@@ -335,11 +268,3 @@ for (const locale of ["fr", "en"]) {
   const png = await capturer(page(locale, couleurs), LARGEUR, HAUTEUR, ["Fraunces", "Inter", "JetBrains Mono"]);
   ecrire(`public${cheminImagePartage(locale)}`, png);
 }
-
-const rendreIcone = (cote, options) => capturer(pageIcone(cote, couleurs, options), cote, cote, []);
-const favicon = (cote) => rendreIcone(cote, { arrondi: true });
-ecrire("app/favicon.ico", ico([{ cote: 16, donnees: await favicon(16) }, { cote: 32, donnees: await favicon(32) }]));
-ecrire("app/icon.png", await rendreIcone(96));
-ecrire("app/apple-icon.png", await rendreIcone(180));
-ecrire("public/icons/icon-192.png", await rendreIcone(192));
-ecrire("public/icons/icon-512.png", await rendreIcone(512));

@@ -13,7 +13,6 @@ const PHASES = {
   "/equipes": 3 / 8,
   "/programme": 6 / 8,
   "/problemes": 2 / 8,
-  "/historique": 7 / 8,
   "/contact": 4 / 8,
   "/mentions-legales": 1 / 16,
 } as const;

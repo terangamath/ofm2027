@@ -3,6 +3,7 @@
 import { useId, useState, type KeyboardEvent, type ReactNode } from "react";
 import { FileText } from "lucide-react";
 import type { ProblemCategory } from "@/content/types";
+import { cibleClavier } from "@/lib/onglets";
 
 export interface CategorieProblemes {
   id: ProblemCategory;
@@ -24,15 +25,6 @@ export interface LibellesProblemes {
   /** « Problème 1 » à « Problème 4 ». */
   onglets: string[];
   pdfPending: string;
-}
-
-/** Index visé par une touche, selon le motif ARIA des onglets ; null sinon. */
-function cibleClavier(key: string, index: number, total: number): number | null {
-  if (key === "ArrowRight") return (index + 1) % total;
-  if (key === "ArrowLeft") return (index - 1 + total) % total;
-  if (key === "Home") return 0;
-  if (key === "End") return total - 1;
-  return null;
 }
 
 /**

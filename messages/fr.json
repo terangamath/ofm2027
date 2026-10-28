@@ -9,6 +9,7 @@
     "home": "Accueil",
     "olympiad": "L'Olympiade",
     "about": "À propos",
+    "edition": "Édition {year}",
     "organisation": "Organisation",
     "teams": "Équipes",
     "programme": "Programme",
@@ -285,29 +286,36 @@
       "scrollHint": "Faites défiler le tableau horizontalement."
     },
     "History": {
-      "title": "L'histoire de l'Olympiade",
-      "lead": "Les éditions passées de l'Olympiade Francophone de Mathématiques.",
-      "hostLabel": "Pays hôte",
-      "countriesLabel": "pays participants",
-      "archivesCategory": {
-        "junior": "Junior",
-        "senior": "Senior"
-      },
+      "title": "Historique de l’OFM",
+      "lead": "Les éditions précédentes et leurs archives.",
+      "editionsLabel": "Éditions",
+      "edition": "OFM {year} — {host}",
+      "dates": "Dates",
+      "competitorsUnit": "participants",
+      "participants": "Pays participants",
+      "participantsCount": "{count} pays",
+      "archives": "Archives",
       "archivesType": {
-        "sujet": "Sujet",
+        "sujet": "Problèmes",
         "solutions": "Solutions",
         "resultats": "Résultats"
       },
-      "nationsTitle": "Nations ayant déjà pris part à l'OFM",
-      "nationsLead": "Toutes les nations ayant engagé une délégation depuis la création de l'Olympiade, en 2020.",
+      "archiveLabel": "{type} {category} {year} (PDF, nouvel onglet)",
+      "pdf": "PDF",
+      "unavailable": "Document indisponible",
+      "unavailableCategory": "{category} : document indisponible",
+      "category": {
+        "junior": "Junior",
+        "senior": "Senior"
+      },
+      "hostsTitle": "Les pays organisateurs",
       "columns": {
         "edition": "Édition",
-        "host": "Organisateur",
-        "dates": "Dates",
-        "countries": "Pays",
-        "note": "Note",
-        "archives": "Sujets, solutions, résultats"
-      }
+        "host": "Pays organisateur",
+        "dates": "Dates"
+      },
+      "toComplete": "À compléter",
+      "countriesTotal": "{count} pays au total"
     },
     "Contact": {
       "title": "Contact",

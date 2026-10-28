@@ -120,6 +120,16 @@ content/
   « Disponible après publication », sans lien. Les corrigés
   par problème n'apparaissent pas dans la page Historique. Les solutions ne
   sont publiées qu'en PDF.
+- **Compléter une édition passée** (`editions.json`, page Historique) :
+  `hostCode` donne le drapeau (code ISO, fichier dans `public/flags/`) ;
+  `competitors` (`{ "junior": 60, "senior": 72 }`) et `participants`
+  (codes ISO par catégorie, noms tirés de `nations.json`) restent `null` tant
+  qu'ils ne sont pas publiés : la fiche l'annonce, sans chiffre de remplacement.
+  Les PDF de l'édition se déclarent dans `archives.json` (`sujet`, `solutions`,
+  `resultats`, sans `problem`) ; sans fichier, « Document indisponible ».
+  L'onglet ouvert par défaut est la dernière édition dont effectifs et pays
+  sont publiés. Sources 2020-2025 : ofm2025.maths-olympiques.fr/a-propos
+  (PDF 2020-2024 identiques octet pour octet à ceux du site igm.univ-mlv.fr).
 - **KaTeX** : dans les MDX de `problemes/`, `$...$` en ligne et `$$...$$` en bloc
   (le bloc sur ses propres lignes). Images : `![description](/chemin.png)`.
   Le composant `<Callout status="...">` gère l'état `coming_soon`.

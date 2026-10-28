@@ -13,8 +13,9 @@ import emblemePi from "@/public/icons/logo-embleme.png";
  *
  * Emplacement de la variante D : une maille du bandeau tissé (lib/pavage.ts),
  * un losange du pavage {3,6} et ses losanges emboîtés.
- * Les icônes (favicon, image de partage) sont générées séparément par
- * scripts/images-marque.mjs, à reprendre en même temps.
+ * Les icônes (favicon, apple-touch-icon, manifeste) sont générées depuis
+ * l'emblème par scripts/icones.mjs ; l'image de partage par
+ * scripts/images-marque.mjs. À reprendre en même temps.
  *
  * `embleme="pi"` : l'emblème de l'OFM 2027 (π aux couleurs du Sénégal), utilisé
  * par l'en-tête. public/icons/logo-embleme.png est tiré de
