@@ -3,6 +3,7 @@
   "countryCode": "MR",
   "iso3": "MRT",
   "name": { "fr": "Mauritanie", "en": "Mauritania" },
+  "ofName": { "fr": "de la Mauritanie", "en": "Mauritania" },
   "flagEmoji": "🇲🇷",
   "timeZone": "Africa/Nouakchott",
   "status": "confirmed",

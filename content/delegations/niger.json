@@ -3,6 +3,7 @@
   "countryCode": "NE",
   "iso3": "NER",
   "name": { "fr": "Niger", "en": "Niger" },
+  "ofName": { "fr": "du Niger", "en": "Niger" },
   "flagEmoji": "🇳🇪",
   "timeZone": "Africa/Niamey",
   "status": "confirmed",

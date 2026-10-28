@@ -40,6 +40,21 @@ content/
 - **Ajouter un pays** : déposer `delegations/<slug>.json` (voir les exemples).
   `status: "invited"` : pays invité sans réponse, présent dans les données mais
   jamais rendu ; passer à `"confirmed"` (et renseigner `timeZone`) pour l'afficher.
+  `ofName` donne le nom avec sa préposition, pour le titre de la fiche
+  (« Délégation **de la Belgique** », « Delegation of **the Comoros** »).
+- **Publier une équipe** : dans `members`, un objet par personne connue, dans
+  l'ordre d'affichage. Chaque équipe montre 6 participants et 2 encadrants ;
+  les places sans membre affichent « À confirmer » (jamais de nom inventé) :
+  ```json
+  "members": [
+    { "name": "Prénom Nom", "category": "junior", "position": "participant",
+      "photo": "/delegations/senegal/prenom-nom.jpg",
+      "detail": { "fr": "15 ans", "en": "15 years old" } },
+    { "name": "Prénom Nom", "category": "senior", "position": "leader",
+      "detail": { "fr": "Chef de délégation", "en": "Team leader" } }
+  ]
+  ```
+  `photo` et `detail` sont facultatifs (sans photo : avatar neutre).
 - **Ajouter un partenaire** : déposer le logo dans `public/partenaires/`, puis une
   entrée dans `partenaires.json` avec `status: "confirmed"` et
   `logo: { src, width, height }` (dimensions intrinsèques). Format détaillé dans

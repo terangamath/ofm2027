@@ -867,10 +867,18 @@
   stroke-width: 2;
 }
 
-/* Drapeau flottant (components/shared/drapeau-flottant.tsx) : rectangle net,
-   plis de lumière très légers, et une ombre elliptique diffuse détachée sous
-   le drapeau. Au survol et au focus du lien .lien-drapeau, le drapeau monte de
-   6 px et l'ombre, restée au sol, s'élargit et s'estompe. */
+/* Drapeau flottant (components/shared/drapeau-flottant.tsx) : un tissu aux
+   bords ondulés, couvert de plis diagonaux (creux et reflets satinés, définis
+   par <TissusDrapeaux />), et une ombre elliptique diffuse détachée sous lui.
+   Au survol et au focus du lien .lien-drapeau, le drapeau monte de 6 px et
+   l'ombre, restée au sol, s'élargit et s'estompe.
+   Au repos, les plis glissent lentement dans le sens du vent (une période par
+   cycle : la boucle est sans raccord), le drapeau flotte (3 px, moins d'un
+   degré) et l'ombre respire avec lui ; chaque drapeau est décalé dans ses
+   cycles par --rang (sa place dans la galerie). Le mouvement passe par
+   transform et scale, distincts du translate et du transform du survol : les
+   deux se cumulent. Sous prefers-reduced-motion, tout est figé ; les plis
+   restent, immobiles. */
 .drapeau-flottant {
   position: relative;
   isolation: isolate;
@@ -881,60 +889,71 @@
   content: "";
   position: absolute;
   z-index: -1;
-  left: 14%;
-  right: 14%;
-  bottom: -22px;
-  height: 10px;
+  left: 8%;
+  right: 8%;
+  bottom: -20px;
+  height: 12px;
   border-radius: 50%;
   background: var(--ombre-drapeau-sol);
-  filter: blur(12px);
+  filter: blur(13px);
   opacity: 0.45;
   transition:
     transform 250ms var(--ease-signature),
     opacity 250ms var(--ease-signature),
     filter 250ms var(--ease-signature);
+  animation: drapeau-ombre 6.5s ease-in-out calc(var(--rang, 0) * -0.85s) infinite;
 }
+/* Le SVG garde la place d'un rectangle 3:2 ; les plis débordent sans pousser la grille. */
 .drapeau {
-  position: relative;
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 3 / 2;
-  overflow: hidden;
-  border-radius: 4px;
+  overflow: visible;
   transition: translate 250ms var(--ease-signature);
+  animation: drapeau-flotter 6.5s ease-in-out calc(var(--rang, 0) * -0.85s) infinite;
 }
-/* Liseré intérieur à peine visible : les bandes blanches ne se fondent pas dans le fond. */
-.drapeau::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  border-radius: inherit;
-  box-shadow: inset 0 0 0 1px var(--drapeau-lisere);
+/* Liseré à peine visible : les bandes blanches ne se fondent pas dans le fond. */
+.drapeau-lisere {
+  fill: none;
+  stroke: var(--drapeau-lisere);
+  stroke-width: 1.5;
 }
-/* Plis : lumière et ombre en lumière douce, très faibles. */
-.drapeau::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  mix-blend-mode: soft-light;
-  background: linear-gradient(
-    100deg,
-    color-mix(in srgb, var(--anthracite) 9%, transparent) 0%,
-    color-mix(in srgb, var(--blanc) 0%, transparent) 14%,
-    color-mix(in srgb, var(--blanc) 16%, transparent) 28%,
-    color-mix(in srgb, var(--anthracite) 0%, transparent) 42%,
-    color-mix(in srgb, var(--anthracite) 8%, transparent) 58%,
-    color-mix(in srgb, var(--blanc) 0%, transparent) 72%,
-    color-mix(in srgb, var(--blanc) 12%, transparent) 86%,
-    color-mix(in srgb, var(--anthracite) 6%, transparent) 100%
-  );
+.drapeau-cadre-hote {
+  fill: none;
+  stroke: var(--or);
+  stroke-width: 2.5;
 }
-.drapeau-hote {
-  outline: 2px solid var(--or);
-  outline-offset: 3px;
+/* --pli-dx et --pli-dy : une période de plis, posée par le composant. */
+.drapeau-plis {
+  animation: drapeau-plis 16s linear calc(var(--rang, 0) * -2.3s) infinite;
+}
+@keyframes drapeau-plis {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(var(--pli-dx), var(--pli-dy));
+  }
+}
+@keyframes drapeau-flotter {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(-0.6deg);
+  }
+}
+/* L'ombre se resserre quand le drapeau monte. */
+@keyframes drapeau-ombre {
+  0%,
+  100% {
+    scale: 1 1;
+  }
+  50% {
+    scale: 0.9 1;
+  }
 }
 .fleche-drapeau {
   transition: transform 250ms var(--ease-signature);
@@ -964,13 +983,18 @@
 .lien-drapeau:focus-visible .fleche-drapeau {
   transform: translateX(4px);
 }
-/* Mouvement réduit : ni montée ni déplacement de flèche ; l'ombre qui s'estompe
-   et le soulignement du nom signalent encore le survol. */
+/* Mouvement réduit : drapeaux immobiles, ni montée ni déplacement de flèche ;
+   l'ombre qui s'estompe et le soulignement du nom signalent encore le survol. */
 @media (prefers-reduced-motion: reduce) {
   .drapeau,
   .fleche-drapeau,
   .drapeau-flottant::after {
     transition: none;
+  }
+  .drapeau,
+  .drapeau-plis,
+  .drapeau-flottant::after {
+    animation: none;
   }
   .lien-drapeau:hover .drapeau,
   .lien-drapeau:focus-visible .drapeau {

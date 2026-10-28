@@ -3,6 +3,7 @@
   "countryCode": "BE",
   "iso3": "BEL",
   "name": { "fr": "Belgique", "en": "Belgium" },
+  "ofName": { "fr": "de la Belgique", "en": "Belgium" },
   "flagEmoji": "🇧🇪",
   "timeZone": "Europe/Brussels",
   "status": "confirmed",

@@ -78,10 +78,18 @@ export interface Stat {
 // Délégations (/equipes, /equipes/[pays])
 // ─────────────────────────────────────────────────────────────
 
+/**
+ * Membre publié d'une délégation. Un membre non encore connu n'est pas saisi :
+ * la fiche affiche « À confirmer » dans les places restantes (lib/equipes.ts).
+ */
 export interface DelegationMember {
-  name: string;               // "[À confirmer]" tant que non nommé
-  role: LocalizedText;        // "Compétiteur", "Chef de délégation"...
-  category?: "junior" | "senior";
+  name: string;
+  category: "junior" | "senior"; // équipe
+  position: "participant" | "leader"; // élève ou encadrant
+  /** Chemin sous public/, ex. "/delegations/senegal/prenom-nom.jpg" ; absent = avatar neutre. */
+  photo?: string | null;
+  /** Information complémentaire affichée sous le nom : âge, « Chef de délégation »… */
+  detail?: LocalizedText | null;
 }
 
 export interface Delegation {
@@ -89,13 +97,15 @@ export interface Delegation {
   countryCode: string;        // ISO 3166-1 alpha-2, ex. "SN"
   iso3: string;               // ISO 3166-1 alpha-3, ex. "SEN" : relie la fiche au fond de carte (content/geo/monde.json)
   name: LocalizedText;        // "Sénégal" / "Senegal"
-  flagEmoji: string;          // "🇸🇳" (historique ; l'affichage utilise des SVG)
+  /** Nom précédé de sa préposition, pour « Délégation du Sénégal » / « Delegation of Senegal ». */
+  ofName: LocalizedText;      // "du Sénégal" / "Senegal"
+  flagEmoji: string;         // "🇸🇳" (historique ; l'affichage utilise des SVG)
   /** Fuseau IANA de la délégation, ex. "Africa/Dakar". Jamais de décalage en dur. */
   timeZone: string;
   status: EngagementStatus;   // confirmed | pending
   isHost: boolean;
   description: LocalizedText | null;
-  /** null = roster pas encore publié (coming_soon). */
+  /** null = aucun membre publié : toutes les places sont « À confirmer ». */
   members: DelegationMember[] | null;
 }
 

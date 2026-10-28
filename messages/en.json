@@ -8,12 +8,15 @@
   "Nav": {
     "home": "Home",
     "olympiad": "The Olympiad",
+    "about": "About",
     "organisation": "Organisation",
     "teams": "Teams",
     "programme": "Programme",
-    "problems": "Problems & Solutions",
+    "problems": "Problems",
     "history": "History",
-    "contact": "Contact"
+    "contact": "Contact",
+    "solutions": "Solutions",
+    "results": "Results"
   },
   "Header": {
     "languageSwitcherLabel": "Change language",
@@ -21,7 +24,8 @@
     "menuOpen": "Open menu",
     "menuClose": "Close menu",
     "themeToLight": "Switch to light theme",
-    "themeToDark": "Switch to dark theme"
+    "themeToDark": "Switch to dark theme",
+    "navLabel": "Main navigation"
   },
   "Footer": {
     "logoAlt": "OFM 2027 symbol: the letter π in the colours of Senegal, a baobab and a pirogue",
@@ -142,7 +146,8 @@
     "learnMore": "Learn more",
     "confirmed": "Confirmed",
     "pending": "Pending",
-    "categoriesReference": "Conditions set by <ofm>article 4.4 of the OFM rules</ofm>, which refers to <imo>clause 2.2 of the IMO regulations</imo>."
+    "categoriesReference": "Conditions set by <ofm>article 4.4 of the OFM rules</ofm>, which refers to <imo>clause 2.2 of the IMO regulations</imo>.",
+    "contentComingSoon": "Content coming soon"
   },
   "Pages": {
     "Olympiad": {
@@ -194,11 +199,15 @@
       "hostLabel": "Host country"
     },
     "TeamDetail": {
-      "back": "All teams",
-      "hostBadge": "Host country",
-      "statusConfirmed": "Delegation confirmed",
+      "back": "All delegations",
+      "title": "Delegation of {of}",
+      "hostLabel": "Host country",
       "statusPending": "Participation pending confirmation",
-      "membersTitle": "Delegation",
+      "junior": "Junior team",
+      "senior": "Senior team",
+      "participants": "Participants",
+      "leaders": "Team leaders",
+      "toBeConfirmed": "To be confirmed",
       "notFoundTitle": "Delegation not found",
       "notFoundBody": "This delegation does not exist or has not been confirmed yet."
     },
@@ -234,6 +243,12 @@
         "junior": "Junior",
         "senior": "Senior"
       }
+    },
+    "Solutions": {
+      "title": "Solutions"
+    },
+    "Results": {
+      "title": "Results"
     },
     "History": {
       "title": "The Olympiad's history",

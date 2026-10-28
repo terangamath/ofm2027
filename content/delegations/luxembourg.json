@@ -3,6 +3,7 @@
   "countryCode": "LU",
   "iso3": "LUX",
   "name": { "fr": "Luxembourg", "en": "Luxembourg" },
+  "ofName": { "fr": "du Luxembourg", "en": "Luxembourg" },
   "flagEmoji": "🇱🇺",
   "timeZone": "Europe/Luxembourg",
   "status": "confirmed",

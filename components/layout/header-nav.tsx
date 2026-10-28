@@ -1,6 +1,6 @@
 "use client";
 
-import { ViewTransition, useEffect, useState } from "react";
+import { ViewTransition, useEffect, useState, type MouseEvent } from "react";
 import { useLinkStatus } from "next/link";
 import { Menu, X } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
@@ -9,7 +9,7 @@ import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { Logo } from "@/components/brand/logo";
 
 export interface NavItem {
-  href: "/" | "/olympiade" | "/equipes" | "/programme" | "/problemes";
+  href: "/#a-propos" | "/organisation" | "/equipes" | "/problemes" | "/solutions" | "/resultats";
   label: string;
 }
 
@@ -38,10 +38,28 @@ function Chargement() {
   return <span aria-hidden className={`lien-chargement ${pending ? "en-cours" : ""}`} />;
 }
 
-/** Rubrique courante : la page elle-même ou l'une de ses sous-pages (fiche pays…). L'accueil ne s'active que sur lui-même. */
+/** Rubrique courante : la page elle-même ou l'une de ses sous-pages (fiche pays…). */
 function estActif(pathname: string, href: NavItem["href"]): boolean {
-  if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+/**
+ * Lien vers une ancre de la page courante (« À propos » depuis l'accueil) :
+ * défilement natif, sans passer par le routeur, qui jouerait d'abord le fondu
+ * de page. La fluidité et la marge sous l'en-tête viennent du CSS
+ * (scroll-behavior, scroll-margin). Le défilement attend l'image suivante, une
+ * fois le menu mobile refermé, pour viser la position définitive de la section.
+ * Depuis une autre page, le lien navigue normalement vers l'accueil et son ancre.
+ */
+function defilerVersAncre(event: MouseEvent<HTMLAnchorElement>, pathname: string, href: NavItem["href"]) {
+  const [chemin, ancre] = href.split("#");
+  if (!ancre || chemin !== pathname) return;
+  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  const cible = document.getElementById(ancre);
+  if (!cible) return;
+  event.preventDefault();
+  window.history.pushState(null, "", `#${ancre}`);
+  requestAnimationFrame(() => cible.scrollIntoView());
 }
 
 export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
@@ -100,6 +118,7 @@ export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
                 <li key={item.href}>
                   <Link
                     href={item.href}
+                    onClick={(event) => defilerVersAncre(event, pathname, item.href)}
                     aria-current={active ? "page" : undefined}
                     className="relative flex min-h-11 items-center text-[0.9375rem] font-medium whitespace-nowrap text-nav-texte aria-[current=page]:font-semibold hover:underline hover:decoration-nav-filet hover:decoration-2 hover:underline-offset-8 xl:text-base"
                   >
@@ -143,8 +162,13 @@ export function HeaderNav({ items, locale, locales, labels }: HeaderNavProps) {
             <ul className="flex flex-col gap-1">
               {items.map((item) => (
                 <li key={item.href}>
+                  {/* Fermeture explicite : un lien vers une ancre de la page courante ne change pas le chemin. */}
                   <Link
                     href={item.href}
+                    onClick={(event) => {
+                      setMenuOpen(false);
+                      defilerVersAncre(event, pathname, item.href);
+                    }}
                     aria-current={estActif(pathname, item.href) ? "page" : undefined}
                     className="relative flex min-h-11 items-center rounded-full px-4 py-2 text-[1.0625rem] font-medium text-nav-texte aria-[current=page]:font-semibold transition-[background-color] duration-100 hover:bg-nav-survol active:bg-nav-survol aria-[current=page]:bg-nav-actif aria-[current=page]:text-nav-actif-texte"
                   >

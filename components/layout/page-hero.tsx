@@ -3,10 +3,12 @@ import { BandeauCouche, BandeauVertical } from "@/components/motifs/bandeau-tiss
 
 /**
  * Phase du bandeau tissé, page par page : même pavage, morceau différent.
- * L'accueil est en 0 ; huitièmes de période (neuf pages : les mentions
- * légales prennent un seizième), tous distincts.
+ * L'accueil est en 0 ; huitièmes de période (les mentions légales, les
+ * solutions et les résultats prennent un seizième), tous distincts.
  */
 const PHASES = {
+  "/solutions": 3 / 16,
+  "/resultats": 5 / 16,
   "/olympiade": 1 / 8,
   "/organisation": 5 / 8,
   "/equipes": 3 / 8,

@@ -13,13 +13,14 @@ const LIENS = [
  * « À propos de l'OFM », sous le premier écran : le logo complet à gauche
  * (40 %), la présentation à droite (60 %) ; sur téléphone, le logo réduit
  * passe au-dessus du texte. Le logo reste entier (object-contain) ; en thème
- * sombre, un fond sable garde lisibles ses lettres brunes.
+ * sombre, un fond sable garde lisibles ses lettres brunes. Cible du lien
+ * « À propos » du menu (/#a-propos) : la marge de défilement dégage l'en-tête collant.
  */
 export async function AboutSection({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "Home.About" });
 
   return (
-    <section aria-labelledby="a-propos" className="bg-background py-14 text-foreground lg:py-20">
+    <section id="a-propos" aria-labelledby="a-propos-titre" className="scroll-mt-16 bg-background py-14 text-foreground lg:scroll-mt-20 lg:py-20">
       <div className="mx-auto grid max-w-[75rem] grid-cols-1 items-center gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-16">
         <Image
           src={logo}
@@ -30,7 +31,7 @@ export async function AboutSection({ locale }: { locale: Locale }) {
 
         <div className="flex flex-col gap-5">
           <div className="flex flex-col gap-3">
-            <h2 id="a-propos" className="text-[clamp(1.625rem,1.3rem+1vw,2rem)] font-bold text-vert-profond dark:text-primary">
+            <h2 id="a-propos-titre"className="text-[clamp(1.625rem,1.3rem+1vw,2rem)] font-bold text-vert-profond dark:text-primary">
               {t("title")}
             </h2>
             <span aria-hidden className="h-0.5 w-12 bg-accent" />

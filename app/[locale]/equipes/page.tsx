@@ -5,7 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { getDelegations } from "@/lib/content";
-import { DrapeauFlottant } from "@/components/shared/drapeau-flottant";
+import { DrapeauFlottant, TissusDrapeaux } from "@/components/shared/drapeau-flottant";
 import type { Locale } from "@/content/types";
 
 export async function generateMetadata({
@@ -59,8 +59,9 @@ export default async function TeamsPage({
         </div>
       </div>
 
+      <TissusDrapeaux />
       <ul className="mx-auto grid max-w-[75rem] grid-cols-1 gap-x-4 gap-y-6 px-4 min-[22rem]:grid-cols-2 sm:px-6 md:grid-cols-3 md:gap-x-8 md:gap-y-8 lg:grid-cols-4 lg:gap-x-10">
-        {delegations.map((delegation) => {
+        {delegations.map((delegation, rang) => {
           const nom = delegation.name[typedLocale];
           return (
             <li key={delegation.slug}>
@@ -68,19 +69,20 @@ export default async function TeamsPage({
                 href={`/equipes/${delegation.slug}`}
                 className="lien-drapeau group flex flex-col items-center gap-6 rounded-lg p-2 focus-visible:outline-or-trait dark:focus-visible:outline-or-clair"
               >
-                <DrapeauFlottant
-                  countryCode={delegation.countryCode}
-                  hote={delegation.isHost}
-                  sizes="(min-width: 1024px) 270px, 45vw"
-                />
+                {/* Le drapeau migre vers le haut de la fiche du pays (élément partagé). */}
+                <ViewTransition name={`delegation-${delegation.slug}`} share="partage">
+                  <DrapeauFlottant
+                    countryCode={delegation.countryCode}
+                    hote={delegation.isHost}
+                    rang={rang}
+                  />
+                </ViewTransition>
                 <span className="flex flex-col items-center gap-0.5 text-center">
                   {/* La flèche suit le dernier mot, même quand le nom passe sur deux lignes. */}
                   <span className="text-base font-bold sm:text-lg">
-                    <ViewTransition name={`delegation-${delegation.slug}`} share="partage">
-                      <span className="decoration-or decoration-2 underline-offset-4 group-hover:underline group-focus-visible:underline">
-                        {nom}
-                      </span>
-                    </ViewTransition>
+                    <span className="decoration-or decoration-2 underline-offset-4 group-hover:underline group-focus-visible:underline">
+                      {nom}
+                    </span>
                     <ArrowRight aria-hidden className="fleche-drapeau ml-1.5 inline-block size-5 align-[-0.2em] text-or" />
                   </span>
                   {delegation.isHost && (

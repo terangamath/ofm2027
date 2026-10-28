@@ -3,6 +3,7 @@
   "countryCode": "FR",
   "iso3": "FRA",
   "name": { "fr": "France", "en": "France" },
+  "ofName": { "fr": "de la France", "en": "France" },
   "flagEmoji": "🇫🇷",
   "timeZone": "Europe/Paris",
   "status": "confirmed",

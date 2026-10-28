@@ -3,6 +3,7 @@
   "countryCode": "CA",
   "iso3": "CAN",
   "name": { "fr": "Canada", "en": "Canada" },
+  "ofName": { "fr": "du Canada", "en": "Canada" },
   "flagEmoji": "🇨🇦",
   "timeZone": "America/Toronto",
   "status": "confirmed",

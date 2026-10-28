@@ -2,12 +2,14 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { HeaderNav, type NavItem } from "@/components/layout/header-nav";
 import { routing } from "@/i18n/routing";
 
+// L'accueil n'a pas d'entrée : le logo y ramène. « À propos » mène à la section du même nom de l'accueil.
 const PRIMARY_NAV = [
-  { key: "home", href: "/" },
-  { key: "olympiad", href: "/olympiade" },
+  { key: "about", href: "/#a-propos" },
+  { key: "organisation", href: "/organisation" },
   { key: "teams", href: "/equipes" },
-  { key: "programme", href: "/programme" },
   { key: "problems", href: "/problemes" },
+  { key: "solutions", href: "/solutions" },
+  { key: "results", href: "/resultats" },
 ] as const;
 
 /**
@@ -31,7 +33,7 @@ export async function Header() {
         skipToContent: tHeader("skipToContent"),
         menuOpen: tHeader("menuOpen"),
         menuClose: tHeader("menuClose"),
-        navLabel: t("home"),
+        navLabel: tHeader("navLabel"),
         languageSwitcher: tHeader("languageSwitcherLabel"),
         themeToLight: tHeader("themeToLight"),
         themeToDark: tHeader("themeToDark"),

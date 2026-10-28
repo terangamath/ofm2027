@@ -8,12 +8,15 @@
   "Nav": {
     "home": "Accueil",
     "olympiad": "L'Olympiade",
+    "about": "À propos",
     "organisation": "Organisation",
     "teams": "Équipes",
     "programme": "Programme",
-    "problems": "Problèmes & Solutions",
+    "problems": "Problèmes",
     "history": "Historique",
-    "contact": "Contact"
+    "contact": "Contact",
+    "solutions": "Solutions",
+    "results": "Résultats"
   },
   "Header": {
     "languageSwitcherLabel": "Changer de langue",
@@ -21,7 +24,8 @@
     "menuOpen": "Ouvrir le menu",
     "menuClose": "Fermer le menu",
     "themeToLight": "Passer au thème clair",
-    "themeToDark": "Passer au thème sombre"
+    "themeToDark": "Passer au thème sombre",
+    "navLabel": "Navigation principale"
   },
   "Footer": {
     "logoAlt": "Symbole de l'OFM 2027 : la lettre π aux couleurs du Sénégal, un baobab et une pirogue",
@@ -142,7 +146,8 @@
     "learnMore": "En savoir plus",
     "confirmed": "Confirmé",
     "pending": "En attente",
-    "categoriesReference": "Conditions fixées par l’<ofm>article 4.4 du règlement de l’OFM</ofm>, qui renvoie à la <imo>clause 2.2 du règlement de l’IMO</imo>."
+    "categoriesReference": "Conditions fixées par l’<ofm>article 4.4 du règlement de l’OFM</ofm>, qui renvoie à la <imo>clause 2.2 du règlement de l’IMO</imo>.",
+    "contentComingSoon": "Contenu à venir"
   },
   "Pages": {
     "Olympiad": {
@@ -194,11 +199,15 @@
       "hostLabel": "Pays organisateur"
     },
     "TeamDetail": {
-      "back": "Toutes les équipes",
-      "hostBadge": "Pays hôte",
-      "statusConfirmed": "Délégation confirmée",
+      "back": "Toutes les délégations",
+      "title": "Délégation {of}",
+      "hostLabel": "Pays organisateur",
       "statusPending": "Participation en attente de confirmation",
-      "membersTitle": "Délégation",
+      "junior": "Équipe Junior",
+      "senior": "Équipe Senior",
+      "participants": "Participants",
+      "leaders": "Encadrants",
+      "toBeConfirmed": "À confirmer",
       "notFoundTitle": "Délégation introuvable",
       "notFoundBody": "Cette délégation n'existe pas ou n'a pas encore été confirmée."
     },
@@ -234,6 +243,12 @@
         "junior": "Junior",
         "senior": "Senior"
       }
+    },
+    "Solutions": {
+      "title": "Solutions"
+    },
+    "Results": {
+      "title": "Résultats"
     },
     "History": {
       "title": "L'histoire de l'Olympiade",
