@@ -29,6 +29,8 @@ export interface LibellesClassement {
   colAward: string;
   colParticipant: string;
   colCountry: string;
+  /** Mot affiché à la place du pays dans l'aperçu : des données fictives ne s'attribuent à aucun pays réel. */
+  countryPlaceholder: string;
   colProblem: string;
   colProblemLong: string;
   colTotal: string;
@@ -157,7 +159,7 @@ export function Classement({
       l.rank,
       l.award ? libelles[l.award] : "",
       l.name,
-      nomsPays[l.countryCode] ?? l.countryCode,
+      apercu ? libelles.countryPlaceholder : (nomsPays[l.countryCode] ?? l.countryCode),
       ...l.scores,
       l.total,
     ]);
@@ -314,10 +316,14 @@ export function Classement({
                     </td>
                     <th scope="row" className="px-3 py-2.5 font-medium whitespace-nowrap">{ligne.name}</th>
                     <td className="px-3 py-2.5">
-                      <span className="inline-flex items-center gap-2 whitespace-nowrap">
-                        <Flag countryCode={ligne.countryCode} size={20} className="border border-border" />
-                        {nomsPays[ligne.countryCode] ?? ligne.countryCode}
-                      </span>
+                      {apercu ? (
+                        <span className="whitespace-nowrap text-muted-foreground">{libelles.countryPlaceholder}</span>
+                      ) : (
+                        <span className="inline-flex items-center gap-2 whitespace-nowrap">
+                          <Flag countryCode={ligne.countryCode} size={20} className="border border-border" />
+                          {nomsPays[ligne.countryCode] ?? ligne.countryCode}
+                        </span>
+                      )}
                     </td>
                     {ligne.scores.map((points, i) => (
                       <td key={i} className="px-2 py-2.5 text-right">{points}</td>

@@ -51,6 +51,7 @@ export default async function ResultsPage({
       allCountries: t("allCountries"),
       caption: t("caption", { category: "{category}" }),
       previewCaption: t("previewCaption"),
+      countryPlaceholder: t("countryPlaceholder"),
       colRank: t("colRank"),
       colAward: t("colAward"),
       colParticipant: t("colParticipant"),
