@@ -8,12 +8,15 @@
   "Nav": {
     "home": "Home",
     "olympiad": "The Olympiad",
+    "about": "About",
+    "edition": "{year} edition",
     "organisation": "Organisation",
     "teams": "Teams",
     "programme": "Programme",
-    "problems": "Problems & Solutions",
+    "problems": "Problems and solutions",
     "history": "History",
-    "contact": "Contact"
+    "contact": "Contact",
+    "results": "Results"
   },
   "Header": {
     "languageSwitcherLabel": "Change language",
@@ -21,29 +24,57 @@
     "menuOpen": "Open menu",
     "menuClose": "Close menu",
     "themeToLight": "Switch to light theme",
-    "themeToDark": "Switch to dark theme"
+    "themeToDark": "Switch to dark theme",
+    "navLabel": "Main navigation"
   },
   "Footer": {
-    "navLabel": "Useful links",
-    "history": "Past editions",
-    "legalMentions": "Legal notice",
+    "logoAlt": "OFM 2027 symbol: the letter π in the colours of Senegal, a baobab and a pirogue",
+    "organizedBy": "Organised by {organizer}",
+    "location": "{city}, {country}",
+    "usefulLinks": "Useful links",
     "officialSite": "Official OFM website",
-    "organizedBy": "Organised by",
-    "committee": "committee in {city}, {country}",
-    "rights": "© {year} Terangamath"
+    "rules": "Official rules",
+    "history": "Past editions",
+    "contact": "Contact",
+    "contactOrganisation": "Contact the organisers",
+    "terangamath": "Discover Terangamath",
+    "newTab": "(opens in a new tab)",
+    "rights": "© {year} Terangamath",
+    "legalMentions": "Legal notice"
   },
   "Home": {
     "Hero": {
-      "title": "The Francophone Mathematical Olympiad",
-      "lead": "Senegal hosts the organisation of the 2027 edition of the Francophone Mathematical Olympiad, contested online by the best young mathematicians of the French-speaking world.",
+      "title": "OFM 2027",
+      "subtitle": "8<sup>th</sup> Francophone Mathematical Olympiad",
       "ctaPrimary": "Discover the Olympiad",
-      "ctaSecondary": "See the teams",
-      "metaDates": "Dates",
-      "metaMode": "Format",
-      "metaModeValue": "Remote exams",
-      "metaCategories": "Categories",
-      "metaOrganizer": "Organiser",
-      "figureCaption": "Figure from Problem 3, OFM 2024 (Senior): (DE) is parallel to (OM)."
+      "photoAlt": "Painted pirogues on a beach in Senegal; one bears the inscription “OFM 2027 Sénégal”.",
+      "countdownLabel": "Countdown to the start of the paper",
+      "countdownBefore": "The paper starts in",
+      "countdownDuring": "Paper in progress",
+      "countdownAfter": "Paper over",
+      "days": "days",
+      "hours": "hours",
+      "minutes": "minutes",
+      "seconds": "seconds"
+    },
+    "About": {
+      "title": "About the OFM",
+      "p1": "The Francophone Mathematical Olympiad is a competition for students across the French-speaking world. It sets problems in algebra, combinatorics, geometry and number theory, in two categories: Junior and Senior.",
+      "p2": "Participants represent their country in national delegations. Each paper consists of four problems to be solved in four and a half hours.",
+      "p3": "The 8<sup>th</sup> edition is organised by <b>Terangamath</b> in Senegal on <b>27 and 28 March 2027</b>, with papers sat remotely in the participating countries.",
+      "rules": "Official rules",
+      "terangamath": "Discover Terangamath",
+      "newTab": "(opens in a new tab)",
+      "logoAlt": "OFM 2027 logo: the letter π in the colours of Senegal, a baobab and a pirogue, above “OFM 2027 Sénégal, Olympiades francophones de mathématiques”."
+    },
+    "Countries": {
+      "title": "Participating countries",
+      "cta": "Discover the delegations",
+      "mapLabel": "World map of the countries taking part in OFM 2027",
+      "legendHost": "Senegal, host country",
+      "legendParticipant": "Confirmed participating country",
+      "listLabel": "Participating country pages",
+      "credit": "Base map: <link>Natural Earth</link>"
     },
     "Event": {
       "title": "The event, at a glance",
@@ -101,11 +132,8 @@
       "referenceLine": "Reference: {time} in Dakar ({zone})"
     },
     "Partners": {
-      "title": "Making the Olympiad possible",
-      "lead": "Alongside Terangamath for the 2027 edition.",
-      "categoryInstitutional": "Institutional partners",
-      "categoryFinancial": "Financial partners",
-      "categoryTechnical": "Technical partners"
+      "title": "Our partners",
+      "lead": "They support the 2027 edition."
     },
     "Faq": {
       "title": "Frequently asked questions",
@@ -148,30 +176,32 @@
       }
     },
     "Organisation": {
-      "title": "Terangamath & the organisation of OFM 2027",
-      "lead": "The Olympiad is led by the Terangamath association, supported by committees dedicated to problem selection and to the coordination of marking.",
-      "About": {
-        "title": "The organising association",
-        "body": "Terangamath is the Senegalese association behind OFM 2027. Its name draws on the Teranga, Senegalese hospitality, which it puts to work promoting mathematics among young people across the French-speaking world."
-      },
-      "Committees": {
-        "title": "Committees",
-        "lead": "The committees preparing the 2027 edition."
-      }
+      "title": "Organisation",
+      "lead": "An edition organised by TerangaMath, in Senegal.",
+      "compositionPending": "Composition to be announced",
+      "memberToConfirm": "Member to be confirmed",
+      "coordinatorToConfirm": "Coordinator to be confirmed"
     },
     "Teams": {
       "title": "The OFM 2027 delegations",
       "lead": "The French-speaking countries engaged in the 2027 edition. Each country may enter a Junior delegation and a Senior delegation, of one to six students each.",
       "hostBadge": "Host country",
       "viewTeam": "View team",
-      "statusPending": "Pending"
+      "statusPending": "Pending",
+      "kicker": "OFM 2027",
+      "heading": "The delegations",
+      "hostLabel": "Host country"
     },
     "TeamDetail": {
-      "back": "All teams",
-      "hostBadge": "Host country",
-      "statusConfirmed": "Delegation confirmed",
+      "back": "All delegations",
+      "title": "Delegation of {of}",
+      "hostLabel": "Host country",
       "statusPending": "Participation pending confirmation",
-      "membersTitle": "Delegation",
+      "junior": "Junior team",
+      "senior": "Senior team",
+      "participants": "Participants",
+      "leaders": "Team leaders",
+      "toBeConfirmed": "To be confirmed",
       "notFoundTitle": "Delegation not found",
       "notFoundBody": "This delegation does not exist or has not been confirmed yet."
     },
@@ -187,17 +217,26 @@
       "localTimes": "See the delegations' local times"
     },
     "Problems": {
-      "title": "The Olympiad problems",
-      "lead": "A preview of the Olympiad's problems, with solutions where available.",
-      "comingSoonTitle": "Problems will be published after the exams",
-      "comingSoonBody": "The official 2027 problems and solutions will be published here once the competition has taken place. Past editions' papers remain available from the History page.",
-      "hasSolution": "Solution available",
-      "noSolutionYet": "Solution coming soon",
-      "readProblem": "View",
+      "title": "Problems and solutions",
+      "lead": "Read the problem statements and download the solutions.",
+      "categoriesLabel": "Category",
+      "problemsLabel": "{category} problems",
+      "problem": "Problem {n}",
+      "author": "Author: {name}",
+      "pending": "The problem statement will be published here.",
+      "pdf": "{category} problems PDF",
+      "pdfLabel": "Download the {category} problems (PDF)",
+      "pdfPending": "PDF coming soon",
       "category": {
         "junior": "Junior",
         "senior": "Senior"
-      }
+      },
+      "marker": "{category} · Problem {n}",
+      "solutionTitle": "Solution to problem {n}",
+      "solutionFormat": "Solution in PDF format",
+      "solutionDownload": "Download the solution PDF",
+      "solutionDownloadLabel": "Download the solution to {category} problem {n} (PDF)",
+      "solutionPending": "Available after publication"
     },
     "ProblemDetail": {
       "back": "All problems",
@@ -208,30 +247,76 @@
         "senior": "Senior"
       }
     },
+    "Results": {
+      "title": "Results",
+      "lead": "Junior and Senior rankings",
+      "notPublishedTitle": "Results to come",
+      "notPublished": "The official results will be published after the papers.",
+      "previewBadge": "Preview — fictitious data",
+      "previewNote": "This sample ranking is used to preview the page. These are not official results.",
+      "categoriesLabel": "Category",
+      "junior": "Junior",
+      "senior": "Senior",
+      "searchLabel": "Search for a participant",
+      "searchPlaceholder": "Participant name",
+      "countryLabel": "Country",
+      "allCountries": "All countries",
+      "caption": "{category} ranking",
+      "previewCaption": "(preview, fictitious data)",
+      "colRank": "Rank",
+      "colAward": "Award",
+      "colParticipant": "Participant",
+      "colCountry": "Country",
+      "countryPlaceholder": "Country",
+      "colProblem": "P{n}",
+      "colProblemLong": "Problem {n}",
+      "colTotal": "Total",
+      "gold": "Gold",
+      "silver": "Silver",
+      "bronze": "Bronze",
+      "noAward": "No award",
+      "count": "{count, plural, =0 {No participants} one {# participant} other {# participants}}",
+      "noMatch": "No participant matches your search.",
+      "resetFilters": "Clear filters",
+      "paginationLabel": "Ranking pages",
+      "previous": "Previous",
+      "next": "Next",
+      "pageOf": "Page {page} of {pages}",
+      "legend": "P1 to P4: points scored on each problem.",
+      "download": "Download the ranking",
+      "scrollHint": "Scroll the table horizontally."
+    },
     "History": {
-      "title": "The Olympiad's history",
-      "lead": "Past editions of the Francophone Mathematical Olympiad.",
-      "hostLabel": "Host country",
-      "countriesLabel": "participating countries",
-      "archivesCategory": {
-        "junior": "Junior",
-        "senior": "Senior"
-      },
+      "title": "OFM history",
+      "lead": "Past editions and their archives.",
+      "editionsLabel": "Editions",
+      "edition": "OFM {year} — {host}",
+      "dates": "Dates",
+      "competitorsUnit": "competitors",
+      "participants": "Participating countries",
+      "participantsCount": "{count, plural, one {# country} other {# countries}}",
+      "archives": "Archives",
       "archivesType": {
-        "sujet": "Exam",
+        "sujet": "Problems",
         "solutions": "Solutions",
         "resultats": "Results"
       },
-      "nationsTitle": "Nations that have taken part in OFM",
-      "nationsLead": "Every nation that has entered a delegation since the Olympiad began, in 2020.",
+      "archiveLabel": "{type} {category} {year} (PDF, new tab)",
+      "pdf": "PDF",
+      "unavailable": "Document unavailable",
+      "unavailableCategory": "{category}: document unavailable",
+      "category": {
+        "junior": "Junior",
+        "senior": "Senior"
+      },
+      "hostsTitle": "Host countries",
       "columns": {
         "edition": "Edition",
-        "host": "Host",
-        "dates": "Dates",
-        "countries": "Countries",
-        "note": "Note",
-        "archives": "Papers, solutions, results"
-      }
+        "host": "Host country",
+        "dates": "Dates"
+      },
+      "toComplete": "To be completed",
+      "countriesTotal": "{count} countries in total"
     },
     "Contact": {
       "title": "Contact",

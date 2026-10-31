@@ -20,6 +20,9 @@
   --gris: #6b7280;
   --terracotta: #b24a2e;
   --blanc: #ffffff;
+  /* Distinctions du classement (/resultats) : pastilles décoratives, le libellé est écrit à côté. */
+  --argent: #a8adb4;
+  --bronze: #b07a45;
 
   /* Tons dérivés, choisis pour le confort de lecture et non pour le seuil :
      encre = texte secondaire (9,2:1 sur sable, contre 6,7:1 auparavant) ;
@@ -50,6 +53,13 @@
   --rouge: #bc3a2a;
   /* Vert de pastille en thème sombre : 6,1:1 sur la nuit adoucie. */
   --vert-pastille-nuit: #52b788;
+
+  /* En-tête : vert-profond pour les libellés (9,8:1 sur blanc, 8,6:1 sur
+     sauge, teinte de survol), blanc sur vert-profond 9,8:1 (élément actif). */
+  --sauge: #edf1e9;
+  --vert-profond: #174c3b;
+  /* Pied de page, identique dans les deux thèmes : ivoire dessus 11,3:1, à 78 % 7,6:1. */
+  --vert-pied: #123e32;
 }
 
 /* ────────────────────────────────────────────────────────────────
@@ -117,6 +127,31 @@
   /* Le trait « maintenant » de la partition, seul emploi de la terracotta. */
   --maintenant: var(--terracotta);
   --maintenant-texte: var(--terracotta-fonce);
+  /* En-tête : fond blanc, libellés vert profond (9,8:1). */
+  --entete-fond: var(--blanc);
+  --nav-filet: color-mix(in srgb, var(--vert-profond) 14%, transparent);
+  --nav-texte: var(--vert-profond);
+  --nav-survol: color-mix(in srgb, var(--vert-profond) 8%, var(--sauge));
+  --nav-actif: var(--vert-profond);
+  --nav-actif-texte: var(--blanc);
+  /* Bandeau du hero : vert profond, translucide quand il se pose sur la photo.
+     Ivoire sur vert-profond 9,4:1 ; or des séparateurs, décoratif. */
+  --compte-fond: var(--vert-profond);
+  --bande-fond: color-mix(in srgb, var(--vert-profond) 86%, transparent);
+  --compte-texte: var(--ivoire);
+  --compte-libelle: color-mix(in srgb, var(--ivoire) 86%, var(--vert-profond));
+  --compte-accent: var(--or);
+  /* Carte des pays participants, sur fond vert profond (identique dans les deux
+     thèmes) : terres sable, participants soleil, pays hôte rouge. */
+  --carte-fond: var(--vert-profond);
+  --carte-terre: var(--sable);
+  --carte-frontiere: var(--vert-profond);
+  --carte-participant: var(--soleil);
+  --carte-hote: var(--rouge);
+  /* Drapeaux flottants de la page Équipes : ombre au sol, liseré intérieur. */
+  --ombre-drapeau-sol: color-mix(in srgb, var(--vert-nuit) 70%, transparent);
+  --drapeau-lisere: color-mix(in srgb, var(--anthracite) 12%, transparent);
+  --annee-contour: color-mix(in srgb, var(--vert-profond) 11%, transparent);
 
   --radius: 0.5rem;
 
@@ -181,10 +216,26 @@
   --pastille-rouge-icone: var(--vert-nuit);
   --maintenant: var(--terracotta-clair);
   --maintenant-texte: var(--terracotta-pale);
+  /* Sable-texte sur nuit-douce 12,3:1 ; blanc sur vert-clair 6,4:1. */
+  --entete-fond: var(--nuit-douce);
+  --nav-filet: color-mix(in srgb, var(--sable) 16%, transparent);
+  --nav-texte: var(--sable-texte);
+  --nav-survol: color-mix(in srgb, var(--sable) 8%, var(--nuit-relevee));
+  --nav-actif: var(--vert-clair);
+  --nav-actif-texte: var(--blanc);
+  /* Sable-texte sur vert 9,0:1, sable-doux 6,7:1. */
+  --compte-fond: var(--vert);
+  --bande-fond: color-mix(in srgb, var(--vert-nuit) 84%, transparent);
+  --compte-texte: var(--sable-texte);
+  --compte-libelle: var(--sable-doux);
+  --compte-accent: var(--or);
 
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.16);
   --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.32);
   color-scheme: dark;
+  --ombre-drapeau-sol: rgba(0, 0, 0, 0.9);
+  --drapeau-lisere: color-mix(in srgb, var(--blanc) 10%, transparent);
+  --annee-contour: color-mix(in srgb, var(--sable) 12%, transparent);
 }
 
 /* ────────────────────────────────────────────────────────────────
@@ -216,6 +267,28 @@
   --color-chiffre: var(--chiffre);
   --color-maintenant: var(--maintenant);
   --color-maintenant-texte: var(--maintenant-texte);
+  --color-entete-fond: var(--entete-fond);
+  --color-nav-filet: var(--nav-filet);
+  --color-nav-texte: var(--nav-texte);
+  --color-nav-survol: var(--nav-survol);
+  --color-nav-actif: var(--nav-actif);
+  --color-nav-actif-texte: var(--nav-actif-texte);
+  --color-compte-fond: var(--compte-fond);
+  --color-bande-fond: var(--bande-fond);
+  --color-carte-fond: var(--carte-fond);
+  --color-carte-participant: var(--carte-participant);
+  --color-carte-hote: var(--carte-hote);
+  --color-vert-profond: var(--vert-profond);
+  --color-or-trait: var(--or-trait);
+  --color-argent: var(--argent);
+  --color-bronze: var(--bronze);
+  --color-pastille-vert: var(--pastille-vert);
+  --color-rouge: var(--rouge);
+  --color-soleil: var(--soleil);
+  --color-vert-pied: var(--vert-pied);
+  --color-compte-texte: var(--compte-texte);
+  --color-compte-libelle: var(--compte-libelle);
+  --color-compte-accent: var(--compte-accent);
 
   /* Rôles sémantiques shadcn/ui */
   --color-background: var(--background);
@@ -251,9 +324,7 @@
   --radius-full: 9999px;
 
   /* Familles de polices — variables injectées par next/font (voir app/[locale]/layout.tsx) */
-  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", monospace;
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
 
   /* Échelle typographique fluide — §5 */
   --text-display-xl: clamp(3rem, 8vw, 7rem);
@@ -311,26 +382,25 @@
     /* Chiffres proportionnels dans le texte courant ; tabulaires uniquement là
        où des nombres se comparent en colonne (.data, tables, grands chiffres). */
     font-variant-numeric: proportional-nums;
-    font-optical-sizing: auto;
+    font-weight: 400;
   }
+  /* Hiérarchie Montserrat : titres principaux 700, titres secondaires 600.
+     Boutons, champs et listes déroulantes héritent de la police (préflight
+     Tailwind : font: inherit). */
   h1,
   h2,
   h3,
   h4 {
-    @apply font-display;
     text-wrap: balance;
   }
-  /* Titrage Fraunces : opsz automatique (l'axe suit la taille réelle), SOFT et
-     WONK donnent le caractère. Les intertitres restent nets (SOFT 0, WONK 0). */
-  h1,
-  h2,
-  .titrage {
-    font-variation-settings: "SOFT" 30, "WONK" 1;
+  h1 {
+    font-weight: 700;
     letter-spacing: -0.02em;
   }
+  h2,
   h3,
   h4 {
-    font-variation-settings: "SOFT" 0, "WONK" 0;
+    font-weight: 600;
     letter-spacing: -0.01em;
   }
   p {
@@ -348,18 +418,16 @@
 }
 
 @layer utilities {
-  /* Libellé d'interface : Inter, bas de casse, graisse moyenne. Jamais de capitales. */
+  /* Petit libellé d'interface : bas de casse, graisse normale. Jamais de capitales. */
   .label {
-    font-family: var(--font-sans);
     font-size: var(--text-small);
     line-height: var(--text-small--line-height);
-    font-weight: 500;
+    font-weight: 400;
   }
 
-  /* Donnée : JetBrains Mono, chiffres tabulaires. Réservé à ce qui se trie ou se
-     calcule — dates, heures, durées, effectifs, numéros. */
+  /* Donnée : chiffres tabulaires. Réservé à ce qui se trie ou se calcule —
+     dates, heures, durées, effectifs, numéros. */
   .data {
-    font-family: var(--font-mono);
     font-size: var(--text-label);
     line-height: var(--text-label--line-height);
     font-variant-numeric: tabular-nums;
@@ -457,7 +525,7 @@
   }
   .figure-etiquette {
     fill: var(--figure-etiquette);
-    font-family: var(--font-display);
+    font-family: var(--font-sans);
     font-style: italic;
     font-weight: 600;
     font-size: 21px;
@@ -526,14 +594,6 @@
   }
   .tissage-rouge {
     fill: var(--tissage-rouge);
-  }
-  /* Titre du hero : Fraunces grasse, comme sur la maquette 5254. Plus serré
-     que display-xl pour tenir « Mathématiques » dans sa colonne. */
-  .titre-hero {
-    font-size: clamp(2.75rem, 6.2vw, 6rem);
-    line-height: 0.98;
-    font-weight: 700;
-    letter-spacing: -0.025em;
   }
   .pastille {
     display: flex;
@@ -732,4 +792,226 @@
     opacity: 1;
     transition: opacity 0s 150ms;
   }
+}
+
+/* Premier écran de l'accueil : un voile vert nuit, plus dense en haut, sous le
+   texte posé dans le ciel ; une ombre très douce détache les lettres blanches. */
+.hero-voile {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--vert-nuit) 62%, transparent) 0%,
+    color-mix(in srgb, var(--vert-nuit) 40%, transparent) 40%,
+    color-mix(in srgb, var(--vert-nuit) 12%, transparent) 64%,
+    transparent 82%
+  );
+}
+/* Téléphone étroit : le titre passe sur trois lignes, le voile descend avec lui. */
+@media (max-width: 24rem) {
+  .hero-voile {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--vert-nuit) 64%, transparent) 0%,
+      color-mix(in srgb, var(--vert-nuit) 50%, transparent) 50%,
+      color-mix(in srgb, var(--vert-nuit) 14%, transparent) 75%,
+      transparent 90%
+    );
+  }
+}
+/* Bouton du hero : un fond vert nuit translucide sous le libellé blanc, qui
+   tient le contraste quel que soit le morceau de photo derrière. */
+.hero-bouton {
+  background-color: color-mix(in srgb, var(--vert-nuit) 45%, transparent);
+  backdrop-filter: blur(4px);
+}
+.hero-texte {
+  text-shadow: 0 1px 2px color-mix(in srgb, var(--vert-nuit) 45%, transparent);
+}
+
+/* Carte des pays participants : frontières fines, survol et focus sur les
+   seuls pays participants (des liens). */
+.carte path {
+  stroke: var(--carte-frontiere);
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+}
+.carte-pays {
+  fill: var(--carte-terre);
+}
+.carte-participant {
+  fill: var(--carte-participant);
+}
+.carte-hote {
+  fill: var(--carte-hote);
+}
+/* Petit pays participant : un halo de sa propre couleur, sous son tracé,
+   l'épaissit sans le déplacer ni effacer ses frontières. */
+.carte .carte-halo {
+  stroke-width: 3;
+}
+.carte .carte-participant .carte-halo {
+  stroke: var(--carte-participant);
+}
+.carte .carte-hote .carte-halo {
+  stroke: var(--carte-hote);
+}
+.carte .carte-halo + path {
+  stroke-width: 0.3;
+}
+.carte a {
+  cursor: pointer;
+  outline: none;
+}
+.carte a:hover path {
+  fill: var(--or-clair);
+}
+.carte a:hover .carte-halo {
+  stroke: var(--or-clair);
+}
+.carte a:focus-visible path {
+  stroke: var(--ivoire);
+  stroke-width: 2;
+}
+
+/* Drapeau flottant (components/shared/drapeau-flottant.tsx) : un tissu aux
+   bords ondulés, couvert de plis diagonaux (creux et reflets satinés, définis
+   par <TissusDrapeaux />), et une ombre elliptique diffuse détachée sous lui.
+   Au survol et au focus du lien .lien-drapeau, le drapeau monte de 6 px et
+   l'ombre, restée au sol, s'élargit et s'estompe.
+   Au repos, les plis glissent lentement dans le sens du vent (une période par
+   cycle : la boucle est sans raccord), le drapeau flotte (3 px, moins d'un
+   degré) et l'ombre respire avec lui ; chaque drapeau est décalé dans ses
+   cycles par --rang (sa place dans la galerie). Le mouvement passe par
+   transform et scale, distincts du translate et du transform du survol : les
+   deux se cumulent. Sous prefers-reduced-motion, tout est figé ; les plis
+   restent, immobiles. */
+.drapeau-flottant {
+  position: relative;
+  isolation: isolate;
+  display: block;
+  width: 100%;
+}
+.drapeau-flottant::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 8%;
+  right: 8%;
+  bottom: -20px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--ombre-drapeau-sol);
+  filter: blur(13px);
+  opacity: 0.45;
+  transition:
+    transform 250ms var(--ease-signature),
+    opacity 250ms var(--ease-signature),
+    filter 250ms var(--ease-signature);
+  animation: drapeau-ombre 6.5s ease-in-out calc(var(--rang, 0) * -0.85s) infinite;
+}
+/* Le SVG garde la place d'un rectangle 3:2 ; les plis débordent sans pousser la grille. */
+.drapeau {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  overflow: visible;
+  transition: translate 250ms var(--ease-signature);
+  animation: drapeau-flotter 6.5s ease-in-out calc(var(--rang, 0) * -0.85s) infinite;
+}
+/* Liseré à peine visible : les bandes blanches ne se fondent pas dans le fond. */
+.drapeau-lisere {
+  fill: none;
+  stroke: var(--drapeau-lisere);
+  stroke-width: 1.5;
+}
+.drapeau-cadre-hote {
+  fill: none;
+  stroke: var(--or);
+  stroke-width: 2.5;
+}
+/* --pli-dx et --pli-dy : une période de plis, posée par le composant. */
+.drapeau-plis {
+  animation: drapeau-plis 16s linear calc(var(--rang, 0) * -2.3s) infinite;
+}
+@keyframes drapeau-plis {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(var(--pli-dx), var(--pli-dy));
+  }
+}
+@keyframes drapeau-flotter {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(-0.6deg);
+  }
+}
+/* L'ombre se resserre quand le drapeau monte. */
+@keyframes drapeau-ombre {
+  0%,
+  100% {
+    scale: 1 1;
+  }
+  50% {
+    scale: 0.9 1;
+  }
+}
+.fleche-drapeau {
+  transition: transform 250ms var(--ease-signature);
+}
+/* Survol réservé aux appareils qui survolent vraiment ; focus clavier partout. */
+@media (hover: hover) {
+  .lien-drapeau:hover .drapeau {
+    translate: 0 -6px;
+  }
+  .lien-drapeau:hover .drapeau-flottant::after {
+    transform: scaleX(1.12);
+    filter: blur(16px);
+    opacity: 0.4;
+  }
+  .lien-drapeau:hover .fleche-drapeau {
+    transform: translateX(4px);
+  }
+}
+.lien-drapeau:focus-visible .drapeau {
+  translate: 0 -6px;
+}
+.lien-drapeau:focus-visible .drapeau-flottant::after {
+  transform: scaleX(1.12);
+  filter: blur(16px);
+  opacity: 0.4;
+}
+.lien-drapeau:focus-visible .fleche-drapeau {
+  transform: translateX(4px);
+}
+/* Mouvement réduit : drapeaux immobiles, ni montée ni déplacement de flèche ;
+   l'ombre qui s'estompe et le soulignement du nom signalent encore le survol. */
+@media (prefers-reduced-motion: reduce) {
+  .drapeau,
+  .fleche-drapeau,
+  .drapeau-flottant::after {
+    transition: none;
+  }
+  .drapeau,
+  .drapeau-plis,
+  .drapeau-flottant::after {
+    animation: none;
+  }
+  .lien-drapeau:hover .drapeau,
+  .lien-drapeau:focus-visible .drapeau {
+    translate: none;
+  }
+  .lien-drapeau:hover .fleche-drapeau,
+  .lien-drapeau:focus-visible .fleche-drapeau {
+    transform: none;
+  }
+}
+/* « 2027 » décoratif, en contour très pâle. */
+.annee-contour {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--annee-contour);
 }

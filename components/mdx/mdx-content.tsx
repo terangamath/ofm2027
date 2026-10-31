@@ -11,12 +11,14 @@ export function MdxContent({ source, locale }: { source: string; locale: Locale 
   return (
     <div
       className="flex flex-col gap-5 text-body text-foreground/90
-        [&_h2]:mt-4 [&_h2]:text-h3 [&_h2]:font-display [&_h2]:text-foreground
-        [&_h3]:mt-2 [&_h3]:text-h4 [&_h3]:font-display [&_h3]:text-foreground
+        [&_h2]:mt-4 [&_h2]:text-h3 [&_h2]:[&_h2]:text-foreground
+        [&_h3]:mt-2 [&_h3]:text-h4 [&_h3]:[&_h3]:text-foreground
         [&_strong]:font-semibold [&_strong]:text-foreground
         [&_blockquote]:border-l-2 [&_blockquote]:border-hairline [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-muted-foreground
         [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6
-        [&_a]:text-link [&_a]:underline [&_a]:decoration-hairline [&_a]:underline-offset-4"
+        [&_a]:text-link [&_a]:underline [&_a]:decoration-hairline [&_a]:underline-offset-4
+        [&_.katex-display]:overflow-x-auto [&_.katex-display]:overflow-y-hidden [&_.katex-display]:py-1
+        [&_img]:mx-auto [&_img]:h-auto [&_img]:max-w-full [&_figcaption]:text-center [&_figcaption]:text-small [&_figcaption]:text-muted-foreground"
     >
       <MDXRemote
         source={source}

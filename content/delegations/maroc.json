@@ -1,7 +1,9 @@
 {
   "slug": "maroc",
   "countryCode": "MA",
+  "iso3": "MAR",
   "name": { "fr": "Maroc", "en": "Morocco" },
+  "ofName": { "fr": "du Maroc", "en": "Morocco" },
   "flagEmoji": "🇲🇦",
   "timeZone": "Africa/Casablanca",
   "status": "confirmed",

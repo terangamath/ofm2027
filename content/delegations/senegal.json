@@ -1,7 +1,9 @@
 {
   "slug": "senegal",
   "countryCode": "SN",
+  "iso3": "SEN",
   "name": { "fr": "Sénégal", "en": "Senegal" },
+  "ofName": { "fr": "du Sénégal", "en": "Senegal" },
   "flagEmoji": "🇸🇳",
   "timeZone": "Africa/Dakar",
   "status": "confirmed",

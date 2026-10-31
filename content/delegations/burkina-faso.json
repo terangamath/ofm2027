@@ -1,7 +1,9 @@
 {
   "slug": "burkina-faso",
   "countryCode": "BF",
+  "iso3": "BFA",
   "name": { "fr": "Burkina Faso", "en": "Burkina Faso" },
+  "ofName": { "fr": "du Burkina Faso", "en": "Burkina Faso" },
   "flagEmoji": "🇧🇫",
   "timeZone": "Africa/Ouagadougou",
   "status": "confirmed",

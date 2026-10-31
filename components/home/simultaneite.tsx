@@ -55,7 +55,7 @@ export async function SimultaneiteSection({ locale }: { locale: Locale }) {
     >
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6">
         <div className="flex flex-col gap-4">
-          <h2 className="text-h2 font-display text-foreground">{t("title")}</h2>
+          <h2 className="text-h2 text-foreground">{t("title")}</h2>
           <p className="max-w-2xl text-body-l text-muted-foreground">{t("lead", { count: lignes.length })}</p>
         </div>
 

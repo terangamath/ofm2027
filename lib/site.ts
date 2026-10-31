@@ -80,3 +80,12 @@ export function estIndexable(urlSite: string, environnementVercel?: string): boo
 }
 
 export const INDEXABLE = estIndexable(SITE_URL, ENVIRONNEMENT_VERCEL);
+
+/**
+ * Aperçus sur données fictives (classement d'exemple de /resultats). Jamais sur
+ * le déploiement Production de Vercel ; ailleurs en développement, sur les
+ * prévisualisations Vercel, ou sur demande (`OFM_APERCU=1`, build local).
+ */
+export const APERCUS_FICTIFS =
+  process.env.VERCEL_ENV !== "production" &&
+  (process.env.NODE_ENV === "development" || process.env.VERCEL_ENV === "preview" || process.env.OFM_APERCU === "1");

@@ -27,7 +27,7 @@
     "id": "campus-france",
     "name": { "fr": "Campus France", "en": "Campus France" },
     "category": null,
-    "status": "pending",
+    "status": "confirmed",
     "logo": null,
     "url": null
   },
@@ -68,8 +68,8 @@
       "en": "Ministry of National Education of Senegal"
     },
     "category": "institutionnel",
-    "status": "pending",
-    "logo": { "src": "/partenaires/men-senegal.png", "width": 225, "height": 225 },
+    "status": "confirmed",
+    "logo": { "src": "/partenaires/men-senegal.png", "width": 225, "height": 225, "scale": 1.5 },
     "url": "https://www.education.sn/"
   },
   {

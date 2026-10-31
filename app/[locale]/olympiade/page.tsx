@@ -44,7 +44,7 @@ export default async function OlympiadPage({
 
       <section className="bg-surface pb-20 text-foreground lg:pb-28">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
-          <h2 className="text-h2 font-display text-foreground">{t("Presentation.title")}</h2>
+          <h2 className="text-h2 text-foreground">{t("Presentation.title")}</h2>
           <div className="flex max-w-[62ch] flex-col gap-5">
             <p className="text-body-l text-foreground">{t("Presentation.body1")}</p>
             <p className="text-body-l text-foreground">{t("Presentation.body2")}</p>
@@ -63,7 +63,7 @@ export default async function OlympiadPage({
                 key={category.id}
                 className={`flex flex-col gap-2 ${index === 1 ? "md:border-l md:border-hairline md:pl-12" : "md:pr-12"}`}
               >
-                <h3 className="font-display text-h2 text-foreground">{category.name[typedLocale]}</h3>
+                <h3 className="text-h2 text-foreground">{category.name[typedLocale]}</h3>
                 <p className="text-body-l text-muted-foreground">{category.scope[typedLocale]}</p>
               </div>
             ))}

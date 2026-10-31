@@ -14,10 +14,13 @@ import nationsData from "@/content/nations.json";
 import organisationData from "@/content/organisation.json";
 import partenairesData from "@/content/partenaires.json";
 import programmeData from "@/content/programme.json";
+import resultatsData from "@/content/resultats.json";
+import resultatsFictifsData from "@/content/apercu/resultats-fictifs.json";
 import statsData from "@/content/stats.json";
 import { composerContenu } from "@/lib/typographie";
 import type {
   ArchiveEntry,
+  Classements,
   Committee,
   CompetitionFormat,
   Edition,
@@ -26,6 +29,7 @@ import type {
   HistoricalNation,
   Partner,
   ReferenceDocument,
+  ResultatsOfficiels,
   Schedule,
   Stat,
 } from "@/content/types";
@@ -46,3 +50,7 @@ export const comites = composerContenu(organisationData as Committee[]);
 export const format = composerContenu(formatData as CompetitionFormat);
 export const documents = composerContenu(documentsData as ReferenceDocument[]);
 export const programme = composerContenu(programmeData as Schedule);
+/** Classements officiels : affichés seulement si `published`. */
+export const resultats = composerContenu(resultatsData as ResultatsOfficiels);
+/** Classement d'exemple, fictif : jamais rendu en production (lib/site.ts, APERCUS_FICTIFS). */
+export const resultatsFictifs = composerContenu(resultatsFictifsData as Classements);

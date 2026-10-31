@@ -1,3 +1,5 @@
+import type { MultiPolygon, Polygon } from "geojson";
+
 // content/types.ts
 // Types stricts pour tout le contenu du site OFM 2027.
 // Règle CLAUDE.md : jamais de `any`, tout contenu non confirmé est explicitement marqué.
@@ -76,23 +78,34 @@ export interface Stat {
 // Délégations (/equipes, /equipes/[pays])
 // ─────────────────────────────────────────────────────────────
 
+/**
+ * Membre publié d'une délégation. Un membre non encore connu n'est pas saisi :
+ * la fiche affiche « À confirmer » dans les places restantes (lib/equipes.ts).
+ */
 export interface DelegationMember {
-  name: string;               // "[À confirmer]" tant que non nommé
-  role: LocalizedText;        // "Compétiteur", "Chef de délégation"...
-  category?: "junior" | "senior";
+  name: string;
+  category: "junior" | "senior"; // équipe
+  position: "participant" | "leader"; // élève ou encadrant
+  /** Chemin sous public/, ex. "/delegations/senegal/prenom-nom.jpg" ; absent = avatar neutre. */
+  photo?: string | null;
+  /** Information complémentaire affichée sous le nom : âge, « Chef de délégation »… */
+  detail?: LocalizedText | null;
 }
 
 export interface Delegation {
   slug: string;               // "senegal"
   countryCode: string;        // ISO 3166-1 alpha-2, ex. "SN"
+  iso3: string;               // ISO 3166-1 alpha-3, ex. "SEN" : relie la fiche au fond de carte (content/geo/monde.json)
   name: LocalizedText;        // "Sénégal" / "Senegal"
-  flagEmoji: string;          // "🇸🇳" (historique ; l'affichage utilise des SVG)
+  /** Nom précédé de sa préposition, pour « Délégation du Sénégal » / « Delegation of Senegal ». */
+  ofName: LocalizedText;      // "du Sénégal" / "Senegal"
+  flagEmoji: string;         // "🇸🇳" (historique ; l'affichage utilise des SVG)
   /** Fuseau IANA de la délégation, ex. "Africa/Dakar". Jamais de décalage en dur. */
   timeZone: string;
   status: EngagementStatus;   // confirmed | pending
   isHost: boolean;
   description: LocalizedText | null;
-  /** null = roster pas encore publié (coming_soon). */
+  /** null = aucun membre publié : toutes les places sont « À confirmer ». */
   members: DelegationMember[] | null;
 }
 
@@ -124,6 +137,7 @@ export interface ProblemFrontmatter {
   category: ProblemCategory;
   number: number;             // 1..n
   title: string;
+  author?: string | null;     // auteur ou pays proposant, s'il est publié
   topics: string[];           // ["géométrie", "combinatoire"]
   hasSolution: boolean;
   status: ContentStatus;      // coming_soon tant que non publié
@@ -172,6 +186,8 @@ export interface PartnerLogo {
   src: string;                // "/partenaires/nom.svg"
   width: number;
   height: number;
+  /** Ajustement optique de la taille affichée (1 par défaut) : > 1 pour un logo à grandes marges blanches. */
+  scale?: number;
 }
 
 /**
@@ -203,10 +219,14 @@ export interface FaqItem {
 export interface Edition {
   year: number;
   host: LocalizedText;        // "[À confirmer]" si donnée manquante
+  hostCode: string;           // ISO 3166-1 alpha-2 du pays organisateur (drapeau)
   city: LocalizedText | null;
   dates: LocalizedText | null;
   countriesCount: number | null;
-  note: LocalizedText | null;
+  /** Effectifs publiés par catégorie ; null tant qu'ils ne le sont pas. */
+  competitors: { junior: number; senior: number } | null;
+  /** Pays participants par catégorie (codes ISO, ordre publié) ; null s'ils ne sont pas publiés. */
+  participants: { junior: string[]; senior: string[] } | null;
   status: ContentStatus;
 }
 
@@ -227,6 +247,7 @@ export interface ArchiveEntry {
   year: number;
   category: "junior" | "senior";
   type: ArchiveDocumentType;
+  problem?: number;            // 1..4 : document propre à un problème (corrigé), sinon toute l'épreuve
   path: string;                // chemin public, ex. "/archives/2024/ofm-2024-junior-sujet.pdf"
 }
 
@@ -262,17 +283,60 @@ export interface ReferenceDocument {
 // ─────────────────────────────────────────────────────────────
 
 export interface Person {
-  name: string;               // "[À confirmer — Terangamath]" si non nommé
-  role: LocalizedText;
+  /** null : place prévue, personne pas encore nommée (« Membre à confirmer »). */
+  name: string | null;
+  /** Fonction dans le comité ; null si inconnue. */
+  role: LocalizedText | null;
   org: string | null;
   country: string | null;     // code ISO
+  /** Chemin dans public/ ; sans photo : avatar neutre. */
+  photo?: string | null;
 }
 
 export interface Committee {
   id: string;
-  name: LocalizedText;        // "Comité de sélection des problèmes", "Équipe de coordination"...
+  /** "coordinators" : une place sans nom s'affiche « Coordinateur à confirmer ». */
+  kind: "committee" | "coordinators";
+  name: LocalizedText;        // "Comité de sélection des problèmes", "Coordinateurs"...
   description: LocalizedText | null;
   /** true : structure reprise de la règle générale de l'OFM, non confirmée telle quelle pour 2027. */
   provisional: boolean;
+  /** Dans l'ordre d'affichage ; vide : « Composition à venir ». */
   members: Person[];
+}
+
+/** Un pays du fond de carte Natural Earth (content/geo/monde.json, généré par scripts/carte-monde.mjs). */
+export interface PaysCarte {
+  iso3: string;
+  iso2: string;
+  name: LocalizedText;
+  geometry: Polygon | MultiPolygon;
+}
+
+// ─────────────────────────────────────────────────────────────
+// Résultats (/resultats)
+// ─────────────────────────────────────────────────────────────
+
+/** Distinction attribuée par le jury ; null : aucune. Jamais déduite du rang. */
+export type Distinction = "gold" | "silver" | "bronze" | null;
+
+export interface LigneResultat {
+  /** Rang publié ; deux ex æquo portent le même rang (1, 2, 2, 4…). */
+  rank: number;
+  award: Distinction;
+  name: string;
+  countryCode: string;        // ISO 3166-1 alpha-2
+  /** Points obtenus aux problèmes 1 à 4. */
+  scores: [number, number, number, number];
+  total: number;
+}
+
+export interface Classements {
+  junior: LigneResultat[];
+  senior: LigneResultat[];
+}
+
+/** content/resultats.json : les classements officiels, affichés seulement une fois publiés. */
+export interface ResultatsOfficiels extends Classements {
+  published: boolean;
 }

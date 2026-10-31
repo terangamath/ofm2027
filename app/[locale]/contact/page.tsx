@@ -55,7 +55,7 @@ export default async function ContactPage({
               <dd>
                 <a
                   href={`mailto:${t("emailValue")}`}
-                  className="link-text text-body-l font-medium text-link"
+                  className="link-text text-body-l font-medium text-link [overflow-wrap:anywhere]"
                 >
                   {t("emailValue")}
                 </a>
@@ -69,7 +69,7 @@ export default async function ContactPage({
                     href={eventInfo.organizerUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="link-text text-body-l font-medium text-link"
+                    className="link-text text-body-l font-medium text-link [overflow-wrap:anywhere]"
                   >
                     www.terangamath.org
                   </a>

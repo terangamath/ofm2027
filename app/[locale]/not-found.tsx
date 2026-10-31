@@ -18,10 +18,10 @@ export default async function NotFoundPage() {
   return (
     <section className="flex-1 bg-surface pt-16 pb-20 text-foreground lg:pt-24 lg:pb-28">
       <div className="mx-auto flex max-w-7xl flex-col gap-5 px-6">
-        <p className="font-display text-display-l leading-none tabular-nums text-link" aria-hidden>
+        <p className="font-semibold text-display-l leading-none tabular-nums text-link" aria-hidden>
           404
         </p>
-        <h1 className="max-w-4xl font-display text-h2 text-primary">{sansVeuve(t("title"))}</h1>
+        <h1 className="max-w-4xl text-h2 text-primary">{sansVeuve(t("title"))}</h1>
         <p className="max-w-2xl text-body-l text-muted-foreground">{t("lead")}</p>
         <span aria-hidden className="mt-4 block h-px w-full bg-hairline" />
 

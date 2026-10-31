@@ -1,7 +1,9 @@
 {
   "slug": "djibouti",
   "countryCode": "DJ",
+  "iso3": "DJI",
   "name": { "fr": "Djibouti", "en": "Djibouti" },
+  "ofName": { "fr": "de Djibouti", "en": "Djibouti" },
   "flagEmoji": "🇩🇯",
   "timeZone": "Africa/Djibouti",
   "status": "confirmed",

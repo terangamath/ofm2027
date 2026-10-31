@@ -8,12 +8,15 @@
   "Nav": {
     "home": "Accueil",
     "olympiad": "L'Olympiade",
+    "about": "À propos",
+    "edition": "Édition {year}",
     "organisation": "Organisation",
     "teams": "Équipes",
     "programme": "Programme",
-    "problems": "Problèmes & Solutions",
+    "problems": "Problèmes et solutions",
     "history": "Historique",
-    "contact": "Contact"
+    "contact": "Contact",
+    "results": "Résultats"
   },
   "Header": {
     "languageSwitcherLabel": "Changer de langue",
@@ -21,29 +24,57 @@
     "menuOpen": "Ouvrir le menu",
     "menuClose": "Fermer le menu",
     "themeToLight": "Passer au thème clair",
-    "themeToDark": "Passer au thème sombre"
+    "themeToDark": "Passer au thème sombre",
+    "navLabel": "Navigation principale"
   },
   "Footer": {
-    "navLabel": "Liens utiles",
-    "history": "Historique des éditions",
-    "legalMentions": "Mentions légales",
+    "logoAlt": "Symbole de l'OFM 2027 : la lettre π aux couleurs du Sénégal, un baobab et une pirogue",
+    "organizedBy": "Organisée par {organizer}",
+    "location": "{city}, {country}",
+    "usefulLinks": "Liens utiles",
     "officialSite": "Site officiel de l'OFM",
-    "organizedBy": "Organisée par",
-    "committee": "comité à {city}, {country}",
-    "rights": "© {year} Terangamath"
+    "rules": "Règlement officiel",
+    "history": "Historique des éditions",
+    "contact": "Contact",
+    "contactOrganisation": "Contacter l'organisation",
+    "terangamath": "Découvrir Terangamath",
+    "newTab": "(s'ouvre dans un nouvel onglet)",
+    "rights": "© {year} Terangamath",
+    "legalMentions": "Mentions légales"
   },
   "Home": {
     "Hero": {
-      "title": "L'Olympiade Francophone de Mathématiques",
-      "lead": "Le Sénégal accueille l'organisation de l'édition 2027 de l'Olympiade Francophone de Mathématiques, disputée à distance par les meilleurs jeunes mathématiciens du monde francophone.",
+      "title": "OFM 2027",
+      "subtitle": "8<sup>e</sup> Olympiade francophone de mathématiques",
       "ctaPrimary": "Découvrir l'Olympiade",
-      "ctaSecondary": "Voir les équipes",
-      "metaDates": "Dates",
-      "metaMode": "Format",
-      "metaModeValue": "Épreuves à distance",
-      "metaCategories": "Catégories",
-      "metaOrganizer": "Organisateur",
-      "figureCaption": "Figure du problème 3, OFM 2024 (Senior) : (DE) est parallèle à (OM)."
+      "photoAlt": "Pirogues peintes sur une plage du Sénégal ; l'une porte l'inscription « OFM 2027 Sénégal ».",
+      "countdownLabel": "Compte à rebours jusqu'au début de l'épreuve",
+      "countdownBefore": "Début de l'épreuve dans",
+      "countdownDuring": "Épreuve en cours",
+      "countdownAfter": "Épreuve terminée",
+      "days": "jours",
+      "hours": "heures",
+      "minutes": "minutes",
+      "seconds": "secondes"
+    },
+    "About": {
+      "title": "À propos de l'OFM",
+      "p1": "L'Olympiade francophone de mathématiques est une compétition destinée aux élèves du monde francophone. Elle propose des problèmes d'algèbre, de combinatoire, de géométrie et de théorie des nombres, répartis en deux catégories : Junior et Senior.",
+      "p2": "Les participants représentent leur pays au sein de délégations nationales. Chaque épreuve comprend quatre problèmes à résoudre en quatre heures trente.",
+      "p3": "La 8<sup>e</sup> édition est organisée par <b>Terangamath</b>, au Sénégal, les <b>27 et 28 mars 2027</b>, avec des épreuves à distance dans les pays participants.",
+      "rules": "Règlement officiel",
+      "terangamath": "Découvrir Terangamath",
+      "newTab": "(s'ouvre dans un nouvel onglet)",
+      "logoAlt": "Logo de l'OFM 2027 : la lettre π aux couleurs du Sénégal, un baobab et une pirogue, au-dessus de « OFM 2027 Sénégal, Olympiades francophones de mathématiques »."
+    },
+    "Countries": {
+      "title": "Les pays participants",
+      "cta": "Découvrir les délégations",
+      "mapLabel": "Carte du monde des pays participants à l'OFM 2027",
+      "legendHost": "Sénégal, pays organisateur",
+      "legendParticipant": "Pays participant confirmé",
+      "listLabel": "Fiches des pays participants",
+      "credit": "Fond de carte : <link>Natural Earth</link>"
     },
     "Event": {
       "title": "La fiche de l'événement",
@@ -101,11 +132,8 @@
       "referenceLine": "Référence : {time} à Dakar ({zone})"
     },
     "Partners": {
-      "title": "Ils rendent l'Olympiade possible",
-      "lead": "Aux côtés de Terangamath pour l'édition 2027.",
-      "categoryInstitutional": "Partenaires institutionnels",
-      "categoryFinancial": "Partenaires financiers",
-      "categoryTechnical": "Partenaires techniques"
+      "title": "Nos partenaires",
+      "lead": "Ils soutiennent l'édition 2027."
     },
     "Faq": {
       "title": "Foire aux questions",
@@ -148,30 +176,32 @@
       }
     },
     "Organisation": {
-      "title": "Terangamath & l'organisation de l'OFM 2027",
-      "lead": "L'Olympiade est portée par l'association Terangamath, épaulée par des comités dédiés à la sélection des problèmes et à la coordination des corrections.",
-      "About": {
-        "title": "L'association organisatrice",
-        "body": "Terangamath est l'association sénégalaise à l'origine de l'OFM 2027. Son nom s'inspire de la Teranga, l'hospitalité sénégalaise, qu'elle met au service de la promotion des mathématiques auprès des jeunes du monde francophone."
-      },
-      "Committees": {
-        "title": "Comités",
-        "lead": "Les comités qui préparent l'édition 2027."
-      }
+      "title": "Organisation",
+      "lead": "Une édition organisée par TerangaMath, au Sénégal.",
+      "compositionPending": "Composition à venir",
+      "memberToConfirm": "Membre à confirmer",
+      "coordinatorToConfirm": "Coordinateur à confirmer"
     },
     "Teams": {
       "title": "Les délégations de l'OFM 2027",
       "lead": "Les pays francophones engagés dans l'édition 2027. Chaque pays peut présenter une délégation Junior et une délégation Senior, de un à six élèves chacune.",
       "hostBadge": "Pays hôte",
       "viewTeam": "Voir la fiche",
-      "statusPending": "En attente"
+      "statusPending": "En attente",
+      "kicker": "OFM 2027",
+      "heading": "Les délégations",
+      "hostLabel": "Pays organisateur"
     },
     "TeamDetail": {
-      "back": "Toutes les équipes",
-      "hostBadge": "Pays hôte",
-      "statusConfirmed": "Délégation confirmée",
+      "back": "Toutes les délégations",
+      "title": "Délégation {of}",
+      "hostLabel": "Pays organisateur",
       "statusPending": "Participation en attente de confirmation",
-      "membersTitle": "Délégation",
+      "junior": "Équipe Junior",
+      "senior": "Équipe Senior",
+      "participants": "Participants",
+      "leaders": "Encadrants",
+      "toBeConfirmed": "À confirmer",
       "notFoundTitle": "Délégation introuvable",
       "notFoundBody": "Cette délégation n'existe pas ou n'a pas encore été confirmée."
     },
@@ -187,17 +217,26 @@
       "localTimes": "Voir les heures locales des délégations"
     },
     "Problems": {
-      "title": "Les problèmes de l'Olympiade",
-      "lead": "Un aperçu des problèmes de l'Olympiade, avec leurs solutions lorsqu'elles sont disponibles.",
-      "comingSoonTitle": "Les problèmes seront publiés après les épreuves",
-      "comingSoonBody": "Les problèmes et solutions officiels de l'édition 2027 seront publiés ici à l'issue de la compétition. Les sujets des éditions précédentes restent consultables depuis la page Historique.",
-      "hasSolution": "Solution disponible",
-      "noSolutionYet": "Solution à venir",
-      "readProblem": "Consulter",
+      "title": "Problèmes et solutions",
+      "lead": "Consultez les énoncés et téléchargez les corrigés.",
+      "categoriesLabel": "Catégorie",
+      "problemsLabel": "Problèmes {category}",
+      "problem": "Problème {n}",
+      "author": "Auteur : {name}",
+      "pending": "L’énoncé du problème sera publié ici.",
+      "pdf": "Énoncés {category} PDF",
+      "pdfLabel": "Télécharger les énoncés {category} (PDF)",
+      "pdfPending": "PDF à venir",
       "category": {
         "junior": "Junior",
         "senior": "Senior"
-      }
+      },
+      "marker": "{category} · Problème {n}",
+      "solutionTitle": "Solution du problème {n}",
+      "solutionFormat": "Corrigé au format PDF",
+      "solutionDownload": "Télécharger la solution PDF",
+      "solutionDownloadLabel": "Télécharger la solution du problème {n}, {category} (PDF)",
+      "solutionPending": "Disponible après publication"
     },
     "ProblemDetail": {
       "back": "Tous les problèmes",
@@ -208,30 +247,76 @@
         "senior": "Senior"
       }
     },
+    "Results": {
+      "title": "Résultats",
+      "lead": "Classements des épreuves Junior et Senior",
+      "notPublishedTitle": "Résultats à venir",
+      "notPublished": "Les résultats officiels seront publiés après les épreuves.",
+      "previewBadge": "Aperçu — données fictives",
+      "previewNote": "Ce classement d’exemple sert à prévisualiser la page. Il ne s’agit pas de résultats officiels.",
+      "categoriesLabel": "Catégorie",
+      "junior": "Junior",
+      "senior": "Senior",
+      "searchLabel": "Rechercher un participant",
+      "searchPlaceholder": "Nom du participant",
+      "countryLabel": "Pays",
+      "allCountries": "Tous les pays",
+      "caption": "Classement {category}",
+      "previewCaption": "(aperçu, données fictives)",
+      "colRank": "Rang",
+      "colAward": "Distinction",
+      "colParticipant": "Participant",
+      "colCountry": "Pays",
+      "countryPlaceholder": "Pays",
+      "colProblem": "P{n}",
+      "colProblemLong": "Problème {n}",
+      "colTotal": "Total",
+      "gold": "Or",
+      "silver": "Argent",
+      "bronze": "Bronze",
+      "noAward": "Aucune distinction",
+      "count": "{count, plural, =0 {Aucun participant} one {# participant} other {# participants}}",
+      "noMatch": "Aucun participant ne correspond à votre recherche.",
+      "resetFilters": "Effacer les filtres",
+      "paginationLabel": "Pages du classement",
+      "previous": "Précédent",
+      "next": "Suivant",
+      "pageOf": "Page {page} sur {pages}",
+      "legend": "P1 à P4 : points obtenus par problème.",
+      "download": "Télécharger le classement",
+      "scrollHint": "Faites défiler le tableau horizontalement."
+    },
     "History": {
-      "title": "L'histoire de l'Olympiade",
-      "lead": "Les éditions passées de l'Olympiade Francophone de Mathématiques.",
-      "hostLabel": "Pays hôte",
-      "countriesLabel": "pays participants",
-      "archivesCategory": {
-        "junior": "Junior",
-        "senior": "Senior"
-      },
+      "title": "Historique de l’OFM",
+      "lead": "Les éditions précédentes et leurs archives.",
+      "editionsLabel": "Éditions",
+      "edition": "OFM {year} — {host}",
+      "dates": "Dates",
+      "competitorsUnit": "participants",
+      "participants": "Pays participants",
+      "participantsCount": "{count} pays",
+      "archives": "Archives",
       "archivesType": {
-        "sujet": "Sujet",
+        "sujet": "Problèmes",
         "solutions": "Solutions",
         "resultats": "Résultats"
       },
-      "nationsTitle": "Nations ayant déjà pris part à l'OFM",
-      "nationsLead": "Toutes les nations ayant engagé une délégation depuis la création de l'Olympiade, en 2020.",
+      "archiveLabel": "{type} {category} {year} (PDF, nouvel onglet)",
+      "pdf": "PDF",
+      "unavailable": "Document indisponible",
+      "unavailableCategory": "{category} : document indisponible",
+      "category": {
+        "junior": "Junior",
+        "senior": "Senior"
+      },
+      "hostsTitle": "Les pays organisateurs",
       "columns": {
         "edition": "Édition",
-        "host": "Organisateur",
-        "dates": "Dates",
-        "countries": "Pays",
-        "note": "Note",
-        "archives": "Sujets, solutions, résultats"
-      }
+        "host": "Pays organisateur",
+        "dates": "Dates"
+      },
+      "toComplete": "À compléter",
+      "countriesTotal": "{count} pays au total"
     },
     "Contact": {
       "title": "Contact",

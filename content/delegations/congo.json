@@ -1,7 +1,9 @@
 {
   "slug": "congo",
   "countryCode": "CG",
+  "iso3": "COG",
   "name": { "fr": "Congo", "en": "Congo" },
+  "ofName": { "fr": "du Congo", "en": "the Congo" },
   "flagEmoji": "🇨🇬",
   "timeZone": "Africa/Brazzaville",
   "status": "confirmed",

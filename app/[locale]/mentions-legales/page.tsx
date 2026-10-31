@@ -32,7 +32,7 @@ export default async function LegalPage({
         <div className="mx-auto flex max-w-3xl flex-col gap-10 px-6">
           {SECTIONS.map((section) => (
             <div key={section} className="flex flex-col gap-2 border-b border-hairline pb-8 last:border-b-0">
-              <h2 className="font-display text-h4 text-foreground">{t(`${section}.title`)}</h2>
+              <h2 className="text-h4 text-foreground">{t(`${section}.title`)}</h2>
               <p className="text-body text-muted-foreground">{t(`${section}.body`)}</p>
             </div>
           ))}

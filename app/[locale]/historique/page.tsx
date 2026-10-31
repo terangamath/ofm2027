@@ -1,27 +1,29 @@
 import type { Metadata } from "next";
 import { metadonneesPage } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { PageHero } from "@/components/layout/page-hero";
+import { IntroCompacte } from "@/components/layout/intro-compacte";
+import { FicheEdition, type DocumentsEdition } from "@/components/historique/fiche-edition";
+import { OngletsEditions } from "@/components/historique/onglets-editions";
+import { Flag } from "@/components/shared/flag";
 import { archives, editions, nations } from "@/lib/contenu";
-import type { ArchiveDocumentType, Edition, Locale } from "@/content/types";
+import type { ArchiveDocumentType, Edition, Locale, ProblemCategory } from "@/content/types";
 
-const DOC_TYPES: ArchiveDocumentType[] = ["sujet", "solutions", "resultats"];
-const CATEGORIES = ["junior", "senior"] as const;
+const DOCUMENTS: ArchiveDocumentType[] = ["sujet", "solutions", "resultats"];
+const CATEGORIES: ProblemCategory[] = ["junior", "senior"];
 
-function archivesFor(year: number, category: "junior" | "senior") {
-  return archives.filter((entry) => entry.year === year && entry.category === category);
+/** Documents d'une édition. Les corrigés propres à un problème (page Problèmes et solutions) n'en font pas partie. */
+function documentsDe(year: number): DocumentsEdition {
+  const chemin = (type: ArchiveDocumentType, category: ProblemCategory) =>
+    archives.find(
+      (entry) => entry.year === year && entry.type === type && entry.category === category && entry.problem === undefined,
+    )?.path ?? null;
+  return Object.fromEntries(
+    DOCUMENTS.map((type) => [type, Object.fromEntries(CATEGORIES.map((category) => [category, chemin(type, category)]))]),
+  ) as DocumentsEdition;
 }
 
-/**
- * Effectifs Junior/Senior lus dans la note (« 60 Junior · 72 Senior … »).
- * Présentation seulement : la donnée reste la note. Si le motif ne correspond
- * pas, la note s'affiche telle quelle.
- */
-function effectifs(edition: Edition): { junior: number; senior: number } | null {
-  const note = edition.note?.fr ?? "";
-  const m = /(\d+)\s*Junior\s*·\s*(\d+)\s*Senior/u.exec(note);
-  return m ? { junior: Number(m[1]), senior: Number(m[2]) } : null;
-}
+/** Une édition dont les effectifs et les pays participants sont publiés. */
+const estDocumentee = (edition: Edition) => edition.competitors !== null && edition.participants !== null;
 
 export async function generateMetadata({
   params,
@@ -33,6 +35,12 @@ export async function generateMetadata({
   return metadonneesPage({ locale, chemin: "/historique", titre: t("title"), description: t("lead") });
 }
 
+/**
+ * Historique des éditions passées : une fiche à la fois derrière des onglets
+ * d'années, puis le tableau des pays organisateurs. Données de
+ * content/editions.json et content/archives.json ; rien n'est complété à la
+ * main pour une édition dont les chiffres n'ont pas été publiés.
+ */
 export default async function HistoryPage({
   params,
 }: {
@@ -43,98 +51,74 @@ export default async function HistoryPage({
   const typedLocale = locale as Locale;
   const t = await getTranslations({ locale, namespace: "Pages.History" });
 
-  const hasNoteColumn = editions.some((edition) => edition.note && !effectifs(edition));
+  const chronologie = [...editions].sort((a, b) => a.year - b.year);
+  const noms = Object.fromEntries(nations.map((nation) => [nation.countryCode, nation.name[typedLocale]]));
+  // Par défaut : la dernière édition dont les données sont publiées.
+  const derniere = chronologie.findLastIndex(estDocumentee);
 
   return (
     <>
-      <PageHero chemin="/historique" title={t("title")} lead={t("lead")} />
+      <IntroCompacte title={t("title")} lead={t("lead")} />
 
-      {/* Le seul endroit du site où des chiffres se comparent en colonne : une vraie table. */}
-      <section className="bg-surface pb-20 lg:pb-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[56rem] border-collapse text-small text-foreground">
-              <thead>
-                <tr className="border-b border-primary/30 text-left align-bottom">
-                  <th scope="col" className="label py-3 pr-6 font-medium text-muted-foreground">{t("columns.edition")}</th>
-                  <th scope="col" className="label py-3 pr-6 font-medium text-muted-foreground">{t("columns.host")}</th>
-                  <th scope="col" className="label py-3 pr-6 font-medium text-muted-foreground">{t("columns.dates")}</th>
-                  <th scope="col" className="label py-3 pr-6 text-right font-medium text-muted-foreground">{t("columns.countries")}</th>
-                  <th scope="col" className="label py-3 pr-6 text-right font-medium text-muted-foreground">{t("archivesCategory.junior")}</th>
-                  <th scope="col" className="label py-3 pr-6 text-right font-medium text-muted-foreground">{t("archivesCategory.senior")}</th>
-                  {hasNoteColumn && (
-                    <th scope="col" className="label py-3 pr-6 font-medium text-muted-foreground">{t("columns.note")}</th>
-                  )}
-                  <th scope="col" className="label py-3 font-medium text-muted-foreground">{t("columns.archives")}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {editions.map((edition) => {
-                  const nombres = effectifs(edition);
-                  return (
-                    <tr key={edition.year} className="border-b border-hairline align-top">
-                      <th scope="row" className="py-5 pr-6 text-left font-display text-h3 leading-none tabular-nums text-primary">
+      <section className="bg-entete-fond pt-6 pb-16 text-foreground lg:pt-8 lg:pb-20">
+        <div className="mx-auto box-border flex w-full max-w-[75rem] flex-col gap-12 px-4 sm:px-6">
+          <OngletsEditions
+            libelle={t("editionsLabel")}
+            annees={chronologie.map((edition) => edition.year)}
+            initiale={derniere === -1 ? chronologie.length - 1 : derniere}
+            fiches={chronologie.map((edition) => (
+              <FicheEdition
+                key={edition.year}
+                edition={edition}
+                locale={typedLocale}
+                noms={noms}
+                documents={documentsDe(edition.year)}
+              />
+            ))}
+          />
+
+          <section aria-labelledby="pays-organisateurs" className="flex flex-col gap-4">
+            <h2
+              id="pays-organisateurs"
+              className="text-[clamp(1.375rem,1.15rem+0.8vw,1.75rem)] font-bold text-vert-profond dark:text-primary"
+            >
+              {t("hostsTitle")}
+            </h2>
+            <span aria-hidden className="h-0.5 w-12 bg-accent" />
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse text-small text-foreground sm:text-body">
+                <thead>
+                  <tr className="border-b border-or text-left">
+                    <th scope="col" className="py-2.5 pr-3 sm:pr-4 text-small font-semibold text-muted-foreground">
+                      {t("columns.edition")}
+                    </th>
+                    <th scope="col" className="py-2.5 pr-3 sm:pr-4 text-small font-semibold text-muted-foreground">
+                      {t("columns.host")}
+                    </th>
+                    <th scope="col" className="py-2.5 text-small font-semibold text-muted-foreground">
+                      {t("columns.dates")}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {chronologie.map((edition) => (
+                    <tr key={edition.year} className="border-b border-hairline">
+                      <th scope="row" className="py-2.5 pr-3 sm:pr-4 text-left font-semibold tabular-nums text-vert-profond dark:text-primary">
                         {edition.year}
                       </th>
-                      <td className="py-5 pr-6 font-medium">
-                        {edition.host[typedLocale]}
-                        {edition.city && `, ${edition.city[typedLocale]}`}
+                      <td className="py-2.5 pr-4">
+                        <span className="flex items-center gap-2">
+                          <Flag countryCode={edition.hostCode} size={20} />
+                          {edition.host[typedLocale]}
+                        </span>
                       </td>
-                      <td className="data py-5 pr-6 whitespace-nowrap text-muted-foreground">{edition.dates?.[typedLocale]}</td>
-                      <td className="data py-5 pr-6 text-right">{edition.countriesCount ?? ""}</td>
-                      <td className="data py-5 pr-6 text-right">{nombres?.junior ?? ""}</td>
-                      <td className="data py-5 pr-6 text-right">{nombres?.senior ?? ""}</td>
-                      {hasNoteColumn && (
-                        <td className="py-5 pr-6 text-muted-foreground">{!nombres && edition.note ? edition.note[typedLocale] : ""}</td>
-                      )}
-                      <td className="py-5">
-                        <div className="flex flex-col gap-1.5">
-                          {CATEGORIES.map((category) => {
-                            const entries = archivesFor(edition.year, category);
-                            if (entries.length === 0) return null;
-                            return (
-                              <div key={category} className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                                <span className="w-12 text-muted-foreground">{t(`archivesCategory.${category}`)}</span>
-                                {DOC_TYPES.map((type) => {
-                                  const entry = entries.find((item) => item.type === type);
-                                  if (!entry) return null;
-                                  return (
-                                    <a
-                                      key={type}
-                                      href={entry.path}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="link-text text-link"
-                                    >
-                                      {t(`archivesType.${type}`)}
-                                    </a>
-                                  );
-                                })}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </td>
+                      <td className="data py-2.5 text-muted-foreground">{edition.dates?.[typedLocale] ?? t("toComplete")}</td>
                     </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-surface-alt py-20 lg:py-28">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6">
-          <h2 className="font-display text-h3 text-foreground">{t("nationsTitle")}</h2>
-          <p className="max-w-2xl text-body text-muted-foreground">{t("nationsLead")}</p>
-          <ul className="flex flex-wrap gap-x-6 gap-y-2">
-            {nations.map((nation) => (
-              <li key={nation.countryCode} className="text-body text-foreground">
-                {nation.name[typedLocale]}
-              </li>
-            ))}
-          </ul>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
         </div>
       </section>
     </>

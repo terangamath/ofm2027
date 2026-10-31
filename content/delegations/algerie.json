@@ -1,7 +1,9 @@
 {
   "slug": "algerie",
   "countryCode": "DZ",
+  "iso3": "DZA",
   "name": { "fr": "Algérie", "en": "Algeria" },
+  "ofName": { "fr": "de l'Algérie", "en": "Algeria" },
   "flagEmoji": "🇩🇿",
   "timeZone": "Africa/Algiers",
   "status": "confirmed",

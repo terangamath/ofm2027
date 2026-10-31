@@ -1,7 +1,9 @@
 {
   "slug": "comores",
   "countryCode": "KM",
+  "iso3": "COM",
   "name": { "fr": "Comores", "en": "Comoros" },
+  "ofName": { "fr": "des Comores", "en": "the Comoros" },
   "flagEmoji": "🇰🇲",
   "timeZone": "Indian/Comoro",
   "status": "confirmed",
